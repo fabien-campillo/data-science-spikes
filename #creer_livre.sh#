@@ -13,8 +13,10 @@ git commit -m "Mise à jour du Jupyter Book"
 # 4️⃣ Pousser les sources sur GitHub (branche main)
 git push -u origin main
 
+jupyter-book clean .
+
+
 # 5️⃣ Construire le livre localement
-jupyter-book clean . # je préfère cleaner
 jupyter-book build .
 
 # 6️⃣ Publier le site sur GitHub Pages (branche gh-pages)
