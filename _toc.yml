@@ -4,4 +4,5 @@ chapters:
   - file: 2_resources
     title: "Resources and References"
   - file: 3_installing_python
-    title: "Installing Python and Some Tools"    
+    title: "Installing Python and Some Tools"
+ 
