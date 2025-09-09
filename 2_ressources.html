@@ -1,0 +1,569 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Ressources et références &#8212; Data Science des Spikes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_ressources';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installer Python" href="3_installer_python.html" />
+    <link rel="prev" title="Data Science des Spikes" href="1_introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="1_introduction.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Data Science des Spikes</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="1_introduction.html">
+                    Data Science des Spikes
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Références et ressources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_installer_python.html">Installer Python</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/2_ressources.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ressources et références</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalistes">Généralistes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neurosciences">Neurosciences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Généralistes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophyliologie-m-eeg">Électrophyliologie M/EEG</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophyliologie-directe">Électrophyliologie “directe”</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophyliologie">Électrophyliologie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-de-trains-de-spikes-et-de-mesures-d-electrophysiologie">Analyse de trains de spikes et de mesures d’électrophysiologie</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#des-references">Des références</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#des-outils-python">Des outils Python</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ressources-et-references">
+<h1>Ressources et références<a class="headerlink" href="#ressources-et-references" title="Link to this heading">#</a></h1>
+<section id="generalistes">
+<h2>Généralistes<a class="headerlink" href="#generalistes" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Practical Statistics for Data Scientists 50+ Essential Concepts Using R and Python</strong> (2nd edition) Peter Bruce, Andrew Bruce, Peter Gedeck, 2020 [<a class="reference external" href="https://www.oreilly.com/library/view/practical-statistics-for/9781492072935/">lien</a>, <a class="reference external" href="https://datapot.vn/wp-content/uploads/2023/12/datapot.vn-Practical-Statistics-for-Data-Scientists.pdf?srsltid=AfmBOor2LKFBkMvD-uXBWafjjdIzgkmChIvrE0HZewfybjWaFiyVyt7k">pdf</a>]</p></li>
+<li><p><strong>Python for Probability, Statistics, and Machine Learning</strong> Third Edition de José Unpingco, 2022,  [<a class="reference external" href="https://link.springer.com/book/10.1007/978-3-031-04648-3">lien</a>]. Getting Started with Scientific Python •  Probability • Statistics • Machine Learning</p></li>
+<li><p><strong>Deep Learning with TensorFlow, Keras, and PyTorch</strong> de  <a class="reference external" href="https://www.jonkrohn.com">Jon Krohn</a> [<a class="reference external" href="https://github.com/jonkrohn/DLTFpT">git</a>, il a des vidéos essentiellement payantes], il a un livre associé au git:  <a class="reference external" href="https://www.deeplearningillustrated.com">Deep Learning Illustrated</a>, <strong>il faut aussi de la muscu, bof bof</strong></p></li>
+</ul>
+<p>En plus du Python de base, de scipy, numpy et de matplotlib, il faut connaitre:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pandas.pydata.org">Pandas</a></p></li>
+<li><p><a class="reference external" href="https://www.statsmodels.org/stable/index.html">statsmodels</a>  a Python module that provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration.</p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/">Scikit-learn</a> open source project, one of the most used machine learning (ML) library</p></li>
+<li><p>au delà:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.nltk.org">NLTK</a>  leading platform for building Python programs to work with human language data</p></li>
+<li><p><a class="reference external" href="https://radimrehurek.com/gensim/intro.html">Gensim</a>   bibliothèque logicielle Python de <a class="reference external" href="https://fr.wikipedia.org/wiki/Topic_model">topic modelling</a></p></li>
+<li><p><a class="reference external" href="https://spacy.io">SPacy</a> une des principales bibliothèques du langage Python pour le Traitement Naturel du Langage (NLP).</p></li>
+<li><p><a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/">BeautifulSoup</a>  est une librairie pour extraire des données de fichiers HTML.</p></li>
+</ul>
+</li>
+<li><p>au dela de matplotlib:</p>
+<ul>
+<li><p><a class="reference external" href="https://seaborn.pydata.org">Seaborn</a> statistical data visualization</p></li>
+<li><p><a class="reference external" href="https://plotly.com/python/">Plotly</a> open source graphing library for Python</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="neurosciences">
+<h2>Neurosciences<a class="headerlink" href="#neurosciences" title="Link to this heading">#</a></h2>
+<p>Même si on s’intéresse principalement au traitement de mesures d’électophysiologie de type spikes, on va tenter un survol des ressources en neurosciences.</p>
+<p>On va s’intéresse au traitement de mesures d’électrophyliologie, on fera la différence entre:</p>
+<ul class="simple">
+<li><p>les données de types M/EEG, non-invasives/extracrânienne,</p></li>
+<li><p>et les données invasives au niveau du neurone seul, au d’une population de neurones notamment à l’aide de MEA (Multi-Electrode Array)</p></li>
+</ul>
+<p><strong>C’est cette deuxième catégorie, qu’on appellera “électrophysiologie directe”, qui nous (MathNeuro) intéresse le plus</strong>. Le première catégorie est très dévelopée.</p>
+<p>Le traitement des données électrophysiologiques extracrâniennes (EEG/MEG) est généralement plus complexe que celui des mesures intracrâniennes (spikes, LFP, ECoG). En intracrânien, les électrodes sont proches des neurones : le signal est plus localisé, avec un meilleur rapport signal/bruit, ce qui facilite l’identification des potentiels d’action ou des champs locaux. En revanche, les signaux extracrâniens sont fortement atténués, issus de la sommation de millions de neurones et déformés par les tissus du crâne. Ils sont aussi contaminés par de nombreux artéfacts. L’analyse exige donc des traitements avancés (filtrage, correction, modélisation) et la résolution du problème inverse (retrouver les sources cérébrales à partir de mesures incomplètes et ambiguës, qui est un problème mathématiquement mal posé).</p>
+<section id="id1">
+<h3>Généralistes<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2015.00011/full">Python in neuroscience</a>
+E. Muller, J. A. Bednar, M. Diesmann, M.-O. Gewaltig, M. Hines, and A. P. Davison
+Frontiers in Neuroinformatics, 9, 2015. <strong>Date un peu</strong></p></li>
+<li><p><a class="reference external" href="https://mitpress.ublish.com/book/case-studies-neural-data-analysis">Case Studies in Neural Data Analysis</a> 2016. Le livre présente des outils matlab, mais il y a un <a class="reference external" href="https://github.com/Mark-Kramer/Case-Studies-Kramer-Eden">git</a> associé pour Python. Le livre traite essentiellement de données extracrâniennes, sauf le Ch. 8 <em>Basic Visualizations and Descriptive Statistics of SpikeTrainData</em>.</p></li>
+<li><p><a class="reference external" href="https://neuraldatascience.io/">https://neuraldatascience.io/</a> (2020-23) fait par <a class="reference external" href="https://www.dal.ca/faculty/science/psychology_neuroscience/faculty-staff/our-faculty/aaron-newman.html">Aaron J. Newman</a> du <a class="reference external" href="https://www.ncilab.ca">NeuroCognitive Imaging Lab</a> (Dalhousie University in Halifax). Part de 0, notamment en Python. Une section en [<a class="reference external" href="https://neuraldatascience.io/6-single_unit/introduction.html">https://neuraldatascience.io/6-single_unit/introduction.html</a>](Single Unit Data). Voir le <a class="reference external" href="https://github.com/neural-data-science/NESC_3505_textbook">github</a> du jupyter book et la chaine youtube <a class="reference external" href="https://www.youtube.com/playlist?list=PLtfEWMIgWS22MMZjPIzBRE2cHhMcvEKwp">Neural Data Science with Python</a>. <strong>3 ans</strong>.</p></li>
+<li><p><em>Neural Data Science. A Primer with MATLAB and Python</em>, Erik Lee Nylen and Pascal Wallisch, 2017. Voir la <a class="reference external" href="https://www.sciencedirect.com/book/9780128040430/neural-data-science">table des matières</a>, on trouve un PDF <a class="reference external" href="http://103.203.175.90:81/fdScript/RootOfEBooks/E%20Book%20collection%20-%202024%20-%20D/CSE%20%20IT%20AIDS%20ML/NEURAL%20DATA.pdf">ici</a>.</p></li>
+</ul>
+</section>
+<section id="electrophyliologie-m-eeg">
+<h3>Électrophyliologie M/EEG<a class="headerlink" href="#electrophyliologie-m-eeg" title="Link to this heading">#</a></h3>
+</section>
+<section id="electrophyliologie-directe">
+<h3>Électrophyliologie “directe”<a class="headerlink" href="#electrophyliologie-directe" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="electrophyliologie">
+<h2>Électrophyliologie<a class="headerlink" href="#electrophyliologie" title="Link to this heading">#</a></h2>
+</section>
+<section id="analyse-de-trains-de-spikes-et-de-mesures-d-electrophysiologie">
+<h2>Analyse de trains de spikes et de mesures d’électrophysiologie<a class="headerlink" href="#analyse-de-trains-de-spikes-et-de-mesures-d-electrophysiologie" title="Link to this heading">#</a></h2>
+<section id="des-references">
+<h3>Des références<a class="headerlink" href="#des-references" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2024.1448161/full">Systems Neuroscience Computing in Python (SyNCoPy): a python package for large-scale analysis of electrophysiological data</a> Systems Neuroscience Computing in Python (SyNCoPy), 2024</p></li>
+</ul>
+</section>
+<section id="des-outils-python">
+<h3>Des outils Python<a class="headerlink" href="#des-outils-python" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pynapple.org">pynapple</a>: python neural analysis package. Pynapple is a light-weight python library for neurophysiological data analysis, voir l’article <a class="reference external" href="https://elifesciences.org/reviewed-preprints/85786">Pynapple, a toolbox for data analysis in neuroscience</a> 2023.</p></li>
+<li><p><a class="reference external" href="https://osl-ephys.readthedocs.io/en/latest/">osl-ephys</a> of the <a class="reference external" href="https://www.psych.ox.ac.uk/research/ohba-analysis-group">Oxford Centre for Human Brain Activity Analysis Group</a> avec ce <a class="reference external" href="https://github.com/OHBA-analysis/OHBA-Examples/tree/main">git</a> et ce papier de 2025: <a class="reference external" href="https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1522675/full">osl-ephys: a Python toolbox for the analysis of electrophysiology data</a>. Attention, il s’agit de données <strong>M/EEG [Magnétoencéphalographie (MEG) + Électroencéphalographie (EEG)].</strong> XXX est construit sur le <a class="reference external" href="https://mne.tools/stable/index.html">package MNE</a> (Open-source Python package for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, NIRS, and more).</p></li>
+<li><p><a class="reference external" href="http://neuralensemble.org">NeuralEnsemble</a>  is a community-based initiative to promote and co-ordinate open-source software development in neuroscience. <strong>En sommeil depuis 2022</strong>.</p></li>
+</ul>
+<p>suivre ce gars: <a class="reference external" href="https://xtof.perso.math.cnrs.fr">Christophe Pouzat</a> son <a class="reference external" href="https://github.com/christophe-pouzat">github</a>, son <a class="reference external" href="https://gitlab.com/c_pouzat">gitlab</a>, son <a class="reference external" href="https://plmlab.math.cnrs.fr/xtof">plmlab</a>, il pointe des datasets:</p>
+<p>Tetrode recording from the antennal lobe of a locust (Schistocerca americana) (doi: 10.5281/zenodo.14607).
+Dataset from “Matthieu Delescluse and Christophe Pouzat (2006) Efficient spike-sorting of multi-state neurons using inter-spike intervals information Journal of Neuroscience Methods 150: 16-29.” (doi: 10.5281/zenodo.15228).
+Data set from Pouzat and Chaffiol (2009) Journal of Neuroscience Methods 181:119.(doi: 10.5281/zenodo.14281).
+All my postdoc extracellular recordings from the locust olfactory pathway are now available –a third of the data has been lost due to CD corruption after 14 years!– (doi: 10.5281/zenodo.21589). There are roughly 15 GB of data from 14 experiments. A detailed description of the sorting of these data set is available on GitHub. du même voir aussi <a class="reference external" href="https://probabilistic-spiking-neuronal-nets-c-pouzat-491a1ca82ffec5679d.gitlab.io/index.html">Probabilistic Spiking Neuronal Nets: Companion</a></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1_introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Science des Spikes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="3_installer_python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Installer Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalistes">Généralistes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neurosciences">Neurosciences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Généralistes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophyliologie-m-eeg">Électrophyliologie M/EEG</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophyliologie-directe">Électrophyliologie “directe”</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophyliologie">Électrophyliologie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-de-trains-de-spikes-et-de-mesures-d-electrophysiologie">Analyse de trains de spikes et de mesures d’électrophysiologie</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#des-references">Des références</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#des-outils-python">Des outils Python</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fabien Campillo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
