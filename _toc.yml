@@ -1,0 +1,6 @@
+format: jb-book
+root: 1_introduction
+chapters:
+  - file: 2_installation_python
+    title: "Installation des outils Python"
+    
