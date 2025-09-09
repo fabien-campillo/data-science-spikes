@@ -1,3 +1,10 @@
 # Data Science des Spikes
 
-Bienvenue dans ce livre interactif sur l'analyse de données électrophysiologiques en neurosciences.
+
+### Bootcamp data science pour MathNeuro
+
+
+Introduction aux outils de data science pour l'analyses de signaux d'électrophysiologie, principalement des trains de spikes.
+
+JupyterBook en direction de l'équipe MathNeuro ... et tout le monde.
+
