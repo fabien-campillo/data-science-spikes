@@ -5,4 +5,4 @@ execute:
 logo: "pics/logo.png"
 html:
   favicon: pics/favicon.ico
-copyright: 'Contenu sous <a href="https://creativecommons.org/licenses/by/4.0/">licence CC-BY 4.0</a>.'
+copyright: "Ce livre est distribué sous licence CC-BY 4.0 (Creative Commons Attribution)."
