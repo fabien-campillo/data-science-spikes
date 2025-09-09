@@ -3,3 +3,5 @@ author: "Fabien Campillo"
 execute:
   execute_notebooks: auto
 logo: "pics/logo.png"
+html:
+  favicon: pics/favicon.ico
