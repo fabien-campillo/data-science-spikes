@@ -1,4 +1,4 @@
-# Spkikes Data Science
+# Data Science & Spikes
 
 *This Jupyter Book is designed to help you get started in data science by exploring electrophysiological data, especially spike train recordings, in a practical and accessible way.*
 
