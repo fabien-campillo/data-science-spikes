@@ -1,8 +1,8 @@
 format: jb-book
 root: 1_introduction
 chapters:
-  - file: 2_resources
+  - file: 2_resources.ipynb
     title: "Resources and References"
-  - file: 3_installing_python
+  - file: 3_installing_python.ipynb
     title: "Installing Python and Some Tools"
  
