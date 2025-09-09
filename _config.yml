@@ -1,8 +1,8 @@
-title: "Data Science des Spikes"
+title: "Spikes Data Sciences"
 author: "Fabien Campillo"
 execute:
   execute_notebooks: auto
 logo: "pics/logo.png"
 html:
   favicon: pics/favicon.ico
-copyright: "Ce livre est distribué sous licence CC-BY 4.0 (Creative Commons Attribution)."
+copyright: "This book is distributed under a CC-BY 4.0 license (Creative Commons Attribution)."
