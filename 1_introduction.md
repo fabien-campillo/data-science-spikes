@@ -7,7 +7,5 @@ This Jupyter Book is part of the Data Science Bootcamp for [MathNeuro](https://t
 
 --
 
-Author [Fabien Campillo](https://www-sop.inria.fr/members/Fabien.Campillo/)  <br>
-This book is distributed under a [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/deed.en) (Creative Commons Attribution).
-
-
+By [Fabien Campillo](https://www-sop.inria.fr/members/Fabien.Campillo/)  <br>
+© Copyright 2025. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License.
