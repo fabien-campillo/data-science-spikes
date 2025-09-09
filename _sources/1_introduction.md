@@ -1,10 +1,7 @@
-# Data Science des Spikes
+# Spkikes Data Science
 
+*An introduction to data science tools for the analysis of electrophysiological signals, with a particular emphasis on spike train data.*
 
-### Bootcamp data science pour MathNeuro
+This Jupyter Book is part of the Data Science Bootcamp for [MathNeuro](https://team.inria.fr/mathneuro/) and is made openly accessible to the broader community.
 
-
-Introduction aux outils de data science pour l'analyses de signaux d'électrophysiologie, principalement des trains de spikes.
-
-JupyterBook en direction de l'équipe MathNeuro ... et tout le monde.
-
+Author [Fabien Campillo](https://www-sop.inria.fr/members/Fabien.Campillo/)
