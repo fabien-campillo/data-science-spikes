@@ -4,6 +4,7 @@
 
 This Jupyter Book is part of the Data Science Bootcamp for [MathNeuro](https://team.inria.fr/mathneuro/) and is made openly accessible to the broader community.
 
+See also the GitHub repository [https://github.com/fabien-campillo/data-science-spikes](https://github.com/fabien-campillo/data-science-spikes).
 
 --
 
