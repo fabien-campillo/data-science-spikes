@@ -333,21 +333,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-python-libraries">Some Python Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-python-packages">Some Python packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references-for-general-data-sciences">Resources and references for general data sciences</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#books">Books</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-note-books">Jupyter (note)books</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references-for-data-sciences-in-neurosciences">Resources and references for data sciences in neurosciences</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophysiology-m-eeg">Electrophysiology M/EEG</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-electrophysiology">“Direct” electrophysiology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-train-and-electrophysiology-data-analysis">Spike Train and Electrophysiology Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages">Python packages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Jupyter (note)books</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophysiology">Electrophysiology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-train-and-electrophysiology-data-analysis">Spike Train and Electrophysiology Data Analysis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-tools">Python Tools</a></li>
 </ul>
 </li>
 </ul>
@@ -364,8 +362,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="resources-and-references">
 <h1>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading">#</a></h1>
 <p>I’ve put together some resources and references using Python (but keep in mind, R is another popular route into data science).</p>
-<section id="some-python-libraries">
-<h2>Some Python Libraries<a class="headerlink" href="#some-python-libraries" title="Link to this heading">#</a></h2>
+<section id="some-python-packages">
+<h2>Some Python packages<a class="headerlink" href="#some-python-packages" title="Link to this heading">#</a></h2>
 <p>First, I list some indispensable Python libraries used in data science.
 In addition to core Python, you should also start getting familiar with a few other tools:</p>
 <ul class="simple">
@@ -416,15 +414,22 @@ In addition to core Python, you should also start getting familiar with a few ot
 <section id="books">
 <h3>Books<a class="headerlink" href="#books" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong><a class="reference external" href="https://link.springer.com/book/10.1007/978-3-031-38747-0">An Introduction to Statistical Learning with Applications in Python</a></strong>, Springer 2023, by
+<li><p><strong><a class="reference external" href="https://link.springer.com/book/10.1007/978-3-031-38747-0">An Introduction to Statistical Learning with Applications in Python</a></strong>, Springer 2023<br>
+by
 Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, and Jonathan Taylor. See <a class="reference external" href="https://www.statlearning.com">Book Homepage and Resources</a> with the <a class="reference external" href="https://hastie.su.domains/ISLP/ISLP_website.pdf.download.html">PDF</a> and the associated <a class="reference external" href="https://youtube.com/playlist?list=PLoROMvodv4rNHU1-iPeDRH-J0cL-CrIda&amp;amp;feature=shared">Youtube videos</a> with Trevor Hastie &amp; Jonathan Taylor (and it starts with Trevor complimenting Jonathan on his new haircut, why not…). <a class="reference external" href="https://hastie.su.domains">Trevor Hastie</a> is one of the big dudes in statistics (see his <a class="reference external" href="https://hastie.su.domains/ElemStatLearn/">book</a>  “The Elements of Statistical Learning: Data Mining, Inference, and Prediction”), and <a class="reference external" href="https://jtaylor.su.domains">Jonathan Taylor</a> is a younger statistician with a nice new haircut.</p></li>
-<li><p><strong><a class="reference external" href="https://www.oreilly.com/library/view/python-for-data/9781491957653/">Python for Data Analysis</a></strong> (3rd ed.), O’Reilly 2022, by <a class="reference external" href="https://wesmckinney.com">Wes McKinney</a> a creator of Panda. The <a class="reference external" href="https://wesmckinney.com/book/">open edition</a> is avalaible, with the <a class="reference external" href="https://github.com/wesm/pydata-book/tree/3rd-edition">codes</a>, see his   <a class="reference external" href="https://github.com/wesm">GitHub</a> for other resources.</p></li>
-<li><p><strong><a class="reference external" href="https://www.oreilly.com/library/view/python-data-science/9781491912126/">Python Data Science Handbook</a></strong> (2nd ed.), O’Reilly 2022, by <a class="reference external" href="http://vanderplas.com">Jake VanderPlas</a> – <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/">full text</a>, and the associated <a class="reference external" href="https://github.com/jakevdp/PythonDataScienceHandbook">Jupyter Notebook</a> (very nice!), see his <a class="reference external" href="https://github.com/jakevdp">GitHub</a> for other resources.</p></li>
-<li><p><strong><a class="reference external" href="https://www.oreilly.com/library/view/practical-statistics-for/9781492072935/">Practical Statistics for Data Scientists: 50+ Essential Concepts Using R and Python</a></strong> (2nd ed.), O’Reilly 2020, by Peter Bruce, Andrew Bruce, Peter Gedeck. See the <a class="reference external" href="https://github.com/gedeck/practical-statistics-for-data-scientists/tree/master">GitHub</a> with the Python <a class="reference external" href="https://github.com/gedeck/practical-statistics-for-data-scientists/tree/master/python">codes and notebooks</a>.</p></li>
-<li><p><strong><a class="reference external" href="https://link.springer.com/book/10.1007/978-3-031-04648-3">Python for Probability, Statistics, and Machine Learning</a></strong> (3rd ed.), Springer 2022, by José Unpingco. See his <a class="reference external" href="https://github.com/unpingco">GitHub</a> for other resources.</p></li>
-<li><p><strong><a class="reference external" href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/">Hands-On Machine Learning with Scikit-Learn, Keras &amp; Tensorflow</a></strong> (3rd ed.), O’Reilly 2022, by <a class="reference external" href="https://github.com/ageron">Aurélien Géron</a>,  and the associated <a class="reference external" href="https://github.com/ageron/handson-ml2">notebooks</a>, see his   <a class="reference external" href="https://github.com/ageron">GitHub</a> for other resources.
+<li><p><strong><a class="reference external" href="https://www.oreilly.com/library/view/python-for-data/9781491957653/">Python for Data Analysis</a></strong> (3rd ed.), O’Reilly 2022<br>
+by <a class="reference external" href="https://wesmckinney.com">Wes McKinney</a> a creator of Panda. The <a class="reference external" href="https://wesmckinney.com/book/">open edition</a> is avalaible, with the <a class="reference external" href="https://github.com/wesm/pydata-book/tree/3rd-edition">codes</a>, see his   <a class="reference external" href="https://github.com/wesm">GitHub</a> for other resources.</p></li>
+<li><p><strong><a class="reference external" href="https://www.oreilly.com/library/view/python-data-science/9781491912126/">Python Data Science Handbook</a></strong> (2nd ed.), O’Reilly 2022<br>
+by <a class="reference external" href="http://vanderplas.com">Jake VanderPlas</a> – <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/">full text</a>, and the associated <a class="reference external" href="https://github.com/jakevdp/PythonDataScienceHandbook">Jupyter Notebook</a> (very nice!), see his <a class="reference external" href="https://github.com/jakevdp">GitHub</a> for other resources.</p></li>
+<li><p><strong><a class="reference external" href="https://www.oreilly.com/library/view/practical-statistics-for/9781492072935/">Practical Statistics for Data Scientists: 50+ Essential Concepts Using R and Python</a></strong> (2nd ed.), O’Reilly 2020<br>
+by Peter Bruce, Andrew Bruce, Peter Gedeck. See the <a class="reference external" href="https://github.com/gedeck/practical-statistics-for-data-scientists/tree/master">GitHub</a> with the Python <a class="reference external" href="https://github.com/gedeck/practical-statistics-for-data-scientists/tree/master/python">codes and notebooks</a>.</p></li>
+<li><p><strong><a class="reference external" href="https://link.springer.com/book/10.1007/978-3-031-04648-3">Python for Probability, Statistics, and Machine Learning</a></strong> (3rd ed.), Springer 2022<br>
+by José Unpingco. See his <a class="reference external" href="https://github.com/unpingco">GitHub</a> for other resources.</p></li>
+<li><p><strong><a class="reference external" href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/">Hands-On Machine Learning with Scikit-Learn, Keras &amp; Tensorflow</a></strong> (3rd ed.), O’Reilly 2022<br>
+by <a class="reference external" href="https://github.com/ageron">Aurélien Géron</a>,  and the associated <a class="reference external" href="https://github.com/ageron/handson-ml2">notebooks</a>, see his   <a class="reference external" href="https://github.com/ageron">GitHub</a> for other resources.
 Machine learning and deep Learning.</p></li>
-<li><p><strong><a class="reference external" href="https://www.deeplearningillustrated.com">Deep Learning Illustrated</a></strong>,  Addison-Wesley 2019, by <a class="reference external" href="https://www.jonkrohn.com">Jon Krohn</a>, with the associated <a class="reference external" href="https://github.com/the-deep-learners/deep-learning-illustrated">notebooks</a>, the concept if quite interesting. See also this <a class="reference external" href="https://github.com/jonkrohn/DLTFpT">github</a>.</p></li>
+<li><p><strong><a class="reference external" href="https://www.deeplearningillustrated.com">Deep Learning Illustrated</a></strong>,  Addison-Wesley 2019<br>
+by <a class="reference external" href="https://www.jonkrohn.com">Jon Krohn</a>, with the associated <a class="reference external" href="https://github.com/the-deep-learners/deep-learning-illustrated">notebooks</a>, the concept if quite interesting. See also this <a class="reference external" href="https://github.com/jonkrohn/DLTFpT">github</a>.</p></li>
 </ul>
 <p>I do not provide references on the basic mathematical foundations of data science, which usually include linear algebra, calculus (with a focus on optimization), probability theory, statistics (both elementary and inferential), discrete mathematics (graphs, combinatorics, logic), and sometimes numerical methods. I also do not include general references on statistics, machine learning, or Python programming itself, as well as topics related to databases such as SQL, relational database design, and NoSQL systems. There are numerous high-quality resources available for all these areas.</p>
 </section>
@@ -440,51 +445,41 @@ Machine learning and deep Learning.</p></li>
 </section>
 <section id="resources-and-references-for-data-sciences-in-neurosciences">
 <h2>Resources and references for data sciences in neurosciences<a class="headerlink" href="#resources-and-references-for-data-sciences-in-neurosciences" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2015.00011/full">Python in Neuroscience</a><br />
-E. Muller, J. A. Bednar, M. Diesmann, M.-O. Gewaltig, M. Hines, and A. P. Davison<br />
-Frontiers in Neuroinformatics, 9, 2015.</p></li>
-<li><p><a class="reference external" href="https://mitpress.ublish.com/book/case-studies-neural-data-analysis">Case Studies in Neural Data Analysis</a>, 2016.<br />
-The book presents MATLAB tools, but there is an associated <a class="reference external" href="https://github.com/Mark-Kramer/Case-Studies-Kramer-Eden">GitHub repository</a> for Python. The book primarily covers extracranial data, except Chapter 8: <em>Basic Visualizations and Descriptive Statistics of SpikeTrainData</em>.</p></li>
-<li><p><a class="reference external" href="https://neuraldatascience.io/">Neural Data Science</a> (2020–23) by <a class="reference external" href="https://www.dal.ca/faculty/science/psychology_neuroscience/faculty-staff/our-faculty/aaron-newman.html">Aaron J. Newman</a> from the <a class="reference external" href="https://www.ncilab.ca">NeuroCognitive Imaging Lab</a> (Dalhousie University, Halifax).<br />
-Starts from scratch, especially in Python. Includes a section on <a class="reference external" href="https://neuraldatascience.io/6-single_unit/introduction.html">Single Unit Data</a>. See the <a class="reference external" href="https://github.com/neural-data-science/NESC_3505_textbook">GitHub repository</a> for the Jupyter Book and the YouTube channel <a class="reference external" href="https://www.youtube.com/playlist?list=PLtfEWMIgWS22MMZjPIzBRE2cHhMcvEKwp">Neural Data Science with Python</a>.</p></li>
-<li><p><em>Neural Data Science: A Primer with MATLAB and Python</em>, Erik Lee Nylen and Pascal Wallisch, 2017.<br />
-See the <a class="reference external" href="https://www.sciencedirect.com/book/9780128040430/neural-data-science">table of contents</a>.</p></li>
-</ul>
-<section id="electrophysiology-m-eeg">
-<h3>Electrophysiology M/EEG<a class="headerlink" href="#electrophysiology-m-eeg" title="Link to this heading">#</a></h3>
-</section>
-<section id="direct-electrophysiology">
-<h3>“Direct” electrophysiology<a class="headerlink" href="#direct-electrophysiology" title="Link to this heading">#</a></h3>
-</section>
-</section>
-<section id="electrophysiology">
-<h2>Electrophysiology<a class="headerlink" href="#electrophysiology" title="Link to this heading">#</a></h2>
-</section>
-<section id="spike-train-and-electrophysiology-data-analysis">
-<h2>Spike Train and Electrophysiology Data Analysis<a class="headerlink" href="#spike-train-and-electrophysiology-data-analysis" title="Link to this heading">#</a></h2>
 <section id="references">
 <h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2024.1448161/full">Systems Neuroscience Computing in Python (SyNCoPy): a Python package for large-scale analysis of electrophysiological data</a>, Systems Neuroscience Computing in Python (SyNCoPy), 2024</p></li>
+<li><p><strong><a class="reference external" href="https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2015.00011/full">Python in Neuroscience</a></strong>  <br>
+E. Muller, J. A. Bednar, M. Diesmann, M.-O. Gewaltig, M. Hines, and A. P. Davison<br />
+Frontiers in Neuroinformatics, 9, 2015.</p></li>
+<li><p><strong><a class="reference external" href="https://mitpress.ublish.com/book/case-studies-neural-data-analysis">Case Studies in Neural Data Analysis</a></strong>, 2016<br />
+The book presents MATLAB tools, but there is an associated <a class="reference external" href="https://github.com/Mark-Kramer/Case-Studies-Kramer-Eden">GitHub repository</a> for Python. The book primarily covers extracranial data, except Chapter 8: <em>Basic Visualizations and Descriptive Statistics of SpikeTrainData</em>.</p></li>
+<li><p><strong><a class="reference external" href="https://neuraldatascience.io/">Neural Data Science</a></strong> (2020–23)<br>
+<a class="reference external" href="https://www.dal.ca/faculty/science/psychology_neuroscience/faculty-staff/our-faculty/aaron-newman.html">Aaron J. Newman</a> from the <a class="reference external" href="https://www.ncilab.ca">NeuroCognitive Imaging Lab</a> (Dalhousie University, Halifax).<br />
+Starts from scratch, especially in Python. Includes a section on <a class="reference external" href="https://neuraldatascience.io/6-single_unit/introduction.html">Single Unit Data</a>. See the <a class="reference external" href="https://github.com/neural-data-science/NESC_3505_textbook">GitHub repository</a> for the Jupyter Book and the YouTube channel <a class="reference external" href="https://www.youtube.com/playlist?list=PLtfEWMIgWS22MMZjPIzBRE2cHhMcvEKwp">Neural Data Science with Python</a>.</p></li>
+<li><p><strong>Neural Data Science: A Primer with MATLAB and Python</strong><br>
+Erik Lee Nylen and Pascal Wallisch, 2017.<br />
+See the <a class="reference external" href="https://www.sciencedirect.com/book/9780128040430/neural-data-science">table of contents</a>.</p></li>
 </ul>
 </section>
-<section id="python-tools">
-<h3>Python Tools<a class="headerlink" href="#python-tools" title="Link to this heading">#</a></h3>
+<section id="spike-train-and-electrophysiology-data-analysis">
+<h3>Spike Train and Electrophysiology Data Analysis<a class="headerlink" href="#spike-train-and-electrophysiology-data-analysis" title="Link to this heading">#</a></h3>
+<section id="python-packages">
+<h4>Python packages<a class="headerlink" href="#python-packages" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><a class="reference external" href="https://pynapple.org">pynapple</a> – Python Neural Analysis Package. Pynapple is a lightweight Python library for neurophysiological data analysis. See the article: <a class="reference external" href="https://elifesciences.org/reviewed-preprints/85786">Pynapple, a toolbox for data analysis in neuroscience</a>, 2023.</p></li>
-<li><p><a class="reference external" href="https://osl-ephys.readthedocs.io/en/latest/">osl-ephys</a> – from the <a class="reference external" href="https://www.psych.ox.ac.uk/research/ohba-analysis-group">Oxford Centre for Human Brain Activity Analysis Group</a>, with this <a class="reference external" href="https://github.com/OHBA-analysis/OHBA-Examples/tree/main">GitHub repository</a> and this 2025 paper: <a class="reference external" href="https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1522675/full">osl-ephys: a Python toolbox for the analysis of electrophysiology data</a>.<br />
-⚠️ This is for <strong>M/EEG data [Magnetoencephalography (MEG) + Electroencephalography (EEG)].</strong> osl-ephys is built on the <a class="reference external" href="https://mne.tools/stable/index.html">MNE package</a> (Open-source Python package for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, NIRS, and more).</p></li>
-<li><p><a class="reference external" href="http://neuralensemble.org">NeuralEnsemble</a> – a community-based initiative to promote and coordinate open-source software development in neuroscience. <strong>Inactive since 2022.</strong></p></li>
+<li><p><strong><a class="reference external" href="https://github.com/esi-neuroscience/syncopy">syncopy</a></strong> - Systems Neuroscience Computing in Python: a Python package for large-scale analysis of electrophysiological data, with the following <a class="reference external" href="https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2024.1448161/full">article</a>.</p></li>
+<li></li>
+<li><p><strong><a class="reference external" href="https://mne.tools/stable/index.html">MNE</a></strong> - Open-source Python package for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, NIRS, and more).</p></li>
+<li><p><strong><a class="reference external" href="https://pynapple.org">pynapple</a></strong> – Python Neural Analysis Package. Pynapple is a lightweight Python library for neurophysiological data analysis. See the article: <a class="reference external" href="https://elifesciences.org/reviewed-preprints/85786">Pynapple, a toolbox for data analysis in neuroscience</a>, 2023.</p></li>
+<li><p><strong><a class="reference external" href="https://osl-ephys.readthedocs.io/en/latest/">osl-ephys</a></strong> - This package contains models for analysing electrophysiology data. It builds on top of the widely used MNE-Python package and contains  analysis tools for M/EEG sensor and source space analysis.  From the <a class="reference external" href="https://www.psych.ox.ac.uk/research/ohba-analysis-group">Oxford Centre for Human Brain Activity Analysis Group</a>, with this <a class="reference external" href="https://github.com/OHBA-analysis/OHBA-Examples/tree/main">GitHub repository</a> and this 2025 paper: <a class="reference external" href="https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1522675/full">osl-ephys: a Python toolbox for the analysis of electrophysiology data</a>.</p></li>
+<li><p><strong><a class="reference external" href="http://neuralensemble.org">NeuralEnsemble</a></strong> – a community-based initiative to promote and coordinate open-source software development in neuroscience. <strong>Inactive since 2022.</strong></p></li>
 </ul>
-<p>Follow Christophe Pouzat: <a class="reference external" href="https://xtof.perso.math.cnrs.fr">website</a>, <a class="reference external" href="https://github.com/christophe-pouzat">GitHub</a>, <a class="reference external" href="https://gitlab.com/c_pouzat">GitLab</a>, <a class="reference external" href="https://plmlab.math.cnrs.fr/xtof">PLMLab</a>. He points to datasets:</p>
+</section>
+<section id="id1">
+<h4>Jupyter (note)books<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>Tetrode recording from the antennal lobe of a locust (<em>Schistocerca americana</em>) (doi: 10.5281/zenodo.14607).</p></li>
-<li><p>Dataset from Matthieu Delescluse and Christophe Pouzat (2006), <em>Efficient spike-sorting of multi-state neurons using inter-spike intervals information</em>, Journal of Neuroscience Methods 150: 16–29. (doi: 10.5281/zenodo.15228).</p></li>
-<li><p>Dataset from Pouzat and Chaffiol (2009), Journal of Neuroscience Methods 181:119. (doi: 10.5281/zenodo.14281).</p></li>
-<li><p>All postdoc extracellular recordings from the locust olfactory pathway are now available — a third of the data was lost due to CD corruption after 14 years! (doi: 10.5281/zenodo.21589). Roughly 15 GB of data from 14 experiments. Detailed descriptions of the spike sorting are available on GitHub.</p></li>
+<li><p><strong><a class="reference external" href="https://c_pouzat.gitlab.io/spike-sorting-the-diy-way/">Spike sorting the ‘Do It Yourself’ way</a></strong> a Jupyter book by <a class="reference external" href="https://xtof.perso.math.cnrs.fr">Christophe Pouzat</a> with the <a class="reference external" href="https://gitlab.com/c_pouzat/spike-sorting-the-diy-way">gitlab repository</a>. See also the  <a class="reference external" href="https://probabilistic-spiking-neuronal-nets-c-pouzat-491a1ca82ffec5679d.gitlab.io/index.html">Probabilistic Spiking Neuronal Nets: Companion</a> associated with tge book <a class="reference external" href="https://link.springer.com/book/10.1007/978-3-031-68409-8">Probabilistic Spiking Neuronal Nets</a> co-authored with Antonio Galves and Eva Löcherbach.</p></li>
 </ul>
-<p>See also: <a class="reference external" href="https://probabilistic-spiking-neuronal-nets-c-pouzat-491a1ca82ffec5679d.gitlab.io/index.html">Probabilistic Spiking Neuronal Nets: Companion</a>.</p>
+</section>
 </section>
 </section>
 </section>
@@ -553,21 +548,19 @@ See the <a class="reference external" href="https://www.sciencedirect.com/book/9
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-python-libraries">Some Python Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-python-packages">Some Python packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references-for-general-data-sciences">Resources and references for general data sciences</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#books">Books</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-note-books">Jupyter (note)books</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references-for-data-sciences-in-neurosciences">Resources and references for data sciences in neurosciences</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophysiology-m-eeg">Electrophysiology M/EEG</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-electrophysiology">“Direct” electrophysiology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-train-and-electrophysiology-data-analysis">Spike Train and Electrophysiology Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages">Python packages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Jupyter (note)books</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophysiology">Electrophysiology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-train-and-electrophysiology-data-analysis">Spike Train and Electrophysiology Data Analysis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-tools">Python Tools</a></li>
 </ul>
 </li>
 </ul>
