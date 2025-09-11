@@ -4,9 +4,6 @@ execute:
   execute_notebooks: auto
 logo: "pics/logo.png"
 html:
-  use_repository_button: true
-  use_edit_page_button: true
-  use_issues_button: true
   toc_depth: 3
   favicon: pics/favicon.ico
   extra_head: |
