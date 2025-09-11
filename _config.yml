@@ -4,7 +4,6 @@ execute:
   execute_notebooks: auto
 logo: "pics/logo.png"
 html:
-  toc_depth: 3
   favicon: pics/favicon.ico
   extra_head: |
     <link rel="apple-touch-icon" sizes="200×208" href="_static/apple-touch-icon.png">
