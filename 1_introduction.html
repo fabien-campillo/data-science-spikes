@@ -339,6 +339,18 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="data-science-spikes">
 <h1>Data Science &amp; Spikes<a class="headerlink" href="#data-science-spikes" title="Link to this heading">#</a></h1>
 <p><em>This Jupyter Book is designed to help you get started in data science by exploring electrophysiological data, especially spike train recordings, in a practical and accessible way.</em></p>
+<br>
+<br>
+<p>Even though we are mainly interested in processing electrophysiology measurements such as spikes, we will attempt an overview of neuroscience resources.</p>
+<p>We will focus on electrophysiology data processing and distinguish between:</p>
+<ul class="simple">
+<li><p>M/EEG data, non-invasive/extracranial,</p></li>
+<li><p>and invasive data at the single neuron level or from a population of neurons, notably using MEA (Multi-Electrode Array).</p></li>
+</ul>
+<p><strong>It is this second category, which we will call “direct electrophysiology,” that is of most interest to us (MathNeuro).</strong> The first category is very well developed.</p>
+<p>Processing extracranial electrophysiological data (EEG/MEG) is generally more complex than processing intracranial measurements (spikes, LFP, ECoG). In intracranial recordings, electrodes are close to neurons: the signal is more localized, with a better signal-to-noise ratio, which facilitates the identification of action potentials or local fields. In contrast, extracranial signals are heavily attenuated, resulting from the summation of millions of neurons and distorted by cranial tissues. They are also contaminated by numerous artifacts. Analysis therefore requires advanced processing (filtering, correction, modeling) and solving the inverse problem (retrieving brain sources from incomplete and ambiguous measurements, which is a mathematically ill-posed problem).</p>
+<br>
+<br>
 <p>This Jupyter Book is part of the Data Science Bootcamp for <a class="reference external" href="https://team.inria.fr/mathneuro/">MathNeuro</a> and is made openly accessible to the broader community.</p>
 <p>See also the GitHub repository <a class="github reference external" href="https://github.com/fabien-campillo/data-science-spikes">fabien-campillo/data-science-spikes</a>.</p>
 <hr style="border: 1px solid black;">
