@@ -6,4 +6,5 @@ logo: "pics/logo.png"
 html:
   favicon: pics/favicon.ico
   extra_head: |
-    <link rel="apple-touch-icon" sizes="200×208" href="_static/apple-touch-icon.png">copyright: "This book is distributed under a CC-BY 4.0 license (Creative Commons Attribution)."
+    <link rel="apple-touch-icon" sizes="200×208" href="_static/apple-touch-icon.png">
+copyright: "This book is distributed under a CC-BY 4.0 license (Creative Commons Attribution)."
