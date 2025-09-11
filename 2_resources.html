@@ -61,7 +61,6 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installing Python" href="3_installing_python.html" />
     <link rel="prev" title="Data Science &amp; Spikes" href="1_introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -182,9 +181,6 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Resources and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_installing_python.html">Installing Python</a></li>
-
-
 </ul>
 
     </div>
@@ -343,9 +339,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-train-and-electrophysiology-data-analysis">Spike Train and Electrophysiology Data Analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages">Python packages</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Jupyter (note)books</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-note-book-s">Jupyter (note)book(s)</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blog-s-and-blog-posts">Blog(s) and blog posts.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">Misc.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-tools">Other tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
 </ul>
 </li>
 </ul>
@@ -462,12 +462,53 @@ See the <a class="reference external" href="https://www.sciencedirect.com/book/9
 <li><p><strong><a class="reference external" href="http://neuralensemble.org">NeuralEnsemble</a></strong> – a community-based initiative to promote and coordinate open-source software development in neuroscience. <strong>Inactive since 2022.</strong></p></li>
 </ul>
 </section>
-<section id="id1">
-<h4>Jupyter (note)books<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<section id="jupyter-note-book-s">
+<h4>Jupyter (note)book(s)<a class="headerlink" href="#jupyter-note-book-s" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong><a class="reference external" href="https://c_pouzat.gitlab.io/spike-sorting-the-diy-way/">Spike sorting the ‘Do It Yourself’ way</a></strong> a Jupyter book by <a class="reference external" href="https://xtof.perso.math.cnrs.fr">Christophe Pouzat</a> with the <a class="reference external" href="https://gitlab.com/c_pouzat/spike-sorting-the-diy-way">gitlab repository</a>. See also the  <a class="reference external" href="https://probabilistic-spiking-neuronal-nets-c-pouzat-491a1ca82ffec5679d.gitlab.io/index.html">Probabilistic Spiking Neuronal Nets: Companion</a> associated with tge book <a class="reference external" href="https://link.springer.com/book/10.1007/978-3-031-68409-8">Probabilistic Spiking Neuronal Nets</a> co-authored with Antonio Galves and Eva Löcherbach.</p></li>
 </ul>
 </section>
+</section>
+<section id="blog-s-and-blog-posts">
+<h3>Blog(s) and blog posts.<a class="headerlink" href="#blog-s-and-blog-posts" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://spikesandbursts.wordpress.com">Spikes and Bursts</a> — an interesting blog by <a class="reference external" href="https://scholar.google.com/citations?user=Dmwnwb4AAAAJ&amp;amp;hl=en">David Cabrera-Garcia</a>, where he explores various <a class="reference external" href="https://spikesandbursts.wordpress.com/neuroscience-contents/">concepts</a>.<br />
+He also runs a <a class="reference external" href="https://www.youtube.com/&#64;spikesandbursts/videos">YouTube channel</a> and shares projects on <a class="reference external" href="https://github.com/dav1dcg">GitHub</a>. An interesting post:</p>
+<ul>
+<li><p><a class="reference external" href="https://spikesandbursts.wordpress.com/tag/patch-clamp/">Patch-clamp data analysis in Python: animate time series data</a>.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.scientifica.cn/neurowire/patch-clamp-electrophysiology-analysis-with-python">Patch clamp electrophysiology analysis with Python</a> (2023) by <a class="reference external" href="https://devneuro.org/cdn/people-detail.php?personID=2242">Vincenzo Mastrolia</a></p></li>
+</ul>
+</section>
+<section id="misc">
+<h3>Misc.<a class="headerlink" href="#misc" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://github.com/XinyueMa-neuro/ElecFeX">ElecFeX</a></strong> - A MATLAB-based Electrophysiological Feature eXtraction toolbox for single-cell intracellular recordings. See the article: <em><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S2667237524001437">ElecFeX is a user-friendly toolbox for efficient feature extraction from single-cell electrophysiological recordings</a></em></p></li>
+</ul>
+</section>
+<section id="other-tools">
+<h3>Other tools<a class="headerlink" href="#other-tools" title="Link to this heading">#</a></h3>
+<p>Before analyzing data, we first need to read electrophysiology recordings and handle the different standards used.</p>
+<ul class="simple">
+<li><p>The  <a class="reference external" href="https://pypi.org/project/pyabf/">pyABF</a> library was created by <a class="reference external" href="https://swharden.com/about/">Scott Harden</a>. We will return to that package in a future section.</p></li>
+</ul>
+</section>
+<section id="data">
+<h3>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
+<p>By the way, data really matter!</p>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://dandiarchive.org">Dandi Archive</a></strong>  - The BRAIN Initiative archive for publishing and sharing neurophysiology data including electrophysiology, optophysiology, and behavioral time-series, and images from immunostaining experiments. Example of data sets:</p>
+<ul>
+<li><p><a class="reference external" href="https://dandiarchive.org/dandiset/000020/0.210913.1639">Patch-seq recordings from mouse visual cortex</a>. Whole-cell Patch-seq recordings from neurons of the mouse visual cortex from the Allen Institute for Brain Science, released in June 2020. The majority of cells in this dataset are GABAergic interneurons, but there are also a small number of glutamatergic neurons from layer 2/3 of the mouse visual cortex.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://zenodo.org">zenodo.org</a> - An open-access research data repository built and hosted by CERN (the European Organization for Nuclear Research), with support from the European Commission. Example of data sets:</p>
+<ul>
+<li><p><a class="reference external" href="https://zenodo.org/records/17794">Data set</a>  of CA1 pyramidal cell recordings using an intact whole hippocampus preparation, including recordings of rebound firing (V2)</p></li>
+</ul>
+</li>
+</ul>
 </section>
 </section>
 </section>
@@ -511,15 +552,6 @@ See the <a class="reference external" href="https://www.sciencedirect.com/book/9
         <p class="prev-next-title">Data Science &amp; Spikes</p>
       </div>
     </a>
-    <a class="right-next"
-       href="3_installing_python.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Installing Python</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -546,9 +578,13 @@ See the <a class="reference external" href="https://www.sciencedirect.com/book/9
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-train-and-electrophysiology-data-analysis">Spike Train and Electrophysiology Data Analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages">Python packages</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Jupyter (note)books</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-note-book-s">Jupyter (note)book(s)</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blog-s-and-blog-posts">Blog(s) and blog posts.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">Misc.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-tools">Other tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
 </ul>
 </li>
 </ul>
