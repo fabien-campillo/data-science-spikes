@@ -13,7 +13,7 @@ We will focus on electrophysiology data processing and distinguish between:
 - M/EEG data, non-invasive/extracranial,
 - and invasive data at the single neuron level or from a population of neurons, notably using MEA (Multi-Electrode Array).
 
-**It is this second category that is of most interest to us (MathNeuro).** The first category is very well developed.
+*It is this second category that is of most interest to us (MathNeuro).* The first category is very well developed.
 Processing extracranial electrophysiological data (EEG/MEG) is generally more complex than processing intracranial measurements (spikes, LFP, ECoG). In intracranial recordings, electrodes are close to neurons: the signal is more localized, with a better signal-to-noise ratio, which facilitates the identification of action potentials or local fields. In contrast, extracranial signals are heavily attenuated, resulting from the summation of millions of neurons and distorted by cranial tissues. They are also contaminated by numerous artifacts. Analysis therefore requires advanced processing (filtering, correction, modeling) and solving the inverse problem (retrieving brain sources from incomplete and ambiguous measurements, which is a mathematically ill-posed problem).
 
 <br>
