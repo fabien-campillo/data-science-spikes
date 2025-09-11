@@ -6,7 +6,7 @@ This Jupyter Book is part of the Data Science Bootcamp for [MathNeuro](https://t
 
 See also the GitHub repository [https://github.com/fabien-campillo/data-science-spikes](https://github.com/fabien-campillo/data-science-spikes).
 
---
+<hr style="border: 1px solid black;">
 
 By [Fabien Campillo](https://www-sop.inria.fr/members/Fabien.Campillo/)  <br>
-© Copyright 2025. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License.
+© Copyright 2025. This work is licensed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike).
