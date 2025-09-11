@@ -4,6 +4,5 @@ root: 1_introduction
 chapters:
   - file: 2_resources.ipynb
     title: "Resources and References"
-
   - file: A_installing_python.ipynb
     title: "Appendix A: Installing Python and Some Tools"
