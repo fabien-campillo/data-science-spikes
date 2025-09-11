@@ -2,8 +2,6 @@ format: jb-book
 root: 1_introduction
 
 chapters:
-  - file: 1_introduction
-    title: "Introduction"
   - file: 2_resources.ipynb
     title: "Resources and References"
 
