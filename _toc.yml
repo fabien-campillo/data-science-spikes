@@ -3,6 +3,8 @@ root: 1_introduction
 chapters:
   - file: 2_resources.ipynb
     title: "Resources and References"
-  - file: 3_installing_python.ipynb
+  - file: 3_reading_records
+    title: "Storing, reading, and  sharing electrophysiology records"
+  - file: A_installing_python.ipynb
     title: "Installing Python and Some Tools"
  
