@@ -3,6 +3,6 @@ root: 1_introduction
 chapters:
   - file: 2_resources.ipynb
     title: "Resources and References"
+ appendices:
   - file: A_installing_python.ipynb
     title: "Installing Python and Some Tools"
- 
