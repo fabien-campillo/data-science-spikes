@@ -3,8 +3,5 @@ root: 1_introduction
 
 chapters:
   - file: 2_resources
-    title: "Resources and references"
   - file: 3_reading_records
-    title: "Storing, reading, and sharing electrophysiology records"
   - file: A_installing_python
-    title: "Appendix A: Installing Python and some tools"
