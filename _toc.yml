@@ -5,3 +5,5 @@ chapters:
   - file: 2_resources
   - file: 3_reading_records
   - file: A_installing_python
+  - file: B_conda
+  - file: C_conda_virtual_environment
