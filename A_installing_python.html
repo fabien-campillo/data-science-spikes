@@ -185,7 +185,6 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Appendix A: Installing Python and some tools</a></li>
-
 </ul>
 
     </div>
@@ -334,7 +333,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Appendix A: Installing Python and some tools</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-python-distributions-for-data-science">Main Python Distributions for Data Science</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-python">1️⃣ System Python</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#official-python-from-python-org">2️⃣ Official Python from Python.org</a></li>
@@ -351,34 +349,29 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Summary Table</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda-a-beginner-friendly-guide">Using Conda: A Beginner-Friendly Guide</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bascis">Bascis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-tips">Conda tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-common-conda-commands">Summary of common Conda commands</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda-a-beginner-friendly-guide">Using Conda: A Beginner-Friendly Guide</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-a-virtual-environment-in-python">Why Use a Virtual Environment in Python?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-without-a-virtual-environment">The Problem Without a Virtual Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-virtual-environments">Using Virtual Environments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-a-virtual-environment-in-python">Why Use a Virtual Environment in Python?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-virtual-environments">Solution: Virtual Environments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-main-choices-venv-vs-conda">Two Main Choices: <code class="docutils literal notranslate"><span class="pre">venv</span></code> vs <code class="docutils literal notranslate"><span class="pre">conda</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#venv-native-python-virtual-environments">1. <code class="docutils literal notranslate"><span class="pre">venv</span></code> (native Python virtual environments)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-anaconda-miniconda-environments">2. <code class="docutils literal notranslate"><span class="pre">conda</span></code> (Anaconda/Miniconda environments)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-main-choices-venv-vs-conda">Two Main Choices: <code class="docutils literal notranslate"><span class="pre">venv</span></code> vs <code class="docutils literal notranslate"><span class="pre">conda</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda-virtual-environments">Using Conda Virtual Environments</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-environment">Creating a New Environment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-and-removing-environments">Listing and Removing Environments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-in-an-environment">Installing Packages in an Environment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-and-removing-packages">Updating and Removing Packages</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-and-reproducing-environments">Exporting and Reproducing Environments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-tips">Conda Tips</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-virtual-environments">Conda Virtual Environments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-creating-a-new-environment">Conda: Creating a New Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-listing-and-removing-environments">Conda: Listing and Removing Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-installing-packages-in-an-environment">Conda: Installing Packages in an Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-updating-and-removing-packages">Conda: Updating and Removing Packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-exporting-and-reproducing-environments">Conda: Exporting and Reproducing Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Conda Tips</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table-of-common-conda-environment-commands">Summary Table of Common Conda Environment Commands</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -619,51 +612,48 @@ Write a Markdown document explaining how to use conda. The main usages and tips.
 -->
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="using-conda-a-beginner-friendly-guide">
-<h1>Using Conda: A Beginner-Friendly Guide<a class="headerlink" href="#using-conda-a-beginner-friendly-guide" title="Link to this heading">#</a></h1>
+<section id="using-conda-a-beginner-friendly-guide">
+<h2>Using Conda: A Beginner-Friendly Guide<a class="headerlink" href="#using-conda-a-beginner-friendly-guide" title="Link to this heading">#</a></h2>
 <p>Conda is a package manager for Python and other languages. It helps you install packages and manage dependencies easily.</p>
-<p>After installing Conda, check that it is correctly installed:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>--version
+<section id="bascis">
+<h3>Bascis<a class="headerlink" href="#bascis" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># check that it is correctly installed:</span>
+conda<span class="w"> </span>--version
+
+<span class="c1"># keep Conda up-to-date with:</span>
+conda<span class="w"> </span>update<span class="w"> </span>conda
+
+<span class="c1"># install a package (Replace `numpy` with the desired package name):</span>
+conda<span class="w"> </span>install<span class="w"> </span>numpy
+
+<span class="c1"># install a specific version:</span>
+conda<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">=</span><span class="m">1</span>.25
+
+<span class="c1"># install multiple packages at once:</span>
+conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>matplotlib
+
+<span class="c1"># updating packages:</span>
+conda<span class="w"> </span>update<span class="w"> </span>numpy
+
+<span class="c1"># removing packages:</span>
+conda<span class="w"> </span>remove<span class="w"> </span>numpy
+
+<span class="c1"># searching for packages(replace `package_name` with the </span>
+<span class="c1"># name of the package you want to find):</span>
+conda<span class="w"> </span>search<span class="w"> </span>package_name
 </pre></div>
 </div>
-<p>Keep Conda up-to-date with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>update<span class="w"> </span>conda
-</pre></div>
-</div>
-<p>To install a package:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>numpy
-</pre></div>
-</div>
-<p>Replace <code class="docutils literal notranslate"><span class="pre">numpy</span></code> with the desired package name.</p>
-<p>To install a specific version:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">=</span><span class="m">1</span>.25
-</pre></div>
-</div>
-<p>To install multiple packages at once:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>matplotlib
-</pre></div>
-</div>
-<p>Updating packages</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>update<span class="w"> </span>numpy
-</pre></div>
-</div>
-<p>Removing packages</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>remove<span class="w"> </span>numpy
-</pre></div>
-</div>
-<p>Searching for packages</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>search<span class="w"> </span>package_name
-</pre></div>
-</div>
-<p>Replace <code class="docutils literal notranslate"><span class="pre">package_name</span></code> with the name of the package you want to find.</p>
-<p>Conda tips</p>
+</section>
+<section id="conda-tips">
+<h3>Conda tips<a class="headerlink" href="#conda-tips" title="Link to this heading">#</a></h3>
 <p>Update Conda regularly to get bug fixes and security updates.</p>
 <p>If a package is not found, check alternative channels:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>package_name
 </pre></div>
 </div>
-<p>Summary of common Conda commands</p>
+</section>
+<section id="summary-of-common-conda-commands">
+<h3>Summary of common Conda commands<a class="headerlink" href="#summary-of-common-conda-commands" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Task</p></th>
@@ -701,10 +691,16 @@ Write a Markdown document explaining how to use conda. The main usages and tips.
 </tbody>
 </table>
 </div>
+<!--
+Write a Markdown document explaining how to use conda virtual env and why it is important. The main usages and tips. Keep everything beginner-friendly and continuous. Output the entire document inside a single Markdown code block using triple backticks so that the Markdown source is preserved literally.
+-->
+</section>
+</section>
+<section id="using-virtual-environments">
+<h2>Using Virtual Environments<a class="headerlink" href="#using-virtual-environments" title="Link to this heading">#</a></h2>
 <section id="why-use-a-virtual-environment-in-python">
-<h2>Why Use a Virtual Environment in Python?<a class="headerlink" href="#why-use-a-virtual-environment-in-python" title="Link to this heading">#</a></h2>
-<section id="the-problem-without-a-virtual-environment">
-<h3>The Problem Without a Virtual Environment<a class="headerlink" href="#the-problem-without-a-virtual-environment" title="Link to this heading">#</a></h3>
+<h3>Why Use a Virtual Environment in Python?<a class="headerlink" href="#why-use-a-virtual-environment-in-python" title="Link to this heading">#</a></h3>
+<p>The problem without a virtual environment:</p>
 <ul class="simple">
 <li><p>By default, when you install a library with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>, it goes into the <strong>system-wide Python</strong>.</p></li>
 <li><p>Risks:</p>
@@ -716,7 +712,6 @@ Write a Markdown document explaining how to use conda. The main usages and tips.
 </li>
 </ul>
 </section>
-<hr class="docutils" />
 <section id="solution-virtual-environments">
 <h3>Solution: Virtual Environments<a class="headerlink" href="#solution-virtual-environments" title="Link to this heading">#</a></h3>
 <p>A virtual environment = an <strong>isolated copy of Python</strong> with its own libraries.</p>
@@ -728,11 +723,9 @@ Write a Markdown document explaining how to use conda. The main usages and tips.
 <li><p>You can delete a project without polluting the system.</p></li>
 </ul>
 </section>
-<hr class="docutils" />
 <section id="two-main-choices-venv-vs-conda">
 <h3>Two Main Choices: <code class="docutils literal notranslate"><span class="pre">venv</span></code> vs <code class="docutils literal notranslate"><span class="pre">conda</span></code><a class="headerlink" href="#two-main-choices-venv-vs-conda" title="Link to this heading">#</a></h3>
-<section id="venv-native-python-virtual-environments">
-<h4>1. <code class="docutils literal notranslate"><span class="pre">venv</span></code> (native Python virtual environments)<a class="headerlink" href="#venv-native-python-virtual-environments" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">venv</span></code> (native Python virtual environments)</p>
 <ul class="simple">
 <li><p>Included in Python (<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">myenv</span></code>).</p></li>
 <li><p>Lightweight, simple to use.</p></li>
@@ -749,10 +742,7 @@ Write a Markdown document explaining how to use conda. The main usages and tips.
 <li><p><code class="docutils literal notranslate"><span class="pre">pip</span></code> installs only Python libraries.</p></li>
 <li><p>Some heavy libraries (numpy, scipy, torch, tensorflow…) may require compilation → possible errors.</p></li>
 </ul>
-</section>
-<hr class="docutils" />
-<section id="conda-anaconda-miniconda-environments">
-<h4>2. <code class="docutils literal notranslate"><span class="pre">conda</span></code> (Anaconda/Miniconda environments)<a class="headerlink" href="#conda-anaconda-miniconda-environments" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span></code> (Anaconda/Miniconda environments)</p>
 <ul class="simple">
 <li><p>Also creates isolated environments (<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">myenv</span> <span class="pre">python=3.10</span></code>).</p></li>
 <li><p>Can install not only Python libraries, but also <strong>system dependencies</strong> (BLAS, MKL, CUDA, etc.).</p></li>
@@ -771,65 +761,10 @@ Write a Markdown document explaining how to use conda. The main usages and tips.
 </ul>
 </section>
 </section>
-<hr class="docutils" />
-<section id="summary">
-<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Criterion</p></th>
-<th class="head"><p><code class="docutils literal notranslate"><span class="pre">venv</span></code> + pip</p></th>
-<th class="head"><p>conda</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Availability</strong></p></td>
-<td><p>Included in Python</p></td>
-<td><p>Requires conda installation</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Lightweight / simple</strong></p></td>
-<td><p>✅</p></td>
-<td><p>❌ (heavier)</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Project isolation</strong></p></td>
-<td><p>✅</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Python library management</strong></p></td>
-<td><p>✅</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>System dependency management (C, CUDA, etc.)</strong></p></td>
-<td><p>❌</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Installation speed for heavy libs</strong></p></td>
-<td><p>⚠️ Sometimes slow / may fail</p></td>
-<td><p>✅ Fast</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Ideal use</strong></p></td>
-<td><p>Simple projects</p></td>
-<td><p>Data science / ML</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr class="docutils" />
-<p>👉 In short:</p>
-<ul class="simple">
-<li><p>Use <strong><code class="docutils literal notranslate"><span class="pre">venv</span></code></strong> for “classic” Python projects.</p></li>
-<li><p>Use <strong><code class="docutils literal notranslate"><span class="pre">conda</span></code></strong> for <strong>data science / ML</strong> with heavy libraries (numpy, pandas, sklearn, torch, tensorflow…).</p></li>
-</ul>
-<!--
-Write a Markdown document explaining how to use conda virtual env and why it is important. The main usages and tips. Keep everything beginner-friendly and continuous. Output the entire document inside a single Markdown code block using triple backticks so that the Markdown source is preserved literally.
--->
-</section>
-</section>
-<section id="using-conda-virtual-environments">
-<h2>Using Conda Virtual Environments<a class="headerlink" href="#using-conda-virtual-environments" title="Link to this heading">#</a></h2>
-<p>This guide explains how to use Conda virtual environments, why they are important, and provides beginner-friendly tips for managing environments and packages effectively.</p>
-<p>Conda virtual environments are isolated spaces where you can install specific versions of Python and packages without affecting other projects. They help prevent dependency conflicts, allow multiple projects with different requirements to coexist, and make it easier to reproduce results.</p>
-<section id="creating-a-new-environment">
-<h3>Creating a New Environment<a class="headerlink" href="#creating-a-new-environment" title="Link to this heading">#</a></h3>
+<section id="conda-virtual-environments">
+<h2>Conda Virtual Environments<a class="headerlink" href="#conda-virtual-environments" title="Link to this heading">#</a></h2>
+<section id="conda-creating-a-new-environment">
+<h3>Conda: Creating a New Environment<a class="headerlink" href="#conda-creating-a-new-environment" title="Link to this heading">#</a></h3>
 <p>To create a new Conda environment with a specific Python version, use:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
 </pre></div>
@@ -845,8 +780,8 @@ Write a Markdown document explaining how to use conda virtual env and why it is 
 </pre></div>
 </div>
 </section>
-<section id="listing-and-removing-environments">
-<h3>Listing and Removing Environments<a class="headerlink" href="#listing-and-removing-environments" title="Link to this heading">#</a></h3>
+<section id="conda-listing-and-removing-environments">
+<h3>Conda: Listing and Removing Environments<a class="headerlink" href="#conda-listing-and-removing-environments" title="Link to this heading">#</a></h3>
 <p>List all available environments:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>list
 </pre></div>
@@ -856,8 +791,8 @@ Write a Markdown document explaining how to use conda virtual env and why it is 
 </pre></div>
 </div>
 </section>
-<section id="installing-packages-in-an-environment">
-<h3>Installing Packages in an Environment<a class="headerlink" href="#installing-packages-in-an-environment" title="Link to this heading">#</a></h3>
+<section id="conda-installing-packages-in-an-environment">
+<h3>Conda: Installing Packages in an Environment<a class="headerlink" href="#conda-installing-packages-in-an-environment" title="Link to this heading">#</a></h3>
 <p>To install a package in the active environment:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>numpy
 </pre></div>
@@ -871,8 +806,8 @@ Write a Markdown document explaining how to use conda virtual env and why it is 
 </pre></div>
 </div>
 </section>
-<section id="updating-and-removing-packages">
-<h3>Updating and Removing Packages<a class="headerlink" href="#updating-and-removing-packages" title="Link to this heading">#</a></h3>
+<section id="conda-updating-and-removing-packages">
+<h3>Conda: Updating and Removing Packages<a class="headerlink" href="#conda-updating-and-removing-packages" title="Link to this heading">#</a></h3>
 <p>Update a package in the current environment:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>update<span class="w"> </span>numpy
 </pre></div>
@@ -882,8 +817,8 @@ Write a Markdown document explaining how to use conda virtual env and why it is 
 </pre></div>
 </div>
 </section>
-<section id="exporting-and-reproducing-environments">
-<h3>Exporting and Reproducing Environments<a class="headerlink" href="#exporting-and-reproducing-environments" title="Link to this heading">#</a></h3>
+<section id="conda-exporting-and-reproducing-environments">
+<h3>Conda: Exporting and Reproducing Environments<a class="headerlink" href="#conda-exporting-and-reproducing-environments" title="Link to this heading">#</a></h3>
 <p>To share or reproduce an environment, export it to a YAML file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml
 </pre></div>
@@ -893,8 +828,8 @@ Write a Markdown document explaining how to use conda virtual env and why it is 
 </pre></div>
 </div>
 </section>
-<section id="conda-tips">
-<h3>Conda Tips<a class="headerlink" href="#conda-tips" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h3>Conda Tips<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Always use separate environments for different projects to avoid conflicts.</p></li>
 <li><p>Update Conda regularly with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">update</span> <span class="pre">conda</span></code>.</p></li>
@@ -1011,7 +946,6 @@ Write a Markdown document explaining how to use conda virtual env and why it is 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Appendix A: Installing Python and some tools</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-python-distributions-for-data-science">Main Python Distributions for Data Science</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-python">1️⃣ System Python</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#official-python-from-python-org">2️⃣ Official Python from Python.org</a></li>
@@ -1028,34 +962,29 @@ Write a Markdown document explaining how to use conda virtual env and why it is 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Summary Table</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda-a-beginner-friendly-guide">Using Conda: A Beginner-Friendly Guide</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bascis">Bascis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-tips">Conda tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-common-conda-commands">Summary of common Conda commands</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda-a-beginner-friendly-guide">Using Conda: A Beginner-Friendly Guide</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-a-virtual-environment-in-python">Why Use a Virtual Environment in Python?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-without-a-virtual-environment">The Problem Without a Virtual Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-virtual-environments">Using Virtual Environments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-a-virtual-environment-in-python">Why Use a Virtual Environment in Python?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-virtual-environments">Solution: Virtual Environments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-main-choices-venv-vs-conda">Two Main Choices: <code class="docutils literal notranslate"><span class="pre">venv</span></code> vs <code class="docutils literal notranslate"><span class="pre">conda</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#venv-native-python-virtual-environments">1. <code class="docutils literal notranslate"><span class="pre">venv</span></code> (native Python virtual environments)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-anaconda-miniconda-environments">2. <code class="docutils literal notranslate"><span class="pre">conda</span></code> (Anaconda/Miniconda environments)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-main-choices-venv-vs-conda">Two Main Choices: <code class="docutils literal notranslate"><span class="pre">venv</span></code> vs <code class="docutils literal notranslate"><span class="pre">conda</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda-virtual-environments">Using Conda Virtual Environments</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-environment">Creating a New Environment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-and-removing-environments">Listing and Removing Environments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-in-an-environment">Installing Packages in an Environment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-and-removing-packages">Updating and Removing Packages</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-and-reproducing-environments">Exporting and Reproducing Environments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-tips">Conda Tips</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-virtual-environments">Conda Virtual Environments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-creating-a-new-environment">Conda: Creating a New Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-listing-and-removing-environments">Conda: Listing and Removing Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-installing-packages-in-an-environment">Conda: Installing Packages in an Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-updating-and-removing-packages">Conda: Updating and Removing Packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-exporting-and-reproducing-environments">Conda: Exporting and Reproducing Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Conda Tips</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table-of-common-conda-environment-commands">Summary Table of Common Conda Environment Commands</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
