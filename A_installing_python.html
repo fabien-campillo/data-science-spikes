@@ -764,66 +764,58 @@ Write a Markdown document explaining how to use conda virtual env and why it is 
 <h2>Conda Virtual Environments<a class="headerlink" href="#conda-virtual-environments" title="Link to this heading">#</a></h2>
 <section id="conda-creating-a-new-environment">
 <h3>Conda: Creating a New Environment<a class="headerlink" href="#conda-creating-a-new-environment" title="Link to this heading">#</a></h3>
-<p>To create a new Conda environment with a specific Python version, use:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
-</pre></div>
-</div>
-<p>Replace <code class="docutils literal notranslate"><span class="pre">myenv</span></code> with the name of your environment and <code class="docutils literal notranslate"><span class="pre">3.11</span></code> with the desired Python version.</p>
-<p>Activating and Deactivating Environments</p>
-<p>Activate the environment before working in it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>myenv
-</pre></div>
-</div>
-<p>When you are done, deactivate the environment to return to the base environment:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new Conda environment with a specific Python version (Replace `myenv` </span>
+<span class="c1"># with the name of your environment and `3.11` with the desired Python version)</span>
+conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
+
+<span class="c1"># Activate the environment before working in it:</span>
+conda<span class="w"> </span>activate<span class="w"> </span>myenv
+
+<span class="c1"># When you are done, deactivate the environment to return to the base environment:</span>
+conda<span class="w"> </span>deactivate
 </pre></div>
 </div>
 </section>
 <section id="conda-listing-and-removing-environments">
 <h3>Conda: Listing and Removing Environments<a class="headerlink" href="#conda-listing-and-removing-environments" title="Link to this heading">#</a></h3>
-<p>List all available environments:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>list
-</pre></div>
-</div>
-<p>Remove an environment completely:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>myenv<span class="w"> </span>--all
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># list all available environments:</span>
+conda<span class="w"> </span>env<span class="w"> </span>list
+
+<span class="c1"># remove an environment completely:</span>
+conda<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>myenv<span class="w"> </span>--all
 </pre></div>
 </div>
 </section>
 <section id="conda-installing-packages-in-an-environment">
 <h3>Conda: Installing Packages in an Environment<a class="headerlink" href="#conda-installing-packages-in-an-environment" title="Link to this heading">#</a></h3>
-<p>To install a package in the active environment:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>numpy
-</pre></div>
-</div>
-<p>To install a specific version of a package:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">=</span><span class="m">1</span>.25
-</pre></div>
-</div>
-<p>To install multiple packages at once:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>matplotlib
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install a package in the active environment:</span>
+conda<span class="w"> </span>install<span class="w"> </span>numpy
+
+<span class="c1"># install a specific version of a package:</span>
+conda<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">=</span><span class="m">1</span>.25
+
+<span class="c1"># install multiple packages at once:</span>
+conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>matplotlib
 </pre></div>
 </div>
 </section>
 <section id="conda-updating-and-removing-packages">
 <h3>Conda: Updating and Removing Packages<a class="headerlink" href="#conda-updating-and-removing-packages" title="Link to this heading">#</a></h3>
-<p>Update a package in the current environment:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>update<span class="w"> </span>numpy
-</pre></div>
-</div>
-<p>Remove a package from the environment:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>remove<span class="w"> </span>numpy
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># update a package in the current environment:</span>
+conda<span class="w"> </span>update<span class="w"> </span>numpy
+
+<span class="c1"># remove a package from the environment:</span>
+conda<span class="w"> </span>remove<span class="w"> </span>numpy
 </pre></div>
 </div>
 </section>
 <section id="conda-exporting-and-reproducing-environments">
 <h3>Conda: Exporting and Reproducing Environments<a class="headerlink" href="#conda-exporting-and-reproducing-environments" title="Link to this heading">#</a></h3>
-<p>To share or reproduce an environment, export it to a YAML file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml
-</pre></div>
-</div>
-<p>Create an environment from a YAML file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># to share or reproduce an environment, export it to a YAML file:</span>
+conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml
+
+<span class="c1"># create an environment from a YAML file:</span>
+conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
 </pre></div>
 </div>
 </section>
