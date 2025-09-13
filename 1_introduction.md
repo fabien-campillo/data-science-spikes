@@ -23,6 +23,12 @@ This Jupyter Book is part of the Data Science Bootcamp for [MathNeuro](https://t
 
 See also the GitHub repository [https://github.com/fabien-campillo/data-science-spikes](https://github.com/fabien-campillo/data-science-spikes).
 
+<br>
+<br>
+
+Several parts of this book, including sections of the Markdown content and Python source code, were generated or refined with the assistance of **ChatGPT-4**, which also provided guidance on building this Jupyter Book. While this tool was helpful in drafting and organizing content, all remaining errors and final decisions are entirely my own.
+
+
 <hr style="border: 1px solid black;">
 
 By [Fabien Campillo](https://www-sop.inria.fr/members/Fabien.Campillo/)  <br>

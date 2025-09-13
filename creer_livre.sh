@@ -17,6 +17,12 @@ git push -u origin main
 jupyter-book clean . # je préfère cleaner
 jupyter-book build .
 
+# 5️⃣b Générer le PDF via LaTeX
+# Cette commande va créer _build/latex/nom_du_livre.tex puis compiler en PDF
+# jupyter-book build . --builder pdfhtml
+# ou si tu veux compiler via LaTeX directement :
+# jupyter-book build . --builder pdflatex
+
 # 6️⃣ Publier le site sur GitHub Pages (branche gh-pages)
 ghp-import -n -p -f _build/html
 

@@ -8,3 +8,7 @@ html:
   extra_head: |
     <link rel="apple-touch-icon" sizes="200×208" href="_static/apple-touch-icon.png">
 copyright: "This book is distributed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike)"
+latex:
+  latex_engine: xelatex
+toc:
+  file: toc.yml
