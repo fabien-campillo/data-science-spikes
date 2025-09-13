@@ -2,7 +2,7 @@ title: "Spikes Data Sciences"
 author: "Fabien Campillo"
 execute:
   execute_notebooks: auto
-logo: "pics/logo.png"
+logo: "pics/logo_title.png"
 html:
   favicon: pics/favicon.ico
   extra_head: |
@@ -10,5 +10,3 @@ html:
 copyright: "This book is distributed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike)"
 latex:
   latex_engine: xelatex
-toc:
-  file: toc.yml
