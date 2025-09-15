@@ -1,8 +1,8 @@
 format: jb-book
 root: 1_context
 
-#options:
-#  numbered: true   # ✅ this is the new place for numbering
+options:
+  numbered: 2   # ✅ this is the new place for numbering
 
 chapters:
   - file: 2_resources
