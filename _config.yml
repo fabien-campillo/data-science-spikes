@@ -11,12 +11,3 @@ copyright: "This book is distributed under CC BY-NC-SA 4.0 (Creative Commons Att
 latex:
   latex_engine: xelatex
 
-repository:
-  url: "https://github.com/yourusername/data-science-spikes"
-  branch: main
-  path_to_book: ""
-html:
-  use_repository_button: true
-  use_download_button: true
-  extra_navbar: |
-    <a href="spikes-data-sciences.pdf" target="_blank">📄 Download PDF</a>
