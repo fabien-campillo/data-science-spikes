@@ -335,14 +335,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Storing, reading, and  sharing electrophysiology records</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-electrophysiology-recordings">Types of Electrophysiology Recordings</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intracellular-recordings">1. Intracellular Recordings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracellular-recordings">2. Extracellular Recordings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-potential-recordings">3. Field Potential Recordings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-invasive-recordings">4. Non-Invasive Recordings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-specialized-methods">5. Other Specialized Methods</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-electrophysiology-recordings">Types of Electrophysiology Recordings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-electrophysiology-data-formats">Common Electrophysiology Data Formats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#most-used-electrophysiology-data-formats">Most Used Electrophysiology Data Formats</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-axon-binary-file">1. ABF (Axon Binary File)</a></li>
@@ -394,50 +387,19 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="storing-reading-and-sharing-electrophysiology-records">
 <h1>Storing, reading, and  sharing electrophysiology records<a class="headerlink" href="#storing-reading-and-sharing-electrophysiology-records" title="Link to this heading">#</a></h1>
-<p>common data formats/standards for storing and sharing electrophysiology and neuroscience data</p>
-<p>Axon Binary File (ABF) by pClamp, Igor Binary Wave format (IBW) by Igor Pro, and Neurodata Without Borders (NWB)</p>
+<p>Electrophysiology records can be cumbersome and often require specific formats to be quickly accessible and usable.
+Traditionally, these formats were dependent on the devices used to collect the data—proprietary formats. It soon became clear that this approach was slowing down scientific progress, which relies on making data easily accessible to the widest possible community. To address this, new formats were developed.</p>
 <section id="types-of-electrophysiology-recordings">
 <h2>Types of Electrophysiology Recordings<a class="headerlink" href="#types-of-electrophysiology-recordings" title="Link to this heading">#</a></h2>
 <p>Electrophysiology covers a wide range of recording techniques, each suited to different biological questions.<br />
 Here are the main categories:</p>
-<section id="intracellular-recordings">
-<h3>1. Intracellular Recordings<a class="headerlink" href="#intracellular-recordings" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Sharp electrode recordings</strong>: measure the membrane potential inside a single cell.</p></li>
-<li><p><strong>Whole-cell patch clamp</strong>: provides detailed access to ionic currents, membrane potential, and synaptic inputs.</p></li>
-<li><p><strong>Single-channel recordings</strong>: resolve the activity of individual ion channels.</p></li>
+<li><p><strong>Intracellular Recordings</strong> - <em>Sharp electrode recordings</em>: measure the membrane potential inside a single cell • <em>Whole-cell patch clamp</em>: provides detailed access to ionic currents, membrane potential, and synaptic inputs • <em>Single-channel recordings</em>: resolve the activity of individual ion channels.</p></li>
+<li><p><strong>Extracellular Recordings</strong> -  <em>Single-unit recordings</em>: detect action potentials (“spikes”) from individual neurons using fine electrodes • <em>Multi-unit recordings</em>: capture spikes from small groups of neurons near the electrode tip • <em>Multi-electrode arrays (MEA)</em>: record from dozens to thousands of electrodes simultaneously across a neural population.</p></li>
+<li><p><strong>Field Potential Recordings</strong> - <em>Local field potentials (LFPs)</em>: measure summed synaptic activity and slower fluctuations in a local region • <em>ECoG (electrocorticography)</em>: records field potentials directly from the cortical surface.</p></li>
+<li><p><strong>Non-Invasive Recordings</strong> - <em>EEG (electroencephalography)</em>: scalp recordings of brain activity with high temporal resolution • <em>MEG (magnetoencephalography)</em>: detects magnetic fields generated by neuronal currents.</p></li>
+<li><p><strong>Other Specialized Methods</strong> - <em>EMG (electromyography)</em>: records muscle activity • <em>ERG (electroretinography)</em>: records retinal responses to light •  <em>Patch-clamp in slices/in vivo</em>: advanced combinations allowing intracellular access in complex preparations.</p></li>
 </ul>
-</section>
-<section id="extracellular-recordings">
-<h3>2. Extracellular Recordings<a class="headerlink" href="#extracellular-recordings" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Single-unit recordings</strong>: detect action potentials (“spikes”) from individual neurons using fine electrodes.</p></li>
-<li><p><strong>Multi-unit recordings</strong>: capture spikes from small groups of neurons near the electrode tip.</p></li>
-<li><p><strong>Multi-electrode arrays (MEA)</strong>: record from dozens to thousands of electrodes simultaneously across a neural population.</p></li>
-</ul>
-</section>
-<section id="field-potential-recordings">
-<h3>3. Field Potential Recordings<a class="headerlink" href="#field-potential-recordings" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Local field potentials (LFPs)</strong>: measure summed synaptic activity and slower fluctuations in a local region.</p></li>
-<li><p><strong>ECoG (electrocorticography)</strong>: records field potentials directly from the cortical surface.</p></li>
-</ul>
-</section>
-<section id="non-invasive-recordings">
-<h3>4. Non-Invasive Recordings<a class="headerlink" href="#non-invasive-recordings" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>EEG (electroencephalography)</strong>: scalp recordings of brain activity with high temporal resolution.</p></li>
-<li><p><strong>MEG (magnetoencephalography)</strong>: detects magnetic fields generated by neuronal currents.</p></li>
-</ul>
-</section>
-<section id="other-specialized-methods">
-<h3>5. Other Specialized Methods<a class="headerlink" href="#other-specialized-methods" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>EMG (electromyography)</strong>: records muscle activity.</p></li>
-<li><p><strong>ERG (electroretinography)</strong>: records retinal responses to light.</p></li>
-<li><p><strong>Patch-clamp in slices/in vivo</strong>: advanced combinations allowing intracellular access in complex preparations.</p></li>
-</ul>
-</section>
 </section>
 <section id="common-electrophysiology-data-formats">
 <h2>Common Electrophysiology Data Formats<a class="headerlink" href="#common-electrophysiology-data-formats" title="Link to this heading">#</a></h2>
@@ -522,30 +484,34 @@ Here are the main categories:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Format</p></th>
-<th class="head"><p>Full Name</p></th>
-<th class="head"><p>Primary Use</p></th>
-<th class="head"><p>Openness</p></th>
-<th class="head"><p>Notes</p></th>
+<th class="head"><p>Developer</p></th>
+<th class="head"><p>Proprietary / Open</p></th>
+<th class="head"><p>Free to use?</p></th>
+<th class="head"><p>Main Use</p></th>
+<th class="head"><p>Adoption</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>ABF</strong></p></td>
-<td><p>Axon Binary File</p></td>
-<td><p>Patch-clamp, intracellular recordings</p></td>
-<td><p>Proprietary</p></td>
-<td><p>Stores raw signals + metadata; ABF1 (older), ABF2 (newer)</p></td>
+<tr class="row-even"><td><p><strong>ABF (Axon Binary File)</strong></p></td>
+<td><p>Originally Axon Instruments → now <strong>Molecular Devices</strong></p></td>
+<td><p><strong>Proprietary</strong> (specs partially available, but tied to pCLAMP)</p></td>
+<td><p>Reading libraries are free (e.g., <code class="docutils literal notranslate"><span class="pre">pyABF</span></code>), but <strong>creating/using ABF files requires pCLAMP</strong>, which is commercial</p></td>
+<td><p>Electrophysiology (patch-clamp, voltage/current recordings)</p></td>
+<td><p>Widely used in labs with Molecular Devices equipment</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>NWB</strong></p></td>
-<td><p>Neurodata Without Borders</p></td>
-<td><p>Sharing, long-term storage</p></td>
-<td><p>Open standard</p></td>
-<td><p>Based on HDF5; supports metadata, stimuli, derived data; FAIR-compliant</p></td>
+<tr class="row-odd"><td><p><strong>IBW (Igor Binary Wave)</strong></p></td>
+<td><p><strong>WaveMetrics, Inc.</strong></p></td>
+<td><p><strong>Proprietary</strong> (closed format, documentation partly available)</p></td>
+<td><p>Requires <strong>Igor Pro</strong> (commercial software). Some third-party libraries exist to read IBW for free</p></td>
+<td><p>General scientific data analysis and visualization</p></td>
+<td><p>Popular in biophysics, neuroscience, spectroscopy</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>IBW</strong></p></td>
-<td><p>Igor Binary Wave</p></td>
-<td><p>Waveform storage &amp; analysis</p></td>
-<td><p>Proprietary</p></td>
-<td><p>Multi-dimensional data; widely used with Igor Pro; historical workflows</p></td>
+<tr class="row-even"><td><p><strong>NWB (Neurodata Without Borders)</strong></p></td>
+<td><p>Community-driven (Allen Institute, HHMI Janelia, Berkeley Lab, INCF, etc.)</p></td>
+<td><p><strong>Fully open-source</strong> and community standard</p></td>
+<td><p><strong>Free</strong> (developed and maintained openly on GitHub)</p></td>
+<td><p>Standardized storage/sharing of neuroscience data (e-phys, imaging, behavioral, metadata)</p></td>
+<td><p>Growing adoption in large-scale projects, especially for data sharing and FAIR science</p></td>
 </tr>
 </tbody>
 </table>
@@ -1105,14 +1071,7 @@ ABF File: lhb_bursting/cell209basal.abf    Sweep Number:   4
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Storing, reading, and  sharing electrophysiology records</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-electrophysiology-recordings">Types of Electrophysiology Recordings</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intracellular-recordings">1. Intracellular Recordings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracellular-recordings">2. Extracellular Recordings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-potential-recordings">3. Field Potential Recordings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-invasive-recordings">4. Non-Invasive Recordings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-specialized-methods">5. Other Specialized Methods</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-electrophysiology-recordings">Types of Electrophysiology Recordings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-electrophysiology-data-formats">Common Electrophysiology Data Formats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#most-used-electrophysiology-data-formats">Most Used Electrophysiology Data Formats</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-axon-binary-file">1. ABF (Axon Binary File)</a></li>
