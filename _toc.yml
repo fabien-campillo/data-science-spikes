@@ -9,4 +9,4 @@ chapters:
   - file: 3_databases
   - file: A_installing_python
   - title: Download PDF
-    url: pdf/Spikes-Data-Sciences.pdf
+    url: https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf
