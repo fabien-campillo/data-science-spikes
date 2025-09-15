@@ -61,7 +61,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. Appendix A: Installing Python and some tools" href="A_installing_python.html" />
+    <link rel="next" title="3. Appendix A: Installing Python and some tools" href="A_installing_python.html" />
     <link rel="prev" title="1. Resources and references" href="2_resources.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,8 +183,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2_resources.html">1. Resources and references</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Data Storage, Sharing, and Databases for Electrophysiology</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="A_installing_python.html">4. Appendix A: Installing Python and some tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_installing_python.html">3. Appendix A: Installing Python and some tools</a></li>
 </ul>
 
     </div>
@@ -333,7 +332,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2. Data Storage, Sharing, and Databases for Electrophysiology</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">2.1. Databases</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-databases-in-electrophysiology">Main databases in electrophysiology</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-nlm-dryad-dandi-and-zenodo">Focus on NLM, Dryad, Dandi, and Zenodo</a><ul class="nav section-nav flex-column">
@@ -352,36 +350,33 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">Summary Table</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">2.6. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library"><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-the-net">On the net</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">3. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library">3.1. <code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-the-net">On the net</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-about-abf-objects">Basics about <code class="docutils literal notranslate"><span class="pre">abf</span></code> objects</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#atributes">Atributes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-about-abf-objects">3.2. Basics about <code class="docutils literal notranslate"><span class="pre">abf</span></code> objects</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributes">Atributes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-abf-file-exploration">Basic <code class="docutils literal notranslate"><span class="pre">abf</span></code> file exploration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#main-abf-attributes-and-methods">Main <code class="docutils literal notranslate"><span class="pre">abf</span></code> attributes and methods</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#some-statistics-of-1-sweep">Some statistics of 1 sweep</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-abf-file-exploration">3.3. Basic <code class="docutils literal notranslate"><span class="pre">abf</span></code> file exploration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-abf-attributes-and-methods">Main <code class="docutils literal notranslate"><span class="pre">abf</span></code> attributes and methods</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-statistics-of-1-sweep">Some statistics of 1 sweep</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-plottings">Basics plottings</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-voltage-trace-distribution">Plotting the voltage trace distribution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-the-sweeps-of-an-abf-file">Plotting all the sweeps of an <code class="docutils literal notranslate"><span class="pre">abf</span></code> file</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-single-sweep">Plotting a single sweep</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-plottings">3.4. Basics plottings</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-voltage-trace-distribution">Plotting the voltage trace distribution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-the-sweeps-of-an-abf-file">Plotting all the sweeps of an <code class="docutils literal notranslate"><span class="pre">abf</span></code> file</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-single-sweep">Plotting a single sweep</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-to-explore">3.5. Data to explore</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-to-explore">Data to explore</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -646,9 +641,8 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 </div>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="exploring-abf-files">
-<h1><span class="section-number">3. </span>Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files<a class="headerlink" href="#exploring-abf-files" title="Link to this heading">#</a></h1>
+<section id="exploring-abf-files">
+<h2><span class="section-number">2.6. </span>Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files<a class="headerlink" href="#exploring-abf-files" title="Link to this heading">#</a></h2>
 <p>This first notebook aims to demonstrate how to analyze electrophysiological recordings from a single cell by:</p>
 <ul class="simple">
 <li><p>Extracting basic characteristics of the recorded signals.</p></li>
@@ -691,11 +685,10 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 </div>
 </div>
 </div>
-<hr class="docutils" />
 <section id="abf-files-and-pyabf-library">
-<h2><span class="section-number">3.1. </span><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library<a class="headerlink" href="#abf-files-and-pyabf-library" title="Link to this heading">#</a></h2>
+<h3><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library<a class="headerlink" href="#abf-files-and-pyabf-library" title="Link to this heading">#</a></h3>
 <section id="abf-file-overview">
-<h3>ABF File Overview<a class="headerlink" href="#abf-file-overview" title="Link to this heading">#</a></h3>
+<h4>ABF File Overview<a class="headerlink" href="#abf-file-overview" title="Link to this heading">#</a></h4>
 <p>An ABF (Axon Binary Format) file is a proprietary file format developed by Axon Instruments (now part of Molecular Devices) to store electrophysiological data from experiments. ABF files are commonly used to save data from experiments like patch-clamp recordings, where researchers measure electrical signals from biological systems (such as neurons or muscle cells). These files can store a variety of information, including:</p>
 <ul class="simple">
 <li><p>Data Traces: Time series data for one or more channels, representing signals such as voltage or current.</p></li>
@@ -705,7 +698,7 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 <p>The ABF format is binary, making it efficient for large datasets, but it is not easily readable without specialized software or libraries.</p>
 </section>
 <section id="pyabf-library">
-<h3><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library<a class="headerlink" href="#pyabf-library" title="Link to this heading">#</a></h3>
+<h4><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library<a class="headerlink" href="#pyabf-library" title="Link to this heading">#</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library is a Python package designed to facilitate working with ABF files. It provides an easy-to-use interface to read and manipulate data stored in ABF files. The library makes it simpler for researchers to extract relevant information from ABF files, without having to manually parse the binary data.</p>
 <p>Key Features of pyabf:</p>
 <ol class="arabic simple">
@@ -727,7 +720,7 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 </ul>
 </section>
 <section id="on-the-net">
-<h3>On the net<a class="headerlink" href="#on-the-net" title="Link to this heading">#</a></h3>
+<h4>On the net<a class="headerlink" href="#on-the-net" title="Link to this heading">#</a></h4>
 <p>The  <a class="reference external" href="https://pypi.org/project/pyabf/">pyABF</a> library was created by <a class="reference external" href="https://swharden.com/about/">Scott Harden</a>.
 Scott Harden has made pyABF available as an open-source library, aiming to simplify the process of working with ABF files in Python, making it easier for researchers to analyze and visualize their data. You can find more about pyABF and its documentation on his website: pyABF - A simple Python interface for Axon Binary Format ABF files.</p>
 <ul class="simple">
@@ -738,7 +731,7 @@ Scott Harden has made pyABF available as an open-source library, aiming to simpl
 </section>
 </section>
 <section id="basics-about-abf-objects">
-<h2><span class="section-number">3.2. </span>Basics about <code class="docutils literal notranslate"><span class="pre">abf</span></code> objects<a class="headerlink" href="#basics-about-abf-objects" title="Link to this heading">#</a></h2>
+<h3>Basics about <code class="docutils literal notranslate"><span class="pre">abf</span></code> objects<a class="headerlink" href="#basics-about-abf-objects" title="Link to this heading">#</a></h3>
 <p>Where we import the <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> package and load a record file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -759,7 +752,7 @@ Scott Harden has made pyABF available as an open-source library, aiming to simpl
 <li><p><strong>methods</strong>: functions that belong to an object and can be called to perform actions</p></li>
 </ul>
 <section id="atributes">
-<h3>Atributes<a class="headerlink" href="#atributes" title="Link to this heading">#</a></h3>
+<h4>Atributes<a class="headerlink" href="#atributes" title="Link to this heading">#</a></h4>
 <p>We can print more attributes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -789,7 +782,7 @@ Scott Harden has made pyABF available as an open-source library, aiming to simpl
 </div>
 </section>
 <section id="methods">
-<h3>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h3>
+<h4>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h4>
 <p>You can list all the methods of an <code class="docutils literal notranslate"><span class="pre">abf</span></code> object with <code class="docutils literal notranslate"><span class="pre">print(abf.__dict__)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -849,9 +842,9 @@ sweepD
 </section>
 </section>
 <section id="basic-abf-file-exploration">
-<h2><span class="section-number">3.3. </span>Basic <code class="docutils literal notranslate"><span class="pre">abf</span></code> file exploration<a class="headerlink" href="#basic-abf-file-exploration" title="Link to this heading">#</a></h2>
+<h3>Basic <code class="docutils literal notranslate"><span class="pre">abf</span></code> file exploration<a class="headerlink" href="#basic-abf-file-exploration" title="Link to this heading">#</a></h3>
 <section id="main-abf-attributes-and-methods">
-<h3>Main <code class="docutils literal notranslate"><span class="pre">abf</span></code> attributes and methods<a class="headerlink" href="#main-abf-attributes-and-methods" title="Link to this heading">#</a></h3>
+<h4>Main <code class="docutils literal notranslate"><span class="pre">abf</span></code> attributes and methods<a class="headerlink" href="#main-abf-attributes-and-methods" title="Link to this heading">#</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">abf</span></code> object contains various attributes and methods that allow you to access metadata and data from the .abf file. Here are some useful attributes and how to call them:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -895,7 +888,7 @@ sweepD
 </div>
 </section>
 <section id="some-statistics-of-1-sweep">
-<h3>Some statistics of 1 sweep<a class="headerlink" href="#some-statistics-of-1-sweep" title="Link to this heading">#</a></h3>
+<h4>Some statistics of 1 sweep<a class="headerlink" href="#some-statistics-of-1-sweep" title="Link to this heading">#</a></h4>
 <p>Here, we have selected <code class="docutils literal notranslate"><span class="pre">sweep_index</span> <span class="pre">=</span> <span class="pre">0</span></code>, representing the first sweep in the ABF file. We then compute some basic statistics of the corresponding voltage trace, such as the mean, median, min, max, standard deviation, and range of the signal:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -931,9 +924,9 @@ sweepD
 </section>
 </section>
 <section id="basics-plottings">
-<h2><span class="section-number">3.4. </span>Basics plottings<a class="headerlink" href="#basics-plottings" title="Link to this heading">#</a></h2>
+<h3>Basics plottings<a class="headerlink" href="#basics-plottings" title="Link to this heading">#</a></h3>
 <section id="plotting-the-voltage-trace-distribution">
-<h3>Plotting the voltage trace distribution<a class="headerlink" href="#plotting-the-voltage-trace-distribution" title="Link to this heading">#</a></h3>
+<h4>Plotting the voltage trace distribution<a class="headerlink" href="#plotting-the-voltage-trace-distribution" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a figure with two subplots (1 row, 2 columns)</span>
@@ -966,7 +959,7 @@ sweepD
 <p>Of course, the previous plots are not particularly interesting, as they represent the distribution of the signal while mixing both inter-burst and burst phases. A more insightful approach would be to plot the distributions separately: one for the inter-burst signal and another for the intra-burst signal. Note that the previous plots exhibit a bimodal distribution, which is certainly related to the two phases of the signal—burst and non-burst (quiescent or background activity).</p>
 </section>
 <section id="plotting-all-the-sweeps-of-an-abf-file">
-<h3>Plotting all the sweeps of an <code class="docutils literal notranslate"><span class="pre">abf</span></code> file<a class="headerlink" href="#plotting-all-the-sweeps-of-an-abf-file" title="Link to this heading">#</a></h3>
+<h4>Plotting all the sweeps of an <code class="docutils literal notranslate"><span class="pre">abf</span></code> file<a class="headerlink" href="#plotting-all-the-sweeps-of-an-abf-file" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_abf</span><span class="p">():</span>
@@ -1026,7 +1019,7 @@ sweepD
 </div>
 </section>
 <section id="plotting-a-single-sweep">
-<h3>Plotting a single sweep<a class="headerlink" href="#plotting-a-single-sweep" title="Link to this heading">#</a></h3>
+<h4>Plotting a single sweep<a class="headerlink" href="#plotting-a-single-sweep" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the figure</span>
@@ -1057,7 +1050,7 @@ sweepD
 </section>
 </section>
 <section id="data-to-explore">
-<h2><span class="section-number">3.5. </span>Data to explore<a class="headerlink" href="#data-to-explore" title="Link to this heading">#</a></h2>
+<h3>Data to explore<a class="headerlink" href="#data-to-explore" title="Link to this heading">#</a></h3>
 <p>We define a list of tuples called <code class="docutils literal notranslate"><span class="pre">data_to_explore</span></code>. Each element in <code class="docutils literal notranslate"><span class="pre">data_to_explore</span></code> is a tuple containing:</p>
 <ul class="simple">
 <li><p>a string = the file path of an <code class="docutils literal notranslate"><span class="pre">.abf</span></code> file,</p></li>
@@ -1122,6 +1115,7 @@ ABF File: lhb_bursting/cell209basal.abf    Sweep Number:   4
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1167,7 +1161,7 @@ ABF File: lhb_bursting/cell209basal.abf    Sweep Number:   4
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Appendix A: Installing Python and some tools</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Appendix A: Installing Python and some tools</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1187,7 +1181,6 @@ ABF File: lhb_bursting/cell209basal.abf    Sweep Number:   4
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2. Data Storage, Sharing, and Databases for Electrophysiology</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">2.1. Databases</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-databases-in-electrophysiology">Main databases in electrophysiology</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-nlm-dryad-dandi-and-zenodo">Focus on NLM, Dryad, Dandi, and Zenodo</a><ul class="nav section-nav flex-column">
@@ -1206,36 +1199,33 @@ ABF File: lhb_bursting/cell209basal.abf    Sweep Number:   4
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">Summary Table</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">2.6. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library"><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-the-net">On the net</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">3. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library">3.1. <code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-the-net">On the net</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-about-abf-objects">Basics about <code class="docutils literal notranslate"><span class="pre">abf</span></code> objects</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#atributes">Atributes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-about-abf-objects">3.2. Basics about <code class="docutils literal notranslate"><span class="pre">abf</span></code> objects</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributes">Atributes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-abf-file-exploration">Basic <code class="docutils literal notranslate"><span class="pre">abf</span></code> file exploration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#main-abf-attributes-and-methods">Main <code class="docutils literal notranslate"><span class="pre">abf</span></code> attributes and methods</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#some-statistics-of-1-sweep">Some statistics of 1 sweep</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-abf-file-exploration">3.3. Basic <code class="docutils literal notranslate"><span class="pre">abf</span></code> file exploration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-abf-attributes-and-methods">Main <code class="docutils literal notranslate"><span class="pre">abf</span></code> attributes and methods</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-statistics-of-1-sweep">Some statistics of 1 sweep</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-plottings">Basics plottings</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-voltage-trace-distribution">Plotting the voltage trace distribution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-the-sweeps-of-an-abf-file">Plotting all the sweeps of an <code class="docutils literal notranslate"><span class="pre">abf</span></code> file</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-single-sweep">Plotting a single sweep</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-plottings">3.4. Basics plottings</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-voltage-trace-distribution">Plotting the voltage trace distribution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-the-sweeps-of-an-abf-file">Plotting all the sweeps of an <code class="docutils literal notranslate"><span class="pre">abf</span></code> file</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-single-sweep">Plotting a single sweep</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-to-explore">3.5. Data to explore</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-to-explore">Data to explore</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
