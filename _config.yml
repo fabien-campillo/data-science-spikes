@@ -10,3 +10,13 @@ html:
 copyright: "This book is distributed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike)"
 latex:
   latex_engine: xelatex
+
+# _config.yml
+sphinx:
+  config:
+    numfig: true
+    html_theme_options:
+      # number only H1 and H2
+      numbered_sections: 2
+myst:
+  number_headings: 2   # only number levels 1 (#) and 2 (##)
