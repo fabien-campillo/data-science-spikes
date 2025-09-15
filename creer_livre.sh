@@ -22,6 +22,7 @@ jupyter-book build .
 # jupyter-book build . --builder pdfhtml
 # ou si tu veux compiler via LaTeX directement :
 # jupyter-book build . --builder pdflatex
+cp _build/latex/projectnamenotset.pdf _build/latex/Spikes-Data-Sciences.pdf
 
 # 6️⃣ Publier le site sur GitHub Pages (branche gh-pages)
 ghp-import -n -p -f _build/html
