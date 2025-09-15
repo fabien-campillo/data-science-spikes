@@ -3,5 +3,5 @@ root: 1_introduction
 
 chapters:
   - file: 2_resources
-  - file: 3_reading_records
+  - file: 3_databases
   - file: A_installing_python
