@@ -17,13 +17,10 @@ if [[ "$1" == "-pdf" ]]; then
     echo "📄 Génération du PDF..."
     jupyter-book build . --builder pdflatex
 
-    # 4️⃣a Assurer l’existence du dossier pdf/
-    mkdir -p pdf
+    # 4️⃣a Renommer et copier le PDF (par défaut: projectnamenotset.pdf)
+    cp _build/latex/Spikes-Data-Sciences.pdf pdf/Spikes-Data-Sciences.pdf
 
-    # 4️⃣b Renommer et copier le PDF (par défaut: projectnamenotset.pdf)
-    cp _build/latex/projectnamenotset.pdf pdf/Spikes-Data-Sciences.pdf
-
-    # 4️⃣c Copier aussi dans le HTML pour le rendre accessible en ligne
+    # 4️⃣b Copier aussi dans le HTML pour le rendre accessible en ligne
     cp pdf/Spikes-Data-Sciences.pdf _build/html/Spikes-Data-Sciences.pdf
 fi
 
