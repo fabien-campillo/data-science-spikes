@@ -1,8 +1,10 @@
 format: jb-book
 root: 1_introduction
 
+options:
+  numbered: true   # ✅ this is the new place for numbering
+
 chapters:
   - file: 2_resources
   - file: 3_databases
   - file: A_installing_python
-numbered: true
