@@ -8,31 +8,31 @@
 # 2️⃣ Installer Jupyter Book et ghp-import si ce n'est pas déjà fait
 pip install -U jupyter-book ghp-import
 
-# 3️⃣ Ajouter tous les fichiers au dépôt Git (si changements)
-git add .
-git commit -m "Mise à jour du Jupyter Book"
-
-# 4️⃣ Pousser les sources sur GitHub (branche main)
-git push -u origin main
-
-# 5️⃣ Construire le livre localement
+# 3️⃣ Construire le livre localement
 jupyter-book clean .
 jupyter-book build .
 
-# 5️⃣b Générer le PDF seulement si demandé avec "-pdf"
+# 4️⃣ Générer le PDF seulement si demandé avec "-pdf"
 if [[ "$1" == "-pdf" ]]; then
     echo "📄 Génération du PDF..."
     jupyter-book build . --builder pdflatex
 
-    # Assurer l’existence du dossier pdf/
+    # 4️⃣a Assurer l’existence du dossier pdf/
     mkdir -p pdf
 
-    # Renommer et copier le PDF (par défaut: projectnamenotset.pdf)
+    # 4️⃣b Renommer et copier le PDF (par défaut: projectnamenotset.pdf)
     cp _build/latex/projectnamenotset.pdf pdf/Spikes-Data-Sciences.pdf
 
-    # Copier aussi dans le HTML pour le rendre accessible en ligne
+    # 4️⃣c Copier aussi dans le HTML pour le rendre accessible en ligne
     cp pdf/Spikes-Data-Sciences.pdf _build/html/Spikes-Data-Sciences.pdf
 fi
 
-# 6️⃣ Publier le site sur GitHub Pages (branche gh-pages)
+# 5️⃣ Ajouter tous les fichiers au dépôt Git (incluant le PDF si généré)
+git add .
+git commit -m "Mise à jour du Jupyter Book"
+
+# 6️⃣ Pousser les sources sur GitHub (branche main)
+git push -u origin main
+
+# 7️⃣ Publier le site sur GitHub Pages (branche gh-pages)
 ghp-import -n -p -f _build/html
