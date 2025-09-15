@@ -6,15 +6,12 @@ logo: "pics/logo_title.png"
 copyright: "This book is distributed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike)"
 latex:
   latex_engine: xelatex
-
 repository:
   url: "https://github.com/yourusername/data-science-spikes"
   branch: main
   path_to_book: ""
 html:
   favicon: pics/favicon.ico
-  extra_head: |
-    <link rel="apple-touch-icon" sizes="200×208" href="_static/apple-touch-icon.png">
   use_repository_button: true
   use_download_button: true
   extra_navbar: |
