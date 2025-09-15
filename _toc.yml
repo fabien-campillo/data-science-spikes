@@ -1,5 +1,5 @@
 format: jb-book
-root: 1_introduction
+root: 1_context
 
 options:
   numbered: true   # ✅ this is the new place for numbering
