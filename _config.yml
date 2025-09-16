@@ -44,7 +44,13 @@ latex:
     # Packages
     preamble: |
       \usepackage{graphicx}  % needed for including images
-    # Custom title page
+      \usepackage{xcolor}
+      \usepackage{tcolorbox}
+      % Define LaTeX boxes for callouts
+      \newtcolorbox{notebox}{colback=blue!10!white,colframe=blue!50!black,title=Note}
+      \newtcolorbox{tipbox}{colback=green!10!white,colframe=green!50!black,title=Tip}
+      \newtcolorbox{warningbox}{colback=yellow!10!white,colframe=orange!50!black,title=Warning}
+      \newtcolorbox{importantbox}{colback=red!10!white,colframe=red!50!black,title=Important}          # Custom title page
     maketitle: |
       \begin{titlepage}
         \centering
@@ -55,19 +61,3 @@ latex:
         {\Large \@author} \\[1cm]
         \@date
       \end{titlepage}
-      
-# ----------------------------
-# sphinx Configuration
-# ----------------------------
-
-sphinx:
-  config:
-    latex_elements:
-      preamble: |
-        \usepackage{xcolor}
-        \usepackage{tcolorbox}
-        % Define environments for callouts
-        \newtcolorbox{noteBox}{colback=blue!10!white,colframe=blue!50!black,title=Note}
-        \newtcolorbox{tipBox}{colback=green!10!white,colframe=green!50!black,title=Tip}
-        \newtcolorbox{warningBox}{colback=yellow!10!white,colframe=orange!50!black,title=Warning}
-        \newtcolorbox{importantBox}{colback=red!10!white,colframe=red!50!black,title=Important}
