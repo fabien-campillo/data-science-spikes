@@ -184,6 +184,8 @@
 <li class="toctree-l1"><a class="reference internal" href="2_resources.html">1. Resources and references</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_databases.html">2. Data Storage, Sharing, and Databases for Electrophysiology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="A_installing_python.html">3. Appendix A: Installing Python and some tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="B_jupyter.html">4. Jupyter Ecosystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C_binder.html">5. Binder</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf">Download PDF</a></li>
 </ul>
 
@@ -349,7 +351,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">SANDBOX</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#voir">VOIR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#voir">VOIR</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-conda-and-create-a-virtual-environment">Check <code class="docutils literal notranslate"><span class="pre">conda</span></code> and create a virtual environment</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -374,6 +379,148 @@ document.write(`
 <li><p><a class="reference external" href="https://github.com/marderlab/Spike2_Burst_Analysis">Spike2_Burst_Analysis</a> Get bursts from .abf (pClamp) files using Spike2 scripts. Do further analysis in Matlab Some of the scripts were written by Dirk Bucher</p></li>
 <li><p><a class="reference external" href="https://github.com/dav1dcg/wcr-python">wcr-python</a> et <a class="reference external" href="https://github.com/dav1dcg/neuro-notebook-templates">neuro-notebook-templates</a>  de <a class="reference external" href="https://scholar.google.com/citations?user=Dmwnwb4AAAAJ&amp;amp;hl=en">David Cabrera-Garcia</a></p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
+
+<span class="n">doi</span> <span class="o">=</span> <span class="s2">&quot;10.5061/dryad.xxxxx&quot;</span>  <span class="c1"># replace with dataset DOI</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://datadryad.org/api/v2/datasets/</span><span class="si">{</span><span class="n">doi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">files</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;included&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.abf&quot;</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;downloadUrl&quot;</span><span class="p">]</span>
+        <span class="n">abf_data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">],</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+            <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">abf_data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="nn">File /opt/anaconda3/envs/spikes/lib/python3.11/site-packages/requests/models.py:976,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">975</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">976</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">977</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">978</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
+<span class="g g-Whitespace">    </span><span class="mi">979</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
+
+<span class="nn">File /opt/anaconda3/envs/spikes/lib/python3.11/json/__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File /opt/anaconda3/envs/spikes/lib/python3.11/json/decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd"> containing a JSON document).</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+<span class="nn">File /opt/anaconda3/envs/spikes/lib/python3.11/json/decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
+
+<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">doi</span> <span class="o">=</span> <span class="s2">&quot;10.5061/dryad.xxxxx&quot;</span>  <span class="c1"># replace with dataset DOI</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://datadryad.org/api/v2/datasets/</span><span class="si">{</span><span class="n">doi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">files</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;included&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.abf&quot;</span><span class="p">):</span>
+
+<span class="nn">File /opt/anaconda3/envs/spikes/lib/python3.11/site-packages/requests/models.py:980,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">976</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">977</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">978</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
+<span class="g g-Whitespace">    </span><span class="mi">979</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
+<span class="ne">--&gt; </span><span class="mi">980</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="check-conda-and-create-a-virtual-environment">
+<h2>Check <code class="docutils literal notranslate"><span class="pre">conda</span></code> and create a virtual environment<a class="headerlink" href="#check-conda-and-create-a-virtual-environment" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>check if you have <code class="docutils literal notranslate"><span class="pre">conda</span></code>:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>campillo@MacFabienWork<span class="w"> </span>data-science-spikes<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>--version
+conda<span class="w"> </span><span class="m">25</span>.5.1
+</pre></div>
+</div>
+<p>note that <code class="docutils literal notranslate"><span class="pre">campillo&#64;MacFabienWork</span> <span class="pre">data-science-spikes</span> <span class="pre">%</span></code> is just the unix prompt in MaxOS, <code class="docutils literal notranslate"><span class="pre">user_name&#64;computer_name</span> <span class="pre">dir_name</span> <span class="pre">%</span></code></p>
+<ul class="simple">
+<li><p>create a conda virtual environment named <code class="docutils literal notranslate"><span class="pre">spikes</span></code>:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>campillo@MacFabienWork<span class="w"> </span>data-science-spikes<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>spikes<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
+<span class="m">2</span><span class="w"> </span>channel<span class="w"> </span>Terms<span class="w"> </span>of<span class="w"> </span>Service<span class="w"> </span>accepted
+Channels:
+<span class="o">[</span>could<span class="w"> </span>be<span class="w"> </span>long<span class="o">]</span>
+<span class="c1">#</span>
+<span class="c1"># To activate this environment, use                                                                                      #</span>
+<span class="c1">#     $ conda activate spikes                                                                                            #</span>
+<span class="c1"># To deactivate an active environment, use</span>
+<span class="c1">#</span>
+<span class="c1">#     $ conda deactivate</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>activate the virtual environment:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>campillo@MacFabienWork<span class="w"> </span>data-science-spikes<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>spikes<span class="w">             </span>
+<span class="o">(</span>spikes<span class="o">)</span><span class="w"> </span>campillo@MacFabienWork<span class="w"> </span>data-science-spikes<span class="w"> </span>%<span class="w"> </span>
+</pre></div>
+</div>
+<p>the prompt is modified, indicating that uou are under the <code class="docutils literal notranslate"><span class="pre">(spikes)</span></code> virtual environment.</p>
+<ul class="simple">
+<li><p>Install the packages you’ll need:</p></li>
+</ul>
+<div class="highlight-bashrc notranslate"><div class="highlight"><pre><span></span>(spikes) campillo@MacFabienWork data-science-spikes % conda install -c conda-forge jupyterlab jupyter-book matplotlib numpy pandas
+2 channel Terms of Service accepted
+Channels:
+ - conda-forge
+ - defaults
+Platform: osx-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /opt/anaconda3/envs/spikes
+
+  added / updated specs:
+    - jupyter-book
+    - jupyterlab
+    - matplotlib
+    - numpy
+    - pandas
+
+
+(spikes) campillo@MacFabienWork data-science-spikes % 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> package is not available through Conda channels</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span> <span class="n">campillo</span><span class="nd">@MacFabienWork</span> <span class="n">data</span><span class="o">-</span><span class="n">science</span><span class="o">-</span><span class="n">spikes</span> <span class="o">%</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pyabf</span>
+<span class="n">Collecting</span> <span class="n">pyabf</span>
+<span class="o">...</span>
+<span class="n">Successfully</span> <span class="n">installed</span> <span class="n">iniconfig</span><span class="o">-</span><span class="mf">2.1.0</span> <span class="n">pluggy</span><span class="o">-</span><span class="mf">1.6.0</span> <span class="n">pyabf</span><span class="o">-</span><span class="mf">2.3.8</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">8.4.2</span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -423,7 +570,10 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">SANDBOX</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#voir">VOIR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#voir">VOIR</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-conda-and-create-a-virtual-environment">Check <code class="docutils literal notranslate"><span class="pre">conda</span></code> and create a virtual environment</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>

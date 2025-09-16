@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../../../../../" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Greative &#8212; Spikes Data Sciences</title>
+    <title>4. Jupyter Ecosystem &#8212; Spikes Data Sciences</title>
   
   
   
@@ -18,49 +18,51 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../../../../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'jupyter-env/lib/python3.9/site-packages/a11y_pygments/greative/README';</script>
-    <link rel="icon" href="../../../../../../_static/favicon.ico"/>
-    <link rel="index" title="Index" href="../../../../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'B_jupyter';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Binder" href="C_binder.html" />
+    <link rel="prev" title="3. Appendix A: Installing Python and some tools" href="A_installing_python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -92,7 +94,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="../../../../../../search.html"
+      action="search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -123,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -143,7 +143,7 @@
     
   
 
-<a class="navbar-brand logo" href="../../../../../../1_context.html">
+<a class="navbar-brand logo" href="1_context.html">
   
   
   
@@ -154,8 +154,8 @@
       
     
     
-    <img src="../../../../../../_static/logo_title.png" class="logo__image only-light" alt="Spikes Data Sciences - Home"/>
-    <script>document.write(`<img src="../../../../../../_static/logo_title.png" class="logo__image only-dark" alt="Spikes Data Sciences - Home"/>`);</script>
+    <img src="_static/logo_title.png" class="logo__image only-light" alt="Spikes Data Sciences - Home"/>
+    <script>document.write(`<img src="_static/logo_title.png" class="logo__image only-dark" alt="Spikes Data Sciences - Home"/>`);</script>
   
   
 </a></div>
@@ -175,17 +175,17 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../../../../../1_context.html">
+                <a class="reference internal" href="1_context.html">
                     Context
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../2_resources.html">1. Resources and references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../3_databases.html">2. Data Storage, Sharing, and Databases for Electrophysiology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../A_installing_python.html">3. Appendix A: Installing Python and some tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../B_jupyter.html">4. Jupyter Ecosystem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../C_binder.html">5. Binder</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2_resources.html">1. Resources and references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_databases.html">2. Data Storage, Sharing, and Databases for Electrophysiology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_installing_python.html">3. Appendix A: Installing Python and some tools</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Jupyter Ecosystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C_binder.html">5. Binder</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf">Download PDF</a></li>
 </ul>
 
@@ -256,7 +256,7 @@
       
       
       
-      <li><a href="../../../../../../_sources/jupyter-env/lib/python3.9/site-packages/a11y_pygments/greative/README.md" target="_blank"
+      <li><a href="_sources/B_jupyter.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -266,7 +266,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -340,7 +340,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Greative</h1>
+    <h1>Jupyter Ecosystem</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -350,7 +350,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colors">Colors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-computing-with-jupyter-ecosystem">4.1. Interactive Computing with Jupyter Ecosystem</a></li>
 </ul>
             </nav>
         </div>
@@ -362,70 +362,34 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="greative">
-<h1>Greative<a class="headerlink" href="#greative" title="Link to this heading">#</a></h1>
-<p>This style mimics greative theme from vscode themes.</p>
-<p><img alt="Screenshot of the greative theme in a bash script" src="../../../../../../_images/greative.png" /></p>
-<section id="colors">
-<h2>Colors<a class="headerlink" href="#colors" title="Link to this heading">#</a></h2>
-<p>Background color: <img alt="#010726" src="https://via.placeholder.com/20/010726/010726.png" /> <code class="docutils literal notranslate"><span class="pre">#010726</span></code></p>
-<p>Highlight color: <img alt="#473d18" src="https://via.placeholder.com/20/473d18/473d18.png" /> <code class="docutils literal notranslate"><span class="pre">#473d18</span></code></p>
-<p><strong>WCAG compliance</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Color</p></th>
-<th class="head"><p>Hex</p></th>
-<th class="head"><p>Ratio</p></th>
-<th class="head"><p>Normal text</p></th>
-<th class="head"><p>Large text</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><img alt="#797979" src="../../../../../../_images/797979.png" /></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#797979</span></code></p></td>
-<td><p>4.6 : 1</p></td>
-<td><p>AA</p></td>
-<td><p>AAA</p></td>
-</tr>
-<tr class="row-odd"><td><p><img alt="#f78c6c" src="../../../../../../_images/f78c6c.png" /></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#f78c6c</span></code></p></td>
-<td><p>8.4 : 1</p></td>
-<td><p>AAA</p></td>
-<td><p>AAA</p></td>
-</tr>
-<tr class="row-even"><td><p><img alt="#9e8741" src="../../../../../../_images/9e8741.png" /></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#9e8741</span></code></p></td>
-<td><p>5.7 : 1</p></td>
-<td><p>AA</p></td>
-<td><p>AAA</p></td>
-</tr>
-<tr class="row-odd"><td><p><img alt="#c5e478" src="../../../../../../_images/c5e478.png" /></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#c5e478</span></code></p></td>
-<td><p>13.9 : 1</p></td>
-<td><p>AAA</p></td>
-<td><p>AAA</p></td>
-</tr>
-<tr class="row-even"><td><p><img alt="#a2bffc" src="../../../../../../_images/a2bffc.png" /></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#a2bffc</span></code></p></td>
-<td><p>10.8 : 1</p></td>
-<td><p>AAA</p></td>
-<td><p>AAA</p></td>
-</tr>
-<tr class="row-odd"><td><p><img alt="#5ca7e4" src="../../../../../../_images/5ca7e4.png" /></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#5ca7e4</span></code></p></td>
-<td><p>7.6 : 1</p></td>
-<td><p>AAA</p></td>
-<td><p>AAA</p></td>
-</tr>
-<tr class="row-even"><td><p><img alt="#9e86c8" src="../../../../../../_images/9e86c8.png" /></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">#9e86c8</span></code></p></td>
-<td><p>6.3 : 1</p></td>
-<td><p>AA</p></td>
-<td><p>AAA</p></td>
-</tr>
-</tbody>
-</table>
+  <section class="tex2jax_ignore mathjax_ignore" id="jupyter-ecosystem">
+<h1><span class="section-number">4. </span>Jupyter Ecosystem<a class="headerlink" href="#jupyter-ecosystem" title="Link to this heading">#</a></h1>
+<section id="interactive-computing-with-jupyter-ecosystem">
+<h2><span class="section-number">4.1. </span>Interactive Computing with Jupyter Ecosystem<a class="headerlink" href="#interactive-computing-with-jupyter-ecosystem" title="Link to this heading">#</a></h2>
+<p>The Jupyter ecosystem evolved to make computing <strong>interactive, reproducible, and shareable</strong>. It began with <a class="reference external" href="https://ipython.org">IPython</a>, an enhanced Python shell for rapid experimentation, and expanded into <a class="reference external" href="https://jupyter.org">Jupyter</a> to support multiple languages through a decoupled kernel-interface model. <a class="reference external" href="https://jupyter.org">Jupyter Notebook</a> introduced a web-based environment combining code, outputs, and narrative text, ideal for teaching, research, and data analysis. <a class="reference external" href="https://jupyter.org">JupyterLab</a> provides a modern, flexible workspace for managing notebooks, scripts, and data in complex projects. Finally, <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter{book}</a> allows structured, publication-quality books and websites to be built from notebooks and Markdown, fully executable and shareable. Together, these tools address the need for <strong>interactive coding, reproducibility, multi-language support, and clear communication of computational results</strong>, even beyond Python:</p>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://jupyter.org">Jupyter</a></strong> is an open-source project that evolved from <a class="reference external" href="https://ipython.org">IPython</a>. IPython originally provided an enhanced interactive Python shell, with powerful features like introspection, rich media, and tab-completion, making Python more user-friendly for experimentation and data analysis. Jupyter extended this idea to <strong>multiple programming languages</strong> (Python, R, Julia, and more) by separating the <strong>kernel</strong> (which executes code) from the <strong>interface</strong> (which displays results interactively).</p></li>
+<li><p><strong><a class="reference external" href="https://jupyter.org">Jupyter Notebook</a></strong> builds on this foundation, providing a web-based interactive environment where users can write and execute code, display rich outputs (plots, images, LaTeX, widgets), and combine them with narrative text. This allows notebooks to serve as <strong>reproducible documents</strong> for data analysis, teaching, and scientific communication.</p></li>
+<li><p><strong><a class="reference external" href="https://jupyterlab.readthedocs.io/en/latest/">JupyterLab</a></strong> is the next-generation interface for Jupyter, offering a <strong>modular, flexible environment</strong> where users can work with notebooks, text editors, terminals, and data files all in one workspace. It improves productivity for complex projects, supports extensions, and makes multi-document workflows smoother than classic notebooks.</p></li>
+<li><p><strong><a class="reference external" href="https://jupyterbook.org/">Jupyter{book}</a></strong> extends the Jupyter ecosystem by allowing users to turn <strong>collections of notebooks and Markdown files into interactive, publication-quality books and websites</strong>. Unlike standalone notebooks, Jupyter Books provide structured chapters, table-of-contents, cross-references, and can be executed to show live outputs, making them ideal for teaching, tutorials, and reproducible scientific publications.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Jupyter Ecosystem Evolution (approximate years)
+==============================================
+
+IPython (2001) – interactive Python shell
+        │
+        ▼
+Jupyter (2014) – multi-language kernel architecture
+        │
+        ├── Jupyter Notebook (2015) – web-based interactive notebooks
+        │
+        ├── JupyterLab (2018) – modern IDE-like workspace for notebooks &amp; files
+        │
+        └── Jupyter{book} (2018+) – structured, publication-quality books from notebooks &amp; Markdown
+</pre></div>
 </div>
+<p><a class="reference external" href="https://jupyter.org">Jupyter</a> is an open-source project that evolved from <a class="reference external" href="https://ipython.org">IPython</a>, providing interactive computing environments for Python (and other languages), and serving as the foundation for tools like Jupyter Notebook and Jupyter Book.</p>
+<p><a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter{book}</a> is a tool to create interactive, publication-quality books and websites from Jupyter notebooks and Markdown files.</p>
 </section>
 </section>
 
@@ -442,7 +406,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./jupyter-env/lib/python3.9/site-packages/a11y_pygments/greative"
+            path: "./."
         },
         predefinedOutput: true
     }
@@ -459,6 +423,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="A_installing_python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Appendix A: Installing Python and some tools</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="C_binder.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Binder</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -475,7 +457,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colors">Colors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-computing-with-jupyter-ecosystem">4.1. Interactive Computing with Jupyter Ecosystem</a></li>
 </ul>
   </nav></div>
 
@@ -524,8 +506,8 @@ By Fabien Campillo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
