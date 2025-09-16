@@ -1,28 +1,57 @@
+# ----------------------------
+# Book Metadata
+# ----------------------------
 title: "Data Sciences and Spikes"
 author: "Fabien Campillo"
 execute:
   execute_notebooks: auto
 logo: "pics/logo_title.png"
 copyright: "This book is distributed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike)"
-latex:
-  latex_engine: xelatex
-  latex_documents:
-    targetname: "Spikes-Data-Sciences.tex"
+
+# ----------------------------
+# Repository / GitHub buttons
+# ----------------------------
 repository:
   url: "https://github.com/yourusername/data-science-spikes"
   branch: main
   path_to_book: ""
+
+# ----------------------------
+# HTML Configuration
+# ----------------------------
 html:
   favicon: pics/favicon.ico
   use_repository_button: true
   use_download_button: true
   extra_navbar: |
     <hr>
-    <a href="spikes-data-sciences.pdf" target="_blank">📄 Download PDF</a>
+    <a href="Spikes-Data-Sciences.pdf" target="_blank">📄 Download PDF</a>
+
+# ----------------------------
+# Exclude patterns
+# ----------------------------
 exclude_patterns:
   - .virtual_documents/*
-sphinx:
-  config:
-    latex_elements:
-      maketitle: |
-        \input{_templates/latex/titlepage.tex}
+
+# ----------------------------
+# LaTeX / PDF Configuration
+# ----------------------------
+latex:
+  latex_engine: xelatex
+  latex_documents:
+    targetname: "Spikes-Data-Sciences.tex"
+  latex_elements:
+    # Packages
+    preamble: |
+      \usepackage{graphicx}  % needed for including images
+    # Custom title page
+    maketitle: |
+      \begin{titlepage}
+        \centering
+        \vspace*{2cm}
+        \includegraphics[width=0.4\textwidth]{pics/Spikes-Data-Sciences.pdf} % PDF logo for LaTeX
+        \vspace{2cm}
+        {\Huge \textbf{\@title}} \\[1cm]
+        {\Large \@author} \\[1cm]
+        \@date
+      \end{titlepage}
