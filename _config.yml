@@ -37,11 +37,9 @@ latex:
     targetname: "Spikes-Data-Sciences.tex"
   latex_elements:
     preamble: |
-      \usepackage{emoji}  latex_elements:
-    fontpkg: |
-      \setmainfont{FreeSerif}
-      \newfontfamily\emoji{NotoColorEmoji}
-      
+      \usepackage{emoji}       % use the LaTeX emoji package
+      \setmainfont{FreeSerif}  % main font
+     
 #######################################################################################
 # Parse and render settings
 parse:
