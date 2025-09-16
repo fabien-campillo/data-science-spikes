@@ -32,13 +32,13 @@ exclude_patterns:
 #######################################################################################
 # LaTeX-specific settings
 latex:
-  latex_engine: xelatex
+  latex_engine: LuaLaTeX
   latex_documents:
     targetname: "Spikes-Data-Sciences.tex"
-  latex_elements:
-    preamble: |
-      \usepackage{emoji}       % use the LaTeX emoji package
-      \setmainfont{FreeSerif}  % main font
+#  latex_elements:
+#    preamble: |
+#      \usepackage{emoji}       % use the LaTeX emoji package
+#      \setmainfont{FreeSerif}  % main font
      
 #######################################################################################
 # Parse and render settings
@@ -47,10 +47,13 @@ parse:
     - dollarmath
     - colon_fence
 
-#sphinx:
-#  config:
-#    latex_elements:
-#      fontpkg: |
+sphinx:
+  config:
+    latex_elements:
+      preamble: |
+        \usepackage{emoji}       % use the LaTeX emoji package
+        \setmainfont{FreeSerif}  % main font
+#       fontpkg: |
 #        \setmainfont{FreeSerif}
 #        \newfontfamily\emoji{Noto Color Emoji}
 #        \newfontfamily\emoji{NotoEmoji-Regular.ttf}
