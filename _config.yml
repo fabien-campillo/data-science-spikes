@@ -35,6 +35,10 @@ latex:
   latex_engine: xelatex
   latex_documents:
     targetname: "Spikes-Data-Sciences.tex"
+  latex_elements:
+    fontpkg: |
+      \setmainfont{FreeSerif}
+      \newfontfamily\emoji{Noto Color Emoji}
 
 #######################################################################################
 # Parse and render settings
