@@ -35,3 +35,8 @@ html:
     <a href="spikes-data-sciences.pdf" target="_blank">📄 Download PDF</a>
 exclude_patterns:
   - .virtual_documents/*
+sphinx:
+  config:
+    latex_elements:
+      maketitle: |
+        \input{titlepage}
