@@ -15,7 +15,7 @@ jupyter-book build .
 # 4️⃣ Générer le PDF seulement si demandé avec "-pdf"
 if [[ "$1" == "-pdf" ]]; then
     echo "📄 Génération du PDF..."
-    jupyter-book build . --builder pdflatex
+    jupyter-book build . --builder latexpdf
 
     # 4️⃣a Renommer et copier le PDF (par défaut: projectnamenotset.pdf)
     cp _build/latex/Spikes-Data-Sciences.pdf pdf/Spikes-Data-Sciences.pdf
