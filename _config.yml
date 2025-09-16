@@ -35,3 +35,10 @@ latex:
   latex_engine: xelatex
   latex_documents:
     targetname: "Spikes-Data-Sciences.tex"
+
+#######################################################################################
+# Parse and render settings
+parse:
+  myst_enable_extensions:
+    - dollarmath
+    - colon_fence
