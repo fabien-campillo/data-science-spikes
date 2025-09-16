@@ -35,6 +35,7 @@ exclude_patterns:
 
 # ----------------------------
 # LaTeX / PDF Configuration
+# les "  latex_elements:" ne marchent pas
 # ----------------------------
 latex:
   latex_engine: xelatex
