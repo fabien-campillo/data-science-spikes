@@ -55,3 +55,4 @@ latex:
         {\Large \@author} \\[1cm]
         \@date
       \end{titlepage}
+
