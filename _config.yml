@@ -32,7 +32,7 @@ exclude_patterns:
 #######################################################################################
 # LaTeX-specific settings
 latex:
-  latex_engine: LuaLaTeX
+  latex_engine: xelatex
   latex_documents:
     targetname: "Spikes-Data-Sciences.tex"
 #  latex_elements:
