@@ -367,6 +367,39 @@ document.write(`
 <li><p>les <a class="reference external" href="https://jupyterbook.org/en/stable/content/content-blocks.html">content-blocks</a> sont parfait pour le jupyter-book mais disparaissent dans le PDF</p></li>
 </ul>
 <p>Grater du coté de sphynx ?</p>
+<p>en dessous les latex_elements ne fonctionnent pas</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># ----------------------------
+# LaTeX / PDF Configuration
+# les &quot;  latex_elements:&quot; ne marchent pas
+# ----------------------------
+latex:
+  latex_engine: xelatex
+  latex_documents:
+    targetname: &quot;Spikes-Data-Sciences.tex&quot;
+  latex_elements:
+    # Packages
+    preamble: |
+      \usepackage{graphicx}  % needed for including images
+      \usepackage{xcolor}
+      \usepackage{tcolorbox}
+      % Define LaTeX boxes for callouts
+      \newtcolorbox{notebox}{colback=blue!10!white,colframe=blue!50!black,title=Note}
+      \newtcolorbox{tipbox}{colback=green!10!white,colframe=green!50!black,title=Tip}
+      \newtcolorbox{warningbox}{colback=yellow!10!white,colframe=orange!50!black,title=Warning}
+      \newtcolorbox{importantbox}{colback=red!10!white,colframe=red!50!black,title=Important}          # Custom title page
+    maketitle: |
+      \begin{titlepage}
+        \centering
+        \vspace*{2cm}
+        \includegraphics[width=0.4\textwidth]{pics/Spikes-Data-Sciences.pdf} % PDF logo for LaTeX
+        \vspace{2cm}
+        {\Huge \textbf{\@title}} \\[1cm]
+        {\Large \@author} \\[1cm]
+        \@date
+      \end{titlepage}
+
+</pre></div>
+</div>
 
     <script type="text/x-thebe-config">
     {
