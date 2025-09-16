@@ -366,7 +366,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">Summary Table</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">2.6. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gateways-with-python">2.6. Gateways with Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">2.7. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library"><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
@@ -638,27 +639,36 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 <td><p>Electrophysiology (patch-clamp, voltage/current recordings)</p></td>
 <td><p>Widely used in labs with Molecular Devices equipment</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>IBW (Igor Binary Wave)</strong></p></td>
-<td><p><strong>WaveMetrics, Inc.</strong></p></td>
-<td><p><strong>Proprietary</strong> (closed format, documentation partly available)</p></td>
-<td><p>Requires <strong>Igor Pro</strong> (commercial software). Some third-party libraries exist to read IBW for free</p></td>
-<td><p>General scientific data analysis and visualization</p></td>
-<td><p>Popular in biophysics, neuroscience, spectroscopy</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>NWB (Neurodata Without Borders)</strong></p></td>
+<tr class="row-odd"><td><p><strong>NWB (Neurodata Without Borders)</strong></p></td>
 <td><p>Community-driven (Allen Institute, HHMI Janelia, Berkeley Lab, INCF, etc.)</p></td>
 <td><p><strong>Fully open-source</strong> and community standard</p></td>
 <td><p><strong>Free</strong> (developed and maintained openly on GitHub)</p></td>
 <td><p>Standardized storage/sharing of neuroscience data (e-phys, imaging, behavioral, metadata)</p></td>
 <td><p>Growing adoption in large-scale projects, especially for data sharing and FAIR science</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>IBW (Igor Binary Wave)</strong></p></td>
+<td><p><strong>WaveMetrics, Inc.</strong></p></td>
+<td><p><strong>Proprietary</strong> (closed format, documentation partly available)</p></td>
+<td><p>Requires <strong>Igor Pro</strong> (commercial software). Some third-party libraries exist to read IBW for free</p></td>
+<td><p>General scientific data analysis and visualization</p></td>
+<td><p>Popular in biophysics, neuroscience, spectroscopy</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 </section>
 </section>
+<section id="gateways-with-python">
+<h2><span class="section-number">2.6. </span>Gateways with Python<a class="headerlink" href="#gateways-with-python" title="Link to this heading">#</a></h2>
+<p>Formats commonly used in electrophysiology (ABF, NBW, IBW) are not always straightforward to handle. Fortunately, several Python libraries act as gateways to read and convert:</p>
+<ul class="simple">
+<li><p><strong>pynwb</strong> <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/">doc</a> <a class="reference external" href="https://github.com/NeurodataWithoutBorders">github</a> python interface for NWB</p></li>
+<li><p><strong>pyabf</strong> <a class="reference external" href="https://github.com/swharden/pyABF">github</a> see also <a class="reference external" href="https://github.com/nkicg6/ABF_Explorer">abf explorer</a>,  a simple graphical application for quickly viewing axon binary format (ABF).</p></li>
+<li><p>IBW (Igor Binary Wave) is a bit less active in the Python: <a class="reference external" href="https://github.com/AFM-analysis/igor2">igor2</a> Python parser for Igor Binary Waves (.ibw) and Packed Experiment (.pxp) files written by WaveMetrics’ IGOR Pro software.</p></li>
+</ul>
+</section>
 <section id="exploring-abf-files">
-<h2><span class="section-number">2.6. </span>Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files<a class="headerlink" href="#exploring-abf-files" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.7. </span>Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files<a class="headerlink" href="#exploring-abf-files" title="Link to this heading">#</a></h2>
 <p>This first notebook aims to demonstrate how to analyze electrophysiological recordings from a single cell by:</p>
 <ul class="simple">
 <li><p>Extracting basic characteristics of the recorded signals.</p></li>
@@ -1215,7 +1225,8 @@ ABF File: lhb_bursting/cell209basal.abf    Sweep Number:   4
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">Summary Table</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">2.6. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gateways-with-python">2.6. Gateways with Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">2.7. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library"><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
