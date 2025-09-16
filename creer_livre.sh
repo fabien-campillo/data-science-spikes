@@ -15,7 +15,7 @@ jupyter-book build .
 # 4️⃣ Générer le PDF seulement si demandé avec "-pdf"
 if [[ "$1" == "-pdf" ]]; then
     echo "📄 Génération du PDF..."
-    jupyter-book build . --builder latexpdf
+    jupyter-book build . --builder pdflatex
 
     # 4️⃣a Renommer et copier le PDF (par défaut: projectnamenotset.pdf)
     cp _build/latex/Spikes-Data-Sciences.pdf pdf/Spikes-Data-Sciences.pdf
@@ -33,3 +33,4 @@ git push -u origin main
 
 # 7️⃣ Publier le site sur GitHub Pages (branche gh-pages)
 ghp-import -n -p -f _build/html
+
