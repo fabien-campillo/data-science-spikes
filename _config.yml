@@ -12,7 +12,7 @@ copyright: "This book is distributed under CC BY-NC-SA 4.0 (Creative Commons Att
 # Repository / GitHub buttons
 # ----------------------------
 repository:
-  url: "https://github.com/yourusername/data-science-spikes"
+  url: "https://github.com/fabien-campillo/data-science-spikes"
   branch: main
   path_to_book: ""
 
