@@ -39,7 +39,8 @@ latex:
     fontpkg: |
       \setmainfont{FreeSerif}
       \newfontfamily\emoji{NotoColorEmoji}
-      \newfontfamily\emoji{NotoEmoji-Regular.ttf}
+      \usepackage{emoji}
+      
 #######################################################################################
 # Parse and render settings
 parse:
@@ -47,12 +48,12 @@ parse:
     - dollarmath
     - colon_fence
 
-sphinx:
-  config:
-    latex_elements:
-      fontpkg: |
-        \setmainfont{FreeSerif}
-        \newfontfamily\emoji{Noto Color Emoji}
-        \newfontfamily\emoji{NotoEmoji-Regular.ttf}
+#sphinx:
+#  config:
+#    latex_elements:
+#      fontpkg: |
+#        \setmainfont{FreeSerif}
+#        \newfontfamily\emoji{Noto Color Emoji}
+#        \newfontfamily\emoji{NotoEmoji-Regular.ttf}
 #    fc-list | grep "FreeSerif"
 #    fc-list | grep "Noto Color Emoji"
