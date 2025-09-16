@@ -1,6 +1,5 @@
-# ----------------------------
-# Book Metadata
-# ----------------------------
+#######################################################################################
+# Book settings
 title: "Data Sciences and Spikes"
 author: "Fabien Campillo"
 execute:
@@ -8,17 +7,15 @@ execute:
 logo: "pics/logo_title.png"
 copyright: "This book is distributed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike)"
 
-# ----------------------------
-# Repository / GitHub buttons
-# ----------------------------
+#######################################################################################
+# Repository settings
 repository:
   url: "https://github.com/fabien-campillo/data-science-spikes"
   branch: main
   path_to_book: ""
 
-# ----------------------------
-# HTML Configuration
-# ----------------------------
+#######################################################################################
+# HTML-specific settings
 html:
   favicon: pics/favicon.ico
   use_repository_button: true
@@ -27,16 +24,13 @@ html:
     <hr>
     <a href="Spikes-Data-Sciences.pdf" target="_blank">📄 Download PDF</a>
 
-# ----------------------------
+#######################################################################################
 # Exclude patterns
-# ----------------------------
 exclude_patterns:
   - .virtual_documents/*
 
-# ----------------------------
-# LaTeX / PDF Configuration
-# les "  latex_elements:" ne marchent pas
-# ----------------------------
+#######################################################################################
+# LaTeX-specific settings
 latex:
   latex_engine: xelatex
   latex_documents:
