@@ -32,13 +32,13 @@ exclude_patterns:
 #######################################################################################
 # LaTeX-specific settings
 latex:
-  latex_engine: lualatex
+  latex_engine: pdflatex
   latex_documents:
     targetname: "Spikes-Data-Sciences.tex"
-  latex_elements:
-    preamble: |
-      \usepackage{emoji}       % use the LaTeX emoji package
-      \setmainfont{FreeSerif}  % main font
+#  latex_elements:
+#    preamble: |
+#      \usepackage{emoji}       % use the LaTeX emoji package
+#      \setmainfont{FreeSerif}  % main font
      
 #######################################################################################
 # Parse and render settings
