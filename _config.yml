@@ -11,12 +11,11 @@ latex:
   latex_elements:
     preamble: |
       \usepackage{graphicx}
-      \usepackage{svg}
       \renewcommand{\maketitle}{
         \begin{titlepage}
           \centering
           \vspace*{2cm}
-          \includesvg[width=0.4\textwidth]{_static/pics/logo_data_science_spikes.svg} % or \includegraphics for PNG
+          \includegraphics[width=0.4\textwidth]{_static/pics/logo_data_science_spikes.pdf} % or \includegraphics for PNG
           \vspace{2cm}
           {\Huge \textbf{\@title}} \\[1cm]
           {\Large \@author} \\[1cm]
