@@ -49,3 +49,5 @@ sphinx:
       fontpkg: |
         \setmainfont{FreeSerif}
         \newfontfamily\emoji{Noto Color Emoji}
+#    fc-list | grep "FreeSerif"
+#    fc-list | grep "Noto Color Emoji"
