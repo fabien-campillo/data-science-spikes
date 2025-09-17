@@ -35,11 +35,12 @@ latex:
   latex_engine: pdflatex
   latex_documents:
     targetname: "Spikes-Data-Sciences.tex"
+  latex_elements:
+    papersize: a4paper     
 #  latex_elements:
 #    preamble: |
 #      \usepackage{emoji}       % use the LaTeX emoji package
 #      \setmainfont{FreeSerif}  % main font
-     
 #######################################################################################
 # Parse and render settings
 parse:
