@@ -559,9 +559,9 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 <section id="databases">
 <h2>Databases<a class="headerlink" href="#databases" title="Link to this heading">#</a></h2>
 <p>By the way, data really matter! You can look at the Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_neuroscience_databases">list of neuroscience databases</a>. We will consider four of them.</p>
-<hr class="docutils" />
 <section id="nlm-dataset-catalog">
 <h3>NLM Dataset Catalog<a class="headerlink" href="#nlm-dataset-catalog" title="Link to this heading">#</a></h3>
+<hr class="docutils" />
 <p><a class="reference external" href="https://datasetcatalog.nlm.nih.gov">NLM Dataset Catalog</a> is a  catalog of biomedical datasets from various repositories, NIH National Library of Medecine  (NIH/NLM).</p>
 <ul class="simple">
 <li><p>The NLM Dataset Catalog is essentially a registry pointing to datasets, not a direct host.</p></li>
@@ -569,10 +569,10 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 <li><p>If the dataset is downloadable via URL, you can use requests or wget in Python to fetch the .abf files, then open with pyabf.</p></li>
 <li><p>No standard Python API for the catalog itself, but you can scrape metadata via their JSON endpoints (if provided per dataset).</p></li>
 </ul>
-<hr class="docutils" />
 </section>
 <section id="dryad">
 <h3>Dryad<a class="headerlink" href="#dryad" title="Link to this heading">#</a></h3>
+<hr class="docutils" />
 <p><a class="reference external" href="https://datadryad.org/about">Dryad</a> (DAta Archive for Neuroscience DIscovery) is an open data publishing platform and a community committed to the open availability and routine re-use of all research data.</p>
 <ul class="simple">
 <li><p>Dryad datasets are hosted at <a class="reference internal" href="#datadryad.org"><span class="xref myst">datadryad.org</span></a>.</p></li>
@@ -601,10 +601,10 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 
 </pre></div>
 </div>
-<hr class="docutils" />
 </section>
 <section id="dandi-archive">
 <h3>Dandi Archive<a class="headerlink" href="#dandi-archive" title="Link to this heading">#</a></h3>
+<hr class="docutils" />
 <p><a class="reference external" href="https://dandiarchive.org">Dandi Archive</a> (Distributed Archive for Neuroscience Data Integration) is the BRAIN Initiative archive for publishing and sharing neurophysiology data including electrophysiology, optophysiology, and behavioral time-series, and images from immunostaining experiments.</p>
 <ul class="simple">
 <li><p>DANDI hosts primarily neurophysiology data in NWB (Neurodata Without Borders) format (<a class="reference external" href="https://docs.dandiarchive.org/user-guide-sharing/converting-data/">link</a>, not ABF.</p></li>
@@ -621,10 +621,10 @@ dandi<span class="w"> </span>download<span class="w"> </span>DANDI:000003<span c
 </div>
 <p>If the dataset includes <code class="docutils literal notranslate"><span class="pre">.abf</span></code> files (rare, usually <code class="docutils literal notranslate"><span class="pre">NWB</span></code>), you can load them directly with <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>.
 More commonly, you’d work with NWB using <code class="docutils literal notranslate"><span class="pre">pynwb</span></code>, not <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>.</p>
-<hr class="docutils" />
 </section>
 <section id="zenodo">
 <h3>Zenodo<a class="headerlink" href="#zenodo" title="Link to this heading">#</a></h3>
+<hr class="docutils" />
 <p><a class="reference external" href="https://zenodo.org">zenodo.org</a> (named after Zenodotus, the first librarian of Alexandria) is an open-access research data repository built and hosted by CERN (the European Organization for Nuclear Research), with support from the European Commission.</p>
 <ul class="simple">
 <li><p>Zenodo provides a REST API: <a class="reference external" href="https://zenodo.org/api/">https://zenodo.org/api/</a>.</p></li>
