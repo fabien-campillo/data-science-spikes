@@ -15,7 +15,7 @@ jupyter-book build .
 # 4️⃣ Générer le PDF seulement si demandé avec "-pdf"
 if [[ "$1" == "-pdf" ]]; then
     echo "📄 Génération du PDF..."
-    jupyter-book build . --builder lualatex
+    jupyter-book build . --builder pdflatex
 
     # adding a title page and a blank page (difficult to do it with sphinx)
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=pdf/Spikes-Data-Sciences_temp.pdf pdf/blank_page.pdf _build/latex/Spikes-Data-Sciences.pdf 
