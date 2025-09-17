@@ -561,7 +561,6 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 <p>By the way, data really matter! You can look at the Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_neuroscience_databases">list of neuroscience databases</a>. We will consider four of them.</p>
 <section id="nlm-dataset-catalog">
 <h3>NLM Dataset Catalog<a class="headerlink" href="#nlm-dataset-catalog" title="Link to this heading">#</a></h3>
-<hr class="docutils" />
 <p><a class="reference external" href="https://datasetcatalog.nlm.nih.gov">NLM Dataset Catalog</a> is a  catalog of biomedical datasets from various repositories, NIH National Library of Medecine  (NIH/NLM).</p>
 <ul class="simple">
 <li><p>The NLM Dataset Catalog is essentially a registry pointing to datasets, not a direct host.</p></li>
@@ -572,7 +571,6 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 </section>
 <section id="dryad">
 <h3>Dryad<a class="headerlink" href="#dryad" title="Link to this heading">#</a></h3>
-<hr class="docutils" />
 <p><a class="reference external" href="https://datadryad.org/about">Dryad</a> (DAta Archive for Neuroscience DIscovery) is an open data publishing platform and a community committed to the open availability and routine re-use of all research data.</p>
 <ul class="simple">
 <li><p>Dryad datasets are hosted at <a class="reference internal" href="#datadryad.org"><span class="xref myst">datadryad.org</span></a>.</p></li>
@@ -604,7 +602,6 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 </section>
 <section id="dandi-archive">
 <h3>Dandi Archive<a class="headerlink" href="#dandi-archive" title="Link to this heading">#</a></h3>
-<hr class="docutils" />
 <p><a class="reference external" href="https://dandiarchive.org">Dandi Archive</a> (Distributed Archive for Neuroscience Data Integration) is the BRAIN Initiative archive for publishing and sharing neurophysiology data including electrophysiology, optophysiology, and behavioral time-series, and images from immunostaining experiments.</p>
 <ul class="simple">
 <li><p>DANDI hosts primarily neurophysiology data in NWB (Neurodata Without Borders) format (<a class="reference external" href="https://docs.dandiarchive.org/user-guide-sharing/converting-data/">link</a>, not ABF.</p></li>
@@ -624,7 +621,6 @@ More commonly, you’d work with NWB using <code class="docutils literal notrans
 </section>
 <section id="zenodo">
 <h3>Zenodo<a class="headerlink" href="#zenodo" title="Link to this heading">#</a></h3>
-<hr class="docutils" />
 <p><a class="reference external" href="https://zenodo.org">zenodo.org</a> (named after Zenodotus, the first librarian of Alexandria) is an open-access research data repository built and hosted by CERN (the European Organization for Nuclear Research), with support from the European Commission.</p>
 <ul class="simple">
 <li><p>Zenodo provides a REST API: <a class="reference external" href="https://zenodo.org/api/">https://zenodo.org/api/</a>.</p></li>
@@ -655,9 +651,9 @@ More commonly, you’d work with NWB using <code class="docutils literal notrans
 <h2>Gateways with Python<a class="headerlink" href="#gateways-with-python" title="Link to this heading">#</a></h2>
 <p>Formats commonly used in electrophysiology (ABF, NBW, IBW) are not always straightforward to handle. Fortunately, several Python libraries act as gateways to read and convert:</p>
 <ul class="simple">
-<li><p><strong>pynwb</strong> <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/">doc</a> <a class="reference external" href="https://github.com/NeurodataWithoutBorders">github</a> python interface for NWB</p></li>
-<li><p><strong>pyabf</strong> <a class="reference external" href="https://github.com/swharden/pyABF">github</a> see also <a class="reference external" href="https://github.com/nkicg6/ABF_Explorer">abf explorer</a>,  a simple graphical application for quickly viewing axon binary format (ABF).</p></li>
-<li><p>IBW (Igor Binary Wave) is a bit less active in the Python: <a class="reference external" href="https://github.com/AFM-analysis/igor2">igor2</a> Python parser for Igor Binary Waves (.ibw) and Packed Experiment (.pxp) files written by WaveMetrics’ IGOR Pro software.</p></li>
+<li><p><strong>PyNWB</strong>  is a Python package for working with NWB files (<a class="reference external" href="https://pynwb.readthedocs.io/en/stable/">doc</a> <a class="reference external" href="https://github.com/NeurodataWithoutBorders">github</a>).</p></li>
+<li><p><strong>pyabf</strong>  is a Python library for reading electrophysiology data from Axon Binary Format (ABF) files (<a class="reference external" href="https://github.com/swharden/pyABF">github</a>), see also <a class="reference external" href="https://github.com/nkicg6/ABF_Explorer">abf explorer</a>,  a simple graphical application for quickly viewing axon binary format (ABF).</p></li>
+<li><p>IBW (Igor Binary Wave) is a Python parser for IBW  (.ibw) and Packed Experiment (.pxp) files written by WaveMetrics’ IGOR Pro software (see  <a class="reference external" href="https://github.com/AFM-analysis/igor2">igor2</a>). IBW is a bit less active in Python.</p></li>
 </ul>
 </section>
 <section id="exploring-abf-files">
