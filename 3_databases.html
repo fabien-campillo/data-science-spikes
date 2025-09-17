@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Data Storage, Sharing, and Databases for Electrophysiology &#8212; Data Sciences and Spikes</title>
+    <title>Electrophysiology Data &#8212; Data Sciences and Spikes</title>
   
   
   
@@ -183,7 +183,7 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Content</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2_resources.html">Resources and references</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Storage, Sharing, and Databases for Electrophysiology</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Electrophysiology Data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -344,7 +344,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Storage, Sharing, and Databases for Electrophysiology</h1>
+    <h1>Electrophysiology Data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -354,22 +354,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">Databases</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-databases-in-electrophysiology">Main databases in electrophysiology</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-nlm-dryad-dandi-and-zenodo">Focus on NLM, Dryad, Dandi, and Zenodo</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nlm-dataset-catalog-nih-nlm">NLM Dataset Catalog (NIH/NLM)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dryad">Dryad</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dandi-archive">DANDI Archive</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zenodo">Zenodo</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-reading-and-sharing-electrophysiology-records">Storing, reading, and  sharing electrophysiology records</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-electrophysiology-recordings">Types of Electrophysiology Recordings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-electrophysiology-data-formats">Common Electrophysiology Data Formats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#most-used-electrophysiology-data-formats">Most Used Electrophysiology Data Formats</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">Summary Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nlm-dataset-catalog">NLM Dataset Catalog</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dryad">Dryad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dandi-archive">Dandi Archive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zenodo">Zenodo</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gateways-with-python">Gateways with Python</a></li>
@@ -410,112 +405,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-storage-sharing-and-databases-for-electrophysiology">
-<h1>Data Storage, Sharing, and Databases for Electrophysiology<a class="headerlink" href="#data-storage-sharing-and-databases-for-electrophysiology" title="Link to this heading">#</a></h1>
-<section id="databases">
-<h2>Databases<a class="headerlink" href="#databases" title="Link to this heading">#</a></h2>
-<section id="main-databases-in-electrophysiology">
-<h3>Main databases in electrophysiology<a class="headerlink" href="#main-databases-in-electrophysiology" title="Link to this heading">#</a></h3>
-<p>By the way, data really matter! First you can look at the Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_neuroscience_databases">List of neuroscience databases</a>, and at among many:</p>
-<ul class="simple">
-<li><p><strong><a class="reference external" href="https://datasetcatalog.nlm.nih.gov">NLM Dataset Catalog</a></strong>  - A catalog of biomedical datasets from various repositories, NIH National Library of Medecine.</p></li>
-<li><p><strong><a class="reference external" href="https://datadryad.org/about">Dryad</a></strong> - An open data publishing platform and a community committed to the open availability and routine re-use of all research data. Examples of data sets:</p>
-<ul>
-<li><p>a <a class="reference external" href="https://datadryad.org/dataset/doi:10.5061/dryad.k0p2ngfgm">dataset</a>  presenting electrophysiological properties from whole-cell patch clamped nucleus accumbens core medium spiny neurons from male rats and female rats recorded in different estrous cycle phases.</p></li>
-<li><p>a <a class="reference external" href="https://datadryad.org/dataset/doi:10.5061/dryad.66t1g1k2w">dataset</a> containing whole-cell electrophysiological recordings (patch-clamp recordings) from three cell types in mice.</p></li>
-</ul>
-</li>
-<li><p><strong><a class="reference external" href="https://dandiarchive.org">Dandi Archive</a></strong>  - The BRAIN Initiative archive for publishing and sharing neurophysiology data including electrophysiology, optophysiology, and behavioral time-series, and images from immunostaining experiments. Example of data sets:</p>
-<ul>
-<li><p><a class="reference external" href="https://dandiarchive.org/dandiset/000020/0.210913.1639">Patch-seq recordings from mouse visual cortex</a>. Whole-cell Patch-seq recordings from neurons of the mouse visual cortex from the Allen Institute for Brain Science, released in June 2020. The majority of cells in this dataset are GABAergic interneurons, but there are also a small number of glutamatergic neurons from layer 2/3 of the mouse visual cortex.</p></li>
-</ul>
-</li>
-<li><p><strong><a class="reference external" href="https://zenodo.org">zenodo.org</a></strong> - An open-access research data repository built and hosted by CERN (the European Organization for Nuclear Research), with support from the European Commission. Example of data sets:</p>
-<ul>
-<li><p>a <a class="reference external" href="https://zenodo.org/records/17794">data set</a>  of CA1 pyramidal cell recordings using an intact whole hippocampus preparation, including recordings of rebound firing (V2).</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="focus-on-nlm-dryad-dandi-and-zenodo">
-<h3>Focus on NLM, Dryad, Dandi, and Zenodo<a class="headerlink" href="#focus-on-nlm-dryad-dandi-and-zenodo" title="Link to this heading">#</a></h3>
-<section id="nlm-dataset-catalog-nih-nlm">
-<h4>NLM Dataset Catalog (NIH/NLM)<a class="headerlink" href="#nlm-dataset-catalog-nih-nlm" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p>The NLM Dataset Catalog is essentially a registry pointing to datasets, not a direct host.</p></li>
-<li><p>You’ll usually get redirected to the actual host (sometimes PhysioNet, OpenNeuro, or institutional repositories).</p></li>
-<li><p>If the dataset is downloadable via URL, you can use requests or wget in Python to fetch the .abf files, then open with pyabf.</p></li>
-<li><p>No standard Python API for the catalog itself, but you can scrape metadata via their JSON endpoints (if provided per dataset).</p></li>
-</ul>
-</section>
-<section id="dryad">
-<h4>Dryad<a class="headerlink" href="#dryad" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p>Dryad datasets are hosted at <a class="reference internal" href="#datadryad.org"><span class="xref myst">datadryad.org</span></a>.</p></li>
-<li><p>They expose a REST API (<a class="reference external" href="https://datadryad.org/api/v2/">https://datadryad.org/api/v2/</a>).</p></li>
-<li><p>You can query a DOI, get file download links, and then download with requests.</p></li>
-</ul>
-<p>Example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
-
-<span class="n">doi</span> <span class="o">=</span> <span class="s2">&quot;10.5061/dryad.xxxxx&quot;</span>  <span class="c1"># replace with dataset DOI</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://datadryad.org/api/v2/datasets/</span><span class="si">{</span><span class="n">doi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">files</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;included&quot;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.abf&quot;</span><span class="p">):</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;downloadUrl&quot;</span><span class="p">]</span>
-        <span class="n">abf_data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">],</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
-            <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">abf_data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-        <span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">])</span>
-
-</pre></div>
-</div>
-</section>
-<section id="dandi-archive">
-<h4>DANDI Archive<a class="headerlink" href="#dandi-archive" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p>DANDI hosts primarily neurophysiology data in NWB (Neurodata Without Borders) format, not ABF.</p></li>
-<li><p>They have a Python client: <code class="docutils literal notranslate"><span class="pre">dandi</span></code>.</p></li>
-</ul>
-<p>Example to download:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>dandi
-dandi<span class="w"> </span>download<span class="w"> </span>DANDI:000003<span class="w">  </span><span class="c1"># replace with dataset identifier</span>
-</pre></div>
-</div>
-<p>If the dataset includes <code class="docutils literal notranslate"><span class="pre">.abf</span></code> files (rare, usually <code class="docutils literal notranslate"><span class="pre">NWB</span></code>), you can load them directly with <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>.
-More commonly, you’d work with NWB using <code class="docutils literal notranslate"><span class="pre">pynwb</span></code>, not <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>.</p>
-</section>
-<section id="zenodo">
-<h4>Zenodo<a class="headerlink" href="#zenodo" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p>Zenodo provides a REST API: <a class="reference external" href="https://zenodo.org/api/">https://zenodo.org/api/</a>.</p></li>
-<li><p>Each record has a DOI and you can list associated files.</p></li>
-</ul>
-<p>Example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
-
-<span class="n">record_id</span> <span class="o">=</span> <span class="s2">&quot;1234567&quot;</span>  <span class="c1"># Zenodo record ID</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://zenodo.org/api/records/</span><span class="si">{</span><span class="n">record_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;files&quot;</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.abf&quot;</span><span class="p">):</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;links&quot;</span><span class="p">][</span><span class="s2">&quot;self&quot;</span><span class="p">]</span>
-        <span class="n">abf_data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
-            <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">abf_data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-        <span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</section>
-</section>
-</section>
-<section id="storing-reading-and-sharing-electrophysiology-records">
-<h2>Storing, reading, and  sharing electrophysiology records<a class="headerlink" href="#storing-reading-and-sharing-electrophysiology-records" title="Link to this heading">#</a></h2>
-<p>Electrophysiology records can be cumbersome and often require specific formats to be quickly accessible and usable.
-Traditionally, these formats were dependent on the devices used to collect the data—proprietary formats. It soon became clear that this approach was slowing down scientific progress, which relies on making data easily accessible to the widest possible community. To address this, new formats were developed.</p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="electrophysiology-data">
+<h1>Electrophysiology Data<a class="headerlink" href="#electrophysiology-data" title="Link to this heading">#</a></h1>
+<p>Accessing electrophysiology records can be difficult, and working with them is often cumbersome, as they typically require specific formats to be quickly accessible and usable. To make data more widely available, it is crucial to develop not only open-access databases but also standardized file formats. Historically, data formats were tied to the devices that generated them—often proprietary and incompatible with other systems. This fragmentation soon became a barrier to scientific progress. In what follows, we first introduce common file formats, then present several relevant databases, and finally show how to work with them in Python.</p>
 <section id="types-of-electrophysiology-recordings">
 <h2>Types of Electrophysiology Recordings<a class="headerlink" href="#types-of-electrophysiology-recordings" title="Link to this heading">#</a></h2>
 <p>Electrophysiology covers a wide range of recording techniques, each suited to different biological questions.<br />
@@ -661,6 +553,101 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 </tr>
 </tbody>
 </table>
+</div>
+</section>
+</section>
+<section id="databases">
+<h2>Databases<a class="headerlink" href="#databases" title="Link to this heading">#</a></h2>
+<p>By the way, data really matter! You can look at the Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_neuroscience_databases">list of neuroscience databases</a>. We will consider four of them.</p>
+<hr class="docutils" />
+<section id="nlm-dataset-catalog">
+<h3>NLM Dataset Catalog<a class="headerlink" href="#nlm-dataset-catalog" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://datasetcatalog.nlm.nih.gov">NLM Dataset Catalog</a> is a  catalog of biomedical datasets from various repositories, NIH National Library of Medecine  (NIH/NLM).</p>
+<ul class="simple">
+<li><p>The NLM Dataset Catalog is essentially a registry pointing to datasets, not a direct host.</p></li>
+<li><p>You’ll usually get redirected to the actual host (sometimes PhysioNet, OpenNeuro, or institutional repositories).</p></li>
+<li><p>If the dataset is downloadable via URL, you can use requests or wget in Python to fetch the .abf files, then open with pyabf.</p></li>
+<li><p>No standard Python API for the catalog itself, but you can scrape metadata via their JSON endpoints (if provided per dataset).</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="dryad">
+<h3>Dryad<a class="headerlink" href="#dryad" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://datadryad.org/about">Dryad</a> (DAta Archive for Neuroscience DIscovery) is an open data publishing platform and a community committed to the open availability and routine re-use of all research data.</p>
+<ul class="simple">
+<li><p>Dryad datasets are hosted at <a class="reference internal" href="#datadryad.org"><span class="xref myst">datadryad.org</span></a>.</p></li>
+<li><p>They expose a REST API (<a class="reference external" href="https://datadryad.org/api/v2/">https://datadryad.org/api/v2/</a>).</p></li>
+<li><p>You can query a DOI, get file download links, and then download with requests.</p></li>
+</ul>
+<p>Examples of data sets:</p>
+<ul class="simple">
+<li><p>a <a class="reference external" href="https://datadryad.org/dataset/doi:10.5061/dryad.k0p2ngfgm">dataset</a>  presenting electrophysiological properties from whole-cell patch clamped nucleus accumbens core medium spiny neurons from male rats and female rats recorded in different estrous cycle phases.</p></li>
+<li><p>a <a class="reference external" href="https://datadryad.org/dataset/doi:10.5061/dryad.66t1g1k2w">dataset</a> containing whole-cell electrophysiological recordings (patch-clamp recordings) from three cell types in mice.</p></li>
+</ul>
+<p>Example of usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
+
+<span class="n">doi</span> <span class="o">=</span> <span class="s2">&quot;10.5061/dryad.xxxxx&quot;</span>  <span class="c1"># replace with dataset DOI</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://datadryad.org/api/v2/datasets/</span><span class="si">{</span><span class="n">doi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">files</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;included&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.abf&quot;</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;downloadUrl&quot;</span><span class="p">]</span>
+        <span class="n">abf_data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">],</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+            <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">abf_data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;filename&quot;</span><span class="p">])</span>
+
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="dandi-archive">
+<h3>Dandi Archive<a class="headerlink" href="#dandi-archive" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://dandiarchive.org">Dandi Archive</a> (Distributed Archive for Neuroscience Data Integration) is the BRAIN Initiative archive for publishing and sharing neurophysiology data including electrophysiology, optophysiology, and behavioral time-series, and images from immunostaining experiments.</p>
+<ul class="simple">
+<li><p>DANDI hosts primarily neurophysiology data in NWB (Neurodata Without Borders) format (<a class="reference external" href="https://docs.dandiarchive.org/user-guide-sharing/converting-data/">link</a>, not ABF.</p></li>
+<li><p>They have a Python client: <code class="docutils literal notranslate"><span class="pre">dandi</span></code> (<a class="reference external" href="https://pypi.org/project/dandi/">link</a>).</p></li>
+</ul>
+<p>An example of data set:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dandiarchive.org/dandiset/000020/0.210913.1639">Patch-seq recordings from mouse visual cortex</a>. Whole-cell Patch-seq recordings from neurons of the mouse visual cortex from the Allen Institute for Brain Science, released in June 2020. The majority of cells in this dataset are GABAergic interneurons, but there are also a small number of glutamatergic neurons from layer 2/3 of the mouse visual cortex.</p></li>
+</ul>
+<p>Example of usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>dandi
+dandi<span class="w"> </span>download<span class="w"> </span>DANDI:000003<span class="w">  </span><span class="c1"># replace with dataset identifier</span>
+</pre></div>
+</div>
+<p>If the dataset includes <code class="docutils literal notranslate"><span class="pre">.abf</span></code> files (rare, usually <code class="docutils literal notranslate"><span class="pre">NWB</span></code>), you can load them directly with <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>.
+More commonly, you’d work with NWB using <code class="docutils literal notranslate"><span class="pre">pynwb</span></code>, not <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>.</p>
+<hr class="docutils" />
+</section>
+<section id="zenodo">
+<h3>Zenodo<a class="headerlink" href="#zenodo" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://zenodo.org">zenodo.org</a> (named after Zenodotus, the first librarian of Alexandria) is an open-access research data repository built and hosted by CERN (the European Organization for Nuclear Research), with support from the European Commission.</p>
+<ul class="simple">
+<li><p>Zenodo provides a REST API: <a class="reference external" href="https://zenodo.org/api/">https://zenodo.org/api/</a>.</p></li>
+<li><p>Each record has a DOI and you can list associated files.</p></li>
+</ul>
+<p>Example of data sets:</p>
+<ul class="simple">
+<li><p>a <a class="reference external" href="https://zenodo.org/records/17794">data set</a>  of CA1 pyramidal cell recordings using an intact whole hippocampus preparation, including recordings of rebound firing (V2).</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
+
+<span class="n">record_id</span> <span class="o">=</span> <span class="s2">&quot;1234567&quot;</span>  <span class="c1"># Zenodo record ID</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://zenodo.org/api/records/</span><span class="si">{</span><span class="n">record_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;files&quot;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.abf&quot;</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;links&quot;</span><span class="p">][</span><span class="s2">&quot;self&quot;</span><span class="p">]</span>
+        <span class="n">abf_data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+            <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">abf_data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">])</span>
+</pre></div>
 </div>
 </section>
 </section>
@@ -1214,22 +1201,17 @@ ABF File: lhb_bursting/cell209basal.abf    Sweep Number:   4
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">Databases</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-databases-in-electrophysiology">Main databases in electrophysiology</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-nlm-dryad-dandi-and-zenodo">Focus on NLM, Dryad, Dandi, and Zenodo</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nlm-dataset-catalog-nih-nlm">NLM Dataset Catalog (NIH/NLM)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dryad">Dryad</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dandi-archive">DANDI Archive</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zenodo">Zenodo</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-reading-and-sharing-electrophysiology-records">Storing, reading, and  sharing electrophysiology records</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-electrophysiology-recordings">Types of Electrophysiology Recordings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-electrophysiology-data-formats">Common Electrophysiology Data Formats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#most-used-electrophysiology-data-formats">Most Used Electrophysiology Data Formats</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">Summary Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nlm-dataset-catalog">NLM Dataset Catalog</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dryad">Dryad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dandi-archive">Dandi Archive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zenodo">Zenodo</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gateways-with-python">Gateways with Python</a></li>
