@@ -50,9 +50,8 @@ sphinx:
   config:
     latex_elements:
       papersize: a4paper     
-    
-#      preamble: |
-#        \usepackage{emoji}       % use the LaTeX emoji package
+      preamble: |
+        \usepackage{emoji}       % use the LaTeX emoji package
 #        \setmainfont{FreeSerif}  % main font
 #       fontpkg: |
 #        \setmainfont{FreeSerif}
