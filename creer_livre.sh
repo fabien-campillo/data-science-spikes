@@ -15,15 +15,15 @@ jupyter-book build .
 # 4️⃣ Générer le PDF seulement si demandé avec "-pdf"
 if [[ "$1" == "-pdf" ]]; then
     echo "📄 Génération du PDF..."
-    jupyter-book build . --builder latex
+    jupyter-book build . --builder pdflatex
 
     # adding a title page and a blank page (difficult to do it with sphinx)
-    #gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=pdf/Spikes-Data-Sciences_temp.pdf pdf/blank_page.pdf _build/latex/Spikes-Data-Sciences.pdf 
-    #gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=pdf/Spikes-Data-Sciences.pdf      pdf/title_page.pdf pdf/Spikes-Data-Sciences_temp.pdf 
-    #rm pdf/Spikes-Data-Sciences_temp.pdf
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=pdf/Spikes-Data-Sciences_temp.pdf pdf/blank_page.pdf _build/latex/Spikes-Data-Sciences.pdf 
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=pdf/Spikes-Data-Sciences.pdf      pdf/title_page.pdf pdf/Spikes-Data-Sciences_temp.pdf 
+    rm pdf/Spikes-Data-Sciences_temp.pdf
 
     # 4️⃣a Renommer et copier le PDF (par défaut: projectnamenotset.pdf)
-    cp _build/latex/Spikes-Data-Sciences.pdf pdf/Spikes-Data-Sciences.pdf
+    #cp _build/latex/Spikes-Data-Sciences.pdf pdf/Spikes-Data-Sciences.pdf
 
     # 4️⃣b Copier aussi dans le HTML pour le rendre accessible en ligne
     cp pdf/Spikes-Data-Sciences.pdf _build/html/Spikes-Data-Sciences.pdf

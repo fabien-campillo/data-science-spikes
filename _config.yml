@@ -32,13 +32,10 @@ exclude_patterns:
 #######################################################################################
 # LaTeX-specific settings
 latex:
-  latex_engine: lualatex
+  latex_engine: pdflatex
   latex_documents:
     targetname: "Spikes-Data-Sciences.tex"
-#  latex_elements:
-#    preamble: |
-#      \usepackage{emoji}       % use the LaTeX emoji package
-#      \setmainfont{FreeSerif}  % main font
+
 #######################################################################################
 # Parse and render settings
 parse:
@@ -49,18 +46,4 @@ parse:
 sphinx:
   config:
     latex_elements:
-      papersize: a4paper
-      preamble: '\usepackage{emoji}'
-#        \usepackage{fontspec}
-#        \usepackage{emoji}   % LaTeX emoji package
-#        \setmainfont{FreeSerif} % or another Unicode font
-#       % Optional: set a dedicated emoji font if installed
-#       % \newfontfamily\emoji{Noto Color Emoji}
-
-#        \setmainfont{FreeSerif}  % main font
-#       fontpkg: |
-#        \setmainfont{FreeSerif}
-#        \newfontfamily\emoji{Noto Color Emoji}
-#        \newfontfamily\emoji{NotoEmoji-Regular.ttf}
-#    fc-list | grep "FreeSerif"
-#    fc-list | grep "Noto Color Emoji"
+      papersize: a4paper     
