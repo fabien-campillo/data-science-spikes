@@ -2,18 +2,19 @@ format: jb-book
 root: 1_context
 
 options:
-  numbered: 2   # ✅ this is the new place for numbering
+  numbered: 2   # chapters start numbering from 2
 
-- part: "Content"
-  chapters:
-    - file: 2_resources
-    - file: 3_databases
+toc:
+  - part: "Content"
+    chapters:
+      - file: 2_resources
+      - file: 3_databases
 
-- part: "Appendices"
-  chapters:
-    - file: A_installing_python
-    - file: B_jupyter
-    - file: C_diagnostic
+  - part: "Appendices"
+    chapters:
+      - file: A_installing_python
+      - file: B_jupyter
+      - file: C_diagnostic
 
-- title: Download PDF
-  url: https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf
+  - title: "Download PDF"
+    url: https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf
