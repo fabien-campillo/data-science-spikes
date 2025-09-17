@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. Data Storage, Sharing, and Databases for Electrophysiology &#8212; Data Sciences and Spikes</title>
+    <title>Data Storage, Sharing, and Databases for Electrophysiology &#8212; Data Sciences and Spikes</title>
   
   
   
@@ -61,8 +61,8 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. Appendix A: Installing Python and some tools" href="A_installing_python.html" />
-    <link rel="prev" title="1. Resources and references" href="2_resources.html" />
+    <link rel="next" title="Installing Python and some tools" href="A_installing_python.html" />
+    <link rel="prev" title="Resources and references" href="2_resources.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,12 +180,16 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="2_resources.html">1. Resources and references</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Data Storage, Sharing, and Databases for Electrophysiology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="A_installing_python.html">3. Appendix A: Installing Python and some tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="B_jupyter.html">4. Interactive Computing with Jupyter Ecosystem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C_diagnostic.html">5. Diagnostic</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2_resources.html">Resources and references</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Storage, Sharing, and Databases for Electrophysiology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A_installing_python.html">Installing Python and some tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="B_jupyter.html">Interactive Computing with Jupyter Ecosystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C_diagnostic.html">Diagnostic</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf">Download PDF</a></li>
 </ul>
 
@@ -350,7 +354,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">2.1. Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">Databases</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-databases-in-electrophysiology">Main databases in electrophysiology</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-nlm-dryad-dandi-and-zenodo">Focus on NLM, Dryad, Dandi, and Zenodo</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nlm-dataset-catalog-nih-nlm">NLM Dataset Catalog (NIH/NLM)</a></li>
@@ -361,15 +365,15 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-reading-and-sharing-electrophysiology-records">2.2. Storing, reading, and  sharing electrophysiology records</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-electrophysiology-recordings">2.3. Types of Electrophysiology Recordings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-electrophysiology-data-formats">2.4. Common Electrophysiology Data Formats</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#most-used-electrophysiology-data-formats">2.5. Most Used Electrophysiology Data Formats</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-reading-and-sharing-electrophysiology-records">Storing, reading, and  sharing electrophysiology records</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-electrophysiology-recordings">Types of Electrophysiology Recordings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-electrophysiology-data-formats">Common Electrophysiology Data Formats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#most-used-electrophysiology-data-formats">Most Used Electrophysiology Data Formats</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">Summary Table</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gateways-with-python">2.6. Gateways with Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">2.7. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gateways-with-python">Gateways with Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library"><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
@@ -407,9 +411,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-storage-sharing-and-databases-for-electrophysiology">
-<h1><span class="section-number">2. </span>Data Storage, Sharing, and Databases for Electrophysiology<a class="headerlink" href="#data-storage-sharing-and-databases-for-electrophysiology" title="Link to this heading">#</a></h1>
+<h1>Data Storage, Sharing, and Databases for Electrophysiology<a class="headerlink" href="#data-storage-sharing-and-databases-for-electrophysiology" title="Link to this heading">#</a></h1>
 <section id="databases">
-<h2><span class="section-number">2.1. </span>Databases<a class="headerlink" href="#databases" title="Link to this heading">#</a></h2>
+<h2>Databases<a class="headerlink" href="#databases" title="Link to this heading">#</a></h2>
 <section id="main-databases-in-electrophysiology">
 <h3>Main databases in electrophysiology<a class="headerlink" href="#main-databases-in-electrophysiology" title="Link to this heading">#</a></h3>
 <p>By the way, data really matter! First you can look at the Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_neuroscience_databases">List of neuroscience databases</a>, and at among many:</p>
@@ -508,12 +512,12 @@ More commonly, you’d work with NWB using <code class="docutils literal notrans
 </section>
 </section>
 <section id="storing-reading-and-sharing-electrophysiology-records">
-<h2><span class="section-number">2.2. </span>Storing, reading, and  sharing electrophysiology records<a class="headerlink" href="#storing-reading-and-sharing-electrophysiology-records" title="Link to this heading">#</a></h2>
+<h2>Storing, reading, and  sharing electrophysiology records<a class="headerlink" href="#storing-reading-and-sharing-electrophysiology-records" title="Link to this heading">#</a></h2>
 <p>Electrophysiology records can be cumbersome and often require specific formats to be quickly accessible and usable.
 Traditionally, these formats were dependent on the devices used to collect the data—proprietary formats. It soon became clear that this approach was slowing down scientific progress, which relies on making data easily accessible to the widest possible community. To address this, new formats were developed.</p>
 </section>
 <section id="types-of-electrophysiology-recordings">
-<h2><span class="section-number">2.3. </span>Types of Electrophysiology Recordings<a class="headerlink" href="#types-of-electrophysiology-recordings" title="Link to this heading">#</a></h2>
+<h2>Types of Electrophysiology Recordings<a class="headerlink" href="#types-of-electrophysiology-recordings" title="Link to this heading">#</a></h2>
 <p>Electrophysiology covers a wide range of recording techniques, each suited to different biological questions.<br />
 Here are the main categories:</p>
 <ul class="simple">
@@ -525,7 +529,7 @@ Here are the main categories:</p>
 </ul>
 </section>
 <section id="common-electrophysiology-data-formats">
-<h2><span class="section-number">2.4. </span>Common Electrophysiology Data Formats<a class="headerlink" href="#common-electrophysiology-data-formats" title="Link to this heading">#</a></h2>
+<h2>Common Electrophysiology Data Formats<a class="headerlink" href="#common-electrophysiology-data-formats" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Format</p></th>
@@ -613,7 +617,7 @@ Here are the main categories:</p>
 </div>
 </section>
 <section id="most-used-electrophysiology-data-formats">
-<h2><span class="section-number">2.5. </span>Most Used Electrophysiology Data Formats<a class="headerlink" href="#most-used-electrophysiology-data-formats" title="Link to this heading">#</a></h2>
+<h2>Most Used Electrophysiology Data Formats<a class="headerlink" href="#most-used-electrophysiology-data-formats" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>ABF (Axon Binary File)</strong> - ABF is a proprietary binary format developed by <strong>Molecular Devices</strong>. It is widely used for <strong>patch-clamp and intracellular recordings</strong>, especially in cellular electrophysiology research. ABF files store both the raw electrophysiological signals and metadata, such as sampling rate, stimulus protocols, and experimental parameters. Versions include ABF1 (older) and ABF2 (newer).</p></li>
 <li><p><strong>NWB (Neurodata Without Borders)</strong> -
@@ -661,7 +665,7 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 </section>
 </section>
 <section id="gateways-with-python">
-<h2><span class="section-number">2.6. </span>Gateways with Python<a class="headerlink" href="#gateways-with-python" title="Link to this heading">#</a></h2>
+<h2>Gateways with Python<a class="headerlink" href="#gateways-with-python" title="Link to this heading">#</a></h2>
 <p>Formats commonly used in electrophysiology (ABF, NBW, IBW) are not always straightforward to handle. Fortunately, several Python libraries act as gateways to read and convert:</p>
 <ul class="simple">
 <li><p><strong>pynwb</strong> <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/">doc</a> <a class="reference external" href="https://github.com/NeurodataWithoutBorders">github</a> python interface for NWB</p></li>
@@ -670,7 +674,7 @@ IBW is the binary wave format used by <strong>Igor Pro</strong> software. It is 
 </ul>
 </section>
 <section id="exploring-abf-files">
-<h2><span class="section-number">2.7. </span>Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files<a class="headerlink" href="#exploring-abf-files" title="Link to this heading">#</a></h2>
+<h2>Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files<a class="headerlink" href="#exploring-abf-files" title="Link to this heading">#</a></h2>
 <p>This first notebook aims to demonstrate how to analyze electrophysiological recordings from a single cell by:</p>
 <ul class="simple">
 <li><p>Extracting basic characteristics of the recorded signals.</p></li>
@@ -1182,7 +1186,7 @@ ABF File: lhb_bursting/cell209basal.abf    Sweep Number:   4
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Resources and references</p>
+        <p class="prev-next-title">Resources and references</p>
       </div>
     </a>
     <a class="right-next"
@@ -1190,7 +1194,7 @@ ABF File: lhb_bursting/cell209basal.abf    Sweep Number:   4
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Appendix A: Installing Python and some tools</p>
+        <p class="prev-next-title">Installing Python and some tools</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1210,7 +1214,7 @@ ABF File: lhb_bursting/cell209basal.abf    Sweep Number:   4
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">2.1. Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">Databases</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-databases-in-electrophysiology">Main databases in electrophysiology</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-nlm-dryad-dandi-and-zenodo">Focus on NLM, Dryad, Dandi, and Zenodo</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nlm-dataset-catalog-nih-nlm">NLM Dataset Catalog (NIH/NLM)</a></li>
@@ -1221,15 +1225,15 @@ ABF File: lhb_bursting/cell209basal.abf    Sweep Number:   4
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-reading-and-sharing-electrophysiology-records">2.2. Storing, reading, and  sharing electrophysiology records</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-electrophysiology-recordings">2.3. Types of Electrophysiology Recordings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-electrophysiology-data-formats">2.4. Common Electrophysiology Data Formats</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#most-used-electrophysiology-data-formats">2.5. Most Used Electrophysiology Data Formats</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-reading-and-sharing-electrophysiology-records">Storing, reading, and  sharing electrophysiology records</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-electrophysiology-recordings">Types of Electrophysiology Recordings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-electrophysiology-data-formats">Common Electrophysiology Data Formats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#most-used-electrophysiology-data-formats">Most Used Electrophysiology Data Formats</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">Summary Table</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gateways-with-python">2.6. Gateways with Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">2.7. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gateways-with-python">Gateways with Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library"><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
