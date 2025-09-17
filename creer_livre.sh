@@ -17,7 +17,7 @@ if [[ "$1" == "-pdf" ]]; then
     echo "📄 Génération du PDF..."
     jupyter-book build . --builder pdflatex
 
-    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=pdf/Spikes-Data-Sciences.pdf _build/latex/Spikes-Data-Sciences.pdf pdf/spikes_data_science_title_page.pdf
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=pdf/Spikes-Data-Sciences.pdf pdf/title_page.pdf _build/latex/Spikes-Data-Sciences.pdf 
 
     # 4️⃣a Renommer et copier le PDF (par défaut: projectnamenotset.pdf)
     #cp _build/latex/Spikes-Data-Sciences.pdf pdf/Spikes-Data-Sciences.pdf
