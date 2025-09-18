@@ -21,12 +21,14 @@ html:
   use_repository_button: true
   use_download_button: true
   extra_navbar: |
-    <a href="https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf"
-       title="Download PDF" target="_blank" style="margin-left: 10px;">
-      <i class="fas fa-file-pdf"></i>
-    </a>
+    <span class="navbar-icon-links">
+      <a href="https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf"
+         title="Download PDF" target="_blank" style="margin-left: 10px;">
+        <span class="fa fa-file-pdf"></span>
+      </a>
+    </span>
   theme:
-    navbar_end: ["navbar-icon-links"]   # ensures custom icons appear on the right
+    navbar_end: ["navbar-icon-links"]
 
 #######################################################################################
 # Exclude patterns
