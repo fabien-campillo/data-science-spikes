@@ -1,13 +1,16 @@
 format: jb-book
 root: 1_context
-options:
-  numbered: 2   # chapters start numbering from 2
+#options:  # with "parts:" the options are in the parts
+#  numbered: 2   # chapters start numbering from 2
 parts:
   - caption: "Content"
+    numbered: 2   # chapters start numbering from 2
     chapters:
     - file: 2_resources
     - file: 3_databases
   - caption: "Appendices"
+    numbered: "A"
+    numbered: 2   # chapters start numbering from 2
     chapters:
     - file: A_installing_python
     - file: B_jupyter

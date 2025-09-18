@@ -20,15 +20,16 @@ html:
   favicon: pics/favicon.ico
   use_repository_button: true
   use_download_button: true
-  extra_navbar: |
-    <span class="navbar-icon-links">
-      <a href="https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf"
-         title="Download PDF" target="_blank" style="margin-left: 10px;">
-        <span class="fa fa-file-pdf"></span>
-      </a>
-    </span>
-  theme:
-    navbar_end: ["navbar-icon-links"]
+  # restart numbering between parts
+  use_multitoc_numbering: false
+#  extra_navbar: |  # FAILED
+#    <div>
+#      your html
+#    </div>      
+#  extra_footer: |  # pour mettrer qqchose ds le footer de toutes les pages TESTED
+#    <div>
+#      your html
+#    </div>
 
 #######################################################################################
 # Exclude patterns
