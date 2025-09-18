@@ -2,3 +2,4 @@
 _build/
 .DS_Store
 jupyter-env/
+.virtual_documents/
