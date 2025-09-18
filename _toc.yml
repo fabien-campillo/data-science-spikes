@@ -12,5 +12,5 @@ parts:
     - file: A_installing_python
     - file: B_jupyter
     - file: C_diagnostic
-    - title: "Download PDF"
-      url: https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf
+#    - title: "Download PDF"
+#      url: https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf

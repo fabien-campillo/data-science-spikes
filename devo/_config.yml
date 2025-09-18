@@ -21,9 +21,9 @@ html:
   use_repository_button: true
   use_download_button: true
   extra_navbar: |
-    <a href="https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf" target="_blank">
-      <img src="_static/pics/pdf_book_icon.png" alt="Download PDF" style="height:20px;"/>
-    </a>
+    <hr>
+    <a href="Spikes-Data-Sciences.pdf" target="_blank">📄 Download PDF</a>
+
 #######################################################################################
 # Exclude patterns
 exclude_patterns:
