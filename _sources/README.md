@@ -1,0 +1,1 @@
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://fabien-campillo.github.io/data-science-spikes/)
