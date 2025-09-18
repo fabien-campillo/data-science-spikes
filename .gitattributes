@@ -1,0 +1,8 @@
+
+*.ipynb	diff=jupyternotebook
+
+*.ipynb	merge=jupyternotebook
+
+# binary → Git sait que c’est un fichier binaire.
+# merge=ours → lors d’un merge, Git garde toujours la version locale, ce qui évite les conflits.
+pdf/Spikes-Data-Sciences.pdf binary merge=ours
