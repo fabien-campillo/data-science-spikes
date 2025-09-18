@@ -2,11 +2,18 @@
 # Book settings
 title: "Data Sciences and Spikes"
 author: "Fabien Campillo"
-execute:
-  execute_notebooks: auto
 logo: "pics/logo_title.png"
 copyright: "This book is distributed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike)"
 
+# Jupyter Book execution options
+execute:
+  execute_notebooks: auto
+  allow_errors: false
+  kernel_name: python3
+  exclude_notebooks:
+    - "jupyter-env/**"
+
+    
 #######################################################################################
 # Repository settings
 repository:
@@ -35,7 +42,12 @@ html:
 # Exclude patterns
 exclude_patterns:
   - .virtual_documents/*
-
+  - jupyter-env/*
+  - jupyter-env/**/*
+  - jb-env/*
+  - jb-env/**/*
+  - "*/site-packages/*"
+  
 #######################################################################################
 # LaTeX-specific settings
 latex:
@@ -58,9 +70,12 @@ sphinx:
     - myst_nb
 
 # MyST Markdown extensions
+
+
 myst_enable_extensions:
   - footnote          # enables ^[...] sidenotes
   - deflist           # optional: definition lists
   - html_admonition   # optional: note/admonition support
   - html_image        # optional: HTML <img> support
   - colon_fence       # optional: ::: fenced blocks
+
