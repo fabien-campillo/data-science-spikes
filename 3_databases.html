@@ -660,14 +660,160 @@ More commonly, you’d work with NWB using <code class="docutils literal notrans
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>                     <span class="c1"># load the pyABF library (cf. infra)</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.2 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with &#39;pybind11&gt;=2.12&#39;.
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+If you are a user of the module, the easiest solution will be to
+downgrade to &#39;numpy&lt;2&#39; or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File &quot;/opt/homebrew/anaconda3/lib/python3.9/runpy.py&quot;, line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/runpy.py&quot;, line 87, in _run_code
+    exec(code, run_globals)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel_launcher.py&quot;, line 18, in &lt;module&gt;
+    app.launch_new_instance()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/traitlets/config/application.py&quot;, line 1075, in launch_instance
+    app.start()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/kernelapp.py&quot;, line 739, in start
+    self.io_loop.start()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/tornado/platform/asyncio.py&quot;, line 205, in start
+    self.asyncio_loop.run_forever()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/asyncio/base_events.py&quot;, line 601, in run_forever
+    self._run_once()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/asyncio/base_events.py&quot;, line 1905, in _run_once
+    handle._run()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/asyncio/events.py&quot;, line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py&quot;, line 545, in dispatch_queue
+    await self.process_one()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py&quot;, line 534, in process_one
+    await dispatch(*args)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py&quot;, line 437, in dispatch_shell
+    await result
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/ipkernel.py&quot;, line 362, in execute_request
+    await super().execute_request(stream, ident, parent)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py&quot;, line 778, in execute_request
+    reply_content = await reply_content
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/ipkernel.py&quot;, line 449, in do_execute
+    res = shell.run_cell(
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/zmqshell.py&quot;, line 549, in run_cell
+    return super().run_cell(*args, **kwargs)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py&quot;, line 3048, in run_cell
+    result = self._run_cell(
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py&quot;, line 3103, in _run_cell
+    result = runner(coro)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/IPython/core/async_helpers.py&quot;, line 129, in _pseudo_sync_runner
+    coro.send(None)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py&quot;, line 3308, in run_cell_async
+    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py&quot;, line 3490, in run_ast_nodes
+    if await self.run_code(code, result, async_=asy):
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py&quot;, line 3550, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File &quot;/var/folders/w3/v5_370_x7jj1dhxfzx1t90f400037d/T/ipykernel_1064/3937031159.py&quot;, line 4, in &lt;module&gt;
+    import seaborn as sns            # used for a Kernel Density Estimate (KDE) plot
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/seaborn/__init__.py&quot;, line 2, in &lt;module&gt;
+    from .rcmod import *  # noqa: F401,F403
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/seaborn/rcmod.py&quot;, line 5, in &lt;module&gt;
+    from . import palettes
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/seaborn/palettes.py&quot;, line 9, in &lt;module&gt;
+    from .utils import desaturate, get_color_cycle
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/seaborn/utils.py&quot;, line 11, in &lt;module&gt;
+    import pandas as pd
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/pandas/__init__.py&quot;, line 26, in &lt;module&gt;
+    from pandas.compat import (
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/pandas/compat/__init__.py&quot;, line 27, in &lt;module&gt;
+    from pandas.compat.pyarrow import (
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/pandas/compat/pyarrow.py&quot;, line 8, in &lt;module&gt;
+    import pyarrow as pa
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/pyarrow/__init__.py&quot;, line 65, in &lt;module&gt;
+    import pyarrow.lib as _lib
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="ne">AttributeError</span>: _ARRAY_API not found
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.2 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with &#39;pybind11&gt;=2.12&#39;.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to &#39;numpy&lt;2&#39; or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File &quot;/opt/homebrew/anaconda3/lib/python3.9/runpy.py&quot;, line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/runpy.py&quot;, line 87, in _run_code
+    exec(code, run_globals)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel_launcher.py&quot;, line 18, in &lt;module&gt;
+    app.launch_new_instance()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/traitlets/config/application.py&quot;, line 1075, in launch_instance
+    app.start()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/kernelapp.py&quot;, line 739, in start
+    self.io_loop.start()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/tornado/platform/asyncio.py&quot;, line 205, in start
+    self.asyncio_loop.run_forever()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/asyncio/base_events.py&quot;, line 601, in run_forever
+    self._run_once()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/asyncio/base_events.py&quot;, line 1905, in _run_once
+    handle._run()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/asyncio/events.py&quot;, line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py&quot;, line 545, in dispatch_queue
+    await self.process_one()
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py&quot;, line 534, in process_one
+    await dispatch(*args)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py&quot;, line 437, in dispatch_shell
+    await result
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/ipkernel.py&quot;, line 362, in execute_request
+    await super().execute_request(stream, ident, parent)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/kernelbase.py&quot;, line 778, in execute_request
+    reply_content = await reply_content
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/ipkernel.py&quot;, line 449, in do_execute
+    res = shell.run_cell(
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/ipykernel/zmqshell.py&quot;, line 549, in run_cell
+    return super().run_cell(*args, **kwargs)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py&quot;, line 3048, in run_cell
+    result = self._run_cell(
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py&quot;, line 3103, in _run_cell
+    result = runner(coro)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/IPython/core/async_helpers.py&quot;, line 129, in _pseudo_sync_runner
+    coro.send(None)
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py&quot;, line 3308, in run_cell_async
+    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py&quot;, line 3490, in run_ast_nodes
+    if await self.run_code(code, result, async_=asy):
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py&quot;, line 3550, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File &quot;/var/folders/w3/v5_370_x7jj1dhxfzx1t90f400037d/T/ipykernel_1064/3937031159.py&quot;, line 4, in &lt;module&gt;
+    import seaborn as sns            # used for a Kernel Density Estimate (KDE) plot
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/seaborn/__init__.py&quot;, line 2, in &lt;module&gt;
+    from .rcmod import *  # noqa: F401,F403
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/seaborn/rcmod.py&quot;, line 5, in &lt;module&gt;
+    from . import palettes
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/seaborn/palettes.py&quot;, line 9, in &lt;module&gt;
+    from .utils import desaturate, get_color_cycle
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/seaborn/utils.py&quot;, line 11, in &lt;module&gt;
+    import pandas as pd
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/pandas/__init__.py&quot;, line 49, in &lt;module&gt;
+    from pandas.core.api import (
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/pandas/core/api.py&quot;, line 9, in &lt;module&gt;
+    from pandas.core.dtypes.dtypes import (
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/pandas/core/dtypes/dtypes.py&quot;, line 24, in &lt;module&gt;
+    from pandas._libs import (
+  File &quot;/opt/homebrew/anaconda3/lib/python3.9/site-packages/pyarrow/__init__.py&quot;, line 65, in &lt;module&gt;
+    import pyarrow.lib as _lib
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="ne">AttributeError</span>: _ARRAY_API not found
 </pre></div>
 </div>
 </div>
@@ -742,7 +888,22 @@ Scott Harden has made pyABF available as an open-source library, aiming to simpl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ABF (v2.6) with 1 channel (pA), sampled at 10.0 kHz, containing 30 sweeps, having no tags, with a total length of 11.11 minutes, recorded without a protocol file.
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>              <span class="c1"># we load it</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">abf</span><span class="p">)</span>                              <span class="c1"># record characteristics </span>
+
+<span class="nn">File /opt/homebrew/anaconda3/lib/python3.9/site-packages/pyabf/abf.py:100,</span> in <span class="ni">ABF.__init__</span><span class="nt">(self, abfFilePath, loadData, cacheStimulusFiles, stimulusFileFolder)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="bp">self</span><span class="o">.</span><span class="n">stimulusFileFolder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">abfFolderPath</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">abfFilePath</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">100</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;ABF file does not exist: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">abfFilePath</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="bp">self</span><span class="o">.</span><span class="n">abfID</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">abfFilePath</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">abfFilePath</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fb</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span> 
+<span class="g g-Whitespace">    </span><span class="mi">105</span>     <span class="c1"># The first 4 bytes of the ABF indicates what type of file it is</span>
+
+<span class="ne">ValueError</span>: ABF file does not exist: /Users/campillo/Documents/0-git.nosync/data-science-spikes/lhb_bursting/cell89basal.abf
 </pre></div>
 </div>
 </div>
