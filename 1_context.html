@@ -335,7 +335,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -351,6 +353,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-the-data-science-with-spikes-book">Welcome to the Data Science with Spikes Book</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -372,6 +382,25 @@ document.write(`
 </ul>
 <p><em>It is this second category that is of most interest to us (MathNeuro).</em> The first category is very well developed.
 Processing extracranial electrophysiological data (EEG/MEG) is generally more complex than processing intracranial measurements (spikes, LFP, ECoG). In intracranial recordings, electrodes are close to neurons: the signal is more localized, with a better signal-to-noise ratio, which facilitates the identification of action potentials or local fields. In contrast, extracranial signals are heavily attenuated, resulting from the summation of millions of neurons and distorted by cranial tissues. They are also contaminated by numerous artifacts. Analysis therefore requires advanced processing (filtering, correction, modeling) and solving the inverse problem (retrieving brain sources from incomplete and ambiguous measurements, which is a mathematically ill-posed problem).</p>
+<section id="welcome-to-the-data-science-with-spikes-book">
+<h2>Welcome to the Data Science with Spikes Book<a class="headerlink" href="#welcome-to-the-data-science-with-spikes-book" title="Link to this heading">#</a></h2>
+<p>This notebook uses Python packages such as <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>, <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, etc.</p>
+<p>To ensure reproducibility and avoid conflicts with other Python projects, it is recommended to use a <strong>dedicated virtual environment</strong>. We use <strong>Conda</strong> in this project:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new environment (first time only)</span>
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>jupyter-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
+
+<span class="c1"># Activate the environment</span>
+conda<span class="w"> </span>activate<span class="w"> </span>jupyter-env
+
+<span class="c1"># Install required packages</span>
+conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span>seaborn
+pip<span class="w"> </span>install<span class="w"> </span>pyabf<span class="w"> </span>jupyter-book
+
+<span class="c1"># Make the environment available to Jupyter</span>
+python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="o">=</span>jupyter-env<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">&quot;Python (jupyter-env)&quot;</span>
+</pre></div>
+</div>
+<br>
 <br>
 <p>This Jupyter Book is part of the Data Science Bootcamp for <a class="reference external" href="https://team.inria.fr/mathneuro/">MathNeuro</a> and is made openly accessible to the broader community.</p>
 <p>This Jupyter book <a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/">https://fabien-campillo.github.io/data-science-spikes/</a> •
@@ -380,6 +409,7 @@ The GitHub repository <a class="github reference external" href="https://github.
 <hr style="border: 1px solid black;">
 <p>By <a class="reference external" href="https://www-sop.inria.fr/members/Fabien.Campillo/">Fabien Campillo</a>  <a class="reference external" href="mailto:fabien&#46;campillo&#37;&#52;&#48;gmail&#46;com">Email me</a><br>
 © Copyright 2025. This work is licensed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike).</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -431,6 +461,21 @@ The GitHub repository <a class="github reference external" href="https://github.
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-the-data-science-with-spikes-book">Welcome to the Data Science with Spikes Book</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
