@@ -1,4 +1,27 @@
-Ce qui ne marche pas:
+<!----------------------------->
+### compliqué 19/9/2025
+
+Bon... j'utilise conda et env virtual, je sauve l'enviromment and un environment.yml
+
+afin de créer l'env virtuel `python-dsspikes-env`
+
+- comment expliquer faire cet environmmeent 
+- que doit-il contenir
+
+
+me faire expliquer tout cela
+
+
+
+
+
+
+<!----------------------------->
+### Ce qui ne marche pas:
+
+
+
+
 
 
 - **cross-ref** :
@@ -14,6 +37,7 @@ Ce qui ne marche pas:
 Grater du coté de sphynx ?
 
 en dessous les latex_elements ne fonctionnent pas
+
 ```
 # ----------------------------
 # LaTeX / PDF Configuration

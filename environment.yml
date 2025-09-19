@@ -1,10 +1,15 @@
-name: jupyter-env
+name: python-dsspikes-env
 channels:
+  - conda-forge
   - defaults
 dependencies:
   - python=3.11
-  - numpy
-  - matplotlib
-  - jupyterlab
-  - seaborn
-
+  - numpy=1.26  # compatible version for macOS
+  - matplotlib=3.8
+  - seaborn=0.12
+  - jupyterlab=4.1
+  - ipykernel
+  - pip
+  - pip:
+      - pyabf==2.3.8  # install via pip
+ 
