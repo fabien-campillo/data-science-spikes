@@ -1,34 +1,10 @@
 name: jupyter-env
 channels:
   - defaults
-  - conda-forge
 dependencies:
-  # Python version
-  - python=3.13
-
-  # Core scientific stack
+  - python=3.11
   - numpy
-  - scipy
-  - pandas
   - matplotlib
-  - seaborn
-
-  # Electrophysiology tools
-  - pyabf
-
-  # Jupyter ecosystem
   - jupyterlab
-  - notebook
-  - ipykernel
-
-  # Jupyter Book + MyST stack
-  - jupyter-book
-  - myst-nb
-  - myst-parser
-  - sphinx-book-theme
-  - sphinx-external-toc
-  - jupyter-cache
-
-  # Optional but useful for interactive plots
-  - plotly
-  - bokeh
+  - seaborn
+prefix: /opt/anaconda3/envs/jupyter-env
