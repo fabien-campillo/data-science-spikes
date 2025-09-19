@@ -7,4 +7,4 @@ dependencies:
   - matplotlib
   - jupyterlab
   - seaborn
-
+prefix: /opt/anaconda3/envs/jupyter-env
