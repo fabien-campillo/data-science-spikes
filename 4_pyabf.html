@@ -356,21 +356,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-prerequisit">3.1. Python prerequisit</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-conda-virtual-environment-for-this-project">Setting Up the Conda Virtual Environment for This Project</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-environment">1️⃣ Create the environment</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#activate-the-environment">2️⃣ Activate the environment</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#make-the-environment-available-in-jupyter">3️⃣ Make the environment available in Jupyter</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-installation">4️⃣ Verify installation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-jupyter-lab-or-notebook">5️⃣ Launch Jupyter Lab or Notebook</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-the-environment">6️⃣ Updating the environment</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">✅ Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-conda-virtual-environment-for-this-project">Setting Up the Conda Virtual Environment for This Project</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">3.2. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-the-data-science-with-spikes-book">3.3. Welcome to the Data Science with Spikes Book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-environment">3.4. Setting up the environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">3.2. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library"><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
@@ -415,46 +404,29 @@ document.write(`
 <h3>Setting Up the Conda Virtual Environment for This Project<a class="headerlink" href="#setting-up-the-conda-virtual-environment-for-this-project" title="Link to this heading">#</a></h3>
 <p>This project uses Python packages such as <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>.<br />
 To ensure reproducibility and avoid conflicts with other Python projects, we recommend using a <strong>dedicated Conda virtual environment</strong>.</p>
-<hr class="docutils" />
-<section id="create-the-environment">
-<h4>1️⃣ Create the environment<a class="headerlink" href="#create-the-environment" title="Link to this heading">#</a></h4>
-<p>Run the following command in your terminal:</p>
+<div style="margin-left: 2em;">
+<p><strong>1. Create the environment</strong> - Run the following command in your terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>This will create a new environment named jupyter-env (as specified in <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>)</p></li>
-<li><p>All required packages for this Jupyter Book project will be installed.</p></li>
-</ul>
-</section>
-<section id="activate-the-environment">
-<h4>2️⃣ Activate the environment<a class="headerlink" href="#activate-the-environment" title="Link to this heading">#</a></h4>
+<p>This will create a new environment named jupyter-env (as specified in <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>).<br>
+All required packages for this Jupyter Book project will be installed.</p>
+<p><strong>2. Activate the environment</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">env</span>
 </pre></div>
 </div>
 <p>Your terminal prompt should now show <code class="docutils literal notranslate"><span class="pre">(jupyter-env)</span></code>, indicating the environment is active.</p>
-</section>
-<section id="make-the-environment-available-in-jupyter">
-<h4>3️⃣ Make the environment available in Jupyter<a class="headerlink" href="#make-the-environment-available-in-jupyter" title="Link to this heading">#</a></h4>
+<p><strong>3. Make the environment available in Jupyter</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ipykernel</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">jupyter</span><span class="o">-</span><span class="n">env</span> <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span> <span class="s2">&quot;Python (jupyter-env)&quot;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>This allows notebooks to select the correct kernel.</p></li>
-</ul>
-</section>
-<section id="verify-installation">
-<h4>4️⃣ Verify installation<a class="headerlink" href="#verify-installation" title="Link to this heading">#</a></h4>
-<p>You can test that everything is installed correctly:</p>
+<p>This allows notebooks to select the correct kernel.</p>
+<p><strong>4.  Verify installation</strong> - You can test that everything is installed correctly:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;import numpy, matplotlib, seaborn, pyabf; print(&#39;All imports OK!&#39;)&quot;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>If no errors appear, the environment is ready to use.</p></li>
-</ul>
-</section>
-<section id="launch-jupyter-lab-or-notebook">
-<h4>5️⃣ Launch Jupyter Lab or Notebook<a class="headerlink" href="#launch-jupyter-lab-or-notebook" title="Link to this heading">#</a></h4>
+<p>If no errors appear, the environment is ready to use.</p>
+<p><strong>5. Launch Jupyter Lab or Notebook</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch Jupyter Lab</span>
 <span class="n">jupyter</span> <span class="n">lab</span>
 
@@ -463,24 +435,23 @@ To ensure reproducibility and avoid conflicts with other Python projects, we rec
 </pre></div>
 </div>
 <p>In the notebook (top right), select Kernel <code class="docutils literal notranslate"><span class="pre">→</span> <span class="pre">Python</span> <span class="pre">(jupyter-env)</span></code>.</p>
+<!-- the following pics will not appear in the PDF -->
 <p><img alt="Select Kernel" src="_images/select_kernel.png" /></p>
-</section>
-<section id="updating-the-environment">
-<h4>6️⃣ Updating the environment<a class="headerlink" href="#updating-the-environment" title="Link to this heading">#</a></h4>
-<p>If you modify environment.yml later (e.g., adding packages), update the environment:</p>
+<p><strong>6. Updating the environment</strong> –
+If you modify environment.yml later (e.g., adding packages), update the environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">update</span> <span class="o">-</span><span class="n">f</span> <span class="n">environment</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">prune</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--prune</span></code> removes packages no longer listed in <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>.</p></li>
 </ul>
-</section>
-<section id="notes">
-<h4>✅ Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h4>
+<div style="margin-left: -2em;">
+<p><strong>Notes</strong>:</p>
 <ul class="simple">
 <li><p>Keep all project-specific packages inside the virtual environment; do not install them in base.</p></li>
 <li><p>For reproducibility, commit <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> to your repository.</p></li>
 </ul>
+<p>Now we can import packages:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -507,7 +478,6 @@ pyabf: 2.3.8
 </div>
 </section>
 </section>
-</section>
 <section id="exploring-abf-files">
 <h2><span class="section-number">3.2. </span>Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files<a class="headerlink" href="#exploring-abf-files" title="Link to this heading">#</a></h2>
 <p>This first notebook aims to demonstrate how to analyze electrophysiological recordings from a single cell by:</p>
@@ -516,90 +486,6 @@ pyabf: 2.3.8
 <li><p>Plotting, for each recording trial (sweep, see below), the evolution of the membrane potential (voltage) and, if applicable, the injected current.</p></li>
 </ul>
 <p>We import a few libraries:</p>
-</section>
-<section id="welcome-to-the-data-science-with-spikes-book">
-<h2><span class="section-number">3.3. </span>Welcome to the Data Science with Spikes Book<a class="headerlink" href="#welcome-to-the-data-science-with-spikes-book" title="Link to this heading">#</a></h2>
-<p>This notebook uses Python packages such as <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>, and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>.</p>
-<p>To ensure reproducibility and avoid conflicts with other Python projects, we recommend using a <strong>dedicated Conda virtual environment</strong>.</p>
-</section>
-<section id="setting-up-the-environment">
-<h2><span class="section-number">3.4. </span>Setting up the environment<a class="headerlink" href="#setting-up-the-environment" title="Link to this heading">#</a></h2>
-<p>Run these commands in your terminal (not in the notebook):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1️⃣ Create the environment</span>
-conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>jupyter-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
-
-<span class="c1"># 2️⃣ Activate the environment</span>
-conda<span class="w"> </span>activate<span class="w"> </span>jupyter-env
-
-<span class="c1"># 3️⃣ Install required packages</span>
-conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span>seaborn
-pip<span class="w"> </span>install<span class="w"> </span>pyabf<span class="w"> </span>jupyter-book
-
-<span class="c1"># 4️⃣ Make the environment available in Jupyter</span>
-python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="o">=</span>jupyter-env<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">&quot;Python (jupyter-env)&quot;</span>
-</pre></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check which environment the notebook kernel is using</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>                     <span class="c1"># load the pyABF library</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>            <span class="c1"># used for Kernel Density Estimate (KDE) plots</span>
-
-<span class="c1"># Check versions (optional, useful for reproducibility)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;numpy: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;matplotlib: </span><span class="si">{</span><span class="n">plt</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;seaborn: </span><span class="si">{</span><span class="n">sns</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy: 2.0.1
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># Check versions (optional, useful for reproducibility)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;numpy: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;matplotlib: </span><span class="si">{</span><span class="n">plt</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;seaborn: </span><span class="si">{</span><span class="n">sns</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="ne">AttributeError</span>: module &#39;matplotlib.pyplot&#39; has no attribute &#39;__version__&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>                     <span class="c1"># load the pyABF library (cf. infra)</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>            <span class="c1"># used for a Kernel Density Estimate (KDE) plot</span>
-
-<span class="c1"># Check versions (optional, useful for reproducibility)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;numpy version: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;matplotlib version: </span><span class="si">{</span><span class="n">plt</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;seaborn version: </span><span class="si">{</span><span class="n">sns</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>                     <span class="c1"># load the pyABF library (cf. infra)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>            <span class="c1"># used for a Kernel Density Estimate (KDE) plot</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Check versions (optional, useful for reproducibility)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pyabf&#39;
-</pre></div>
-</div>
-</div>
-</div>
 <p>We focus on specific cell, the cell # 89:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,7 +556,22 @@ Scott Harden has made pyABF available as an open-source library, aiming to simpl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ABF (v2.6) with 1 channel (pA), sampled at 10.0 kHz, containing 30 sweeps, having no tags, with a total length of 11.11 minutes, recorded without a protocol file.
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>              <span class="c1"># we load it</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">abf</span><span class="p">)</span>                              <span class="c1"># record characteristics </span>
+
+<span class="nn">File /opt/anaconda3/envs/jupyter-env/lib/python3.11/site-packages/pyabf/abf.py:100,</span> in <span class="ni">ABF.__init__</span><span class="nt">(self, abfFilePath, loadData, cacheStimulusFiles, stimulusFileFolder)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="bp">self</span><span class="o">.</span><span class="n">stimulusFileFolder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">abfFolderPath</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">abfFilePath</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">100</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;ABF file does not exist: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">abfFilePath</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="bp">self</span><span class="o">.</span><span class="n">abfID</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">abfFilePath</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">abfFilePath</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fb</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span> 
+<span class="g g-Whitespace">    </span><span class="mi">105</span>     <span class="c1"># The first 4 bytes of the ABF indicates what type of file it is</span>
+
+<span class="ne">ValueError</span>: ABF file does not exist: /Users/campillo/Documents/0-git.nosync/data-science-spikes/lhb_bursting/cell89basal.abf
 </pre></div>
 </div>
 </div>
@@ -1111,21 +1012,10 @@ ABF File: lhb_bursting/cell209basal.abf    Sweep Number:   4
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-prerequisit">3.1. Python prerequisit</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-conda-virtual-environment-for-this-project">Setting Up the Conda Virtual Environment for This Project</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-environment">1️⃣ Create the environment</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#activate-the-environment">2️⃣ Activate the environment</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#make-the-environment-available-in-jupyter">3️⃣ Make the environment available in Jupyter</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-installation">4️⃣ Verify installation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-jupyter-lab-or-notebook">5️⃣ Launch Jupyter Lab or Notebook</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-the-environment">6️⃣ Updating the environment</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">✅ Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-conda-virtual-environment-for-this-project">Setting Up the Conda Virtual Environment for This Project</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">3.2. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-the-data-science-with-spikes-book">3.3. Welcome to the Data Science with Spikes Book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-environment">3.4. Setting up the environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">3.2. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library"><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>

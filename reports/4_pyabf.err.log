@@ -25,30 +25,25 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Check which environment the notebook kernel is using
-import numpy as np
-import matplotlib.pyplot as plt
-import pyabf                     # load the pyABF library
-import seaborn as sns            # used for Kernel Density Estimate (KDE) plots
-
-# Check versions (optional, useful for reproducibility)
-print(f"numpy: {np.__version__}")
-print(f"matplotlib: {plt.__version__}")
-print(f"seaborn: {sns.__version__}")
-
+abf = pyabf.ABF(file_path)              # we load it
+print(abf)                              # record characteristics 
 ------------------
 
------ stdout -----
-numpy: 2.0.1
-------------------
 
 [31m---------------------------------------------------------------------------[39m
-[31mAttributeError[39m                            Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 9[39m
-[32m      7[39m [38;5;66;03m# Check versions (optional, useful for reproducibility)[39;00m
-[32m      8[39m [38;5;28mprint[39m([33mf[39m[33m"[39m[33mnumpy: [39m[38;5;132;01m{[39;00mnp.__version__[38;5;132;01m}[39;00m[33m"[39m)
-[32m----> [39m[32m9[39m [38;5;28mprint[39m([33mf[39m[33m"[39m[33mmatplotlib: [39m[38;5;132;01m{[39;00m[43mplt[49m[43m.[49m[43m__version__[49m[38;5;132;01m}[39;00m[33m"[39m)
-[32m     10[39m [38;5;28mprint[39m([33mf[39m[33m"[39m[33mseaborn: [39m[38;5;132;01m{[39;00msns.__version__[38;5;132;01m}[39;00m[33m"[39m)
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m abf = [43mpyabf[49m[43m.[49m[43mABF[49m[43m([49m[43mfile_path[49m[43m)[49m              [38;5;66;03m# we load it[39;00m
+[32m      2[39m [38;5;28mprint[39m(abf)                              [38;5;66;03m# record characteristics [39;00m
 
-[31mAttributeError[39m: module 'matplotlib.pyplot' has no attribute '__version__'
+[36mFile [39m[32m/opt/anaconda3/envs/jupyter-env/lib/python3.11/site-packages/pyabf/abf.py:100[39m, in [36mABF.__init__[39m[34m(self, abfFilePath, loadData, cacheStimulusFiles, stimulusFileFolder)[39m
+[32m     97[39m     [38;5;28mself[39m.stimulusFileFolder = [38;5;28mself[39m.abfFolderPath
+[32m     99[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m os.path.exists([38;5;28mself[39m.abfFilePath):
+[32m--> [39m[32m100[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33m"[39m[33mABF file does not exist: [39m[38;5;132;01m%s[39;00m[33m"[39m % [38;5;28mself[39m.abfFilePath)
+[32m    101[39m [38;5;28mself[39m.abfID = os.path.splitext(os.path.basename([38;5;28mself[39m.abfFilePath))[[32m0[39m]
+[32m    103[39m [38;5;28;01mwith[39;00m [38;5;28mopen[39m([38;5;28mself[39m.abfFilePath, [33m'[39m[33mrb[39m[33m'[39m) [38;5;28;01mas[39;00m fb:
+[32m    104[39m 
+[32m    105[39m     [38;5;66;03m# The first 4 bytes of the ABF indicates what type of file it is[39;00m
+
+[31mValueError[39m: ABF file does not exist: /Users/campillo/Documents/0-git.nosync/data-science-spikes/lhb_bursting/cell89basal.abf
 
