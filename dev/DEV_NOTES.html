@@ -57,7 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'devo/devo_notes';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'dev/DEV_NOTES';</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -261,7 +261,7 @@
       
       
       
-      <li><a href="../_sources/devo/devo_notes.md" target="_blank"
+      <li><a href="../_sources/dev/DEV_NOTES.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -369,6 +369,12 @@ document.write(`
                   
   <p>Ce qui ne marche pas:</p>
 <ul class="simple">
+<li><p><strong>cross-ref</strong> :</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{ref}`chap-pyabf` marche ainsi que [link](chap-pyabf)
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>changer la page titre du PDF (on tourne en rond)</p></li>
 <li><p>les <a class="reference external" href="https://jupyterbook.org/en/stable/content/content-blocks.html">content-blocks</a> sont parfait pour le jupyter-book mais disparaissent dans le PDF</p></li>
 </ul>
@@ -420,7 +426,7 @@ latex:
         },
         kernelOptions: {
             name: "python3",
-            path: "./devo"
+            path: "./dev"
         },
         predefinedOutput: true
     }
