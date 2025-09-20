@@ -1,3 +1,8 @@
+### Idées
+
+- faire de python prerequis (au début du chap pylab) un chapitre à part qui explique tout ce qu'il faut, ou plutot une section de l'annexe
+
+
 <!----------------------------->
 ### compliqué 19/9/2025
 
@@ -70,3 +75,7 @@ latex:
       \end{titlepage}
 
 ```
+
+
+
+

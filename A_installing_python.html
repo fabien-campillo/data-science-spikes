@@ -398,6 +398,7 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-conda-virtual-environment-for-this-project">1.5. Setting Up the Conda Virtual Environment for This Project</a></li>
 </ul>
             </nav>
         </div>
@@ -908,6 +909,194 @@ conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> <
 </section>
 </section>
 </section>
+<section id="setting-up-the-conda-virtual-environment-for-this-project">
+<span id="conda-virtual-set-up"></span><h2><span class="section-number">1.5. </span>Setting Up the Conda Virtual Environment for This Project<a class="headerlink" href="#setting-up-the-conda-virtual-environment-for-this-project" title="Link to this heading">#</a></h2>
+<p><em>This section is intended for macOS users.</em></p>
+<p>To run this Jupyter Book, I make use of a conda virtual environment, whose recipe i contained in the file <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> that describes everything needed to create the conda environment named <code class="docutils literal notranslate"><span class="pre">python-dsspikes-env</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>environment.yml
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name: python-dsspikes-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy=1.26  # compatible version for macOS
+  - matplotlib=3.8
+  - seaborn=0.12
+  - jupyterlab=4.1
+  - ipykernel
+  - pip
+  - pip:
+      - pyabf==2.3.8  # install via pip
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">name:</span> <span class="pre">python-dsspikes-env</span></code> tells conda what name you assign to the environment. WHen you run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+</pre></div>
+</div>
+<p>Conda reads that line and creates an environment with that name.
+So after creation, you’ll activate it with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>python-dsspikes-env
+</pre></div>
+</div>
+<p>Each time you run it, conda will move one step “up”:
+If you’re inside python-dsspikes-env, it will go back to (base).
+If you’re already in (base), it will deactivate completely (no environment active).
+So the cycle is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>python-dsspikes-env
+<span class="c1"># ... work here ...</span>
+conda<span class="w"> </span>deactivate
+</pre></div>
+</div>
+<p>The quickest way to check which conda environment is active is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">info</span> <span class="o">--</span><span class="n">envs</span>
+</pre></div>
+</div>
+<p>or its shorthand:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="nb">list</span>
+</pre></div>
+</div>
+<p>hence:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(python-dsspikes-env) data-science-spikes$ conda env list
+# conda environments:
+#
+base                   /Users/campillo/miniforge3
+myenv                  /Users/campillo/miniforge3/envs/myenv
+python-dsspikes-env  * /Users/campillo/miniforge3/envs/python-dsspikes-env
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">*</span></code> shows which environment is currently active.</p></li>
+<li><p>In your shell prompt, the active environment name also appears in parentheses, e.g. <code class="docutils literal notranslate"><span class="pre">(python-dsspikes-env)</span> <span class="pre">data-science-spikes$</span></code> (here <code class="docutils literal notranslate"><span class="pre">(conda_virtual_env)</span> <span class="pre">directory_name</span></code>.</p></li>
+</ul>
+<p>To check the active conda environment inside a Jupyter notebook, you have a few options:</p>
+<ol class="arabic simple">
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">sys.executable</span></code></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">executable</span> <span class="c1"># This shows the path to the Python binary being used.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/campillo/miniforge3/envs/python-dsspikes-env/bin/python&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Check environment variables</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CONDA_DEFAULT_ENV&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;python-dsspikes-env&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Print Python packages &amp; versions
+To confirm everything is coming from the right env:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>which<span class="w"> </span>python
+<span class="o">!</span>python<span class="w"> </span>--version
+<span class="o">!</span>pip<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;pyabf|matplotlib|seaborn&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/campillo/miniforge3/envs/python-dsspikes-env/bin/python
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python 3.11.13
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matplotlib                    3.8.4
+matplotlib-inline             0.1.7
+pyabf                         2.3.8
+seaborn                       0.12.2
+</pre></div>
+</div>
+</div>
+</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">list</span></code> for the complete list.</p>
+<p>Setting Up the Conda Virtual Environment for This Project</p>
+<p>This project uses Python packages such as <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>.<br />
+To ensure reproducibility and avoid conflicts with other Python projects, we recommend using a <strong>dedicated Conda virtual environment</strong>.</p>
+<p><strong>1. Create the environment</strong> - Run the following command in your terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+</pre></div>
+</div>
+<blockquote>
+<div><p>This will create a new environment named jupyter-env (as specified in <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>).<br>
+All required packages for this Jupyter Book project will be installed.</p>
+</div></blockquote>
+<p><strong>2. Activate the environment</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">env</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Your terminal prompt should now show <code class="docutils literal notranslate"><span class="pre">(jupyter-env)</span></code>, indicating the environment is active.</p>
+</div></blockquote>
+<p><strong>3. Make the environment available in Jupyter</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ipykernel</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">jupyter</span><span class="o">-</span><span class="n">env</span> <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span> <span class="s2">&quot;Python (jupyter-env)&quot;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>This allows notebooks to select the correct kernel.</p>
+</div></blockquote>
+<p><strong>4.  Verify installation</strong> - You can test that everything is installed correctly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;import numpy, matplotlib, seaborn, pyabf; print(&#39;All imports OK!&#39;)&quot;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>If no errors appear, the environment is ready to use.</p>
+</div></blockquote>
+<p><strong>5. Launch Jupyter Lab or Notebook</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch Jupyter Lab</span>
+<span class="n">jupyter</span> <span class="n">lab</span>
+
+<span class="c1"># or launch classic Jupyter Notebook</span>
+<span class="n">jupyter</span> <span class="n">notebook</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>In the notebook (top right), select Kernel <code class="docutils literal notranslate"><span class="pre">→</span> <span class="pre">Python</span> <span class="pre">(jupyter-env)</span></code>.</p>
+</div></blockquote>
+<p><img alt="Select Kernel" src="_images/select_kernel.png" /></p>
+<p><strong>6. Updating the environment</strong> –
+If you modify environment.yml later (e.g., adding packages), update the environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">update</span> <span class="o">-</span><span class="n">f</span> <span class="n">environment</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">prune</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">--prune</span></code> removes packages no longer listed in <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>.</p>
+</div></blockquote>
+<p><strong>Notes</strong>:</p>
+<ul class="simple">
+<li><p>Keep all project-specific packages inside the virtual environment; do not install them in base.</p></li>
+<li><p>For reproducibility, commit <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> to your repository.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1017,6 +1206,7 @@ conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> <
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-conda-virtual-environment-for-this-project">1.5. Setting Up the Conda Virtual Environment for This Project</a></li>
 </ul>
   </nav></div>
 

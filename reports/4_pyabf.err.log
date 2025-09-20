@@ -32,7 +32,7 @@ print(abf)                              # record characteristics
 
 [31m---------------------------------------------------------------------------[39m
 [31mValueError[39m                                Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 1[39m
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 1[39m
 [32m----> [39m[32m1[39m abf = [43mpyabf[49m[43m.[49m[43mABF[49m[43m([49m[43mfile_path[49m[43m)[49m              [38;5;66;03m# we load it[39;00m
 [32m      2[39m [38;5;28mprint[39m(abf)                              [38;5;66;03m# record characteristics [39;00m
 
