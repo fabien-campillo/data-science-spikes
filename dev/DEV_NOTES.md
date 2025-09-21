@@ -1,6 +1,4 @@
-### Idées
-
-- faire de python prerequis (au début du chap pylab) un chapitre à part qui explique tout ce qu'il faut, ou plutot une section de l'annexe
+- passer en JB2 ? [ici](https://executablebooks.org/en/latest/blog/2024-05-20-jupyter-book-myst/)
 
 
 <!----------------------------->
@@ -25,7 +23,7 @@ me faire expliquer tout cela
 ### Ce qui ne marche pas:
 
 
-
+- bibtex: c'est foireux, ça marche pour le JB, mais le PDF contient deux sections, à résoudre avec JB2
 
 
 
