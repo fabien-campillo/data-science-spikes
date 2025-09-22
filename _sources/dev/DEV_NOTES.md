@@ -1,6 +1,8 @@
 - passer en JB2 ? [ici](https://executablebooks.org/en/latest/blog/2024-05-20-jupyter-book-myst/)
 
 
+- voir [miniML](https://github.com/delvendahl/miniML) miniML: A deep learning framework for synaptic event detection
+
 <!----------------------------->
 ### compliqué 19/9/2025
 
