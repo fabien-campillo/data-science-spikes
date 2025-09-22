@@ -359,10 +359,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">3.2. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library"><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-the-net">On the net</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-the-net">On the net</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-about-abf-objects">Basics about <code class="docutils literal notranslate"><span class="pre">abf</span></code> objects</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#atributes">Atributes</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
@@ -373,11 +373,13 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#some-statistics-of-1-sweep">Some statistics of 1 sweep</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-plottings">Basics plottings</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Some statistics of 1 sweep</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-voltage-trace-distribution">Plotting the voltage trace distribution</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">3.3. Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-voltage-trace-distribution">Plotting the voltage trace distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-one-sweep-with-input-current">Plotting one sweep with input current</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-sweeps">Plotting all sweeps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-sweeps-with-all-inputs">Plotting all sweeps with all inputs</a></li>
 </ul>
 </li>
 </ul>
@@ -429,17 +431,26 @@ pyabf: 2.3.8
 <li><p>Extracting basic characteristics of the recorded signals.</p></li>
 <li><p>Plotting, for each recording trial (sweep, see below), the evolution of the membrane potential (voltage) and, if applicable, the injected current.</p></li>
 </ul>
-<p>We import a few libraries:</p>
-<p>We focus on specific cell, the cell # 89:</p>
+<p>We consider <code class="docutils literal notranslate"><span class="pre">abf</span></code> files contained in the data directory <code class="docutils literal notranslate"><span class="pre">data/data_patch_clamp_bcam/records</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;lhb_bursting/cell89basal.abf&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;path to the abf file : &#39;</span><span class="p">,</span><span class="n">file_path</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="n">records_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/data_patch_clamp_bcam/records&quot;</span><span class="p">)</span>
+<span class="n">abf_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">records_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.abf&quot;</span><span class="p">))</span> <span class="c1"># recursive glob</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the directory &quot;</span><span class="p">,</span> <span class="n">records_dir</span><span class="p">,</span> <span class="s2">&quot; contains &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">abf_files</span><span class="p">),</span><span class="s2">&quot; abf files&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>path to the abf file :  lhb_bursting/cell89basal.abf
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the directory  data/data_patch_clamp_bcam/records  contains  63  abf files
+</pre></div>
+</div>
+</div>
+</div>
+<p>We focus on specific records:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;data/data_patch_clamp_bcam/records/2024_06/06.26/C2/2024_06_26_0028.abf&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -456,8 +467,9 @@ pyabf: 2.3.8
 </ul>
 <p>The ABF format is binary, making it efficient for large datasets, but it is not easily readable without specialized software or libraries.</p>
 </section>
+</section>
 <section id="pyabf-library">
-<h4><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library<a class="headerlink" href="#pyabf-library" title="Link to this heading">#</a></h4>
+<h3><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library<a class="headerlink" href="#pyabf-library" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library is a Python package designed to facilitate working with ABF files. It provides an easy-to-use interface to read and manipulate data stored in ABF files. The library makes it simpler for researchers to extract relevant information from ABF files, without having to manually parse the binary data.</p>
 <p>Key Features of pyabf:</p>
 <ol class="arabic simple">
@@ -479,7 +491,7 @@ pyabf: 2.3.8
 </ul>
 </section>
 <section id="on-the-net">
-<h4>On the net<a class="headerlink" href="#on-the-net" title="Link to this heading">#</a></h4>
+<h3>On the net<a class="headerlink" href="#on-the-net" title="Link to this heading">#</a></h3>
 <p>The  <a class="reference external" href="https://pypi.org/project/pyabf/">pyABF</a> library was created by <a class="reference external" href="https://swharden.com/about/">Scott Harden</a>.
 Scott Harden has made pyABF available as an open-source library, aiming to simplify the process of working with ABF files in Python, making it easier for researchers to analyze and visualize their data. You can find more about pyABF and its documentation on his website: pyABF - A simple Python interface for Axon Binary Format ABF files.</p>
 <ul class="simple">
@@ -488,14 +500,12 @@ Scott Harden has made pyABF available as an open-source library, aiming to simpl
 <li><p>in Python Package Index <a class="reference external" href="https://pypi.org/project/pyabf/">pypi</a></p></li>
 </ul>
 </section>
-</section>
 <section id="basics-about-abf-objects">
 <h3>Basics about <code class="docutils literal notranslate"><span class="pre">abf</span></code> objects<a class="headerlink" href="#basics-about-abf-objects" title="Link to this heading">#</a></h3>
 <p>Where we import the <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> package and load a record file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;data/data_patch_clamp_bcam/records/2024_06/06.26/C2/2024_06_26_0028.abf&quot;</span>
-<span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>              <span class="c1"># we load it</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>              <span class="c1"># we load it</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">abf</span><span class="p">)</span>                              <span class="c1"># record characteristics </span>
 </pre></div>
 </div>
@@ -623,17 +633,10 @@ sweepD
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sweep_index</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Choose a specific sweep (e.g., first sweep -&gt; index 0)</span>
 <span class="n">abf</span><span class="o">.</span><span class="n">setSweep</span><span class="p">(</span><span class="n">sweep_index</span><span class="p">)</span>  
 
-<span class="c1"># Print voltage trace (recorded signal)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Voltage Trace (mV):&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepY</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Print command input (if available)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Command Input (mV):&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepC</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Check all available ADC channels (recorded signals)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Recorded Channels:&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">adcNames</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Check DAC channels (command input signals)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Command Channels:&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">dacNames</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Voltage Trace (mV):&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepY</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Print voltage trace (recorded signal)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Command Input (mV):&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepC</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Print command input (if available)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Recorded Channels:&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">adcNames</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># Check all available ADC channels (recorded signals)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Command Channels:&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">dacNames</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Check DAC channels (command input signals)</span>
 </pre></div>
 </div>
 </div>
@@ -683,241 +686,20 @@ sweepD
 </div>
 </section>
 </section>
-<section id="basics-plottings">
-<h3>Basics plottings<a class="headerlink" href="#basics-plottings" title="Link to this heading">#</a></h3>
-<p>Let’s import external libraries:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;numpy: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;matplotlib: </span><span class="si">{</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;seaborn: </span><span class="si">{</span><span class="n">sns</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pyabf: </span><span class="si">{</span><span class="n">pyabf</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy: 1.26.4
-matplotlib: 3.8.4
-seaborn: 0.12.2
-pyabf: 2.3.8
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="n">records_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/data_patch_clamp_bcam/records&quot;</span><span class="p">)</span>
-<span class="n">abf_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">records_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.abf&quot;</span><span class="p">))</span> <span class="c1"># recursive glob</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the directory &quot;</span><span class="p">,</span> <span class="n">records_dir</span><span class="p">,</span> <span class="s2">&quot; contains &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">abf_files</span><span class="p">),</span><span class="s2">&quot; abf files&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the directory  data/data_patch_clamp_bcam/records  contains  63  abf files
-</pre></div>
-</div>
-</div>
-</div>
-<p>We focus on specific records:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;data/data_patch_clamp_bcam/records/2024_06/06.26/C2/2024_06_26_0028.abf&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;path to the abf file : &#39;</span><span class="p">,</span><span class="n">file_path</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>path to the abf file :  data/data_patch_clamp_bcam/records/2024_06/06.26/C2/2024_06_26_0028.abf
-</pre></div>
-</div>
-</div>
-</div>
-<p>we use the <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> package to load the given record file:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>              <span class="c1"># we load it</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">abf</span><span class="p">)</span>  
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ABF (v2.9) with 2 channels (mV, pA), sampled at 10.0 kHz, containing 14 sweeps, having no tags, with a total length of 2.35 minutes, recorded with protocol &quot;IV-DG&quot;.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here <code class="docutils literal notranslate"><span class="pre">abf</span> <span class="pre">=</span> <span class="pre">pyabf.ABF(file_path)</span></code> creates an abf object that have:</p>
-<ul class="simple">
-<li><p><strong>attributes:</strong> data stored in the object, and</p></li>
-<li><p><strong>methods:</strong> functions that belong to an object and can be called to perform actions</p></li>
-</ul>
-<p>We can print all the attributes:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;File Path:&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">abfFilePath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;File Version:&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">abfVersionString</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Sampling Rate:&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">dataRate</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Total Sweeps:&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepCount</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;ADC Channels:&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">adcNames</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;DAC Channels:&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">dacNames</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Channel Units:&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepUnitsY</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Experiment Date:&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">abfDateTime</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          File Path: /Users/campillo/Documents/0-git.nosync/data-science-spikes/data/data_patch_clamp_bcam/records/2024_06/06.26/C2/2024_06_26_0028.abf
-       File Version: 2.9.0.0
-      Sampling Rate: 10000 Hz
-       Total Sweeps: 14
-       ADC Channels: [&#39;IN 0&#39;, &#39;IN 1&#39;]
-       DAC Channels: [&#39;OUT 0&#39;, &#39;OUT 1&#39;]
-      Channel Units: mV
-    Experiment Date: 2024-06-26 17:23:16.253000
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="n">method</span> <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">abf</span><span class="p">)</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">abf</span><span class="p">,</span> <span class="n">method</span><span class="p">))</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">method</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">methods</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_dtype
-_getAdcNameAndUnits
-_getDacNameAndUnits
-_ide_helper
-_loadAndScaleData
-_makeAdditionalVariables
-_readHeadersV1
-_readHeadersV2
-getAllXs
-getAllYs
-headerLaunch
-launchInClampFit
-saveABF1
-setSweep
-sweepD
-</pre></div>
-</div>
-</div>
-</div>
-<p>Of course the main parts of the sweep are the <strong>recorded signal</strong> and the <strong>command input</strong>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print voltage trace (recorded signal)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Voltage Trace (mV):&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepY</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Print command input (if available)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Command Input (mV):&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepC</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Voltage Trace (mV): [-65.4175 -65.4175 -65.4236 ... -64.6851 -64.6851 -64.6851]
-      Command Input (mV): [0. 0. 0. ... 0. 0. 0.]
-</pre></div>
-</div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">abf</span></code> object contains various attributes and methods that allow you to access metadata and data from the .abf file. Here are some useful attributes and how to call them:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;List of sweep indexes:&quot;</span><span class="p">,</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>List of sweep indexes: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sweep_index</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Choose a specific sweep (e.g., first sweep -&gt; index 0)</span>
-<span class="n">abf</span><span class="o">.</span><span class="n">setSweep</span><span class="p">(</span><span class="n">sweep_index</span><span class="p">)</span>  
-
-<span class="c1"># Print voltage trace (recorded signal)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Voltage Trace (mV):&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepY</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Print command input (if available)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Command Input (mV):&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepC</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Check all available ADC channels (recorded signals)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Recorded Channels:&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">adcNames</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Check DAC channels (command input signals)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Command Channels:&#39;</span><span class="si">:</span><span class="s2">&gt;25</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">dacNames</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Voltage Trace (mV): [-65.4175 -65.4175 -65.4236 ... -64.6851 -64.6851 -64.6851]
-      Command Input (mV): [0. 0. 0. ... 0. 0. 0.]
-       Recorded Channels: [&#39;IN 0&#39;, &#39;IN 1&#39;]
-        Command Channels: [&#39;OUT 0&#39;, &#39;OUT 1&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<section id="id1">
-<h4>Some statistics of 1 sweep<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
-<p>Here, we have selected <code class="docutils literal notranslate"><span class="pre">sweep_index</span> <span class="pre">=</span> <span class="pre">0</span></code>, representing the first sweep in the ABF file. We then compute some basic statistics of the corresponding voltage trace, such as the mean, median, min, max, standard deviation, and range of the signal:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepY</span>  <span class="c1"># The voltage trace for the specific swwep</span>
-
-<span class="n">stats</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;Mean (mV)&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
-    <span class="s2">&quot;Median (mV)&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
-    <span class="s2">&quot;Min (mV)&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
-    <span class="s2">&quot;Max (mV)&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
-    <span class="s2">&quot;Std Dev (mV)&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
-    <span class="s2">&quot;Range (mV)&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>  <span class="c1"># Max - Min</span>
-<span class="p">}</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Voltage Trace Statistics:&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">stats</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Voltage Trace Statistics:
-           Mean (mV): -81.502
-         Median (mV): -91.797
-            Min (mV): -93.097
-            Max (mV): -64.545
-        Std Dev (mV): 12.916
-          Range (mV): 28.552
-</pre></div>
-</div>
-</div>
-</div>
 </section>
+<section id="plots">
+<h2><span class="section-number">3.3. </span>Plots<a class="headerlink" href="#plots" title="Link to this heading">#</a></h2>
 <section id="plotting-the-voltage-trace-distribution">
-<h4>Plotting the voltage trace distribution<a class="headerlink" href="#plotting-the-voltage-trace-distribution" title="Link to this heading">#</a></h4>
+<h3>Plotting the voltage trace distribution<a class="headerlink" href="#plotting-the-voltage-trace-distribution" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to avoid warning from Seaborn internally calling a Pandas option </span>
 <span class="c1"># (mode.use_inf_as_na) that has been deprecated in pandas ≥ 2.1.</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>  <span class="c1"># needed for filterwarnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s2">&quot;seaborn&quot;</span><span class="p">)</span>
 
-<span class="c1"># Create a figure with two subplots (1 row, 2 columns)</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="c1"># Create a figure with two subplots (1 row, 2 columns), sharing x-axis</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Plot histogram on the first subplot</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
@@ -927,7 +709,7 @@ sweepD
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Plot KDE on the second subplot</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bw_adjust</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bw_adjust</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Voltage (mV)&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Density&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Voltage Trace Density&quot;</span><span class="p">)</span>
@@ -940,9 +722,12 @@ sweepD
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cdfc86df1e2a06434294f1ea4572a7e3c2b4b92ae97bbacf8bb30fc89df0cbfc.png" src="_images/cdfc86df1e2a06434294f1ea4572a7e3c2b4b92ae97bbacf8bb30fc89df0cbfc.png" />
+<img alt="_images/0554b1859e7b88c60fbfbc39cd5096685d1931797ea7bc4f017d2efaa51a786d.png" src="_images/0554b1859e7b88c60fbfbc39cd5096685d1931797ea7bc4f017d2efaa51a786d.png" />
 </div>
 </div>
+</section>
+<section id="plotting-one-sweep-with-input-current">
+<h3>Plotting one sweep with input current<a class="headerlink" href="#plotting-one-sweep-with-input-current" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_adc</span> <span class="o">=</span> <span class="s2">&quot;C0&quot;</span>
@@ -974,13 +759,36 @@ sweepD
 <img alt="_images/a94568213771bb835a53c603dfb4695bf861dc05935d0b56aaf69fb0bcb76e67.png" src="_images/a94568213771bb835a53c603dfb4695bf861dc05935d0b56aaf69fb0bcb76e67.png" />
 </div>
 </div>
+</section>
+<section id="plotting-all-sweeps">
+<h3>Plotting all sweeps<a class="headerlink" href="#plotting-all-sweeps" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
-<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;data/data_patch_clamp_bcam/records/2024_06/06.26/C2/2024_06_26_0028.abf&quot;</span>
+<span class="c1"># plot every sweep (with vertical offset)</span>
+<span class="k">for</span> <span class="n">sweepNumber</span> <span class="ow">in</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">:</span>
+    <span class="n">abf</span><span class="o">.</span><span class="n">setSweep</span><span class="p">(</span><span class="n">sweepNumber</span><span class="p">)</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="mi">140</span><span class="o">*</span><span class="n">sweepNumber</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepY</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_adc</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">my_lw</span><span class="p">)</span>
+
+<span class="c1"># decorate the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># hide Y axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepLabelX</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cebefe8af54534fc6eaf8c5f6886cabde01f165cfba0ce72762538bce49b0585.png" src="_images/cebefe8af54534fc6eaf8c5f6886cabde01f165cfba0ce72762538bce49b0585.png" />
+</div>
+</div>
+</section>
+<section id="plotting-all-sweeps-with-all-inputs">
+<h3>Plotting all sweeps with all inputs<a class="headerlink" href="#plotting-all-sweeps-with-all-inputs" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;data/data_patch_clamp_bcam/records/2024_06/06.26/C2/2024_06_26_0028.abf&quot;</span>
 <span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -1089,7 +897,6 @@ sweepD
 </section>
 </section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1159,10 +966,10 @@ sweepD
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">3.2. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library"><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-the-net">On the net</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-library"><code class="docutils literal notranslate"><span class="pre">pyabf</span></code> Library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-the-net">On the net</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-about-abf-objects">Basics about <code class="docutils literal notranslate"><span class="pre">abf</span></code> objects</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#atributes">Atributes</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
@@ -1173,11 +980,13 @@ sweepD
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#some-statistics-of-1-sweep">Some statistics of 1 sweep</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-plottings">Basics plottings</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Some statistics of 1 sweep</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-voltage-trace-distribution">Plotting the voltage trace distribution</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">3.3. Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-voltage-trace-distribution">Plotting the voltage trace distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-one-sweep-with-input-current">Plotting one sweep with input current</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-sweeps">Plotting all sweeps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-sweeps-with-all-inputs">Plotting all sweeps with all inputs</a></li>
 </ul>
 </li>
 </ul>
