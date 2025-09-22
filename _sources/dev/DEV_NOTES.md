@@ -1,3 +1,5 @@
+- passer en JB2 ? [ici](https://executablebooks.org/en/latest/blog/2024-05-20-jupyter-book-myst/)
+
 
 <!----------------------------->
 ### compliqué 19/9/2025
@@ -21,7 +23,7 @@ me faire expliquer tout cela
 ### Ce qui ne marche pas:
 
 
-
+- bibtex: c'est foireux, ça marche pour le JB, mais le PDF contient deux sections, à résoudre avec JB2
 
 
 
