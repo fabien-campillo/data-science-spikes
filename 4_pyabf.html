@@ -356,7 +356,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-external-python-packages">3.1. Using External Python Packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">3.2. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-on-the-net">3.2. <code class="docutils literal notranslate"><span class="pre">pyABF</span></code> on the net</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">3.3. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library"><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
 </ul>
@@ -374,14 +375,13 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">3.3. Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">3.4. Plots</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-voltage-trace-distribution">Plotting the voltage trace distribution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-one-sweep-with-input-current">Plotting one sweep with input current</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-sweeps">Plotting all sweeps</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-sweeps-with-all-inputs">Plotting all sweeps with all inputs</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-on-the-net">3.4. <code class="docutils literal notranslate"><span class="pre">pyABF</span></code> on the net</a></li>
 </ul>
             </nav>
         </div>
@@ -424,8 +424,18 @@ pyabf: 2.3.8
 </div>
 </div>
 </section>
+<section id="pyabf-on-the-net">
+<h2><span class="section-number">3.2. </span><code class="docutils literal notranslate"><span class="pre">pyABF</span></code> on the net<a class="headerlink" href="#pyabf-on-the-net" title="Link to this heading">#</a></h2>
+<p>The  <a class="reference external" href="https://pypi.org/project/pyabf/">pyABF</a> library was created by <a class="reference external" href="https://swharden.com/about/">Scott Harden</a>.
+Scott Harden has made pyABF available as an open-source library, aiming to simplify the process of working with ABF files in Python, making it easier for researchers to analyze and visualize their data. You can find more about pyABF and its documentation on his website:</p>
+<ul class="simple">
+<li><p>a (good) <a class="reference external" href="https://swharden.com/pyabf/tutorial/">tutorial</a> by [Scott W Harden]</p></li>
+<li><p><a class="reference external" href="https://swharden.com/pyabf/">pyABF - A simple Python interface for Axon Binary Format ABF files</a>, with <a class="reference external" href="https://github.com/swharden/pyABF">git repository</a></p></li>
+<li><p>in Python Package Index <a class="reference external" href="https://pypi.org/project/pyabf/">pypi</a></p></li>
+</ul>
+</section>
 <section id="exploring-abf-files">
-<h2><span class="section-number">3.2. </span>Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files<a class="headerlink" href="#exploring-abf-files" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.3. </span>Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files<a class="headerlink" href="#exploring-abf-files" title="Link to this heading">#</a></h2>
 <p>This first notebook aims to demonstrate how to analyze electrophysiological recordings from a single cell by:</p>
 <ul class="simple">
 <li><p>Extracting basic characteristics of the recorded signals.</p></li>
@@ -678,7 +688,7 @@ sweepD
 </section>
 </section>
 <section id="plots">
-<h2><span class="section-number">3.3. </span>Plots<a class="headerlink" href="#plots" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.4. </span>Plots<a class="headerlink" href="#plots" title="Link to this heading">#</a></h2>
 <section id="plotting-the-voltage-trace-distribution">
 <h3>Plotting the voltage trace distribution<a class="headerlink" href="#plotting-the-voltage-trace-distribution" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -792,9 +802,6 @@ sweepD
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils.plots</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_abf_traces_with_scalebar</span>
 
-<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;data/data_patch_clamp_bcam/records/2024_06/06.26/C2/2024_06_26_0028.abf&quot;</span>
-<span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plot_abf_traces_with_scalebar</span><span class="p">(</span><span class="n">abf</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -805,17 +812,36 @@ sweepD
 </a>
 </div>
 </div>
+<p>Another possibility:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils.plots</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_abf_sweeps_colored</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plot_abf_sweeps_colored</span><span class="p">(</span><span class="n">abf</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;tab20&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/7704fd76579d13a1fe8c91ce60538f5ac2a8272fecf219af4f390c647cd25a33.png"><img alt="_images/7704fd76579d13a1fe8c91ce60538f5ac2a8272fecf219af4f390c647cd25a33.png" src="_images/7704fd76579d13a1fe8c91ce60538f5ac2a8272fecf219af4f390c647cd25a33.png" style="width: 789px; height: 590px;" />
+</a>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils.plots</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_abf_sweeps_with_legend</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plot_abf_sweeps_with_legend</span><span class="p">(</span><span class="n">abf</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;tab20&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/d4424fda3ad98b2a62bb16d9fbd60a6acf79c3dea1e41d92c9cd0d3d2dd84f86.png"><img alt="_images/d4424fda3ad98b2a62bb16d9fbd60a6acf79c3dea1e41d92c9cd0d3d2dd84f86.png" src="_images/d4424fda3ad98b2a62bb16d9fbd60a6acf79c3dea1e41d92c9cd0d3d2dd84f86.png" style="width: 1124px; height: 590px;" />
+</a>
+</div>
+</div>
 </section>
-</section>
-<section id="pyabf-on-the-net">
-<h2><span class="section-number">3.4. </span><code class="docutils literal notranslate"><span class="pre">pyABF</span></code> on the net<a class="headerlink" href="#pyabf-on-the-net" title="Link to this heading">#</a></h2>
-<p>The  <a class="reference external" href="https://pypi.org/project/pyabf/">pyABF</a> library was created by <a class="reference external" href="https://swharden.com/about/">Scott Harden</a>.
-Scott Harden has made pyABF available as an open-source library, aiming to simplify the process of working with ABF files in Python, making it easier for researchers to analyze and visualize their data. You can find more about pyABF and its documentation on his website: pyABF - A simple Python interface for Axon Binary Format ABF files.</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://swharden.com/pyabf/">pyABF - A simple Python interface for Axon Binary Format ABF files</a>, with <a class="reference external" href="https://github.com/swharden/pyABF">git repository</a></p></li>
-<li><p>a <a class="reference external" href="https://swharden.com/pyabf/tutorial/">tutorial</a> by [Scott W Harden]</p></li>
-<li><p>in Python Package Index <a class="reference external" href="https://pypi.org/project/pyabf/">pypi</a></p></li>
-</ul>
 </section>
 </section>
 
@@ -884,7 +910,8 @@ Scott Harden has made pyABF available as an open-source library, aiming to simpl
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-external-python-packages">3.1. Using External Python Packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">3.2. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-on-the-net">3.2. <code class="docutils literal notranslate"><span class="pre">pyABF</span></code> on the net</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-abf-files">3.3. Exploring <code class="docutils literal notranslate"><span class="pre">abf</span></code> files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-files-and-pyabf-library"><code class="docutils literal notranslate"><span class="pre">abf</span></code> files and <code class="docutils literal notranslate"><span class="pre">pyabf</span></code> library</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abf-file-overview">ABF File Overview</a></li>
 </ul>
@@ -902,14 +929,13 @@ Scott Harden has made pyABF available as an open-source library, aiming to simpl
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">3.3. Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">3.4. Plots</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-voltage-trace-distribution">Plotting the voltage trace distribution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-one-sweep-with-input-current">Plotting one sweep with input current</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-sweeps">Plotting all sweeps</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-all-sweeps-with-all-inputs">Plotting all sweeps with all inputs</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyabf-on-the-net">3.4. <code class="docutils literal notranslate"><span class="pre">pyABF</span></code> on the net</a></li>
 </ul>
   </nav></div>
 
