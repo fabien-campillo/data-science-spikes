@@ -178,135 +178,50 @@ def plot_abf_sweeps_colored(abf, cmap="tab10", lw=0.8, alpha=1.0, figsize=(8,6))
 
 
 
-def plot_abf_sweeps_with_legend(abf, cmap="tab10", lw=0.8, alpha=1.0, figsize=(10,6)):
-    """
-    Plot all ADC and DAC sweeps in two subplots (stacked),
-    with a color legend (sweep numbers) on the right.
-
-    Parameters
-    ----------
-    abf : pyabf.ABF
-        The ABF object to plot.
-    cmap : str or Colormap
-        Matplotlib colormap to cycle through for sweeps.
-    lw : float
-        Line width for traces.
-    alpha : float
-        Transparency of traces (0 = fully transparent, 1 = opaque).
-    figsize : tuple
-        Size of the figure (wider to leave room for legend).
-
-    Returns
-    -------
-    fig, (ax1, ax2) : matplotlib objects
-    """
-    # Create figure with extra width for legend
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=figsize, sharex=True)
-
-    # Colormap for sweeps
-    cmap = plt.get_cmap(cmap)
-    colors = [cmap(i % cmap.N) for i in range(len(abf.sweepList))]
-
-    # --- Plot ADC sweeps ---
-    for i, s in enumerate(abf.sweepList):
-        abf.setSweep(s)
-        ax1.plot(abf.sweepX, abf.sweepY, color=colors[i], lw=lw, alpha=alpha)
-    ax1.set_ylabel(abf.sweepLabelY)
-    ax1.set_title("ADC sweeps")
-
-    # --- Plot DAC sweeps ---
-    for i, s in enumerate(abf.sweepList):
-        abf.setSweep(s)
-        ax2.plot(abf.sweepX, abf.sweepC, color=colors[i], lw=lw, alpha=alpha)
-    ax2.set_xlabel(abf.sweepLabelX)
-    ax2.set_ylabel(abf.sweepLabelC)
-    ax2.set_title("DAC sweeps")
-
-    # --- Build custom legend on the right ---
-    handles = [
-        plt.Line2D([0], [0], color=colors[i], lw=3, alpha=alpha)
-        for i in range(len(abf.sweepList))
-    ]
-    labels = [f"{s}" for s in abf.sweepList]
-
-    fig.legend(
-        handles,
-        labels,
-        loc="center right",
-        bbox_to_anchor=(1.12, 0.5),
-        borderaxespad=0.0,
-        title="Sweeps",
-    )
-
-    fig.tight_layout(rect=[0, 0, 0.9, 1])  # leave space on right for legend
-    return fig, (ax1, ax2)
-
-
-def plot_abf_sweeps_with_legend2(
-    abf, cmap="tab10", lw=0.8, alpha=1.0, figsize=(10,6), dpi=150
+def plot_abf_sweeps_with_legend(
+    abf, cmap="tab10", lw=0.8, alpha=1.0, figsize=(10,6),
+    legend_loc='upper right', legend_bbox=(1.02, 0.95), legend_pad=0.5, legend_fontsize='small'
 ):
     """
-    Plot all ADC and DAC sweeps in two subplots (stacked),
-    with a color legend (sweep numbers) on the right.
-
-    Parameters
-    ----------
-    abf : pyabf.ABF
-        The ABF object to plot.
-    cmap : str or Colormap
-        Matplotlib colormap to cycle through for sweeps.
-    lw : float
-        Line width for traces.
-    alpha : float
-        Transparency of traces (0 = fully transparent, 1 = opaque).
-    figsize : tuple
-        Size of the figure (wider to leave room for legend).
-    dpi : int
-        Resolution (dots per inch) for the figure. Higher dpi → sharper in JB/PDF.
-
-    Returns
-    -------
-    fig, (ax1, ax2) : matplotlib objects
+    Plot all ADC and DAC sweeps with a customizable legend.
+    
+    legend_loc : str
+        Reference location of the legend (Matplotlib loc string).
+    legend_bbox : tuple
+        Coordinates to shift legend relative to loc (x, y).
+    legend_pad : float
+        Padding between axes and legend.
+    legend_fontsize : str or int
+        Font size of legend labels.
     """
-    # Create figure with extra width for legend
-    fig, (ax1, ax2) = plt.subplots(
-        2, 1, figsize=figsize, sharex=True, dpi=dpi
-    )
+    import matplotlib.pyplot as plt
 
-    # Colormap for sweeps
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=figsize, sharex=True, constrained_layout=True)
+
     cmap = plt.get_cmap(cmap)
     colors = [cmap(i % cmap.N) for i in range(len(abf.sweepList))]
 
-    # --- Plot ADC sweeps ---
     for i, s in enumerate(abf.sweepList):
         abf.setSweep(s)
         ax1.plot(abf.sweepX, abf.sweepY, color=colors[i], lw=lw, alpha=alpha)
+        ax2.plot(abf.sweepX, abf.sweepC, color=colors[i], lw=lw, alpha=alpha)
+
     ax1.set_ylabel(abf.sweepLabelY)
     ax1.set_title("ADC sweeps")
-
-    # --- Plot DAC sweeps ---
-    for i, s in enumerate(abf.sweepList):
-        abf.setSweep(s)
-        ax2.plot(abf.sweepX, abf.sweepC, color=colors[i], lw=lw, alpha=alpha)
     ax2.set_xlabel(abf.sweepLabelX)
     ax2.set_ylabel(abf.sweepLabelC)
     ax2.set_title("DAC sweeps")
 
-    # --- Build custom legend on the right ---
-    handles = [
-        plt.Line2D([0], [0], color=colors[i], lw=3, alpha=alpha)
-        for i in range(len(abf.sweepList))
-    ]
+    handles = [plt.Line2D([0], [0], color=colors[i], lw=3, alpha=alpha) for i in range(len(abf.sweepList))]
     labels = [f"{s}" for s in abf.sweepList]
 
     fig.legend(
-        handles,
-        labels,
-        loc="center right",
-        bbox_to_anchor=(1.12, 0.5),
-        borderaxespad=0.0,
+        handles, labels,
+        loc=legend_loc,
+        bbox_to_anchor=legend_bbox,
+        borderaxespad=legend_pad,
         title="Sweeps",
+        fontsize=legend_fontsize
     )
 
-    fig.tight_layout(rect=[0, 0, 0.9, 1])  # leave space on right for legend
     return fig, (ax1, ax2)
