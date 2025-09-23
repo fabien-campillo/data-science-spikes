@@ -683,15 +683,16 @@ sweepD
 <h3>Plotting the voltage trace distribution<a class="headerlink" href="#plotting-the-voltage-trace-distribution" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;pdf&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
 </pre></div>
 </div>
 </div>
 </div>
+<p>this configuration, known as the inline backend, helps achieve a balance between good visual quality and manageable file size, see Section   <a class="reference internal" href="B_jupyter.html#jupyter-backends"><span class="std std-ref">Jupyter backends</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to avoid warning from Seaborn internally calling a Pandas option </span>
-<span class="c1"># (mode.use_inf_as_na) that has been deprecated in pandas ≥ 2.1.</span>
+<span class="c1"># (mode.use_inf_as_na) that has been deprecated in pandas ≥ 2.1. </span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>  <span class="c1"># needed for filterwarnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s2">&quot;seaborn&quot;</span><span class="p">)</span>
 
@@ -719,9 +720,8 @@ sweepD
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1000x400 with 2 Axes&gt;
-</pre></div>
-</div>
+<a class="reference internal image-reference" href="_images/db9565b9c1615988c15bf85222f7fa090fb3ab49652bb98ba4c14b805f5b3bfe.png"><img alt="_images/db9565b9c1615988c15bf85222f7fa090fb3ab49652bb98ba4c14b805f5b3bfe.png" src="_images/db9565b9c1615988c15bf85222f7fa090fb3ab49652bb98ba4c14b805f5b3bfe.png" style="width: 989px; height: 390px;" />
+</a>
 </div>
 </div>
 </section>
@@ -755,9 +755,8 @@ sweepD
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 800x500 with 2 Axes&gt;
-</pre></div>
-</div>
+<a class="reference internal image-reference" href="_images/e5b233e1669563a39b5dcd93bc0c0e7a53d0db2439d93b5032742a249c142b4c.png"><img alt="_images/e5b233e1669563a39b5dcd93bc0c0e7a53d0db2439d93b5032742a249c142b4c.png" src="_images/e5b233e1669563a39b5dcd93bc0c0e7a53d0db2439d93b5032742a249c142b4c.png" style="width: 789px; height: 490px;" />
+</a>
 </div>
 </div>
 </section>
@@ -781,122 +780,29 @@ sweepD
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 800x500 with 1 Axes&gt;
-</pre></div>
-</div>
+<a class="reference internal image-reference" href="_images/2c4cff80dce2f5fd59847020f12a41a6e02da7d29d73216f295025d95a60537c.png"><img alt="_images/2c4cff80dce2f5fd59847020f12a41a6e02da7d29d73216f295025d95a60537c.png" src="_images/2c4cff80dce2f5fd59847020f12a41a6e02da7d29d73216f295025d95a60537c.png" style="width: 640px; height: 448px;" />
+</a>
 </div>
 </div>
 </section>
 <section id="plotting-all-sweeps-with-all-inputs">
 <h3>Plotting all sweeps with all inputs<a class="headerlink" href="#plotting-all-sweeps-with-all-inputs" title="Link to this heading">#</a></h3>
+<p>We can improve the previous plot, see the python script <code class="docutils literal notranslate"><span class="pre">utils/plots.py</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;data/data_patch_clamp_bcam/records/2024_06/06.26/C2/2024_06_26_0028.abf&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils.plots</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_abf_traces_with_scalebar</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;data/data_patch_clamp_bcam/records/2024_06/06.26/C2/2024_06_26_0028.abf&quot;</span>
 <span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-
-<span class="n">n_sweeps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">)</span>
-
-<span class="c1"># --- ADC scaling ---</span>
-<span class="n">all_adc</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">:</span>
-    <span class="n">abf</span><span class="o">.</span><span class="n">setSweep</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="n">all_adc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepY</span><span class="p">)</span>
-<span class="n">adc_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">all_adc</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">all_adc</span><span class="p">)</span>
-<span class="n">adc_spacing</span> <span class="o">=</span> <span class="n">adc_range</span> <span class="o">*</span> <span class="mf">1.2</span>  
-
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">):</span>
-    <span class="n">abf</span><span class="o">.</span><span class="n">setSweep</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="n">offset</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">adc_spacing</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepY</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_adc</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">my_lw</span><span class="p">)</span>
-
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepLabelX</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepLabelY</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_adc</span><span class="p">)</span>
-
-<span class="c1"># --- DAC scaling ---</span>
-<span class="n">all_dac</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">:</span>
-    <span class="n">abf</span><span class="o">.</span><span class="n">setSweep</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="n">all_dac</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepC</span><span class="p">)</span>
-<span class="n">dac_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">all_dac</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">all_dac</span><span class="p">)</span>
-<span class="n">dac_spacing</span> <span class="o">=</span> <span class="n">dac_range</span> <span class="o">*</span> <span class="mf">1.2</span>
-
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">):</span>
-    <span class="n">abf</span><span class="o">.</span><span class="n">setSweep</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="n">offset</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">dac_spacing</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepC</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_dac</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">my_lw</span><span class="p">)</span>
-
-<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepLabelC</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_dac</span><span class="p">)</span>
-
-
-<span class="c1"># --- Helper: nice rounded scale ---</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">nice_scale</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-    <span class="n">exp</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">value</span><span class="p">))))</span> <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
-    <span class="n">base</span> <span class="o">=</span> <span class="n">value</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">exp</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
-    <span class="k">if</span> <span class="n">base</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">nice</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">elif</span> <span class="n">base</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">nice</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="k">elif</span> <span class="n">base</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="n">nice</span> <span class="o">=</span> <span class="mi">5</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">nice</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="k">return</span> <span class="n">nice</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="n">exp</span>
-
-<span class="c1"># --- Helper: LaTeX style scale label ---</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">format_scale_label_latex</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">unit</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">rf</span><span class="s2">&quot;$0\,\mathrm</span><span class="se">{{</span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="se">}}</span><span class="s2">$&quot;</span>
-    <span class="n">exp</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">value</span><span class="p">))))</span>
-    <span class="n">mant</span> <span class="o">=</span> <span class="n">value</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">exp</span><span class="p">)</span>
-    <span class="k">return</span> <span class="sa">rf</span><span class="s2">&quot;$</span><span class="si">{</span><span class="n">mant</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> \times 10^</span><span class="se">{{</span><span class="si">{</span><span class="n">exp</span><span class="si">}</span><span class="se">}}</span><span class="s2">\,\mathrm</span><span class="se">{{</span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="se">}}</span><span class="s2">$&quot;</span>
-
-<span class="c1"># --- Compute scale bars ---</span>
-<span class="n">adc_bar</span> <span class="o">=</span> <span class="n">nice_scale</span><span class="p">(</span><span class="n">adc_range</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">dac_bar</span> <span class="o">=</span> <span class="n">nice_scale</span><span class="p">(</span><span class="n">dac_range</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># --- Anchors below first sweep ---</span>
-<span class="n">y_anchor_adc</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">adc_spacing</span>
-<span class="n">y_anchor_dac</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">dac_spacing</span>
-
-<span class="n">x0</span> <span class="o">=</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.05</span>
-<span class="n">x1</span> <span class="o">=</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.05</span>
-
-<span class="c1"># --- Left (ADC) scale bar ---</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x0</span><span class="p">],</span> <span class="p">[</span><span class="n">y_anchor_adc</span><span class="p">,</span> <span class="n">y_anchor_adc</span> <span class="o">+</span> <span class="n">adc_bar</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color_adc</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x0</span> <span class="o">-</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">y_anchor_adc</span> <span class="o">+</span> <span class="n">adc_bar</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
-         <span class="n">format_scale_label_latex</span><span class="p">(</span><span class="n">adc_bar</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepUnitsY</span><span class="p">),</span>
-         <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_adc</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># --- Right (DAC) scale bar ---</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span> <span class="n">x1</span><span class="p">],</span> <span class="p">[</span><span class="n">y_anchor_dac</span><span class="p">,</span> <span class="n">y_anchor_dac</span> <span class="o">+</span> <span class="n">dac_bar</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color_dac</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">y_anchor_dac</span> <span class="o">+</span> <span class="n">dac_bar</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
-         <span class="n">format_scale_label_latex</span><span class="p">(</span><span class="n">dac_bar</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepUnitsC</span><span class="p">),</span>
-         <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_dac</span><span class="p">)</span>
-
-<span class="c1"># remove box spines, keep only bottom (time axis)</span>
-<span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">]:</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># keep bottom spine</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plot_abf_traces_with_scalebar</span><span class="p">(</span><span class="n">abf</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 800x500 with 2 Axes&gt;
-</pre></div>
-</div>
+<a class="reference internal image-reference" href="_images/d753d6a1d22c10785aa4ccf0a0bfc08115cec0209f8fdaf9db9b64b641179060.png"><img alt="_images/d753d6a1d22c10785aa4ccf0a0bfc08115cec0209f8fdaf9db9b64b641179060.png" src="_images/d753d6a1d22c10785aa4ccf0a0bfc08115cec0209f8fdaf9db9b64b641179060.png" style="width: 825px; height: 448px;" />
+</a>
 </div>
 </div>
 </section>
