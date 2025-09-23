@@ -1,0 +1,1278 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Diving in BCAM data &#8212; Data Sciences and Spikes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'data/data_patch_clamp_bcam/bcam_data';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../1_context.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo_title.png" class="logo__image only-light" alt="Data Sciences and Spikes - Home"/>
+    <script>document.write(`<img src="../../_static/logo_title.png" class="logo__image only-dark" alt="Data Sciences and Spikes - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../1_context.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../2_resources.html">1. Resources and references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_databases.html">2. Electrophysiology Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_pyabf.html">3. PyABF</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../A_installing_python.html">1. Installing Python and some tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../B_jupyter.html">2. Interactive Computing with Jupyter Ecosystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../C_diagnostic.html">3. Diagnostic</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf">Download PDF</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/fabien-campillo/data-science-spikes" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/data/data_patch_clamp_bcam/bcam_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Diving in BCAM data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-inspecting-sweeps">Example: Inspecting sweeps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-inspect-internal-protocolsection">Example: Inspect internal _protocolSection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-searching-for-temperature-related-parameters">Example: Searching for temperature-related parameters</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="diving-in-bcam-data">
+<h1>Diving in BCAM data<a class="headerlink" href="#diving-in-bcam-data" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tabulate</span><span class="w"> </span><span class="kn">import</span> <span class="n">tabulate</span>
+
+<span class="n">records_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+<span class="n">abf_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">records_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.abf&quot;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The directory </span><span class="si">{</span><span class="n">records_dir</span><span class="si">}</span><span class="s2"> contains </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">abf_files</span><span class="p">)</span><span class="si">}</span><span class="s2"> ABF files:&quot;</span><span class="p">)</span>
+
+<span class="c1"># Prepare table data</span>
+<span class="n">table</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">abf_files</span><span class="p">:</span>
+    <span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">file</span><span class="p">),</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">),</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepLengthSec</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">abf</span><span class="o">.</span><span class="n">protocol</span>
+    <span class="p">])</span>
+
+<span class="c1"># Print table with headers</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;File&quot;</span><span class="p">,</span> <span class="s2">&quot;Nb of Sweeps&quot;</span><span class="p">,</span> <span class="s2">&quot;Sweep Length (s)&quot;</span><span class="p">,</span> <span class="s2">&quot;Protocol&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;grid&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The directory records contains 63 ABF files:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------------------------------------------+----------------+--------------------+-----------------+
+| File                                         |   Nb of Sweeps |   Sweep Length (s) | Protocol        |
++==============================================+================+====================+=================+
+| records/2024_06/06.26/C1/2024_06_26_0025.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0019.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0018.abf |              1 |             100    | Slow_I_sin      |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0024.abf |              1 |             100    | Slow_I_sin      |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0026.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0027.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0023.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0022.abf |             22 |               1    | IV-DG           |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0008.abf |              1 |             116.07 | gap free2       |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0020.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0021.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0009.abf |              1 |              65.74 | gap free2       |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0010.abf |              1 |              44.65 | gap free2       |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0004.abf |              1 |            1207.19 | gap free2       |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0005.abf |             39 |               1    | IV-DG2 evry 5pA |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0011.abf |              1 |             126.21 | gap free2       |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0007.abf |              1 |              61.59 | gap free2       |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0013.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0012.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0006.abf |              1 |              96.2  | gap free2       |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0002.abf |              1 |             100    | Slow_I_sin      |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0016.abf |             23 |               1    | IV-DG           |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0017.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0003.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0015.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0001.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0000.abf |             23 |               1    | IV-DG           |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C1/2024_06_26_0014.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0033.abf |             11 |               1    | IV-DG           |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0037.abf |              1 |             327.58 | gap free2       |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0036.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0034.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0035.abf |              1 |             100    | Slow_I_sin      |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0046.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0047.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0045.abf |              1 |             100    | Slow_I_sin      |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0044.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0040.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0041.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0043.abf |             13 |               1    | IV-DG           |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0042.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0048.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0038.abf |              1 |             331.11 | gap free2       |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C3/2024_06_26_0039.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C2/2024_06_26_0031.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C2/2024_06_26_0030.abf |              1 |             100    | Slow_I_sin      |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C2/2024_06_26_0032.abf |              1 |             331.47 | gap free2       |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C2/2024_06_26_0029.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.26/C2/2024_06_26_0028.abf |             14 |               1    | IV-DG           |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0009.abf |             10 |               1    | IV-DG           |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0008.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0011.abf |              1 |             100    | Slow_I_sin      |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0005.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0004.abf |              1 |             661.81 | gap free2       |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0010.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0006.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0012.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0013.abf |              1 |              84.68 | gap free2       |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0007.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0003.abf |              1 |              30    | VC ramp slow 2  |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0002.abf |              1 |             100    | Slow_I_sin      |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0000.abf |             12 |               1    | IV-DG           |
++----------------------------------------------+----------------+--------------------+-----------------+
+| records/2024_06/06.19/C1/2024_06_19_0001.abf |              1 |              30    | IC ramp slow    |
++----------------------------------------------+----------------+--------------------+-----------------+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tabulate</span><span class="w"> </span><span class="kn">import</span> <span class="n">tabulate</span>
+
+<span class="n">records_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+<span class="n">abf_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">records_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.abf&quot;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The directory </span><span class="si">{</span><span class="n">records_dir</span><span class="si">}</span><span class="s2"> contains </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">abf_files</span><span class="p">)</span><span class="si">}</span><span class="s2"> ABF files:&quot;</span><span class="p">)</span>
+
+<span class="c1"># Prepare table data</span>
+<span class="n">table</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">abf_files</span><span class="p">:</span>
+    <span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">file</span><span class="p">),</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">),</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepLengthSec</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">abf</span><span class="o">.</span><span class="n">protocol</span>
+    <span class="p">])</span>
+
+<span class="c1"># Headers</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;File&quot;</span><span class="p">,</span> <span class="s2">&quot;Nb of Sweeps&quot;</span><span class="p">,</span> <span class="s2">&quot;Sweep Length (s)&quot;</span><span class="p">,</span> <span class="s2">&quot;Protocol&quot;</span><span class="p">]</span>
+
+<span class="c1"># Generate Markdown table</span>
+<span class="n">md_table</span> <span class="o">=</span> <span class="n">tabulate</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;github&quot;</span><span class="p">)</span>
+
+<span class="c1"># Write to a Markdown file</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;abf_files_table.md&quot;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;# ABF Files Summary</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">md_table</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Markdown table written to </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The directory records contains 63 ABF files:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Markdown table written to abf_files_table.md
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/Users/campillo/Documents/0-git.nosync/data-science-spikes/&quot;</span><span class="p">)</span>  <span class="c1"># parent folder containing `utils`</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils.plots</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_abf_sweeps_with_legend3</span>
+plot_abf_sweeps_with_legend3<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.backends.backend_pdf</span><span class="w"> </span><span class="kn">import</span> <span class="n">PdfPages</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_abf_sweeps_with_legend3</span><span class="p">(</span>
+    <span class="n">abf</span><span class="p">,</span> <span class="n">file_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span>
+    <span class="n">legend_loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">legend_bbox</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">),</span> <span class="n">legend_pad</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">legend_fontsize</span><span class="o">=</span><span class="mi">8</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot all ADC and DAC sweeps with a customizable legend.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    abf : pyabf.ABF</span>
+<span class="sd">        Loaded ABF object.</span>
+<span class="sd">    file_path : str, optional</span>
+<span class="sd">        Path of the ABF file, used to set the figure title.</span>
+<span class="sd">    legend_loc : str</span>
+<span class="sd">        Reference location of the legend (Matplotlib loc string).</span>
+<span class="sd">    legend_bbox : tuple</span>
+<span class="sd">        Coordinates to shift legend relative to loc (x, y).</span>
+<span class="sd">    legend_pad : float</span>
+<span class="sd">        Padding between axes and legend.</span>
+<span class="sd">    legend_fontsize : str or int</span>
+<span class="sd">        Font size of legend labels.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">cmap</span><span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="n">cmap</span><span class="o">.</span><span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">))]</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">):</span>
+        <span class="n">abf</span><span class="o">.</span><span class="n">setSweep</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepY</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepC</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepLabelY</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;ADC sweeps&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepLabelX</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepLabelC</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;DAC sweeps&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Legend with sweep numbers</span>
+    <span class="n">handles</span> <span class="o">=</span> <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">))]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">]</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+        <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span>
+        <span class="n">loc</span><span class="o">=</span><span class="n">legend_loc</span><span class="p">,</span>
+        <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="n">legend_bbox</span><span class="p">,</span>
+        <span class="n">borderaxespad</span><span class="o">=</span><span class="n">legend_pad</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sweeps&quot;</span><span class="p">,</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="n">legend_fontsize</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Title = filename (if provided)</span>
+    <span class="c1"># Title = relative path (if provided)</span>
+    <span class="k">if</span> <span class="n">file_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">records_dir</span><span class="p">),</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span>
+
+
+
+<span class="n">abf_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">records_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.abf&quot;</span><span class="p">))</span>
+
+<span class="c1"># A4 size (portrait: 8.27 × 11.69 in)</span>
+<span class="n">a4_size</span> <span class="o">=</span> <span class="p">(</span><span class="mf">8.27</span><span class="p">,</span> <span class="mf">11.69</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">PdfPages</span><span class="p">(</span><span class="s2">&quot;abf_sweeps_A4.pdf&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pdf</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">abf_files</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="c1"># master A4 page with 2 slots</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+            <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">a4_size</span><span class="p">,</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">abf_files</span><span class="p">):</span>
+                <span class="n">file_path</span> <span class="o">=</span> <span class="n">abf_files</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span>
+                <span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+                <span class="c1"># generate smaller sub-figure</span>
+                <span class="n">subfig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plot_abf_sweeps_with_legend3</span><span class="p">(</span>
+                    <span class="n">abf</span><span class="p">,</span> <span class="n">file_path</span><span class="o">=</span><span class="n">file_path</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>  <span class="c1"># reduced size</span>
+                <span class="p">)</span>
+
+                <span class="c1"># save to buffer as image</span>
+                <span class="n">buf</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+                <span class="n">subfig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+                <span class="n">buf</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+
+                <span class="c1"># show inside A4 page slot</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+                <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">subfig</span><span class="p">)</span>
+
+        <span class="n">pdf</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0025.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0019.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0018.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0024.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0026.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0027.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0023.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0022.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0008.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0020.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0021.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0009.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0010.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0004.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0005.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0011.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0007.abf
+Processing: records/2024_06/06.26/C1/2024_06_26_0013.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0012.abf
+Processing: records/2024_06/06.26/C1/2024_06_26_0006.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0002.abf
+Processing: records/2024_06/06.26/C1/2024_06_26_0016.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0017.abf
+Processing: records/2024_06/06.26/C1/2024_06_26_0003.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0015.abf
+Processing: records/2024_06/06.26/C1/2024_06_26_0001.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0000.abf
+Processing: records/2024_06/06.26/C1/2024_06_26_0014.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C3/2024_06_26_0033.abf
+Processing: records/2024_06/06.26/C3/2024_06_26_0037.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C3/2024_06_26_0036.abf
+Processing: records/2024_06/06.26/C3/2024_06_26_0034.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C3/2024_06_26_0035.abf
+Processing: records/2024_06/06.26/C3/2024_06_26_0046.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C3/2024_06_26_0047.abf
+Processing: records/2024_06/06.26/C3/2024_06_26_0045.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C3/2024_06_26_0044.abf
+Processing: records/2024_06/06.26/C3/2024_06_26_0040.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C3/2024_06_26_0041.abf
+Processing: records/2024_06/06.26/C3/2024_06_26_0043.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C3/2024_06_26_0042.abf
+Processing: records/2024_06/06.26/C3/2024_06_26_0048.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C3/2024_06_26_0038.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C3/2024_06_26_0039.abf
+Processing: records/2024_06/06.26/C2/2024_06_26_0031.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C2/2024_06_26_0030.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C2/2024_06_26_0032.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C2/2024_06_26_0029.abf
+Processing: records/2024_06/06.26/C2/2024_06_26_0028.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.19/C1/2024_06_19_0009.abf
+Processing: records/2024_06/06.19/C1/2024_06_19_0008.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.19/C1/2024_06_19_0011.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.19/C1/2024_06_19_0005.abf
+Processing: records/2024_06/06.19/C1/2024_06_19_0004.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.19/C1/2024_06_19_0010.abf
+Processing: records/2024_06/06.19/C1/2024_06_19_0006.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.19/C1/2024_06_19_0012.abf
+Processing: records/2024_06/06.19/C1/2024_06_19_0013.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.19/C1/2024_06_19_0007.abf
+Processing: records/2024_06/06.19/C1/2024_06_19_0003.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.19/C1/2024_06_19_0002.abf
+Processing: records/2024_06/06.19/C1/2024_06_19_0000.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.19/C1/2024_06_19_0001.abf
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;records/2024_06/06.26/C1/2024_06_26_0016.abf&quot;</span>
+
+<span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">abf</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;_adcSection&#39;, &#39;_cacheStimulusFiles&#39;, &#39;_dacSection&#39;, &#39;_dataGain&#39;, &#39;_dataOffset&#39;, &#39;_dataSection&#39;, &#39;_dtype&#39;, &#39;_epochPerDacSection&#39;, &#39;_epochSection&#39;, &#39;_fileGUID&#39;, &#39;_fileSize&#39;, &#39;_getAdcNameAndUnits&#39;, &#39;_getDacNameAndUnits&#39;, &#39;_headerV2&#39;, &#39;_ide_helper&#39;, &#39;_loadAndScaleData&#39;, &#39;_makeAdditionalVariables&#39;, &#39;_nDataFormat&#39;, &#39;_preLoadData&#39;, &#39;_protocolSection&#39;, &#39;_readHeadersV1&#39;, &#39;_readHeadersV2&#39;, &#39;_stringsSection&#39;, &#39;_sweepBaselinePoints&#39;, &#39;_synchArraySection&#39;, &#39;_tagSection&#39;, &#39;_userListSection&#39;, &#39;abfDateTime&#39;, &#39;abfDateTimeString&#39;, &#39;abfFileComment&#39;, &#39;abfFilePath&#39;, &#39;abfFolderPath&#39;, &#39;abfID&#39;, &#39;abfVersion&#39;, &#39;abfVersionString&#39;, &#39;adcNames&#39;, &#39;adcUnits&#39;, &#39;channelCount&#39;, &#39;channelList&#39;, &#39;creator&#39;, &#39;creatorVersion&#39;, &#39;creatorVersionString&#39;, &#39;dacNames&#39;, &#39;dacUnits&#39;, &#39;data&#39;, &#39;dataByteStart&#39;, &#39;dataLengthMin&#39;, &#39;dataLengthSec&#39;, &#39;dataPointByteSize&#39;, &#39;dataPointCount&#39;, &#39;dataPointsPerMs&#39;, &#39;dataRate&#39;, &#39;dataSecPerPoint&#39;, &#39;fileGUID&#39;, &#39;fileUUID&#39;, &#39;getAllXs&#39;, &#39;getAllYs&#39;, &#39;headerHTML&#39;, &#39;headerLaunch&#39;, &#39;headerMarkdown&#39;, &#39;headerText&#39;, &#39;holdingCommand&#39;, &#39;launchInClampFit&#39;, &#39;md5&#39;, &#39;nOperationMode&#39;, &#39;protocol&#39;, &#39;protocolPath&#39;, &#39;sampleRate&#39;, &#39;saveABF1&#39;, &#39;setSweep&#39;, &#39;stimulusByChannel&#39;, &#39;stimulusFileFolder&#39;, &#39;sweepC&#39;, &#39;sweepChannel&#39;, &#39;sweepCount&#39;, &#39;sweepD&#39;, &#39;sweepDerivative&#39;, &#39;sweepEpochs&#39;, &#39;sweepIntervalSec&#39;, &#39;sweepLabelC&#39;, &#39;sweepLabelD&#39;, &#39;sweepLabelX&#39;, &#39;sweepLabelY&#39;, &#39;sweepLengthSec&#39;, &#39;sweepList&#39;, &#39;sweepNumber&#39;, &#39;sweepPointCount&#39;, &#39;sweepTimesMin&#39;, &#39;sweepTimesSec&#39;, &#39;sweepUnitsC&#39;, &#39;sweepUnitsX&#39;, &#39;sweepUnitsY&#39;, &#39;sweepX&#39;, &#39;sweepY&#39;, &#39;tagComments&#39;, &#39;tagSweeps&#39;, &#39;tagTimesMin&#39;, &#39;tagTimesSec&#39;, &#39;userList&#39;, &#39;userListEnable&#39;, &#39;userListParamToVary&#39;, &#39;userListParamToVaryName&#39;, &#39;userListRepeat&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>What you’re seeing with <code class="docutils literal notranslate"><span class="pre">dir(abf)</span></code> is a list of all the attributes and methods of the ABF object. Here’s a breakdown:</p>
+<ol class="arabic simple">
+<li><p><strong>Attributes starting with <code class="docutils literal notranslate"><span class="pre">_</span></code></strong><br />
+Examples: <code class="docutils literal notranslate"><span class="pre">_protocolSection</span></code>, <code class="docutils literal notranslate"><span class="pre">_dacSection</span></code>, <code class="docutils literal notranslate"><span class="pre">_dataSection</span></code>, <code class="docutils literal notranslate"><span class="pre">_headerV2</span></code></p>
+<ul class="simple">
+<li><p>These are internal structures used by pyabf to store data, DAC signals, protocol info, headers, etc.</p></li>
+<li><p>They can be accessed, but their structure may not be a simple dictionary.</p></li>
+</ul>
+</li>
+<li><p><strong>Attributes without <code class="docutils literal notranslate"><span class="pre">_</span></code></strong><br />
+Examples: <code class="docutils literal notranslate"><span class="pre">adcNames</span></code>, <code class="docutils literal notranslate"><span class="pre">dacNames</span></code>, <code class="docutils literal notranslate"><span class="pre">sweepX</span></code>, <code class="docutils literal notranslate"><span class="pre">sweepY</span></code>, <code class="docutils literal notranslate"><span class="pre">sweepC</span></code>, <code class="docutils literal notranslate"><span class="pre">fileGUID</span></code>, <code class="docutils literal notranslate"><span class="pre">abfFilePath</span></code></p>
+<ul class="simple">
+<li><p>These are the “user-facing” properties. You can use them directly to inspect sweeps, channels, or metadata.</p></li>
+</ul>
+</li>
+<li><p><strong>Methods</strong><br />
+Examples: <code class="docutils literal notranslate"><span class="pre">setSweep()</span></code>, <code class="docutils literal notranslate"><span class="pre">getAllXs()</span></code>, <code class="docutils literal notranslate"><span class="pre">getAllYs()</span></code></p>
+<ul class="simple">
+<li><p>Functions you can call on the ABF object to manipulate or extract data.</p></li>
+</ul>
+</li>
+</ol>
+<section id="example-inspecting-sweeps">
+<h2>Example: Inspecting sweeps<a class="headerlink" href="#example-inspecting-sweeps" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
+
+<span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="s2">&quot;records/sample.abf&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sweeps available:&quot;</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">)</span>      <span class="c1"># list of sweep numbers</span>
+<span class="n">abf</span><span class="o">.</span><span class="n">setSweep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                <span class="c1"># set to first sweep</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X-axis of first sweep:&quot;</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">)</span>    <span class="c1"># x-axis of first sweep</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ADC data of first sweep:&quot;</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepY</span><span class="p">)</span>  <span class="c1"># ADC data of first sweep</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DAC data of first sweep:&quot;</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepC</span><span class="p">)</span>  <span class="c1"># DAC data of first sweep</span>
+</pre></div>
+</div>
+</section>
+<section id="example-inspect-internal-protocolsection">
+<h2>Example: Inspect internal _protocolSection<a class="headerlink" href="#example-inspect-internal-protocolsection" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">_protocolSection</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">attr</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">_protocolSection</span><span class="p">,</span> <span class="n">attr</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="example-searching-for-temperature-related-parameters">
+<h2>Example: Searching for temperature-related parameters<a class="headerlink" href="#example-searching-for-temperature-related-parameters" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_temperature</span><span class="p">(</span><span class="n">abf</span><span class="p">):</span>
+    <span class="c1"># Check protocol section</span>
+    <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">_protocolSection</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;temp&quot;</span> <span class="ow">in</span> <span class="n">attr</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Protocol section:&quot;</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">_protocolSection</span><span class="p">,</span> <span class="n">attr</span><span class="p">))</span>
+    <span class="c1"># Check file comment</span>
+    <span class="k">if</span> <span class="s2">&quot;temp&quot;</span> <span class="ow">in</span> <span class="n">abf</span><span class="o">.</span><span class="n">abfFileComment</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File comment:&quot;</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">abfFileComment</span><span class="p">)</span>
+    <span class="c1"># Check user list</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">abf</span><span class="p">,</span> <span class="s2">&quot;userListParamToVaryName&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">abf</span><span class="o">.</span><span class="n">userListParamToVaryName</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">abf</span><span class="o">.</span><span class="n">userListParamToVaryName</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;temp&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;User list param:&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">find_temperature</span><span class="p">(</span><span class="n">abf</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abf</span> <span class="o">=</span> <span class="n">pyabf</span><span class="o">.</span><span class="n">ABF</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="c1"># List all attributes of the protocol section</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">_protocolSection</span><span class="p">))</span>
+
+<span class="c1"># Optionally, print attribute names and their values</span>
+<span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">_protocolSection</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">attr</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>  <span class="c1"># skip internal attributes</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">_protocolSection</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;_blockStart&#39;, &#39;_byteStart&#39;, &#39;_cleanString&#39;, &#39;_entryCount&#39;, &#39;_entrySize&#39;, &#39;_fb&#39;, &#39;_sUnused&#39;, &#39;bEnableFileCompression&#39;, &#39;fADCRange&#39;, &#39;fADCSequenceInterval&#39;, &#39;fAverageWeighting&#39;, &#39;fCellID&#39;, &#39;fDACRange&#39;, &#39;fEpisodeStartToStart&#39;, &#39;fFirstRunDelayS&#39;, &#39;fRunStartToStart&#39;, &#39;fScopeOutputInterval&#39;, &#39;fSecondsPerRun&#39;, &#39;fStatisticsPeriod&#39;, &#39;fSynchTimeUnit&#39;, &#39;fTrialStartToStart&#39;, &#39;fTriggerThreshold&#39;, &#39;lADCResolution&#39;, &#39;lAverageCount&#39;, &#39;lDACResolution&#39;, &#39;lEpisodesPerRun&#39;, &#39;lFileCommentIndex&#39;, &#39;lFinishDisplayNum&#39;, &#39;lNumSamplesPerEpisode&#39;, &#39;lNumberOfTrials&#39;, &#39;lPreTriggerSamples&#39;, &#39;lRunsPerTrial&#39;, &#39;lSamplesPerTrace&#39;, &#39;lStartDisplayNum&#39;, &#39;lStatisticsMeasurements&#39;, &#39;lTimeHysteresis&#39;, &#39;nActiveDACChannel&#39;, &#39;nAllowExternalTags&#39;, &#39;nAlternateDACOutputState&#39;, &#39;nAlternateDigitalOutputState&#39;, &#39;nAutoAnalyseEnable&#39;, &#39;nAutoTriggerStrategy&#39;, &#39;nAverageAlgorithm&#39;, &#39;nAveragingMode&#39;, &#39;nChannelStatsStrategy&#39;, &#39;nCommentsEnable&#39;, &#39;nDigitalDACChannel&#39;, &#39;nDigitalEnable&#39;, &#39;nDigitalHolding&#39;, &#39;nDigitalInterEpisode&#39;, &#39;nDigitalTrainActiveLogic&#39;, &#39;nDigitizerADCs&#39;, &#39;nDigitizerDACs&#39;, &#39;nDigitizerSynchDigitalOuts&#39;, &#39;nDigitizerTotalDigitalOuts&#39;, &#39;nDigitizerType&#39;, &#39;nExperimentType&#39;, &#39;nExternalTagType&#39;, &#39;nFirstEpisodeInRun&#39;, &#39;nLTPType&#39;, &#39;nLevelHysteresis&#39;, &#39;nManualInfoStrategy&#39;, &#39;nOperationMode&#39;, &#39;nScopeTriggerOut&#39;, &#39;nShowPNRawData&#39;, &#39;nSignalType&#39;, &#39;nStatisticsClearStrategy&#39;, &#39;nStatisticsDisplayStrategy&#39;, &#39;nStatisticsSaveStrategy&#39;, &#39;nStatsEnable&#39;, &#39;nTrialTriggerSource&#39;, &#39;nTriggerAction&#39;, &#39;nTriggerPolarity&#39;, &#39;nTriggerSource&#39;, &#39;nUndoPromptStrategy&#39;, &#39;nUndoRunCount&#39;, &#39;readByte&#39;, &#39;readBytes&#39;, &#39;readChar&#39;, &#39;readInt16&#39;, &#39;readInt32&#39;, &#39;readSingle&#39;, &#39;readSingles&#39;, &#39;readString&#39;, &#39;readStruct&#39;, &#39;readUInt16&#39;, &#39;readUInt32&#39;, &#39;sDigitizerType&#39;, &#39;seek&#39;, &#39;uFileCompressionRatio&#39;]
+bEnableFileCompression : 0
+fADCRange : 10.0
+fADCSequenceInterval : 100.0
+fAverageWeighting : 0.10000000149011612
+fCellID : [0.0, 0.0, 0.0]
+fDACRange : 10.0
+fEpisodeStartToStart : 10.0
+fFirstRunDelayS : 0.0
+fRunStartToStart : 0.0
+fScopeOutputInterval : 0.0
+fSecondsPerRun : 300.0
+fStatisticsPeriod : 1.0
+fSynchTimeUnit : 50.0
+fTrialStartToStart : 0.0
+fTriggerThreshold : 0.0
+lADCResolution : 32768
+lAverageCount : 1
+lDACResolution : 32768
+lEpisodesPerRun : 50
+lFileCommentIndex : 0
+lFinishDisplayNum : 10000
+lNumSamplesPerEpisode : 20000
+lNumberOfTrials : 1
+lPreTriggerSamples : 40
+lRunsPerTrial : 1
+lSamplesPerTrace : 20000
+lStartDisplayNum : 0
+lStatisticsMeasurements : 5
+lTimeHysteresis : 1
+nActiveDACChannel : 0
+nAllowExternalTags : 0
+nAlternateDACOutputState : 0
+nAlternateDigitalOutputState : 0
+nAutoAnalyseEnable : 1
+nAutoTriggerStrategy : 1
+nAverageAlgorithm : 0
+nAveragingMode : 0
+nChannelStatsStrategy : 0
+nCommentsEnable : 0
+nDigitalDACChannel : 0
+nDigitalEnable : 0
+nDigitalHolding : 0
+nDigitalInterEpisode : 0
+nDigitalTrainActiveLogic : 1
+nDigitizerADCs : 8
+nDigitizerDACs : 8
+nDigitizerSynchDigitalOuts : 8
+nDigitizerTotalDigitalOuts : 16
+nDigitizerType : 10
+nExperimentType : 2
+nExternalTagType : 2
+nFirstEpisodeInRun : 0
+nLTPType : 0
+nLevelHysteresis : 64
+nManualInfoStrategy : 0
+nOperationMode : 5
+nScopeTriggerOut : 0
+nShowPNRawData : 0
+nSignalType : 0
+nStatisticsClearStrategy : 0
+nStatisticsDisplayStrategy : 0
+nStatisticsSaveStrategy : 0
+nStatsEnable : 0
+nTrialTriggerSource : -3
+nTriggerAction : 0
+nTriggerPolarity : 0
+nTriggerSource : -3
+nUndoPromptStrategy : 0
+nUndoRunCount : 0
+readByte : &lt;bound method AbfReader.readByte of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readBytes : &lt;bound method AbfReader.readBytes of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readChar : &lt;bound method AbfReader.readChar of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readInt16 : &lt;bound method AbfReader.readInt16 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readInt32 : &lt;bound method AbfReader.readInt32 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readSingle : &lt;bound method AbfReader.readSingle of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readSingles : &lt;bound method AbfReader.readSingles of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readString : &lt;bound method AbfReader.readString of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readStruct : &lt;bound method AbfReader.readStruct of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readUInt16 : &lt;bound method AbfReader.readUInt16 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readUInt32 : &lt;bound method AbfReader.readUInt32 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+sDigitizerType : Unknown
+seek : &lt;bound method AbfReader.seek of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+uFileCompressionRatio : 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_temperature</span><span class="p">(</span><span class="n">abf</span><span class="p">):</span>
+    <span class="c1"># Check protocol section</span>
+    <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">_protocolSection</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;temp&quot;</span> <span class="ow">in</span> <span class="n">attr</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Protocol section:&quot;</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">_protocolSection</span><span class="p">,</span> <span class="n">attr</span><span class="p">))</span>
+    <span class="c1"># Check file comment</span>
+    <span class="k">if</span> <span class="s2">&quot;temp&quot;</span> <span class="ow">in</span> <span class="n">abf</span><span class="o">.</span><span class="n">abfFileComment</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File comment:&quot;</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">abfFileComment</span><span class="p">)</span>
+    <span class="c1"># Check user list</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">abf</span><span class="p">,</span> <span class="s2">&quot;userListParamToVaryName&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">abf</span><span class="o">.</span><span class="n">userListParamToVaryName</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">abf</span><span class="o">.</span><span class="n">userListParamToVaryName</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;temp&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;User list param:&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">find_temperature</span><span class="p">(</span><span class="n">abf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">_protocolSection</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">attr</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">_protocolSection</span><span class="p">,</span> <span class="n">attr</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bEnableFileCompression 0
+fADCRange 10.0
+fADCSequenceInterval 100.0
+fAverageWeighting 0.10000000149011612
+fCellID [0.0, 0.0, 0.0]
+fDACRange 10.0
+fEpisodeStartToStart 10.0
+fFirstRunDelayS 0.0
+fRunStartToStart 0.0
+fScopeOutputInterval 0.0
+fSecondsPerRun 300.0
+fStatisticsPeriod 1.0
+fSynchTimeUnit 50.0
+fTrialStartToStart 0.0
+fTriggerThreshold 0.0
+lADCResolution 32768
+lAverageCount 1
+lDACResolution 32768
+lEpisodesPerRun 50
+lFileCommentIndex 0
+lFinishDisplayNum 10000
+lNumSamplesPerEpisode 20000
+lNumberOfTrials 1
+lPreTriggerSamples 40
+lRunsPerTrial 1
+lSamplesPerTrace 20000
+lStartDisplayNum 0
+lStatisticsMeasurements 5
+lTimeHysteresis 1
+nActiveDACChannel 0
+nAllowExternalTags 0
+nAlternateDACOutputState 0
+nAlternateDigitalOutputState 0
+nAutoAnalyseEnable 1
+nAutoTriggerStrategy 1
+nAverageAlgorithm 0
+nAveragingMode 0
+nChannelStatsStrategy 0
+nCommentsEnable 0
+nDigitalDACChannel 0
+nDigitalEnable 0
+nDigitalHolding 0
+nDigitalInterEpisode 0
+nDigitalTrainActiveLogic 1
+nDigitizerADCs 8
+nDigitizerDACs 8
+nDigitizerSynchDigitalOuts 8
+nDigitizerTotalDigitalOuts 16
+nDigitizerType 10
+nExperimentType 2
+nExternalTagType 2
+nFirstEpisodeInRun 0
+nLTPType 0
+nLevelHysteresis 64
+nManualInfoStrategy 0
+nOperationMode 5
+nScopeTriggerOut 0
+nShowPNRawData 0
+nSignalType 0
+nStatisticsClearStrategy 0
+nStatisticsDisplayStrategy 0
+nStatisticsSaveStrategy 0
+nStatsEnable 0
+nTrialTriggerSource -3
+nTriggerAction 0
+nTriggerPolarity 0
+nTriggerSource -3
+nUndoPromptStrategy 0
+nUndoRunCount 0
+readByte &lt;bound method AbfReader.readByte of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readBytes &lt;bound method AbfReader.readBytes of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readChar &lt;bound method AbfReader.readChar of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readInt16 &lt;bound method AbfReader.readInt16 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readInt32 &lt;bound method AbfReader.readInt32 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readSingle &lt;bound method AbfReader.readSingle of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readSingles &lt;bound method AbfReader.readSingles of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readString &lt;bound method AbfReader.readString of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readStruct &lt;bound method AbfReader.readStruct of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readUInt16 &lt;bound method AbfReader.readUInt16 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+readUInt32 &lt;bound method AbfReader.readUInt32 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+sDigitizerType Unknown
+seek &lt;bound method AbfReader.seek of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x13f88b390&gt;&gt;
+uFileCompressionRatio 1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python-dsspikes-env",
+            path: "./data/data_patch_clamp_bcam"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python-dsspikes-env'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-inspecting-sweeps">Example: Inspecting sweeps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-inspect-internal-protocolsection">Example: Inspect internal _protocolSection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-searching-for-temperature-related-parameters">Example: Searching for temperature-related parameters</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fabien Campillo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright This book is distributed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike).
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
