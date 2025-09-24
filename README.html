@@ -332,7 +332,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -348,6 +350,22 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">README</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-environment-yml">Current <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-tree">Directory tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author">Author</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trigger">trigger</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -360,42 +378,34 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="readme">
 <h1>README<a class="headerlink" href="#readme" title="Link to this heading">#</a></h1>
 <p>This repository contains a Jupyter Book called <strong>Data Science &amp; Spikes</strong>  designed to help you get started in data science by exploring electrophysiological data, especially spike train recordings, in a practical and accessible way.</p>
+<p><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a>
+<a class="reference external" href="https://www.python.org/"><img alt="Python Version" src="https://img.shields.io/badge/python-3.11-blue" /></a>
+<a class="reference external" href="https://docs.conda.io/"><img alt="Conda Environment" src="https://img.shields.io/badge/conda-env-green" /></a>
+<a class="reference external" href="https://github.com/fabien-campillo/data-science-spikes/actions/workflows/build.yml"><img alt="Build Status" src="https://github.com/fabien-campillo/data-science-spikes/actions/workflows/build.yml/badge.svg" /></a></p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>To install and run a Jupyter Book (or any Jupyter Notebook project), it is recommended to use a dedicated <code class="docutils literal notranslate"><span class="pre">conda</span></code> virtual environment defined in an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file.</p>
 <p>To install and run a Jupyter Book (or any Jupyter Notebook project), it is recommended to use a dedicated <code class="docutils literal notranslate"><span class="pre">conda</span></code> virtual environment defined in an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file:</p>
-<ul>
-<li><p>create the virtual environment from the file <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>:</p></li>
-<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+<p>• create the virtual environment from the file <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
 </pre></div>
 </div>
-</li>
-</ul>
-<p>conda env create -f environment.yml</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-- and activate the environment:
-
-- ```bash
-conda activate python-dsspikes-env
+<p>•  and activate the environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>python-dsspikes-env
 </pre></div>
 </div>
 <p>(<code class="docutils literal notranslate"><span class="pre">python-dsspikes-env</span></code> is the name of the virtual environment)</p>
-<ul>
-<li><p>if the virtual environment already exists and you want to update it:</p></li>
-<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+<p>• if the virtual environment already exists and you want to update it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>update<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w"> </span>--prune
 </pre></div>
 </div>
-</li>
-</ul>
-<p>conda env update -f environment.yml –prune</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(`--prune` removes dependencies no longer listed in the YAML.)
-
-
-`environment.yml ` is the YAML specification file of the Conda environment.
-
-&lt;br&gt;
-
-The present version of `environment.yml`
-
-```yml
-name: python-dsspikes-env
+<p>(<code class="docutils literal notranslate"><span class="pre">--prune</span></code> removes dependencies no longer listed in the YAML.)</p>
+<p><code class="docutils literal notranslate"><span class="pre">environment.yml</span> </code> is the YAML specification file of the Conda environment.</p>
+<br>
+</section>
+<section id="current-environment-yml">
+<h2>Current <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code><a class="headerlink" href="#current-environment-yml" title="Link to this heading">#</a></h2>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>name: python-dsspikes-env
 channels:
   - conda-forge
   - defaults
@@ -414,8 +424,41 @@ dependencies:
 </pre></div>
 </div>
 <p>all installed with <code class="docutils literal notranslate"><span class="pre">conda</span></code> ecxept <code class="docutils literal notranslate"><span class="pre">pylab</span></code> only available with <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+</section>
+<section id="directory-tree">
+<h2>Directory tree<a class="headerlink" href="#directory-tree" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(python-dsspikes-env) 0-git.nosync$ tree data-science-spikes/
+data-science-spikes/
+├── _build                       # generated by Jupyter Book (JB)
+├── _config.yml                  # _config of the JB
+├── _toc.yml                     # _toc of the JB
+├── 1_context.ipynb              # chapters of the JB
+├── 2_resources.ipynb            #    ...
+├── 3_databases.ipynb            #    ...
+├── 4_pyabf.ipynb                #    ...   
+├── A_installing_python.ipynb    #    ...
+├── B_jupyter.ipynb              #    ...
+├── C_diagnostic.ipynb           #    ...
+├── data                         # data used by the JB
+├── dev                          # development dir
+├── environment.yml              # conda virtual env definition
+├── guide_jupyter_book_git.md    # hints 
+├── pdf                          # pdf objects used for generating the  PDF
+├── pics                         # somes pics
+├── README.md                    # this file
+├── utils                        # some python scripts
+├── Z_references.ipynb           # references (in devo)
+└── Z_sandbox.ipynb              # a sandbox chapter
+</pre></div>
+</div>
+</section>
+<section id="author">
+<h2>Author<a class="headerlink" href="#author" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://www-sop.inria.fr/members/Fabien.Campillo/index.html">Fabien Campillo</a></p>
-<p><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="trigger">
+<h1>trigger<a class="headerlink" href="#trigger" title="Link to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -454,6 +497,29 @@ dependencies:
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">README</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-environment-yml">Current <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-tree">Directory tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author">Author</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trigger">trigger</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
