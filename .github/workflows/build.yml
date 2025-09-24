@@ -1,0 +1,41 @@
+# .github/workflows/build.yml
+name: Build Jupyter Book
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          python-version: 3.11
+          auto-update-conda: true
+          environment-file: environment.yml
+          activate-environment: python-dsspikes-env
+          use-only-tar-bz2: false
+
+      - name: Verify Python & Conda
+        run: |
+          python --version
+          conda info
+          conda list
+
+      - name: Build Jupyter Book
+        run: jupyter-book build .
+
+      - name: Check for HTML output
+        run: |
+          if [ ! -d "_build/html" ]; then
+            echo "Error: HTML output not found!"
+            exit 1
+          fi
