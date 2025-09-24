@@ -328,3 +328,65 @@ def plot_abf_sweep(abf, sweep=0, color_adc="C0", color_dac="C3", lw=0.8):
     fig.tight_layout()
     plt.show()
 
+def plot_abf_sweeps_with_legend4(
+    abf, file_path=None, records_dir=None, cmap="tab10", lw=0.8, alpha=1.0, figsize=(10,6),
+    legend_loc='upper right', legend_bbox=(1.02, 0.95), legend_pad=0.5, legend_fontsize=8
+):
+    """
+    Plot all ADC and DAC sweeps with a customizable legend.
+    
+    Parameters
+    ----------
+    abf : pyabf.ABF
+        Loaded ABF object.
+    file_path : str, optional
+        Path of the ABF file, used to set the figure title.
+    legend_loc : str
+        Reference location of the legend (Matplotlib loc string).
+    legend_bbox : tuple
+        Coordinates to shift legend relative to loc (x, y).
+    legend_pad : float
+        Padding between axes and legend.
+    legend_fontsize : str or int
+        Font size of legend labels.
+    """
+    import matplotlib.pyplot as plt
+    import os
+
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=figsize, sharex=True, constrained_layout=True)
+
+    cmap = plt.get_cmap(cmap)
+    colors = [cmap(i % cmap.N) for i in range(len(abf.sweepList))]
+
+    for i, s in enumerate(abf.sweepList):
+        abf.setSweep(s)
+        ax1.plot(abf.sweepX, abf.sweepY, color=colors[i], lw=lw, alpha=alpha)
+        ax2.plot(abf.sweepX, abf.sweepC, color=colors[i], lw=lw, alpha=alpha)
+
+    ax1.set_ylabel(abf.sweepLabelY)
+    ax1.set_title("ADC sweeps")
+    ax2.set_xlabel(abf.sweepLabelX)
+    ax2.set_ylabel(abf.sweepLabelC)
+    ax2.set_title("DAC sweeps")
+
+    # Legend with sweep numbers
+    handles = [plt.Line2D([0], [0], color=colors[i], lw=3, alpha=alpha) for i in range(len(abf.sweepList))]
+    labels = [f"{s}" for s in abf.sweepList]
+    fig.legend(
+        handles, labels,
+        loc=legend_loc,
+        bbox_to_anchor=legend_bbox,
+        borderaxespad=legend_pad,
+        title="Sweeps",
+        fontsize=legend_fontsize
+    )
+
+    # Title = filename (if provided)
+    # Title = relative path (if provided)
+    if file_path is not None:
+        fig.suptitle(
+            os.path.relpath(file_path, records_dir),
+            fontsize=8,
+            y=1.02
+        )
+    return fig, (ax1, ax2)
