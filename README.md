@@ -2,6 +2,10 @@
 This repository contains a Jupyter Book called **Data Science & Spikes**  designed to help you get started in data science by exploring electrophysiological data, especially spike train recordings, in a practical and accessible way.
 
 [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://fabien-campillo.github.io/data-science-spikes/)
+[![Python Version](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/)
+[![Conda Environment](https://img.shields.io/badge/conda-env-green)](https://docs.conda.io/)
+[![Build Status](https://github.com/fabien-campillo/data-science-spikes/actions/workflows/build.yml/badge.svg)](https://github.com/fabien-campillo/data-science-spikes/actions)
+
 
 
 ## Installation
@@ -59,7 +63,7 @@ dependencies:
 all installed with `conda` ecxept `pylab` only available with `pip`.
 
 
-## File tree
+## Directory tree
 
 
 
@@ -87,6 +91,9 @@ data-science-spikes/
 ├── Z_references.ipynb           # references (in devo)
 └── Z_sandbox.ipynb              # a sandbox chapter
 ```
+
+## Author
+
 
 
 [Fabien Campillo](https://www-sop.inria.fr/members/Fabien.Campillo/index.html)
