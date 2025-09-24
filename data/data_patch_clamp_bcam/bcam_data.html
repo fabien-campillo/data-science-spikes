@@ -370,6 +370,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-searching-for-temperature-related-parameters">Example: Searching for temperature-related parameters</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flaten-the-records-dir-already-done">Flaten the records dir  [already done !!!]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-records-by-protocoles-already-done">Sort records by protocoles [already done !!!]</a></li>
 </ul>
             </nav>
         </div>
@@ -390,6 +392,9 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 </pre></div>
 </div>
 </div>
@@ -898,8 +903,6 @@ Number of files per cel:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pyabf</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tabulate</span><span class="w"> </span><span class="kn">import</span> <span class="n">tabulate</span>
 
 <span class="n">records_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
 <span class="n">abf_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">records_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.abf&quot;</span><span class="p">))</span>
@@ -949,8 +952,7 @@ Number of files per cel:
 <p>We use that function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/Users/campillo/Documents/0-git.nosync/data-science-spikes/&quot;</span><span class="p">)</span>  <span class="c1"># parent folder containing `utils`</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/Users/campillo/Documents/0-git.nosync/data-science-spikes/&quot;</span><span class="p">)</span>  <span class="c1"># parent folder containing `utils`</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">utils.plots</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_abf_sweeps_with_legend4</span>
 plot_abf_sweeps_with_legend4<span class="o">?</span>
 </pre></div>
@@ -961,8 +963,7 @@ plot_abf_sweeps_with_legend4<span class="o">?</span>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.backends.backend_pdf</span><span class="w"> </span><span class="kn">import</span> <span class="n">PdfPages</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
 
 
 <span class="n">records_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
@@ -1010,31 +1011,45 @@ plot_abf_sweeps_with_legend4<span class="o">?</span>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0025.abf
-Processing: records/2024_06/06.26/C1/2024_06_26_0019.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0019.abf
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0018.abf
-Processing: records/2024_06/06.26/C1/2024_06_26_0024.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0024.abf
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0026.abf
-Processing: records/2024_06/06.26/C1/2024_06_26_0027.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0027.abf
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0023.abf
-Processing: records/2024_06/06.26/C1/2024_06_26_0022.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0022.abf
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0008.abf
-Processing: records/2024_06/06.26/C1/2024_06_26_0020.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0020.abf
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0021.abf
-Processing: records/2024_06/06.26/C1/2024_06_26_0009.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0009.abf
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0010.abf
-Processing: records/2024_06/06.26/C1/2024_06_26_0004.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0004.abf
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C1/2024_06_26_0005.abf
@@ -1101,7 +1116,9 @@ Processing: records/2024_06/06.26/C2/2024_06_26_0031.abf
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C2/2024_06_26_0030.abf
-Processing: records/2024_06/06.26/C2/2024_06_26_0032.abf
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C2/2024_06_26_0032.abf
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing: records/2024_06/06.26/C2/2024_06_26_0029.abf
@@ -1294,19 +1311,19 @@ nTriggerPolarity : 0
 nTriggerSource : -3
 nUndoPromptStrategy : 0
 nUndoRunCount : 0
-readByte : &lt;bound method AbfReader.readByte of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x300a3f310&gt;&gt;
-readBytes : &lt;bound method AbfReader.readBytes of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x300a3f310&gt;&gt;
-readChar : &lt;bound method AbfReader.readChar of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x300a3f310&gt;&gt;
-readInt16 : &lt;bound method AbfReader.readInt16 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x300a3f310&gt;&gt;
-readInt32 : &lt;bound method AbfReader.readInt32 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x300a3f310&gt;&gt;
-readSingle : &lt;bound method AbfReader.readSingle of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x300a3f310&gt;&gt;
-readSingles : &lt;bound method AbfReader.readSingles of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x300a3f310&gt;&gt;
-readString : &lt;bound method AbfReader.readString of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x300a3f310&gt;&gt;
-readStruct : &lt;bound method AbfReader.readStruct of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x300a3f310&gt;&gt;
-readUInt16 : &lt;bound method AbfReader.readUInt16 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x300a3f310&gt;&gt;
-readUInt32 : &lt;bound method AbfReader.readUInt32 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x300a3f310&gt;&gt;
+readByte : &lt;bound method AbfReader.readByte of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x3a76da550&gt;&gt;
+readBytes : &lt;bound method AbfReader.readBytes of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x3a76da550&gt;&gt;
+readChar : &lt;bound method AbfReader.readChar of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x3a76da550&gt;&gt;
+readInt16 : &lt;bound method AbfReader.readInt16 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x3a76da550&gt;&gt;
+readInt32 : &lt;bound method AbfReader.readInt32 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x3a76da550&gt;&gt;
+readSingle : &lt;bound method AbfReader.readSingle of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x3a76da550&gt;&gt;
+readSingles : &lt;bound method AbfReader.readSingles of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x3a76da550&gt;&gt;
+readString : &lt;bound method AbfReader.readString of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x3a76da550&gt;&gt;
+readStruct : &lt;bound method AbfReader.readStruct of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x3a76da550&gt;&gt;
+readUInt16 : &lt;bound method AbfReader.readUInt16 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x3a76da550&gt;&gt;
+readUInt32 : &lt;bound method AbfReader.readUInt32 of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x3a76da550&gt;&gt;
 sDigitizerType : Unknown
-seek : &lt;bound method AbfReader.seek of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x300a3f310&gt;&gt;
+seek : &lt;bound method AbfReader.seek of &lt;pyabf.abf2.protocolSection.ProtocolSection object at 0x3a76da550&gt;&gt;
 uFileCompressionRatio : 1
 </pre></div>
 </div>
@@ -1316,6 +1333,348 @@ uFileCompressionRatio : 1
 <div><p>NADA : no temperature !</p>
 </div></blockquote>
 </section>
+</section>
+<section id="flaten-the-records-dir-already-done">
+<h2>Flaten the records dir  [already done !!!]<a class="headerlink" href="#flaten-the-records-dir-already-done" title="Link to this heading">#</a></h2>
+<p>Flatten the directory structure into a new folder (<code class="docutils literal notranslate"><span class="pre">records_rename</span></code>) and rename the files according to their date and cell name. Here’s a script to do that:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">from pathlib import Path</span>
+<span class="sd">import shutil</span>
+
+<span class="sd"># Input and output directories</span>
+<span class="sd">records_dir = Path(&quot;records&quot;)</span>
+<span class="sd">output_dir = Path(&quot;records_rename&quot;)</span>
+<span class="sd">output_dir.mkdir(exist_ok=True)</span>
+
+<span class="sd"># Find all ABF files recursively</span>
+<span class="sd">abf_files = list(records_dir.rglob(&quot;*.abf&quot;))</span>
+
+<span class="sd">for file in abf_files:</span>
+<span class="sd">    # Example: records/2024_06/06.26/C1/2024_06_26_0021.abf</span>
+<span class="sd">    parts = file.parts</span>
+<span class="sd">    </span>
+<span class="sd">    # Extract date from filename</span>
+<span class="sd">    filename = file.stem  # &quot;2024_06_26_0021&quot;</span>
+<span class="sd">    suffix = file.suffix  # &quot;.abf&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    # Extract channel from parent folder (e.g., &quot;C1&quot;)</span>
+<span class="sd">    channel = file.parent.name</span>
+<span class="sd">    </span>
+<span class="sd">    # New filename: 2024_06_26_C1_0021.abf</span>
+<span class="sd">    new_name = f&quot;{filename.split(&#39;_&#39;)[0]}_{filename.split(&#39;_&#39;)[1]}_{filename.split(&#39;_&#39;)[2]}_{channel}_{filename.split(&#39;_&#39;)[-1]}{suffix}&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    # Destination path</span>
+<span class="sd">    new_path = output_dir / new_name</span>
+<span class="sd">    </span>
+<span class="sd">    # Copy file</span>
+<span class="sd">    shutil.copy(file, new_path)</span>
+<span class="sd">    print(f&quot;Copied {file} -&gt; {new_path}&quot;)</span>
+
+<span class="sd">print(f&quot;All files copied and renamed into {output_dir}&quot;)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;already done&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;already done&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sort-records-by-protocoles-already-done">
+<h2>Sort records by protocoles [already done !!!]<a class="headerlink" href="#sort-records-by-protocoles-already-done" title="Link to this heading">#</a></h2>
+<p>You can loop through the files in <code class="docutils literal notranslate"><span class="pre">records_rename</span></code>, read their protocol with <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>, and sort them into new directories based on the protocol name (with spaces replaced by underscores). Example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">from pathlib import Path</span>
+<span class="sd">import pyabf</span>
+<span class="sd">import shutil</span>
+
+<span class="sd"># Source and destination directories</span>
+<span class="sd">source_dir = Path(&quot;records_rename&quot;)</span>
+<span class="sd">dest_root = Path(&quot;records_by_protocol&quot;)</span>
+<span class="sd">dest_root.mkdir(exist_ok=True)</span>
+
+<span class="sd"># Iterate over ABF files</span>
+<span class="sd">for file in source_dir.glob(&quot;*.abf&quot;):</span>
+<span class="sd">    abf = pyabf.ABF(file)</span>
+<span class="sd">    </span>
+<span class="sd">    # Normalize protocol name: replace spaces with underscores</span>
+<span class="sd">    proto_name = abf.protocol.replace(&quot; &quot;, &quot;_&quot;)</span>
+<span class="sd">    </span>
+<span class="sd">    # Create target directory</span>
+<span class="sd">    target_dir = dest_root / f&quot;records_{proto_name}&quot;</span>
+<span class="sd">    target_dir.mkdir(exist_ok=True)</span>
+<span class="sd">    </span>
+<span class="sd">    # Copy the file into the protocol directory</span>
+<span class="sd">    target_file = target_dir / file.name</span>
+<span class="sd">    shutil.copy(file, target_file)</span>
+<span class="sd">    </span>
+<span class="sd">    print(f&quot;Copied {file.name} -&gt; {target_dir}&quot;)</span>
+
+<span class="sd">print(f&quot;Files sorted by protocol into {dest_root}&quot;)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;already done&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;already done&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_tree</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
+            <span class="n">print_tree</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;│   &quot;</span><span class="p">)</span>
+
+<span class="c1"># Example</span>
+<span class="n">print_tree</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;records&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>records
+│   2024_06
+│   │   06.19
+│   │   │   C1
+│   │   │   │   2024_06_19_0000.abf
+│   │   │   │   2024_06_19_0001.abf
+│   │   │   │   2024_06_19_0002.abf
+│   │   │   │   2024_06_19_0003.abf
+│   │   │   │   2024_06_19_0004.abf
+│   │   │   │   2024_06_19_0005.abf
+│   │   │   │   2024_06_19_0006.abf
+│   │   │   │   2024_06_19_0007.abf
+│   │   │   │   2024_06_19_0008.abf
+│   │   │   │   2024_06_19_0009.abf
+│   │   │   │   2024_06_19_0010.abf
+│   │   │   │   2024_06_19_0011.abf
+│   │   │   │   2024_06_19_0012.abf
+│   │   │   │   2024_06_19_0013.abf
+│   │   06.26
+│   │   │   C1
+│   │   │   │   2024_06_26_0000.abf
+│   │   │   │   2024_06_26_0001.abf
+│   │   │   │   2024_06_26_0002.abf
+│   │   │   │   2024_06_26_0003.abf
+│   │   │   │   2024_06_26_0004.abf
+│   │   │   │   2024_06_26_0005.abf
+│   │   │   │   2024_06_26_0006.abf
+│   │   │   │   2024_06_26_0007.abf
+│   │   │   │   2024_06_26_0008.abf
+│   │   │   │   2024_06_26_0009.abf
+│   │   │   │   2024_06_26_0010.abf
+│   │   │   │   2024_06_26_0011.abf
+│   │   │   │   2024_06_26_0012.abf
+│   │   │   │   2024_06_26_0013.abf
+│   │   │   │   2024_06_26_0014.abf
+│   │   │   │   2024_06_26_0015.abf
+│   │   │   │   2024_06_26_0016.abf
+│   │   │   │   2024_06_26_0017.abf
+│   │   │   │   2024_06_26_0018.abf
+│   │   │   │   2024_06_26_0019.abf
+│   │   │   │   2024_06_26_0020.abf
+│   │   │   │   2024_06_26_0021.abf
+│   │   │   │   2024_06_26_0022.abf
+│   │   │   │   2024_06_26_0023.abf
+│   │   │   │   2024_06_26_0024.abf
+│   │   │   │   2024_06_26_0025.abf
+│   │   │   │   2024_06_26_0026.abf
+│   │   │   │   2024_06_26_0027.abf
+│   │   │   C2
+│   │   │   │   2024_06_26_0028.abf
+│   │   │   │   2024_06_26_0029.abf
+│   │   │   │   2024_06_26_0030.abf
+│   │   │   │   2024_06_26_0031.abf
+│   │   │   │   2024_06_26_0032.abf
+│   │   │   C3
+│   │   │   │   2024_06_26_0033.abf
+│   │   │   │   2024_06_26_0034.abf
+│   │   │   │   2024_06_26_0035.abf
+│   │   │   │   2024_06_26_0036.abf
+│   │   │   │   2024_06_26_0037.abf
+│   │   │   │   2024_06_26_0038.abf
+│   │   │   │   2024_06_26_0039.abf
+│   │   │   │   2024_06_26_0040.abf
+│   │   │   │   2024_06_26_0041.abf
+│   │   │   │   2024_06_26_0042.abf
+│   │   │   │   2024_06_26_0043.abf
+│   │   │   │   2024_06_26_0044.abf
+│   │   │   │   2024_06_26_0045.abf
+│   │   │   │   2024_06_26_0046.abf
+│   │   │   │   2024_06_26_0047.abf
+│   │   │   │   2024_06_26_0048.abf
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_tree</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;records_rename&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>records_rename
+│   2024_06_19_C1_0000.abf
+│   2024_06_19_C1_0001.abf
+│   2024_06_19_C1_0002.abf
+│   2024_06_19_C1_0003.abf
+│   2024_06_19_C1_0004.abf
+│   2024_06_19_C1_0005.abf
+│   2024_06_19_C1_0006.abf
+│   2024_06_19_C1_0007.abf
+│   2024_06_19_C1_0008.abf
+│   2024_06_19_C1_0009.abf
+│   2024_06_19_C1_0010.abf
+│   2024_06_19_C1_0011.abf
+│   2024_06_19_C1_0012.abf
+│   2024_06_19_C1_0013.abf
+│   2024_06_26_C1_0000.abf
+│   2024_06_26_C1_0001.abf
+│   2024_06_26_C1_0002.abf
+│   2024_06_26_C1_0003.abf
+│   2024_06_26_C1_0004.abf
+│   2024_06_26_C1_0005.abf
+│   2024_06_26_C1_0006.abf
+│   2024_06_26_C1_0007.abf
+│   2024_06_26_C1_0008.abf
+│   2024_06_26_C1_0009.abf
+│   2024_06_26_C1_0010.abf
+│   2024_06_26_C1_0011.abf
+│   2024_06_26_C1_0012.abf
+│   2024_06_26_C1_0013.abf
+│   2024_06_26_C1_0014.abf
+│   2024_06_26_C1_0015.abf
+│   2024_06_26_C1_0016.abf
+│   2024_06_26_C1_0017.abf
+│   2024_06_26_C1_0018.abf
+│   2024_06_26_C1_0019.abf
+│   2024_06_26_C1_0020.abf
+│   2024_06_26_C1_0021.abf
+│   2024_06_26_C1_0022.abf
+│   2024_06_26_C1_0023.abf
+│   2024_06_26_C1_0024.abf
+│   2024_06_26_C1_0025.abf
+│   2024_06_26_C1_0026.abf
+│   2024_06_26_C1_0027.abf
+│   2024_06_26_C2_0028.abf
+│   2024_06_26_C2_0029.abf
+│   2024_06_26_C2_0030.abf
+│   2024_06_26_C2_0031.abf
+│   2024_06_26_C2_0032.abf
+│   2024_06_26_C3_0033.abf
+│   2024_06_26_C3_0034.abf
+│   2024_06_26_C3_0035.abf
+│   2024_06_26_C3_0036.abf
+│   2024_06_26_C3_0037.abf
+│   2024_06_26_C3_0038.abf
+│   2024_06_26_C3_0039.abf
+│   2024_06_26_C3_0040.abf
+│   2024_06_26_C3_0041.abf
+│   2024_06_26_C3_0042.abf
+│   2024_06_26_C3_0043.abf
+│   2024_06_26_C3_0044.abf
+│   2024_06_26_C3_0045.abf
+│   2024_06_26_C3_0046.abf
+│   2024_06_26_C3_0047.abf
+│   2024_06_26_C3_0048.abf
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_tree</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;records_by_protocol&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>records_by_protocol
+│   .DS_Store
+│   records_IC_ramp_slow
+│   │   2024_06_19_C1_0001.abf
+│   │   2024_06_19_C1_0005.abf
+│   │   2024_06_19_C1_0007.abf
+│   │   2024_06_19_C1_0010.abf
+│   │   2024_06_26_C1_0001.abf
+│   │   2024_06_26_C1_0012.abf
+│   │   2024_06_26_C1_0014.abf
+│   │   2024_06_26_C1_0017.abf
+│   │   2024_06_26_C1_0020.abf
+│   │   2024_06_26_C1_0023.abf
+│   │   2024_06_26_C1_0026.abf
+│   │   2024_06_26_C2_0029.abf
+│   │   2024_06_26_C3_0034.abf
+│   │   2024_06_26_C3_0039.abf
+│   │   2024_06_26_C3_0041.abf
+│   │   2024_06_26_C3_0044.abf
+│   │   2024_06_26_C3_0047.abf
+│   records_IV-DG
+│   │   2024_06_19_C1_0000.abf
+│   │   2024_06_19_C1_0009.abf
+│   │   2024_06_26_C1_0000.abf
+│   │   2024_06_26_C1_0016.abf
+│   │   2024_06_26_C1_0022.abf
+│   │   2024_06_26_C2_0028.abf
+│   │   2024_06_26_C3_0033.abf
+│   │   2024_06_26_C3_0043.abf
+│   records_IV-DG2_evry_5pA
+│   │   2024_06_26_C1_0005.abf
+│   records_Slow_I_sin
+│   │   2024_06_19_C1_0002.abf
+│   │   2024_06_19_C1_0011.abf
+│   │   2024_06_26_C1_0002.abf
+│   │   2024_06_26_C1_0018.abf
+│   │   2024_06_26_C1_0024.abf
+│   │   2024_06_26_C2_0030.abf
+│   │   2024_06_26_C3_0035.abf
+│   │   2024_06_26_C3_0045.abf
+│   records_VC_ramp_slow_2
+│   │   2024_06_19_C1_0003.abf
+│   │   2024_06_19_C1_0006.abf
+│   │   2024_06_19_C1_0008.abf
+│   │   2024_06_19_C1_0012.abf
+│   │   2024_06_26_C1_0003.abf
+│   │   2024_06_26_C1_0013.abf
+│   │   2024_06_26_C1_0015.abf
+│   │   2024_06_26_C1_0019.abf
+│   │   2024_06_26_C1_0021.abf
+│   │   2024_06_26_C1_0025.abf
+│   │   2024_06_26_C1_0027.abf
+│   │   2024_06_26_C2_0031.abf
+│   │   2024_06_26_C3_0036.abf
+│   │   2024_06_26_C3_0040.abf
+│   │   2024_06_26_C3_0042.abf
+│   │   2024_06_26_C3_0046.abf
+│   │   2024_06_26_C3_0048.abf
+│   records_gap_free2
+│   │   2024_06_19_C1_0004.abf
+│   │   2024_06_19_C1_0013.abf
+│   │   2024_06_26_C1_0004.abf
+│   │   2024_06_26_C1_0006.abf
+│   │   2024_06_26_C1_0007.abf
+│   │   2024_06_26_C1_0008.abf
+│   │   2024_06_26_C1_0009.abf
+│   │   2024_06_26_C1_0010.abf
+│   │   2024_06_26_C1_0011.abf
+│   │   2024_06_26_C2_0032.abf
+│   │   2024_06_26_C3_0037.abf
+│   │   2024_06_26_C3_0038.abf
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -1380,6 +1739,8 @@ uFileCompressionRatio : 1
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-searching-for-temperature-related-parameters">Example: Searching for temperature-related parameters</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flaten-the-records-dir-already-done">Flaten the records dir  [already done !!!]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-records-by-protocoles-already-done">Sort records by protocoles [already done !!!]</a></li>
 </ul>
   </nav></div>
 

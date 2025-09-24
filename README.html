@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Data Sciences and Spikes</title>
+    <title>README &#8212; Data Sciences and Spikes</title>
   
   
   
@@ -332,9 +332,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -345,19 +343,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>README</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -367,7 +357,66 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="Link to this heading">#</a></h1>
+<p>This repository contains a Jupyter Book called <strong>Data Science &amp; Spikes</strong>  designed to help you get started in data science by exploring electrophysiological data, especially spike train recordings, in a practical and accessible way.</p>
+<p>To install and run a Jupyter Book (or any Jupyter Notebook project), it is recommended to use a dedicated <code class="docutils literal notranslate"><span class="pre">conda</span></code> virtual environment defined in an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file:</p>
+<ul>
+<li><p>create the virtual environment from the file <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>:</p></li>
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>conda env create -f environment.yml</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+- and activate the environment:
+
+- ```bash
+conda activate python-dsspikes-env
+</pre></div>
+</div>
+<p>(<code class="docutils literal notranslate"><span class="pre">python-dsspikes-env</span></code> is the name of the virtual environment)</p>
+<ul>
+<li><p>if the virtual environment already exists and you want to update it:</p></li>
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>conda env update -f environment.yml –prune</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(`--prune` removes dependencies no longer listed in the YAML.)
+
+
+`environment.yml ` is the YAML specification file of the Conda environment.
+
+&lt;br&gt;
+
+The present version of `environment.yml`
+
+```yml
+name: python-dsspikes-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy=1.26  # compatible version for macOS
+  - matplotlib=3.8
+  - pandoc=3.8=h694c41f_0
+  - seaborn=0.12
+  - jupyter-book=1.0.4
+  - jupyterlab=4.1
+  - ipykernel
+  - pip
+  - pip:
+      - pyabf==2.3.8  # install via pip
+</pre></div>
+</div>
+<p>all installed with <code class="docutils literal notranslate"><span class="pre">conda</span></code> ecxept <code class="docutils literal notranslate"><span class="pre">pylab</span></code> only available with <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<p><a class="reference external" href="https://www-sop.inria.fr/members/Fabien.Campillo/index.html">Fabien Campillo</a></p>
+<p><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a></p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -405,21 +454,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
