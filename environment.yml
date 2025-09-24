@@ -6,12 +6,12 @@ dependencies:
   - python=3.11
   - numpy=1.26
   - matplotlib=3.8
-  - pandoc       # remove fixed version for cross-platform
+  - pandoc=3.8       # removed build hash
   - seaborn=0.12
+  - jupyter-book=1.0.4
   - jupyterlab=4.1
   - ipykernel
   - pip
   - pip:
       - pyabf==2.3.8
-      - jupyter-book==1.0.4
-  
+

@@ -1,3 +1,4 @@
+# .github/workflows/build.yml
 name: Build Jupyter Book
 
 on:
@@ -29,6 +30,11 @@ jobs:
           conda info
           conda list
 
+      - name: Install ipykernel for Jupyter
+        run: |
+          conda run -n python-dsspikes-env python -m ipykernel install --user \
+            --name python-dsspikes-env --display-name "python-dsspikes-env"
+
       - name: Build Jupyter Book
         run: conda run -n python-dsspikes-env jupyter-book build .
 
@@ -38,3 +44,4 @@ jobs:
             echo "Error: HTML output not found!"
             exit 1
           fi
+
