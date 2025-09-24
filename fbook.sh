@@ -12,8 +12,8 @@ pip install -U jupyter-book ghp-import
 jupyter-book clean .
 jupyter-book build .
 
-# 4️⃣ Générer le PDF seulement si demandé avec "-pdf"
-if [[ "$1" == "-pdf" ]]; then
+# 4️⃣ Générer le PDF par défaut, sauf si "-nopdf" est passé
+if [[ "$1" != "-nopdf" ]]; then
     echo "📄 Génération du PDF..."
     jupyter-book build . --builder pdflatex
 
@@ -30,4 +30,6 @@ if [[ "$1" == "-pdf" ]]; then
 
     # Copier aussi le PDF dans le HTML pour le rendre accessible en ligne
     cp pdf/Spikes-Data-Sciences.pdf _build/html/Spikes-Data-Sciences.pdf
+else
+    echo "ℹ️ PDF skipped (option -nopdf)"
 fi
