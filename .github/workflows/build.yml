@@ -1,4 +1,3 @@
-# .github/workflows/build.yml
 name: Build Jupyter Book
 
 on:
@@ -31,7 +30,7 @@ jobs:
           conda list
 
       - name: Build Jupyter Book
-        run: jupyter-book build .
+        run: conda run -n python-dsspikes-env jupyter-book build .
 
       - name: Check for HTML output
         run: |

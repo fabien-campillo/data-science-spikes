@@ -6,7 +6,6 @@ This repository contains a Jupyter Book called **Data Science & Spikes**  design
 [![Conda Environment](https://img.shields.io/badge/conda-env-green)](https://docs.conda.io/)
 [![Build Status](https://github.com/fabien-campillo/data-science-spikes/actions/workflows/build.yml/badge.svg)](https://github.com/fabien-campillo/data-science-spikes/actions/workflows/build.yml)
 
-
 ## Installation
 
 To install and run a Jupyter Book (or any Jupyter Notebook project), it is recommended to use a dedicated `conda` virtual environment defined in an `environment.yml` file.

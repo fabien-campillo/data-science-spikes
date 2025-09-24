@@ -4,14 +4,14 @@ channels:
   - defaults
 dependencies:
   - python=3.11
-  - numpy=1.26  # compatible version for macOS
+  - numpy=1.26
   - matplotlib=3.8
-  - pandoc=3.8
+  - pandoc       # remove fixed version for cross-platform
   - seaborn=0.12
-  - jupyter-book=1.0.4
   - jupyterlab=4.1
   - ipykernel
   - pip
   - pip:
-      - pyabf==2.3.8  # install via pip
- 
+      - pyabf==2.3.8
+      - jupyter-book==1.0.4
+  
