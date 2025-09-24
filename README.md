@@ -3,23 +3,22 @@ This repository contains a Jupyter Book called **Data Science & Spikes**  design
 
 To install and run a Jupyter Book (or any Jupyter Notebook project), it is recommended to use a dedicated `conda` virtual environment defined in an `environment.yml` file:
 
-- create the virtual environment from the file `environment.yml`:
+**1.** create the virtual environment from the file `environment.yml`:
 
-- ```bash
+```bash
 conda env create -f environment.yml
 ```
 
-- and activate the environment:
+**2.**  and activate the environment:
 
-- ```bash
+```bash
 conda activate python-dsspikes-env
 ```
 (`python-dsspikes-env` is the name of the virtual environment)
 
-- if the virtual environment already exists and you want to update it:
+**3.** if the virtual environment already exists and you want to update it:
 
-
-- ```bash
+```bash
 conda env update -f environment.yml --prune
 ```
 (`--prune` removes dependencies no longer listed in the YAML.)
