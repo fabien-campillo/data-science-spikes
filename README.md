@@ -28,7 +28,7 @@ conda env update -f environment.yml --prune
 
 <br>
 
-The present version of `environment.yml`
+The current version of `environment.yml`
 
 ```yml
 name: python-dsspikes-env
