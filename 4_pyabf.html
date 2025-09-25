@@ -707,7 +707,7 @@ sweepD
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s2">&quot;seaborn&quot;</span><span class="p">)</span>
 
 <span class="c1"># Create a figure with two subplots (1 row, 2 columns), sharing x-axis</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Plot histogram on the first subplot</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
@@ -730,7 +730,7 @@ sweepD
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/db9565b9c1615988c15bf85222f7fa090fb3ab49652bb98ba4c14b805f5b3bfe.png"><img alt="_images/db9565b9c1615988c15bf85222f7fa090fb3ab49652bb98ba4c14b805f5b3bfe.png" src="_images/db9565b9c1615988c15bf85222f7fa090fb3ab49652bb98ba4c14b805f5b3bfe.png" style="width: 989px; height: 390px;" />
+<a class="reference internal image-reference" href="_images/ce614642f0302337412e0d43aa2973824be470dcd283b6639bc0af91f7b86ef8.png"><img alt="_images/ce614642f0302337412e0d43aa2973824be470dcd283b6639bc0af91f7b86ef8.png" src="_images/ce614642f0302337412e0d43aa2973824be470dcd283b6639bc0af91f7b86ef8.png" style="width: 689px; height: 290px;" />
 </a>
 </div>
 </div>
@@ -744,7 +744,7 @@ sweepD
 <span class="n">my_lw</span> <span class="o">=</span> <span class="mf">0.8</span>
 
 <span class="c1"># Create the figure</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># Plot the recorded curve (ADC) on the left axis</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">abf</span><span class="o">.</span><span class="n">sweepX</span><span class="p">,</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepY</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_adc</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">my_lw</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ADC waveform&quot;</span><span class="p">)</span>
@@ -765,7 +765,7 @@ sweepD
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/f453b5d154aa71c94bb942dd0cd8df543029adb70222c6acf23d6a81f610f7db.png"><img alt="_images/f453b5d154aa71c94bb942dd0cd8df543029adb70222c6acf23d6a81f610f7db.png" src="_images/f453b5d154aa71c94bb942dd0cd8df543029adb70222c6acf23d6a81f610f7db.png" style="width: 789px; height: 490px;" />
+<a class="reference internal image-reference" href="_images/c75909eca8545d278da824cfc6a7fbb7d496d5b17b37845231f76bd30e6eb7d0.png"><img alt="_images/c75909eca8545d278da824cfc6a7fbb7d496d5b17b37845231f76bd30e6eb7d0.png" src="_images/c75909eca8545d278da824cfc6a7fbb7d496d5b17b37845231f76bd30e6eb7d0.png" style="width: 589px; height: 389px;" />
 </a>
 </div>
 </div>
@@ -793,7 +793,7 @@ sweepD
 <h3>Plotting all sweeps<a class="headerlink" href="#plotting-all-sweeps" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># plot every sweep (with vertical offset)</span>
 <span class="k">for</span> <span class="n">sweepNumber</span> <span class="ow">in</span> <span class="n">abf</span><span class="o">.</span><span class="n">sweepList</span><span class="p">:</span>
@@ -809,7 +809,7 @@ sweepD
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/2c4cff80dce2f5fd59847020f12a41a6e02da7d29d73216f295025d95a60537c.png"><img alt="_images/2c4cff80dce2f5fd59847020f12a41a6e02da7d29d73216f295025d95a60537c.png" src="_images/2c4cff80dce2f5fd59847020f12a41a6e02da7d29d73216f295025d95a60537c.png" style="width: 640px; height: 448px;" />
+<a class="reference internal image-reference" href="_images/4d314dee7e267432fa34077d1ce6800f0a61a2d5d72ab975557d3cfd45acdea9.png"><img alt="_images/4d314dee7e267432fa34077d1ce6800f0a61a2d5d72ab975557d3cfd45acdea9.png" src="_images/4d314dee7e267432fa34077d1ce6800f0a61a2d5d72ab975557d3cfd45acdea9.png" style="width: 484px; height: 371px;" />
 </a>
 </div>
 </div>
@@ -821,13 +821,13 @@ sweepD
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils.plots</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_abf_traces_with_scalebar</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plot_abf_traces_with_scalebar</span><span class="p">(</span><span class="n">abf</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plot_abf_traces_with_scalebar</span><span class="p">(</span><span class="n">abf</span>  <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/d753d6a1d22c10785aa4ccf0a0bfc08115cec0209f8fdaf9db9b64b641179060.png"><img alt="_images/d753d6a1d22c10785aa4ccf0a0bfc08115cec0209f8fdaf9db9b64b641179060.png" src="_images/d753d6a1d22c10785aa4ccf0a0bfc08115cec0209f8fdaf9db9b64b641179060.png" style="width: 825px; height: 448px;" />
+<a class="reference internal image-reference" href="_images/d20a3eb11a947a26f1fe7ada82e5fb4c563ca3e43371f60474f05f26b45ef583.png"><img alt="_images/d20a3eb11a947a26f1fe7ada82e5fb4c563ca3e43371f60474f05f26b45ef583.png" src="_images/d20a3eb11a947a26f1fe7ada82e5fb4c563ca3e43371f60474f05f26b45ef583.png" style="width: 668px; height: 371px;" />
 </a>
 </div>
 </div>
@@ -837,14 +837,14 @@ sweepD
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils.plots</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_abf_sweeps_with_legend</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plot_abf_sweeps_with_legend</span><span class="p">(</span>
-    <span class="n">abf</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">legend_loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">legend_bbox</span><span class="o">=</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="n">legend_pad</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">abf</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">legend_loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">legend_bbox</span><span class="o">=</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="n">legend_pad</span><span class="o">=</span><span class="mi">0</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/19731ea161ede72aa82bb3eeb3bcc142313f62d31a43a6ea21f2541769c49ca2.png"><img alt="_images/19731ea161ede72aa82bb3eeb3bcc142313f62d31a43a6ea21f2541769c49ca2.png" src="_images/19731ea161ede72aa82bb3eeb3bcc142313f62d31a43a6ea21f2541769c49ca2.png" style="width: 811px; height: 611px;" />
+<a class="reference internal image-reference" href="_images/37234a4d9607c3b48ce6e6080fb20ce310ce51c10c005fe109abe401526ab07f.png"><img alt="_images/37234a4d9607c3b48ce6e6080fb20ce310ce51c10c005fe109abe401526ab07f.png" src="_images/37234a4d9607c3b48ce6e6080fb20ce310ce51c10c005fe109abe401526ab07f.png" style="width: 618px; height: 411px;" />
 </a>
 </div>
 </div>
