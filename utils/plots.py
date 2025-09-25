@@ -25,7 +25,7 @@ def plot_abf_traces_with_scalebar(abf, color_adc="C0", color_dac="C3", lw=0.8, f
     fig, ax1, ax2 : matplotlib objects
     """
 
-    fig, ax1 = plt.subplots(figsize=figsize)
+    fig, ax1 = plt.subplots()
 
     # --- ADC scaling ---
     all_adc = []
@@ -119,7 +119,7 @@ def plot_abf_traces_with_scalebar(abf, color_adc="C0", color_dac="C3", lw=0.8, f
     return fig, ax1, ax2
 
 
-def plot_abf_sweeps_colored(abf, cmap="tab10", lw=0.8, alpha=1.0, figsize=(8,6)):
+def plot_abf_sweeps_colored(abf, cmap="tab10", lw=0.8, alpha=1.0):
     """
     Plot all ADC and DAC sweeps in two vertically stacked subplots,
     each sweep with a unique but corresponding color.
@@ -134,14 +134,12 @@ def plot_abf_sweeps_colored(abf, cmap="tab10", lw=0.8, alpha=1.0, figsize=(8,6))
         Line width for traces.
     alpha : float
         Transparency of traces (0 = fully transparent, 1 = opaque).
-    figsize : tuple
-        Size of the figure.
 
     Returns
     -------
     fig, (ax1, ax2) : matplotlib objects
     """
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=figsize, sharex=True)
+    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
 
     # Pick a colormap and generate colors
     cmap = plt.get_cmap(cmap)
@@ -179,7 +177,7 @@ def plot_abf_sweeps_colored(abf, cmap="tab10", lw=0.8, alpha=1.0, figsize=(8,6))
 
 
 def plot_abf_sweeps_with_legend(
-    abf, cmap="tab10", lw=0.8, alpha=1.0, figsize=(10,6),
+    abf, cmap="tab10", lw=0.8, alpha=1.0,
     legend_loc='upper right', legend_bbox=(1.02, 0.95), legend_pad=0.5, legend_fontsize='small'
 ):
     """
@@ -196,7 +194,7 @@ def plot_abf_sweeps_with_legend(
     """
     import matplotlib.pyplot as plt
 
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=figsize, sharex=True, constrained_layout=True)
+    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, constrained_layout=True)
 
     cmap = plt.get_cmap(cmap)
     colors = [cmap(i % cmap.N) for i in range(len(abf.sweepList))]
@@ -228,7 +226,7 @@ def plot_abf_sweeps_with_legend(
 
 
 def plot_abf_sweeps_with_legend3(
-    abf, file_path=None, cmap="tab10", lw=0.8, alpha=1.0, figsize=(10,6),
+    abf, file_path=None, cmap="tab10", lw=0.8, alpha=1.0, 
     legend_loc='upper right', legend_bbox=(1.02, 0.95), legend_pad=0.5, legend_fontsize='small'
 ):
     """
@@ -252,7 +250,7 @@ def plot_abf_sweeps_with_legend3(
     import matplotlib.pyplot as plt
     import os
 
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=figsize, sharex=True, constrained_layout=True)
+    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, constrained_layout=True)
 
     cmap = plt.get_cmap(cmap)
     colors = [cmap(i % cmap.N) for i in range(len(abf.sweepList))]
@@ -310,7 +308,7 @@ def plot_abf_sweep(abf, sweep=0, color_adc="C0", color_dac="C3", lw=0.8):
     abf.setSweep(sweep)
     
     # Create the figure
-    fig, ax1 = plt.subplots(figsize=(8, 5))
+    fig, ax1 = plt.subplots()
     
     # Plot the recorded curve (ADC) on the left axis
     ax1.plot(abf.sweepX, abf.sweepY, color=color_adc, lw=lw, label="ADC waveform")
@@ -329,7 +327,7 @@ def plot_abf_sweep(abf, sweep=0, color_adc="C0", color_dac="C3", lw=0.8):
     plt.show()
 
 def plot_abf_sweeps_with_legend4(
-    abf, file_path=None, records_dir=None, cmap="tab10", lw=0.8, alpha=1.0, figsize=(10,6),
+    abf, file_path=None, records_dir=None, cmap="tab10", lw=0.8, alpha=1.0, 
     legend_loc='upper right', legend_bbox=(1.02, 0.95), legend_pad=0.5, legend_fontsize=8
 ):
     """
@@ -353,7 +351,7 @@ def plot_abf_sweeps_with_legend4(
     import matplotlib.pyplot as plt
     import os
 
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=figsize, sharex=True, constrained_layout=True)
+    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, constrained_layout=True)
 
     cmap = plt.get_cmap(cmap)
     colors = [cmap(i % cmap.N) for i in range(len(abf.sweepList))]

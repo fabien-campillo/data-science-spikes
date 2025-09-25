@@ -66,10 +66,13 @@ sphinx:
   config:
     latex_elements:
       papersize: a4paper     
+    nb_render_image_options:
+      scale: 70          # width of figure 70% 
+      align: center      # centered
   extra_extensions:
     - myst_nb
 
-    
+      
 # MyST Markdown extensions
     
 myst_enable_extensions:
