@@ -1,4 +1,8 @@
 # README
+
+![Data Science & Spikes](pics/logo-128x128.png)
+
+
 This repository contains a Jupyter Book called **Data Science & Spikes**  designed to help you get started in data science by exploring electrophysiological data, especially spike train recordings, in a practical and accessible way.
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
