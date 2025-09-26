@@ -3,7 +3,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def plot_abf_traces_with_scalebar(abf, color_adc="C0", color_dac="C3", lw=0.8, figsize=(8,5)):
+def plot_abf_traces_with_scalebar(abf, color_adc="C0", color_dac="C3", lw=0.8):
     """
     Plot ADC and DAC sweeps stacked with scale bars.
 
@@ -17,8 +17,6 @@ def plot_abf_traces_with_scalebar(abf, color_adc="C0", color_dac="C3", lw=0.8, f
         Color for DAC traces.
     lw : float
         Line width for traces.
-    figsize : tuple
-        Size of the figure.
 
     Returns
     -------
