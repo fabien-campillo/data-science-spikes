@@ -8,7 +8,8 @@ parts:
     chapters:
     - file: 2_resources
     - file: 3_databases
-    - file: 4_pyabf
+    - file: 4_exploring_a_database
+    - file: 5_pyabf
   - caption: "Appendices"
     numbered: "A" # FAILED 
     numbered: 2   # chapters start numbering from 2
