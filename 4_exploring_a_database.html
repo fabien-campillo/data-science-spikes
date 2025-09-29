@@ -1,0 +1,2326 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Exploring a database &#8212; Data Sciences and Spikes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '4_exploring_a_database';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. PyABF" href="5_pyabf.html" />
+    <link rel="prev" title="2. Electrophysiology data" href="3_databases.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="1_context.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_title.png" class="logo__image only-light" alt="Data Sciences and Spikes - Home"/>
+    <script>document.write(`<img src="_static/logo_title.png" class="logo__image only-dark" alt="Data Sciences and Spikes - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="1_context.html">
+                    Data sciences and spikes
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2_resources.html">1. Resources and references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_databases.html">2. Electrophysiology data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Exploring a database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_pyabf.html">4. PyABF</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A_installing_python.html">1. Installing Python and some tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="B_jupyter.html">2. Interactive computing with Jupyter bazaar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C_diagnostic.html">3. Diagnostic</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf">Download PDF</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/fabien-campillo/data-science-spikes" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/4_exploring_a_database.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exploring a database</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-practrices-about-records-directory">3.1. Good practrices about records directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-structure-flatten-or-not">Directory structure: flatten or not?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-handling">Metadata handling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#readme-md"><code class="docutils literal notranslate"><span class="pre">README.md</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-naming">File Naming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-raw-data-read-only">Keep raw data read-only</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study">3.2. Back to the case study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe">3.3. pandas DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-cas-study">3.4. Back to the cas study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-metadata-csv">3.5. Exploring <code class="docutils literal notranslate"><span class="pre">metadata.csv</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">3.6. Filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-dead-cells-experiments">All dead cells experiments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-experiment-of-the-day-2024-05-29">All experiment of the day ‘2024-05-29’</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-ic-ramp">All <code class="docutils literal notranslate"><span class="pre">IC</span> <span class="pre">ramp</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exploring-a-database">
+<span id="chap-exploring-a-database"></span><h1><span class="section-number">3. </span>Exploring a database<a class="headerlink" href="#exploring-a-database" title="Link to this heading">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Usually, directories of experimental records are produced by colleagues in the lab. It is essential that there is ongoing discussion between the experimentalists and the people who will later analyze the data, such as data scientists. If data scientists modify the structure of the records directory, it becomes much harder to maintain this communication and can significantly slow down the process of data exploitation and analysis. Therefore, following good practices for organizing and managing the data is crucial.</p>
+</div>
+<p>We consider a dataset in <code class="docutils literal notranslate"><span class="pre">data/records_fake</span></code>.</p>
+<p>This dataset consists of a set of (empty) records compiled in 2024, from March 15 to June 26, by <a class="reference external" href="https://www.linkedin.com/in/joanna-danielewicz-522139b6/?originalSubdomain=es">Joanna Danielewicz</a> at the <a class="reference external" href="https://www.bcamath.org/en/research/areas/m3a/mcen">Mathematical, Computational and Experimental</a> lab, headed by <a class="reference external" href="https://www.ikerbasque.net/es/serafim-rodrigues">Serafim Rodrigues</a> at <a class="reference external" href="https://www.bcamath.org/en">BCAM</a>.</p>
+<p>The directory structure is the same as in the real dataset, but the files are empty, since the original recordings are too large. Later, we will work with selected real recordings.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory I have a subdirectory <code class="docutils literal notranslate"><span class="pre">records_fake</span></code> that contains empty <code class="docutils literal notranslate"><span class="pre">abf</span></code> and <code class="docutils literal notranslate"><span class="pre">atf</span></code> files, the structure is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>tree<span class="w"> </span>-L<span class="w"> </span><span class="m">2</span><span class="w"> </span>data/records_fake
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">data/records_fake</span>
+├── <span class=" -Color -Color-Bold -Color-Bold-Blue">03.15</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
+├── <span class=" -Color -Color-Bold -Color-Bold-Blue">03.20</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
+├── <span class=" -Color -Color-Bold -Color-Bold-Blue">04.10</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2 immature</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C3</span>
+├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.07</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1 DG</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2 DG</span>
+├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.20</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C3</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C4</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C5</span>
+├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.23</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C3</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C4</span>
+├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.29</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C3 immature</span>
+├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.30</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
+├── <span class=" -Color -Color-Bold -Color-Bold-Blue">06.19</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
+├── <span class=" -Color -Color-Bold -Color-Bold-Blue">06.26</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C3</span>
+└── README.md
+
+37 directories, 1 file
+</pre></div>
+</div>
+</div>
+</div>
+<p>First we  present somes good practices about records directory.</p>
+<section id="good-practrices-about-records-directory">
+<h2><span class="section-number">3.1. </span>Good practrices about records directory<a class="headerlink" href="#good-practrices-about-records-directory" title="Link to this heading">#</a></h2>
+<section id="directory-structure-flatten-or-not">
+<h3>Directory structure: flatten or not?<a class="headerlink" href="#directory-structure-flatten-or-not" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Keep the hierarchy (date → cell → files).</p></li>
+<li><p>It mirrors the experimental workflow (date of recording, then cell).</p></li>
+<li><p>Easier to reason about provenance (“what did we do on May 30?”).</p></li>
+<li><p>Helps you separate sessions and avoid accidental filename collisions.</p></li>
+<li><p>Flattening could be useful for scripts, but you can always create virtual flattening in Python (e.g., by walking the directory tree). So I’d keep the hierarchy and let code do the flattening.</p></li>
+</ul>
+<p><strong>Recommendation:</strong> Keep the directory hierarchy. Use scripts to index/flatten when needed.</p>
+</section>
+<section id="metadata-handling">
+<h3>Metadata handling<a class="headerlink" href="#metadata-handling" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Do not rely only on filenames — they’re fragile and inconsistent.</p></li>
+<li><p>Best practice: keep a <code class="docutils literal notranslate"><span class="pre">metadata</span></code> table (CSV, TSV, JSON, YAML, or SQLite DB), eg. a <code class="docutils literal notranslate"><span class="pre">metadata.csv</span></code> to store all experiment details.</p>
+<ul>
+<li><p>You can add or correct metadata later without touching raw files.</p></li>
+<li><p>Easy to query and filter in Python (e.g., with <code class="docutils literal notranslate"><span class="pre">pandas</span></code>).</p></li>
+<li><p>Prevents the need to rename files whenever metadata changes.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Recommendation:</strong> Maintain a single central metadata file (CSV for simplicity, or SQLite if the dataset grows large).</p>
+</section>
+<section id="readme-md">
+<h3><code class="docutils literal notranslate"><span class="pre">README.md</span></code><a class="headerlink" href="#readme-md" title="Link to this heading">#</a></h3>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> in the data file that includes:</p>
+<ul class="simple">
+<li><p>Directory structure</p></li>
+<li><p>Naming conventions</p></li>
+<li><p>Protocol/temperature shorthand</p></li>
+<li><p>Instructions for using metadata</p></li>
+</ul>
+</section>
+<section id="file-naming">
+<h3>File Naming<a class="headerlink" href="#file-naming" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Keep original filenames from acquisition (ground truth).</p></li>
+<li><p>Do not overwrite raw files.</p></li>
+<li><p>If you want clean names, create symbolic links or derived copies like: <code class="docutils literal notranslate"><span class="pre">cellID_date_protocol.abf</span></code>, eg. you can make a (flat) dir of symbolic links:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>symlinks/
+├── C21_05.30.abf
+├── C22_05.30.abf
+├── C23_06.19.abf
+</pre></div>
+</div>
+</section>
+<section id="keep-raw-data-read-only">
+<h3>Keep raw data read-only<a class="headerlink" href="#keep-raw-data-read-only" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Protects raw data integrity → accidental edits, renames, or deletions won’t happen.</p></li>
+<li><p>Clear separation between:</p>
+<ul>
+<li><p>Raw data (immutable, read-only)</p></li>
+<li><p>Derived data / analysis results (reproducible, regeneratable)</p></li>
+</ul>
+</li>
+<li><p>Works well with the principle: “never touch your raw data, always derive.”</p></li>
+<li><p>In multi-user setups (lab server, shared cluster), permissions protect against colleagues accidentally overwriting.</p></li>
+</ul>
+<p><strong>Things to keep in mind</strong></p>
+<ul class="simple">
+<li><p>You may still want to add new files (new experiments) → so you don’t want to lock the whole records root permanently. Instead, set read-only permissions per experiment once it’s finalized.</p></li>
+<li><p>If you ever need to move or reorganize, you’ll have to re-enable write permissions (chmod u+w).</p></li>
+<li><p>A safer alternative:</p>
+<ul>
+<li><p>Keep raw records as read-only</p></li>
+<li><p>Mirror it to a version-controlled metadata database (metadata.csv or SQLite), which you can edit freely</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="back-to-the-case-study">
+<h2><span class="section-number">3.2. </span>Back to the case study<a class="headerlink" href="#back-to-the-case-study" title="Link to this heading">#</a></h2>
+<p>To make everything in ‘data/records_fake/’ read-only:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>chmod<span class="w"> </span>-R<span class="w"> </span>a-w<span class="w"> </span>data/records_fake
+<span class="o">!</span>ls<span class="w"> </span>-l<span class="w"> </span>data/records_fake/*/*/*<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0000 IC steps 23.abf
+-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0001 IC ramp 23.abf
+-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0002 IC sin 23.abf
+-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0003 VC ramp 23.abf
+-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0004 IC ramp 25.abf
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now everybody (owner, group, all) car read the files but cannot write (or execute), files can still be read and copied. Still under MacOS with <code class="docutils literal notranslate"><span class="pre">Finder</span></code> you can make some damages, you can make them immutable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>chflags<span class="w"> </span>-R<span class="w"> </span>uchg<span class="w"> </span>data/records_fake
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note the little locker in Finder:</p>
+<p><img alt="chflags" src="_images/chflags.png" /></p>
+<p>(To undo: <code class="docutils literal notranslate"><span class="pre">chflags</span> <span class="pre">-R</span> <span class="pre">nouchg</span> <span class="pre">records</span></code>)</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Best practices</p>
+<ul class="simple">
+<li><p>Keep raw data untouched.</p></li>
+<li><p>Keep raw data read-only once experiments are finalized.</p></li>
+<li><p>Track metadata in metadata.csv — symlinks are just for easier file access, not metadata storage.</p></li>
+<li><p>If necessary, use symlinks for convenience (clean naming, flat access).</p></li>
+</ul>
+</div>
+</section>
+<section id="pandas-dataframe">
+<h2><span class="section-number">3.3. </span>pandas DataFrame<a class="headerlink" href="#pandas-dataframe" title="Link to this heading">#</a></h2>
+<p><strong>pandas DataFrame</strong> (df) is far better than built-in Python tools like lists, dictionaries, or arrays for the following reasons:</p>
+<ul class="simple">
+<li><p>Tabular structure built-in</p>
+<ul>
+<li><p>A DataFrame behaves like a table or spreadsheet: rows = records, columns = fields.</p></li>
+<li><p>You don’t have to manually manage parallel lists or nested dictionaries.</p></li>
+</ul>
+</li>
+<li><p>Easy indexing and filtering: doing the same with lists/dicts would require loops and conditionals — much more verbose</p></li>
+<li><p>Powerful aggregation &amp; grouping: compute counts, averages, sums, or custom statistics without writing loops</p></li>
+<li><p>Built-in handling of missing data</p>
+<ul>
+<li><p>Pandas understands <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values automatically.</p></li>
+<li><p>Built-in functions handle missing data gracefully.</p></li>
+</ul>
+</li>
+<li><p>Integration with plotting and analysis</p></li>
+<li><p>Easy I/O; Load/save CSV, Excel, SQL, JSON, and more with a single command.</p></li>
+</ul>
+<p>See infra.</p>
+</section>
+<section id="back-to-the-cas-study">
+<h2><span class="section-number">3.4. </span>Back to the cas study<a class="headerlink" href="#back-to-the-cas-study" title="Link to this heading">#</a></h2>
+<p>From <code class="docutils literal notranslate"><span class="pre">data/records_fake</span></code> (which we will not modify), we generate a metadata file <code class="docutils literal notranslate"><span class="pre">data/records_fake.csv</span></code> in CSV format.<br />
+The procedure is somewhat tricky and was developed step by step with the help of ChatGPT.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="c1"># Paths</span>
+<span class="n">records_root</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake&quot;</span><span class="p">)</span>
+<span class="n">metadata_file</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Helper: parse filename into metadata fields</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_filename</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extracts date, experiment number, protocol, protocol_option, temperature, comments from filename.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Default values</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">exp_number</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">protocol</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">protocol_option</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">file_comment</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="c1"># Match ABF/ATF standard filename: YYYY_MM_DD_XXXX[_protocol_option_temp]</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d</span><span class="si">{4}</span><span class="s2">)_(\d</span><span class="si">{2}</span><span class="s2">)_(\d</span><span class="si">{2}</span><span class="s2">)_(\d</span><span class="si">{4}</span><span class="s2">)(.*)&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+        <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">exp_number</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="c1"># Try to parse protocol, option, temperature from the rest</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">rest</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot; _&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">parts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+                <span class="n">protocol</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">islower</span><span class="p">():</span>
+                    <span class="n">protocol_option</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="c1"># Look for temperature at the end</span>
+            <span class="k">if</span> <span class="n">parts</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d</span><span class="si">{2}</span><span class="s2">(,\d)?$&quot;</span><span class="p">,</span> <span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="n">temperature</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="c1"># Comments = everything else</span>
+            <span class="n">file_comment</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parts</span> <span class="k">if</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">protocol</span><span class="p">,</span> <span class="n">protocol_option</span><span class="p">,</span> <span class="n">temperature</span><span class="p">])</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Fallback: date comes from folder, handle manually</span>
+        <span class="n">file_comment</span> <span class="o">=</span> <span class="s2">&quot;unparsed&quot;</span>
+
+    <span class="k">return</span> <span class="n">date</span><span class="p">,</span> <span class="n">exp_number</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">protocol_option</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">file_comment</span>
+
+
+<span class="c1"># Collect metadata</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Running absolute cell counter</span>
+<span class="n">absolute_cell_counter</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Sort days by folder name to ensure chronological order</span>
+<span class="n">day_folders</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">records_root</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()])</span>
+
+<span class="k">for</span> <span class="n">day_folder</span> <span class="ow">in</span> <span class="n">day_folders</span><span class="p">:</span>
+    <span class="c1"># Sort cell folders within the day</span>
+    <span class="n">cell_folders</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">day_folder</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()])</span>
+    
+    <span class="k">for</span> <span class="n">cell_folder</span> <span class="ow">in</span> <span class="n">cell_folders</span><span class="p">:</span>
+        <span class="c1"># Absolute cell id</span>
+        <span class="n">cell_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;C</span><span class="si">{</span><span class="n">absolute_cell_counter</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">absolute_cell_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="c1"># Extract folder comment (immature, DG, etc.)</span>
+        <span class="n">folder_comment</span> <span class="o">=</span> <span class="n">cell_folder</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">cell_folder</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        
+        <span class="c1"># Process files</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">cell_folder</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;.abf&quot;</span><span class="p">,</span> <span class="s2">&quot;.atf&quot;</span><span class="p">]:</span>
+                <span class="k">continue</span>
+            
+            <span class="n">file_name</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span>
+            <span class="n">file_path</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">records_root</span><span class="p">)</span>
+            
+            <span class="n">date</span><span class="p">,</span> <span class="n">exp_number</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">protocol_option</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">file_comment</span> <span class="o">=</span> <span class="n">parse_filename</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+            
+            <span class="c1"># Merge comments</span>
+            <span class="n">comments_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="n">folder_comment</span><span class="p">:</span>
+                <span class="n">comments_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">folder_comment</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">file_comment</span><span class="p">:</span>
+                <span class="n">comments_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_comment</span><span class="p">)</span>
+
+            <span class="c1"># Suppress &quot;DG&quot; (case-insensitive), keep other comments</span>
+            <span class="n">comments_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">comments_list</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;dg&quot;</span><span class="p">]</span>
+
+            <span class="n">comments</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">comments_list</span> <span class="k">if</span> <span class="n">c</span><span class="p">])</span>
+            
+            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;cell_id&quot;</span><span class="p">:</span> <span class="n">cell_id</span><span class="p">,</span>
+                <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span>
+                <span class="s2">&quot;experiment_number&quot;</span><span class="p">:</span> <span class="n">exp_number</span><span class="p">,</span>
+                <span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="n">protocol</span><span class="p">,</span>
+                <span class="s2">&quot;protocol_option&quot;</span><span class="p">:</span> <span class="n">protocol_option</span><span class="p">,</span>
+                <span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="n">temperature</span><span class="p">,</span>
+                <span class="s2">&quot;comments&quot;</span><span class="p">:</span> <span class="n">comments</span><span class="p">,</span>
+                <span class="s2">&quot;file_path&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_path</span><span class="p">),</span>
+                <span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="n">file_name</span>
+            <span class="p">})</span>
+
+<span class="c1"># Define fieldnames with file_path and file_name last</span>
+<span class="n">fieldnames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cell_id&quot;</span><span class="p">,</span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="s2">&quot;experiment_number&quot;</span><span class="p">,</span><span class="s2">&quot;protocol&quot;</span><span class="p">,</span><span class="s2">&quot;protocol_option&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;temperature&quot;</span><span class="p">,</span><span class="s2">&quot;comments&quot;</span><span class="p">,</span><span class="s2">&quot;file_path&quot;</span><span class="p">,</span><span class="s2">&quot;file_name&quot;</span><span class="p">]</span>
+
+<span class="c1"># Write CSV</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Metadata written to </span><span class="si">{</span><span class="n">metadata_file</span><span class="si">}</span><span class="s2">, total files: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metadata written to data/records_fake.csv, total files: 651
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exploring-metadata-csv">
+<h2><span class="section-number">3.5. </span>Exploring <code class="docutils literal notranslate"><span class="pre">metadata.csv</span></code><a class="headerlink" href="#exploring-metadata-csv" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Load the metadata</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Display the first few rows</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cell_id</th>
+      <th>date</th>
+      <th>experiment_number</th>
+      <th>protocol</th>
+      <th>protocol_option</th>
+      <th>temperature</th>
+      <th>comments</th>
+      <th>file_path</th>
+      <th>file_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>0.0</td>
+      <td>IC</td>
+      <td>steps</td>
+      <td>NaN</td>
+      <td>23abf</td>
+      <td>03.15/C1/2024_03_15_0000 IC steps 23.abf</td>
+      <td>2024_03_15_0000 IC steps 23.abf</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>1.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>23abf</td>
+      <td>03.15/C1/2024_03_15_0001 IC ramp 23.abf</td>
+      <td>2024_03_15_0001 IC ramp 23.abf</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>2.0</td>
+      <td>IC</td>
+      <td>sin</td>
+      <td>NaN</td>
+      <td>23abf</td>
+      <td>03.15/C1/2024_03_15_0002 IC sin 23.abf</td>
+      <td>2024_03_15_0002 IC sin 23.abf</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>3.0</td>
+      <td>VC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>23abf</td>
+      <td>03.15/C1/2024_03_15_0003 VC ramp 23.abf</td>
+      <td>2024_03_15_0003 VC ramp 23.abf</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>4.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>25abf</td>
+      <td>03.15/C1/2024_03_15_0004 IC ramp 25.abf</td>
+      <td>2024_03_15_0004 IC ramp 25.abf</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get number of files, columns, data types</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 651 entries, 0 to 650
+Data columns (total 9 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   cell_id            651 non-null    object 
+ 1   date               431 non-null    object 
+ 2   experiment_number  431 non-null    float64
+ 3   protocol           138 non-null    object 
+ 4   protocol_option    138 non-null    object 
+ 5   temperature        0 non-null      float64
+ 6   comments           651 non-null    object 
+ 7   file_path          651 non-null    object 
+ 8   file_name          651 non-null    object 
+dtypes: float64(2), object(7)
+memory usage: 45.9+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show unique protocols nicely</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unique protocols:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;protocol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="c1"># Count files per protocol</span>
+<span class="n">protocol_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;protocol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Files per protocol:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">protocol_counts</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+
+<span class="c1"># Count files per day</span>
+<span class="n">day_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Files per day:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">day_counts</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unique protocols: [&#39;IC&#39; &#39;VC&#39; nan]
+
+Files per protocol:
+protocol
+IC    94
+VC    44
+
+Files per day:
+date
+2024-05-23    70
+2024-03-15    67
+2024-05-20    51
+2024-06-26    49
+2024-04-10    38
+2024-05-30    38
+2024-05-07    37
+2024-05-29    37
+2024-06-19    24
+2024-03-20    20
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Use pandas styling (works in Jupyter Notebook)</span>
+
+<span class="c1"># Count files per protocol</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;protocol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="s2">&quot;Files per Protocol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0f}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Count files per day</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="s2">&quot;Files per Day&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0f}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_86c98">
+  <caption>Files per Day</caption>
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_86c98_level0_col0" class="col_heading level0 col0" >count</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >date</th>
+      <th class="blank col0" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_86c98_level0_row0" class="row_heading level0 row0" >2024-03-15</th>
+      <td id="T_86c98_row0_col0" class="data row0 col0" >67</td>
+    </tr>
+    <tr>
+      <th id="T_86c98_level0_row1" class="row_heading level0 row1" >2024-03-20</th>
+      <td id="T_86c98_row1_col0" class="data row1 col0" >20</td>
+    </tr>
+    <tr>
+      <th id="T_86c98_level0_row2" class="row_heading level0 row2" >2024-04-10</th>
+      <td id="T_86c98_row2_col0" class="data row2 col0" >38</td>
+    </tr>
+    <tr>
+      <th id="T_86c98_level0_row3" class="row_heading level0 row3" >2024-05-07</th>
+      <td id="T_86c98_row3_col0" class="data row3 col0" >37</td>
+    </tr>
+    <tr>
+      <th id="T_86c98_level0_row4" class="row_heading level0 row4" >2024-05-20</th>
+      <td id="T_86c98_row4_col0" class="data row4 col0" >51</td>
+    </tr>
+    <tr>
+      <th id="T_86c98_level0_row5" class="row_heading level0 row5" >2024-05-23</th>
+      <td id="T_86c98_row5_col0" class="data row5 col0" >70</td>
+    </tr>
+    <tr>
+      <th id="T_86c98_level0_row6" class="row_heading level0 row6" >2024-05-29</th>
+      <td id="T_86c98_row6_col0" class="data row6 col0" >37</td>
+    </tr>
+    <tr>
+      <th id="T_86c98_level0_row7" class="row_heading level0 row7" >2024-05-30</th>
+      <td id="T_86c98_row7_col0" class="data row7 col0" >38</td>
+    </tr>
+    <tr>
+      <th id="T_86c98_level0_row8" class="row_heading level0 row8" >2024-06-19</th>
+      <td id="T_86c98_row8_col0" class="data row8 col0" >24</td>
+    </tr>
+    <tr>
+      <th id="T_86c98_level0_row9" class="row_heading level0 row9" >2024-06-26</th>
+      <td id="T_86c98_row9_col0" class="data row9 col0" >49</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Files per protocol</span>
+<span class="n">protocol_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;protocol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">protocol_counts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Files per Protocol&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of files&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Files per day</span>
+<span class="n">day_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">day_counts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Files per Day&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of files&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/e06046e0b09b3cf4a300090bbf5a5cac1240ae30ac219c93b272ffc76a462bda.png"><img alt="_images/e06046e0b09b3cf4a300090bbf5a5cac1240ae30ac219c93b272ffc76a462bda.png" class="align-center" src="_images/e06046e0b09b3cf4a300090bbf5a5cac1240ae30ac219c93b272ffc76a462bda.png" style="width: 394.09999999999997px; height: 320.59999999999997px;" />
+</a>
+<a class="reference internal image-reference" href="_images/6a528dd83f752ce39b247fda73e29c43e22237a6a5f42ede25e0f48041b7ddcb.png"><img alt="_images/6a528dd83f752ce39b247fda73e29c43e22237a6a5f42ede25e0f48041b7ddcb.png" class="align-center" src="_images/6a528dd83f752ce39b247fda73e29c43e22237a6a5f42ede25e0f48041b7ddcb.png" style="width: 394.09999999999997px; height: 363.29999999999995px;" />
+</a>
+</div>
+</div>
+</section>
+<section id="filtering">
+<h2><span class="section-number">3.6. </span>Filtering<a class="headerlink" href="#filtering" title="Link to this heading">#</a></h2>
+<section id="all-dead-cells-experiments">
+<h3>All dead cells experiments<a class="headerlink" href="#all-dead-cells-experiments" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter rows where comments contain &#39;dead&#39; (case-insensitive)</span>
+<span class="n">dead_cells</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;dead&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+
+<span class="c1"># Display the result</span>
+<span class="n">dead_cells</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cell_id</th>
+      <th>date</th>
+      <th>experiment_number</th>
+      <th>protocol</th>
+      <th>protocol_option</th>
+      <th>temperature</th>
+      <th>comments</th>
+      <th>file_path</th>
+      <th>file_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>66</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>66.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>38 deadabf</td>
+      <td>03.15/C2/2024_03_15_0066 IC ramp 38 dead.abf</td>
+      <td>2024_03_15_0066 IC ramp 38 dead.abf</td>
+    </tr>
+    <tr>
+      <th>634</th>
+      <td>C26</td>
+      <td>2024-06-26</td>
+      <td>32.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25 DC deadabf</td>
+      <td>06.26/C2/2024_06_26_0032 25 DC dead.abf</td>
+      <td>2024_06_26_0032 25 DC dead.abf</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="all-experiment-of-the-day-2024-05-29">
+<h3>All experiment of the day ‘2024-05-29’<a class="headerlink" href="#all-experiment-of-the-day-2024-05-29" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter rows for a specific day</span>
+<span class="n">day_data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2024-05-29&#39;</span><span class="p">]</span>
+
+<span class="c1"># Display the result</span>
+<span class="n">day_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cell_id</th>
+      <th>date</th>
+      <th>experiment_number</th>
+      <th>protocol</th>
+      <th>protocol_option</th>
+      <th>temperature</th>
+      <th>comments</th>
+      <th>file_path</th>
+      <th>file_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>459</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0000.abf</td>
+      <td>2024_05_29_0000.abf</td>
+    </tr>
+    <tr>
+      <th>460</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0001.abf</td>
+      <td>2024_05_29_0001.abf</td>
+    </tr>
+    <tr>
+      <th>461</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0002.abf</td>
+      <td>2024_05_29_0002.abf</td>
+    </tr>
+    <tr>
+      <th>462</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0003.abf</td>
+      <td>2024_05_29_0003.abf</td>
+    </tr>
+    <tr>
+      <th>463</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0004.abf</td>
+      <td>2024_05_29_0004.abf</td>
+    </tr>
+    <tr>
+      <th>464</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0005.abf</td>
+      <td>2024_05_29_0005.abf</td>
+    </tr>
+    <tr>
+      <th>465</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0006.abf</td>
+      <td>2024_05_29_0006.abf</td>
+    </tr>
+    <tr>
+      <th>466</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>7.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0007.abf</td>
+      <td>2024_05_29_0007.abf</td>
+    </tr>
+    <tr>
+      <th>467</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>8.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0008.abf</td>
+      <td>2024_05_29_0008.abf</td>
+    </tr>
+    <tr>
+      <th>468</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>9.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0009.abf</td>
+      <td>2024_05_29_0009.abf</td>
+    </tr>
+    <tr>
+      <th>469</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>10.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0010.abf</td>
+      <td>2024_05_29_0010.abf</td>
+    </tr>
+    <tr>
+      <th>470</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>11.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0011.abf</td>
+      <td>2024_05_29_0011.abf</td>
+    </tr>
+    <tr>
+      <th>471</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0012.abf</td>
+      <td>2024_05_29_0012.abf</td>
+    </tr>
+    <tr>
+      <th>472</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>13.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0013.abf</td>
+      <td>2024_05_29_0013.abf</td>
+    </tr>
+    <tr>
+      <th>473</th>
+      <td>C18</td>
+      <td>2024-05-29</td>
+      <td>14.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C1/2024_05_29_0014.abf</td>
+      <td>2024_05_29_0014.abf</td>
+    </tr>
+    <tr>
+      <th>488</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>15.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0015.abf</td>
+      <td>2024_05_29_0015.abf</td>
+    </tr>
+    <tr>
+      <th>489</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>16.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0016.abf</td>
+      <td>2024_05_29_0016.abf</td>
+    </tr>
+    <tr>
+      <th>490</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>17.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0017.abf</td>
+      <td>2024_05_29_0017.abf</td>
+    </tr>
+    <tr>
+      <th>491</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>18.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0018.abf</td>
+      <td>2024_05_29_0018.abf</td>
+    </tr>
+    <tr>
+      <th>492</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>19.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0019.abf</td>
+      <td>2024_05_29_0019.abf</td>
+    </tr>
+    <tr>
+      <th>493</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>20.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0020.abf</td>
+      <td>2024_05_29_0020.abf</td>
+    </tr>
+    <tr>
+      <th>494</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>21.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0021.abf</td>
+      <td>2024_05_29_0021.abf</td>
+    </tr>
+    <tr>
+      <th>495</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0022.abf</td>
+      <td>2024_05_29_0022.abf</td>
+    </tr>
+    <tr>
+      <th>496</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>23.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0023.abf</td>
+      <td>2024_05_29_0023.abf</td>
+    </tr>
+    <tr>
+      <th>497</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>24.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0024.abf</td>
+      <td>2024_05_29_0024.abf</td>
+    </tr>
+    <tr>
+      <th>498</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0025.abf</td>
+      <td>2024_05_29_0025.abf</td>
+    </tr>
+    <tr>
+      <th>499</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>26.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0026.abf</td>
+      <td>2024_05_29_0026.abf</td>
+    </tr>
+    <tr>
+      <th>500</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>27.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0027.abf</td>
+      <td>2024_05_29_0027.abf</td>
+    </tr>
+    <tr>
+      <th>501</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>28.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0028.abf</td>
+      <td>2024_05_29_0028.abf</td>
+    </tr>
+    <tr>
+      <th>502</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>29.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0029.abf</td>
+      <td>2024_05_29_0029.abf</td>
+    </tr>
+    <tr>
+      <th>503</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>30.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0030.abf</td>
+      <td>2024_05_29_0030.abf</td>
+    </tr>
+    <tr>
+      <th>504</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>31.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0031.abf</td>
+      <td>2024_05_29_0031.abf</td>
+    </tr>
+    <tr>
+      <th>505</th>
+      <td>C19</td>
+      <td>2024-05-29</td>
+      <td>32.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>abf</td>
+      <td>05.29/C2/2024_05_29_0032.abf</td>
+      <td>2024_05_29_0032.abf</td>
+    </tr>
+    <tr>
+      <th>506</th>
+      <td>C20</td>
+      <td>2024-05-29</td>
+      <td>33.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>immature, abf</td>
+      <td>05.29/C3 immature/2024_05_29_0033.abf</td>
+      <td>2024_05_29_0033.abf</td>
+    </tr>
+    <tr>
+      <th>507</th>
+      <td>C20</td>
+      <td>2024-05-29</td>
+      <td>34.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>immature, abf</td>
+      <td>05.29/C3 immature/2024_05_29_0034.abf</td>
+      <td>2024_05_29_0034.abf</td>
+    </tr>
+    <tr>
+      <th>508</th>
+      <td>C20</td>
+      <td>2024-05-29</td>
+      <td>35.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>immature, abf</td>
+      <td>05.29/C3 immature/2024_05_29_0035.abf</td>
+      <td>2024_05_29_0035.abf</td>
+    </tr>
+    <tr>
+      <th>509</th>
+      <td>C20</td>
+      <td>2024-05-29</td>
+      <td>36.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>immature, abf</td>
+      <td>05.29/C3 immature/2024_05_29_0036.abf</td>
+      <td>2024_05_29_0036.abf</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="all-ic-ramp">
+<h3>All <code class="docutils literal notranslate"><span class="pre">IC</span> <span class="pre">ramp</span></code><a class="headerlink" href="#all-ic-ramp" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter rows with protocol &#39;IC&#39; and protocol_option &#39;ramp&#39;</span>
+<span class="n">ic_ramp_cells</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;protocol&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;IC&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;protocol_option&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ramp&#39;</span><span class="p">)]</span>
+
+<span class="c1"># Display the result</span>
+<span class="n">ic_ramp_cells</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cell_id</th>
+      <th>date</th>
+      <th>experiment_number</th>
+      <th>protocol</th>
+      <th>protocol_option</th>
+      <th>temperature</th>
+      <th>comments</th>
+      <th>file_path</th>
+      <th>file_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>1.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>23abf</td>
+      <td>03.15/C1/2024_03_15_0001 IC ramp 23.abf</td>
+      <td>2024_03_15_0001 IC ramp 23.abf</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>4.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>25abf</td>
+      <td>03.15/C1/2024_03_15_0004 IC ramp 25.abf</td>
+      <td>2024_03_15_0004 IC ramp 25.abf</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>7.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>27abf</td>
+      <td>03.15/C1/2024_03_15_0007 IC ramp 27.abf</td>
+      <td>2024_03_15_0007 IC ramp 27.abf</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>10.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>29abf</td>
+      <td>03.15/C1/2024_03_15_0010 IC ramp 29.abf</td>
+      <td>2024_03_15_0010 IC ramp 29.abf</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>13.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>31abf</td>
+      <td>03.15/C1/2024_03_15_0013 IC ramp 31.abf</td>
+      <td>2024_03_15_0013 IC ramp 31.abf</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>16.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>34abf</td>
+      <td>03.15/C1/2024_03_15_0016 IC ramp 34.abf</td>
+      <td>2024_03_15_0016 IC ramp 34.abf</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>20.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>36abf</td>
+      <td>03.15/C1/2024_03_15_0020 IC ramp 36.abf</td>
+      <td>2024_03_15_0020 IC ramp 36.abf</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>23.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>38abf</td>
+      <td>03.15/C1/2024_03_15_0023 IC ramp 38.abf</td>
+      <td>2024_03_15_0023 IC ramp 38.abf</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>27.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>40abf</td>
+      <td>03.15/C1/2024_03_15_0027 IC ramp 40.abf</td>
+      <td>2024_03_15_0027 IC ramp 40.abf</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>30.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>42abf</td>
+      <td>03.15/C1/2024_03_15_0030 IC ramp 42.abf</td>
+      <td>2024_03_15_0030 IC ramp 42.abf</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>C1</td>
+      <td>2024-03-15</td>
+      <td>33.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>44abf</td>
+      <td>03.15/C1/2024_03_15_0033 IC ramp 44.abf</td>
+      <td>2024_03_15_0033 IC ramp 44.abf</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>37.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>23abf</td>
+      <td>03.15/C2/2024_03_15_0037 IC ramp 23.abf</td>
+      <td>2024_03_15_0037 IC ramp 23.abf</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>41.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>25abf</td>
+      <td>03.15/C2/2024_03_15_0041 IC ramp 25.abf</td>
+      <td>2024_03_15_0041 IC ramp 25.abf</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>44.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>27abf</td>
+      <td>03.15/C2/2024_03_15_0044 IC ramp 27.abf</td>
+      <td>2024_03_15_0044 IC ramp 27.abf</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>48.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>29abf</td>
+      <td>03.15/C2/2024_03_15_0048 IC ramp 29.abf</td>
+      <td>2024_03_15_0048 IC ramp 29.abf</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>52.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>31abf</td>
+      <td>03.15/C2/2024_03_15_0052 IC ramp 31.abf</td>
+      <td>2024_03_15_0052 IC ramp 31.abf</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>53.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>31 (2)abf</td>
+      <td>03.15/C2/2024_03_15_0053 IC ramp 31 (2).abf</td>
+      <td>2024_03_15_0053 IC ramp 31 (2).abf</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>57.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>34abf</td>
+      <td>03.15/C2/2024_03_15_0057 IC ramp 34.abf</td>
+      <td>2024_03_15_0057 IC ramp 34.abf</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>58.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>34 (2)abf</td>
+      <td>03.15/C2/2024_03_15_0058 IC ramp 34 (2).abf</td>
+      <td>2024_03_15_0058 IC ramp 34 (2).abf</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>61.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>36abf</td>
+      <td>03.15/C2/2024_03_15_0061 IC ramp 36.abf</td>
+      <td>2024_03_15_0061 IC ramp 36.abf</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>62.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>36 (2)abf</td>
+      <td>03.15/C2/2024_03_15_0062 IC ramp 36 (2).abf</td>
+      <td>2024_03_15_0062 IC ramp 36 (2).abf</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>64.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>modifiedabf</td>
+      <td>03.15/C2/2024_03_15_0064 IC ramp modified.abf</td>
+      <td>2024_03_15_0064 IC ramp modified.abf</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>C2</td>
+      <td>2024-03-15</td>
+      <td>66.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>38 deadabf</td>
+      <td>03.15/C2/2024_03_15_0066 IC ramp 38 dead.abf</td>
+      <td>2024_03_15_0066 IC ramp 38 dead.abf</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>C3</td>
+      <td>2024-03-20</td>
+      <td>1.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>23,5abf</td>
+      <td>03.20/C1/2024_03_20_0001 IC ramp 23,5.abf</td>
+      <td>2024_03_20_0001 IC ramp 23,5.abf</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>C3</td>
+      <td>2024-03-20</td>
+      <td>3.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>33abf</td>
+      <td>03.20/C1/2024_03_20_0003 IC ramp 33.abf</td>
+      <td>2024_03_20_0003 IC ramp 33.abf</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>C3</td>
+      <td>2024-03-20</td>
+      <td>5.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>38abf</td>
+      <td>03.20/C1/2024_03_20_0005 IC ramp 38.abf</td>
+      <td>2024_03_20_0005 IC ramp 38.abf</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>C3</td>
+      <td>2024-03-20</td>
+      <td>11.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>43abf</td>
+      <td>03.20/C1/2024_03_20_0011 IC ramp 43.abf</td>
+      <td>2024_03_20_0011 IC ramp 43.abf</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>C3</td>
+      <td>2024-03-20</td>
+      <td>16.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>44,5abf</td>
+      <td>03.20/C1/2024_03_20_0016 IC ramp 44,5.abf</td>
+      <td>2024_03_20_0016 IC ramp 44,5.abf</td>
+    </tr>
+    <tr>
+      <th>579</th>
+      <td>C23</td>
+      <td>2024-06-19</td>
+      <td>1.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>25abf</td>
+      <td>06.19/C1/2024_06_19_0001 IC ramp 25.abf</td>
+      <td>2024_06_19_0001 IC ramp 25.abf</td>
+    </tr>
+    <tr>
+      <th>583</th>
+      <td>C23</td>
+      <td>2024-06-19</td>
+      <td>5.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>28abf</td>
+      <td>06.19/C1/2024_06_19_0005 IC ramp 28.abf</td>
+      <td>2024_06_19_0005 IC ramp 28.abf</td>
+    </tr>
+    <tr>
+      <th>585</th>
+      <td>C23</td>
+      <td>2024-06-19</td>
+      <td>7.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>31abf</td>
+      <td>06.19/C1/2024_06_19_0007 IC ramp 31.abf</td>
+      <td>2024_06_19_0007 IC ramp 31.abf</td>
+    </tr>
+    <tr>
+      <th>588</th>
+      <td>C23</td>
+      <td>2024-06-19</td>
+      <td>10.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>34abf</td>
+      <td>06.19/C1/2024_06_19_0010 IC ramp 34.abf</td>
+      <td>2024_06_19_0010 IC ramp 34.abf</td>
+    </tr>
+    <tr>
+      <th>593</th>
+      <td>C24</td>
+      <td>2024-06-19</td>
+      <td>15.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>25abf</td>
+      <td>06.19/C2/2024_06_19_0015 IC ramp 25.abf</td>
+      <td>2024_06_19_0015 IC ramp 25.abf</td>
+    </tr>
+    <tr>
+      <th>598</th>
+      <td>C24</td>
+      <td>2024-06-19</td>
+      <td>20.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>28abf</td>
+      <td>06.19/C2/2024_06_19_0020 IC ramp 28.abf</td>
+      <td>2024_06_19_0020 IC ramp 28.abf</td>
+    </tr>
+    <tr>
+      <th>600</th>
+      <td>C24</td>
+      <td>2024-06-19</td>
+      <td>22.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>31abf</td>
+      <td>06.19/C2/2024_06_19_0022 IC ramp 31.abf</td>
+      <td>2024_06_19_0022 IC ramp 31.abf</td>
+    </tr>
+    <tr>
+      <th>603</th>
+      <td>C25</td>
+      <td>2024-06-26</td>
+      <td>1.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>25abf</td>
+      <td>06.26/C1/2024_06_26_0001 IC ramp 25.abf</td>
+      <td>2024_06_26_0001 IC ramp 25.abf</td>
+    </tr>
+    <tr>
+      <th>614</th>
+      <td>C25</td>
+      <td>2024-06-26</td>
+      <td>12.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>28abf</td>
+      <td>06.26/C1/2024_06_26_0012 IC ramp 28.abf</td>
+      <td>2024_06_26_0012 IC ramp 28.abf</td>
+    </tr>
+    <tr>
+      <th>616</th>
+      <td>C25</td>
+      <td>2024-06-26</td>
+      <td>14.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>31abf</td>
+      <td>06.26/C1/2024_06_26_0014 IC ramp 31.abf</td>
+      <td>2024_06_26_0014 IC ramp 31.abf</td>
+    </tr>
+    <tr>
+      <th>619</th>
+      <td>C25</td>
+      <td>2024-06-26</td>
+      <td>17.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>34abf</td>
+      <td>06.26/C1/2024_06_26_0017 IC ramp 34.abf</td>
+      <td>2024_06_26_0017 IC ramp 34.abf</td>
+    </tr>
+    <tr>
+      <th>622</th>
+      <td>C25</td>
+      <td>2024-06-26</td>
+      <td>20.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>37abf</td>
+      <td>06.26/C1/2024_06_26_0020 IC ramp 37.abf</td>
+      <td>2024_06_26_0020 IC ramp 37.abf</td>
+    </tr>
+    <tr>
+      <th>625</th>
+      <td>C25</td>
+      <td>2024-06-26</td>
+      <td>23.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>40abf</td>
+      <td>06.26/C1/2024_06_26_0023 IC ramp 40.abf</td>
+      <td>2024_06_26_0023 IC ramp 40.abf</td>
+    </tr>
+    <tr>
+      <th>628</th>
+      <td>C25</td>
+      <td>2024-06-26</td>
+      <td>26.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>43abf</td>
+      <td>06.26/C1/2024_06_26_0026 IC ramp 43.abf</td>
+      <td>2024_06_26_0026 IC ramp 43.abf</td>
+    </tr>
+    <tr>
+      <th>631</th>
+      <td>C26</td>
+      <td>2024-06-26</td>
+      <td>29.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>25abf</td>
+      <td>06.26/C2/2024_06_26_0029 IC ramp 25.abf</td>
+      <td>2024_06_26_0029 IC ramp 25.abf</td>
+    </tr>
+    <tr>
+      <th>636</th>
+      <td>C27</td>
+      <td>2024-06-26</td>
+      <td>34.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>25abf</td>
+      <td>06.26/C3/2024_06_26_0034 IC ramp 25.abf</td>
+      <td>2024_06_26_0034 IC ramp 25.abf</td>
+    </tr>
+    <tr>
+      <th>641</th>
+      <td>C27</td>
+      <td>2024-06-26</td>
+      <td>39.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>28abf</td>
+      <td>06.26/C3/2024_06_26_0039 IC ramp 28.abf</td>
+      <td>2024_06_26_0039 IC ramp 28.abf</td>
+    </tr>
+    <tr>
+      <th>643</th>
+      <td>C27</td>
+      <td>2024-06-26</td>
+      <td>41.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>31abf</td>
+      <td>06.26/C3/2024_06_26_0041 IC ramp 31.abf</td>
+      <td>2024_06_26_0041 IC ramp 31.abf</td>
+    </tr>
+    <tr>
+      <th>646</th>
+      <td>C27</td>
+      <td>2024-06-26</td>
+      <td>44.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>34abf</td>
+      <td>06.26/C3/2024_06_26_0044 IC ramp 34.abf</td>
+      <td>2024_06_26_0044 IC ramp 34.abf</td>
+    </tr>
+    <tr>
+      <th>649</th>
+      <td>C27</td>
+      <td>2024-06-26</td>
+      <td>47.0</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>NaN</td>
+      <td>37abf</td>
+      <td>06.26/C3/2024_06_26_0047 IC ramp 37.abf</td>
+      <td>2024_06_26_0047 IC ramp 37.abf</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3_databases.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Electrophysiology data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="5_pyabf.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>PyABF</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-practrices-about-records-directory">3.1. Good practrices about records directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-structure-flatten-or-not">Directory structure: flatten or not?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-handling">Metadata handling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#readme-md"><code class="docutils literal notranslate"><span class="pre">README.md</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-naming">File Naming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-raw-data-read-only">Keep raw data read-only</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study">3.2. Back to the case study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe">3.3. pandas DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-cas-study">3.4. Back to the cas study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-metadata-csv">3.5. Exploring <code class="docutils literal notranslate"><span class="pre">metadata.csv</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">3.6. Filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-dead-cells-experiments">All dead cells experiments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-experiment-of-the-day-2024-05-29">All experiment of the day ‘2024-05-29’</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-ic-ramp">All <code class="docutils literal notranslate"><span class="pre">IC</span> <span class="pre">ramp</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fabien Campillo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright This book is distributed under CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike).
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
