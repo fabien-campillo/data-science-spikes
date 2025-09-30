@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -68,7 +65,6 @@
     <link rel="prev" title="2. Electrophysiology data" href="3_databases.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -84,8 +80,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -93,6 +100,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -100,8 +108,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,8 +125,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -148,17 +155,21 @@
     
     
     <img src="_static/logo_title.png" class="logo__image only-light" alt="Data Sciences and Spikes - Home"/>
-    <img src="_static/logo_title.png" class="logo__image only-dark pst-js-only" alt="Data Sciences and Spikes - Home"/>
+    <script>document.write(`<img src="_static/logo_title.png" class="logo__image only-dark" alt="Data Sciences and Spikes - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -190,14 +201,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -309,16 +315,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -396,11 +410,11 @@
 │   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
 ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">04.10</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
-│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2\ immature</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2 immature</span>
 │   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C3</span>
 ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.07</span>
-│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1\ DG</span>
-│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2\ DG</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1 DG</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2 DG</span>
 ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.20</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
@@ -415,7 +429,7 @@
 ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.29</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
-│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C3\ immature</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C3 immature</span>
 ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.30</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
 │   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
@@ -522,12 +536,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-r--r--r--  1 campillo  staff  0 29 sep 21:24 data/records_fake/03.15/C1/2024_03_15_0000 IC steps 23.abf
--r--r--r--  1 campillo  staff  0 29 sep 21:24 data/records_fake/03.15/C1/2024_03_15_0001 IC ramp 23.abf
--r--r--r--  1 campillo  staff  0 29 sep 21:24 data/records_fake/03.15/C1/2024_03_15_0002 IC sin 23.abf
--r--r--r--  1 campillo  staff  0 29 sep 21:24 data/records_fake/03.15/C1/2024_03_15_0003 VC ramp 23.abf
--r--r--r--  1 campillo  staff  0 29 sep 21:24 data/records_fake/03.15/C1/2024_03_15_0004 IC ramp 25.abf
-ls: stdout: Undefined error: 0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0000 IC steps 23.abf
+-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0001 IC ramp 23.abf
+-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0002 IC sin 23.abf
+-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0003 VC ramp 23.abf
+-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0004 IC ramp 25.abf
 </pre></div>
 </div>
 </div>
@@ -591,7 +604,7 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 
 <span class="c1"># Paths</span>
 <span class="n">records_root</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake&quot;</span><span class="p">)</span>
-<span class="n">metadata_file</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata.csv&quot;</span><span class="p">)</span>
+<span class="n">metadata_file</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_1.csv&quot;</span><span class="p">)</span>
 
 <span class="c1"># Collect metadata</span>
 <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
@@ -634,7 +647,7 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metadata CSV written to data/records_fake_metadata.csv, total files: 659
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metadata CSV written to data/records_fake_metadata_1.csv, total files: 659
 </pre></div>
 </div>
 </div>
@@ -644,7 +657,7 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="c1"># Load the metadata</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_1.csv&quot;</span><span class="p">)</span>
 
 <span class="c1"># Display the first few rows</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -716,7 +729,7 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 
 
 <span class="c1"># Paths</span>
-<span class="n">metadata_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata.csv&quot;</span><span class="p">)</span>
+<span class="n">metadata_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_1.csv&quot;</span><span class="p">)</span>
 <span class="n">metadata_file_2</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_2.csv&quot;</span><span class="p">)</span>
 <span class="n">records_root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake&quot;</span><span class="p">)</span>
 
@@ -1102,12 +1115,57 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 </div>
 </div>
 </div>
-<p><strong>HERE</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="c1"># Load the previous metadata</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_7.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Rule 1: Add &quot;square steps&quot; if present in filename</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;square steps&quot;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+       <span class="s1">&#39;comments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> \
+                     <span class="p">(</span><span class="s2">&quot;, &quot;</span> <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;square steps&quot;</span>
+
+<span class="c1"># Rule 2: Capture parentheses like (2), (3), etc. from filename and add to comments</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\(\d+\)&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+        <span class="n">extra</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">])</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">])</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">extra</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">current</span><span class="p">:</span>
+            <span class="n">new_comment</span> <span class="o">=</span> <span class="p">(</span><span class="n">current</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="n">extra</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="s1">&#39;comments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_comment</span>
+
+<span class="c1"># Save to new file</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_8.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;records_fake_metadata_8.csv created with updated comments.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>records_fake_metadata_8.csv created with updated comments.
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>FINALLY</strong> we have a correct <code class="docutils literal notranslate"><span class="pre">records_fake_metadata_8.csv</span></code></p>
+<p>add a tool in python-dsspikes-env (suppse that you are under that env)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">python</span><span class="o">-</span><span class="n">dsspikes</span><span class="o">-</span><span class="n">env</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">csvkit</span> 
+<span class="n">conda</span> <span class="n">update</span> <span class="o">--</span><span class="nb">all</span> <span class="c1"># upgrade all to the latest versions available in your conda channels</span>
+<span class="n">conda</span> <span class="n">env</span> <span class="n">update</span> <span class="o">-</span><span class="n">f</span> <span class="n">environment</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">prune</span>  <span class="c1"># update environment.yml</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://csvkit.readthedocs.io/en/latest/">cvskit</a></p>
 <p>I also use <code class="docutils literal notranslate"><span class="pre">csvlook</span></code> under terminal: Renders a CSV to the command line in a Markdown-compatible, fixed-width format.</p>
 <p>** donne plus de détails **</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>csvcut<span class="w"> </span>-c<span class="w"> </span>file_name<span class="w"> </span>data/records_fake_metadata_7.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-vE<span class="w"> </span><span class="s2">&quot;\.(abf|atf)\&quot;?</span>$<span class="s2">&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>csvcut<span class="w"> </span>-c<span class="w"> </span>file_name<span class="w"> </span>data/records_fake_metadata_8.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-vE<span class="w"> </span><span class="s2">&quot;\.(abf|atf)\&quot;?</span>$<span class="s2">&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1127,7 +1185,7 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 </div>
 <p>the previous files are useless, how to suppress ?</p>
 <p>also if I do</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>csvcut<span class="w"> </span>-c<span class="w"> </span>file_name<span class="w"> </span>records_fake_metadata_7.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>csvlook
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>csvcut<span class="w"> </span>-c<span class="w"> </span>file_name<span class="w"> </span>data/records_fake_metadata_8.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>csvlook
 </pre></div>
 </div>
 <p>i see all the file names, and I see that some files are useless:</p>
@@ -1139,6 +1197,55 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 <span class="o">|</span> <span class="n">VC2</span><span class="o">.</span><span class="n">atf</span>                                <span class="o">|</span>
 <span class="o">|</span> <span class="n">VC3</span><span class="o">.</span><span class="n">atf</span>                                <span class="o">|</span>
 </pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_8.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Conditions</span>
+<span class="n">cond_short</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">12</span>
+<span class="n">cond_invalid_ext</span> <span class="o">=</span> <span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">endswith</span><span class="p">((</span><span class="s1">&#39;.abf&#39;</span><span class="p">,</span> <span class="s1">&#39;.atf&#39;</span><span class="p">))</span>
+
+<span class="c1"># Filter</span>
+<span class="n">bad_files</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cond_short</span> <span class="o">|</span> <span class="n">cond_invalid_ext</span><span class="p">]</span>
+
+<span class="c1"># Reset index to get line numbers</span>
+<span class="n">bad_files</span> <span class="o">=</span> <span class="n">bad_files</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;linenb&quot;</span><span class="p">})</span>
+<span class="n">bad_files</span><span class="p">[</span><span class="s2">&quot;linenb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bad_files</span><span class="p">[</span><span class="s2">&quot;linenb&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>   <span class="c1"># adjust for header + 0-based index</span>
+
+<span class="c1"># Choose columns dynamically</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;linenb&quot;</span><span class="p">,</span> <span class="s2">&quot;cell_id&quot;</span><span class="p">,</span> <span class="s2">&quot;protocol&quot;</span><span class="p">,</span> <span class="s2">&quot;file_path&quot;</span><span class="p">]</span>
+<span class="k">if</span> <span class="s2">&quot;eco_nb&quot;</span> <span class="ow">in</span> <span class="n">bad_files</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">cols</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;eco_nb&quot;</span><span class="p">)</span>  <span class="c1"># insert after linenb</span>
+
+<span class="n">subset</span> <span class="o">=</span> <span class="n">bad_files</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    linenb cell_id protocol                               file_path
+0       89      C3      NaN                         03.20/C1/CC.atf
+1       90      C3      NaN                        03.20/C1/CC2.atf
+2       91      C3      NaN                    03.20/C1/INTRES1.atf
+3       92      C3      NaN                    03.20/C1/INTRES2.atf
+4       93      C3       VC                         03.20/C1/VC.atf
+5       94      C3       VC                        03.20/C1/VC2.atf
+6       95      C3       VC                        03.20/C1/VC3.atf
+7      375     C15      NaN            05.23/C2/2024_05_23_0020.rsv
+8      514     C21      NaN  05.30/C1/2024_05_30_0001_metadata.json
+9      515     C21      NaN   05.30/C1/2024_05_30_0001_metadata.txt
+10     525     C21      NaN  05.30/C1/2024_05_30_0010_metadata.json
+11     526     C21      NaN   05.30/C1/2024_05_30_0010_metadata.txt
+12     534     C21      NaN  05.30/C1/2024_05_30_0017_metadata.json
+13     535     C21      NaN   05.30/C1/2024_05_30_0017_metadata.txt
+14     572     C22      NaN  05.30/C2/2024_05_30_0023_metadata.json
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="exploring-the-metadata">
@@ -1158,14 +1265,14 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Load the metadata</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake.csv&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Display the first few rows</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
-<span class="nn">File ~/miniforge3/envs/python-dsspikes-env/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="nn">File /opt/anaconda3/envs/python-dsspikes-env/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
 <span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
@@ -1174,19 +1281,19 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 <span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
 
-<span class="nn">File ~/miniforge3/envs/python-dsspikes-env/lib/python3.11/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="nn">File /opt/anaconda3/envs/python-dsspikes-env/lib/python3.11/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
 <span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
 <span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
 <span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
 
-<span class="nn">File ~/miniforge3/envs/python-dsspikes-env/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="nn">File /opt/anaconda3/envs/python-dsspikes-env/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
 <span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
 
-<span class="nn">File ~/miniforge3/envs/python-dsspikes-env/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="nn">File /opt/anaconda3/envs/python-dsspikes-env/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
 <span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
@@ -1202,7 +1309,7 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 <span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 <span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
 
-<span class="nn">File ~/miniforge3/envs/python-dsspikes-env/lib/python3.11/site-packages/pandas/io/common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="nn">File /opt/anaconda3/envs/python-dsspikes-env/lib/python3.11/site-packages/pandas/io/common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
 <span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
 <span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
@@ -2639,8 +2746,7 @@ date
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -2715,8 +2821,8 @@ By Fabien Campillo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
