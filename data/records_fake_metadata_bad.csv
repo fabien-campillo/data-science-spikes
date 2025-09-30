@@ -1,0 +1,16 @@
+exp_nb,cell_id,date,protocol,prot-opt,tp,comments,file_path,file_name
+88,C3,2024-03-20,,,,,03.20/C1/CC.atf,CC.atf
+89,C3,2024-03-20,,,,,03.20/C1/CC2.atf,CC2.atf
+90,C3,2024-03-20,,,,,03.20/C1/INTRES1.atf,INTRES1.atf
+91,C3,2024-03-20,,,,,03.20/C1/INTRES2.atf,INTRES2.atf
+92,C3,2024-03-20,VC,,,,03.20/C1/VC.atf,VC.atf
+93,C3,2024-03-20,VC,,,,03.20/C1/VC2.atf,VC2.atf
+94,C3,2024-03-20,VC,,,,03.20/C1/VC3.atf,VC3.atf
+374,C15,2024-05-23,,,,,05.23/C2/2024_05_23_0020.rsv,2024_05_23_0020.rsv
+513,C21,2024-05-30,,,,,05.30/C1/2024_05_30_0001_metadata.json,2024_05_30_0001_metadata.json
+514,C21,2024-05-30,,,,,05.30/C1/2024_05_30_0001_metadata.txt,2024_05_30_0001_metadata.txt
+524,C21,2024-05-30,,,,,05.30/C1/2024_05_30_0010_metadata.json,2024_05_30_0010_metadata.json
+525,C21,2024-05-30,,,,,05.30/C1/2024_05_30_0010_metadata.txt,2024_05_30_0010_metadata.txt
+533,C21,2024-05-30,,,,,05.30/C1/2024_05_30_0017_metadata.json,2024_05_30_0017_metadata.json
+534,C21,2024-05-30,,,,,05.30/C1/2024_05_30_0017_metadata.txt,2024_05_30_0017_metadata.txt
+571,C22,2024-05-30,,,,,05.30/C2/2024_05_30_0023_metadata.json,2024_05_30_0023_metadata.json
