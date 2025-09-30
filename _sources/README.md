@@ -101,5 +101,3 @@ data-science-spikes/
 
 [Fabien Campillo](https://www-sop.inria.fr/members/Fabien.Campillo/index.html)
 
-
-# trigger
