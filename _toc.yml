@@ -6,16 +6,17 @@ parts:
   - caption: "Content"
     numbered: 2   # chapters start numbering from 2
     chapters:
-    - file: 2_resources
-    - file: 3_databases
-    - file: 4_exploring_a_database
-    - file: 5_pyabf
+      - file: 2_resources
+      - file: 3_databases
+      - file: 4_exploring_a_database
+      - file: 5_pyabf
   - caption: "Appendices"
     numbered: "A" # FAILED 
     numbered: 2   # chapters start numbering from 2
     chapters:
-    - file: A_installing_python 
-    - file: B_jupyter
-    - file: C_diagnostic
-    - title: "Download PDF"
-      url: https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf
+      - file: A_installing_python
+      - file: B_jupyter
+      - file: C_diagnostic
+      - file: genindex
+      - title: "Download PDF"
+        url: https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf
