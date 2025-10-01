@@ -405,7 +405,7 @@ document.write(`
 <p class="admonition-title">Important</p>
 <p>Usually, directories of experimental records are produced by colleagues in the lab. It is essential that there is ongoing discussion between the experimentalists and the people who will later analyze the data, such as data scientists. If data scientists modify the structure of the records directory, it becomes much harder to maintain this communication and can significantly slow down the process of data exploitation and analysis. Therefore, following good practices for organizing and managing the data is crucial.</p>
 </div>
-<p id="index-0">We consider a dataset in <code class="docutils literal notranslate"><span class="pre">data/records_fake</span></code>.</p>
+<p>We consider a dataset in <code class="docutils literal notranslate"><span class="pre">data/records_fake</span></code>.</p>
 <p>This dataset consists of a set of (empty) records compiled in 2024, from March 15 to June 26, by <a class="reference external" href="https://www.linkedin.com/in/joanna-danielewicz-522139b6/?originalSubdomain=es">Joanna Danielewicz</a> at the <a class="reference external" href="https://www.bcamath.org/en/research/areas/m3a/mcen">Mathematical, Computational and Experimental</a> lab, headed by <a class="reference external" href="https://www.ikerbasque.net/es/serafim-rodrigues">Serafim Rodrigues</a> at <a class="reference external" href="https://www.bcamath.org/en">BCAM</a>.</p>
 <p>The directory structure is the same as in the real dataset, but the files are empty, since the original recordings are too large. Later, we will work with selected real recordings.</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory I have a subdirectory <code class="docutils literal notranslate"><span class="pre">records_fake</span></code> that contains empty <code class="docutils literal notranslate"><span class="pre">abf</span></code> and <code class="docutils literal notranslate"><span class="pre">atf</span></code> files, the structure is:</p>
@@ -605,7 +605,7 @@ document.write(`
 <p>See infra.</p>
 </section>
 <section id="back-to-the-case-study-the-boring-job">
-<h2><span class="section-number">3.4. </span>Back to the case study: the boring job !<a class="headerlink" href="#back-to-the-case-study-the-boring-job" title="Link to this heading">#</a></h2>
+<span id="index-0"></span><h2><span class="section-number">3.4. </span>Back to the case study: the boring job !<a class="headerlink" href="#back-to-the-case-study-the-boring-job" title="Link to this heading">#</a></h2>
 <p><strong>This part is as necessary as it is boring !</strong>
 From <code class="docutils literal notranslate"><span class="pre">data/records_fake</span></code> (which we will not modify), we generate a metadata file <code class="docutils literal notranslate"><span class="pre">data/records_fake.csv</span></code> in CSV format. The procedure is somewhat tricky and was developed <strong>step by step</strong> with the help of ChatGPT.</p>
 <p>We go step by step from <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_1.csv</span></code> to <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_9.csv</span></code> and then do some extra work.</p>
@@ -622,7 +622,7 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 </ul>
 </li>
 </ul>
-<div class="cell docutils container">
+<div class="cell docutils container" id="index-1">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
@@ -1579,12 +1579,12 @@ date
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_1c1df">
+<table id="T_663ba">
   <caption>Files per Day</caption>
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_1c1df_level0_col0" class="col_heading level0 col0" >count</th>
+      <th id="T_663ba_level0_col0" class="col_heading level0 col0" >count</th>
     </tr>
     <tr>
       <th class="index_name level0" >date</th>
@@ -1593,44 +1593,44 @@ date
   </thead>
   <tbody>
     <tr>
-      <th id="T_1c1df_level0_row0" class="row_heading level0 row0" >2024-03-15</th>
-      <td id="T_1c1df_row0_col0" class="data row0 col0" >67</td>
+      <th id="T_663ba_level0_row0" class="row_heading level0 row0" >2024-03-15</th>
+      <td id="T_663ba_row0_col0" class="data row0 col0" >67</td>
     </tr>
     <tr>
-      <th id="T_1c1df_level0_row1" class="row_heading level0 row1" >2024-03-20</th>
-      <td id="T_1c1df_row1_col0" class="data row1 col0" >20</td>
+      <th id="T_663ba_level0_row1" class="row_heading level0 row1" >2024-03-20</th>
+      <td id="T_663ba_row1_col0" class="data row1 col0" >20</td>
     </tr>
     <tr>
-      <th id="T_1c1df_level0_row2" class="row_heading level0 row2" >2024-04-10</th>
-      <td id="T_1c1df_row2_col0" class="data row2 col0" >61</td>
+      <th id="T_663ba_level0_row2" class="row_heading level0 row2" >2024-04-10</th>
+      <td id="T_663ba_row2_col0" class="data row2 col0" >61</td>
     </tr>
     <tr>
-      <th id="T_1c1df_level0_row3" class="row_heading level0 row3" >2024-05-07</th>
-      <td id="T_1c1df_row3_col0" class="data row3 col0" >70</td>
+      <th id="T_663ba_level0_row3" class="row_heading level0 row3" >2024-05-07</th>
+      <td id="T_663ba_row3_col0" class="data row3 col0" >70</td>
     </tr>
     <tr>
-      <th id="T_1c1df_level0_row4" class="row_heading level0 row4" >2024-05-20</th>
-      <td id="T_1c1df_row4_col0" class="data row4 col0" >96</td>
+      <th id="T_663ba_level0_row4" class="row_heading level0 row4" >2024-05-20</th>
+      <td id="T_663ba_row4_col0" class="data row4 col0" >96</td>
     </tr>
     <tr>
-      <th id="T_1c1df_level0_row5" class="row_heading level0 row5" >2024-05-23</th>
-      <td id="T_1c1df_row5_col0" class="data row5 col0" >126</td>
+      <th id="T_663ba_level0_row5" class="row_heading level0 row5" >2024-05-23</th>
+      <td id="T_663ba_row5_col0" class="data row5 col0" >126</td>
     </tr>
     <tr>
-      <th id="T_1c1df_level0_row6" class="row_heading level0 row6" >2024-05-29</th>
-      <td id="T_1c1df_row6_col0" class="data row6 col0" >63</td>
+      <th id="T_663ba_level0_row6" class="row_heading level0 row6" >2024-05-29</th>
+      <td id="T_663ba_row6_col0" class="data row6 col0" >63</td>
     </tr>
     <tr>
-      <th id="T_1c1df_level0_row7" class="row_heading level0 row7" >2024-05-30</th>
-      <td id="T_1c1df_row7_col0" class="data row7 col0" >68</td>
+      <th id="T_663ba_level0_row7" class="row_heading level0 row7" >2024-05-30</th>
+      <td id="T_663ba_row7_col0" class="data row7 col0" >68</td>
     </tr>
     <tr>
-      <th id="T_1c1df_level0_row8" class="row_heading level0 row8" >2024-06-19</th>
-      <td id="T_1c1df_row8_col0" class="data row8 col0" >24</td>
+      <th id="T_663ba_level0_row8" class="row_heading level0 row8" >2024-06-19</th>
+      <td id="T_663ba_row8_col0" class="data row8 col0" >24</td>
     </tr>
     <tr>
-      <th id="T_1c1df_level0_row9" class="row_heading level0 row9" >2024-06-26</th>
-      <td id="T_1c1df_row9_col0" class="data row9 col0" >49</td>
+      <th id="T_663ba_level0_row9" class="row_heading level0 row9" >2024-06-26</th>
+      <td id="T_663ba_row9_col0" class="data row9 col0" >49</td>
     </tr>
   </tbody>
 </table>
