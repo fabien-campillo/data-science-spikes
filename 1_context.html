@@ -187,8 +187,8 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2_resources.html">1. Resources and references</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_databases.html">2. Electrophysiology data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_exploring_a_database.html">3. Exploring a database thanks tp <code class="docutils literal notranslate"><span class="pre">csv</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_pyabf.html">4. PyABF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_exploring_a_database.html">3. Exploring a database with <code class="docutils literal notranslate"><span class="pre">csv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_pyabf.html">4. Exploring records with <code class="docutils literal notranslate"><span class="pre">pyabf</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -375,7 +375,7 @@ document.write(`
 Processing extracranial electrophysiological data (EEG/MEG) is generally more complex than processing intracranial measurements (spikes, LFP, ECoG). In intracranial recordings, electrodes are close to neurons: the signal is more localized, with a better signal-to-noise ratio, which facilitates the identification of action potentials or local fields. In contrast, extracranial signals are heavily attenuated, resulting from the summation of millions of neurons and distorted by cranial tissues. They are also contaminated by numerous artifacts. Analysis therefore requires advanced processing (filtering, correction, modeling) and solving the inverse problem (retrieving brain sources from incomplete and ambiguous measurements, which is a mathematically ill-posed problem).</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>This notebook relies on Python packages such as <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>, <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, and others. To ensure reproducibility and avoid conflicts with other Python projects, it is <strong>strongly recommended to use a dedicated virtual environment</strong>.  For detailed instructions on setting up the environment, see the beginning of Chapter <a class="reference internal" href="5_pyabf.html#chap-pyabf"><span class="std std-ref">PyABF</span></a>.</p>
+<p>This notebook relies on Python packages such as <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">pyabf</span></code>, <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, and others. To ensure reproducibility and avoid conflicts with other Python projects, it is <strong>strongly recommended to use a dedicated virtual environment</strong>.  For detailed instructions on setting up the environment, see the beginning of Chapter <a class="reference internal" href="5_pyabf.html#chap-pyabf"><span class="std std-ref">Exploring records with pyabf</span></a>.</p>
 </div>
 <br>
 <br>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Exploring a database thanks tp csv &#8212; Data Sciences and Spikes</title>
+    <title>3. Exploring a database with csv &#8212; Data Sciences and Spikes</title>
   
   
   
@@ -61,7 +61,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. PyABF" href="5_pyabf.html" />
+    <link rel="next" title="4. Exploring records with pyabf" href="5_pyabf.html" />
     <link rel="prev" title="2. Electrophysiology data" href="3_databases.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,8 +184,8 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2_resources.html">1. Resources and references</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_databases.html">2. Electrophysiology data</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Exploring a database thanks tp <code class="docutils literal notranslate"><span class="pre">csv</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_pyabf.html">4. PyABF</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Exploring a database with <code class="docutils literal notranslate"><span class="pre">csv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_pyabf.html">4. Exploring records with <code class="docutils literal notranslate"><span class="pre">pyabf</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -346,7 +346,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exploring a database thanks tp csv</h1>
+    <h1>Exploring a database with csv</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -398,13 +398,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exploring-a-database-thanks-tp-csv">
-<span id="chap-exploring-a-database"></span><h1><span class="section-number">3. </span>Exploring a database thanks tp <code class="docutils literal notranslate"><span class="pre">csv</span></code><a class="headerlink" href="#exploring-a-database-thanks-tp-csv" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="exploring-a-database-with-csv">
+<span id="chap-exploring-a-database"></span><h1><span class="section-number">3. </span>Exploring a database with <code class="docutils literal notranslate"><span class="pre">csv</span></code><a class="headerlink" href="#exploring-a-database-with-csv" title="Link to this heading">#</a></h1>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Usually, directories of experimental records are produced by colleagues in the lab. It is essential that there is ongoing discussion between the experimentalists and the people who will later analyze the data, such as data scientists. If data scientists modify the structure of the records directory, it becomes much harder to maintain this communication and can significantly slow down the process of data exploitation and analysis. Therefore, following good practices for organizing and managing the data is crucial.</p>
 </div>
-<p>We consider a dataset in <code class="docutils literal notranslate"><span class="pre">data/records_fake</span></code>.</p>
+<p id="index-0">We consider a dataset in <code class="docutils literal notranslate"><span class="pre">data/records_fake</span></code>.</p>
 <p>This dataset consists of a set of (empty) records compiled in 2024, from March 15 to June 26, by <a class="reference external" href="https://www.linkedin.com/in/joanna-danielewicz-522139b6/?originalSubdomain=es">Joanna Danielewicz</a> at the <a class="reference external" href="https://www.bcamath.org/en/research/areas/m3a/mcen">Mathematical, Computational and Experimental</a> lab, headed by <a class="reference external" href="https://www.ikerbasque.net/es/serafim-rodrigues">Serafim Rodrigues</a> at <a class="reference external" href="https://www.bcamath.org/en">BCAM</a>.</p>
 <p>The directory structure is the same as in the real dataset, but the files are empty, since the original recordings are too large. Later, we will work with selected real recordings.</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory I have a subdirectory <code class="docutils literal notranslate"><span class="pre">records_fake</span></code> that contains empty <code class="docutils literal notranslate"><span class="pre">abf</span></code> and <code class="docutils literal notranslate"><span class="pre">atf</span></code> files, the structure is:</p>
@@ -1348,9 +1348,6 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 14     572     C22      NaN  05.30/C2/2024_05_30_0023_metadata.json
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 </div>
 <p>I sugest to keep all files in <code class="docutils literal notranslate"><span class="pre">data/records_fake/</span></code> as they are, and just remove the bad rows from the metadata CSV when creating your curated version <code class="docutils literal notranslate"><span class="pre">records_fake_metadata.csv</span></code></p>
@@ -1581,12 +1578,12 @@ date
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_952a0">
+<table id="T_7e509">
   <caption>Files per Day</caption>
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_952a0_level0_col0" class="col_heading level0 col0" >count</th>
+      <th id="T_7e509_level0_col0" class="col_heading level0 col0" >count</th>
     </tr>
     <tr>
       <th class="index_name level0" >date</th>
@@ -1595,44 +1592,44 @@ date
   </thead>
   <tbody>
     <tr>
-      <th id="T_952a0_level0_row0" class="row_heading level0 row0" >2024-03-15</th>
-      <td id="T_952a0_row0_col0" class="data row0 col0" >67</td>
+      <th id="T_7e509_level0_row0" class="row_heading level0 row0" >2024-03-15</th>
+      <td id="T_7e509_row0_col0" class="data row0 col0" >67</td>
     </tr>
     <tr>
-      <th id="T_952a0_level0_row1" class="row_heading level0 row1" >2024-03-20</th>
-      <td id="T_952a0_row1_col0" class="data row1 col0" >20</td>
+      <th id="T_7e509_level0_row1" class="row_heading level0 row1" >2024-03-20</th>
+      <td id="T_7e509_row1_col0" class="data row1 col0" >20</td>
     </tr>
     <tr>
-      <th id="T_952a0_level0_row2" class="row_heading level0 row2" >2024-04-10</th>
-      <td id="T_952a0_row2_col0" class="data row2 col0" >61</td>
+      <th id="T_7e509_level0_row2" class="row_heading level0 row2" >2024-04-10</th>
+      <td id="T_7e509_row2_col0" class="data row2 col0" >61</td>
     </tr>
     <tr>
-      <th id="T_952a0_level0_row3" class="row_heading level0 row3" >2024-05-07</th>
-      <td id="T_952a0_row3_col0" class="data row3 col0" >70</td>
+      <th id="T_7e509_level0_row3" class="row_heading level0 row3" >2024-05-07</th>
+      <td id="T_7e509_row3_col0" class="data row3 col0" >70</td>
     </tr>
     <tr>
-      <th id="T_952a0_level0_row4" class="row_heading level0 row4" >2024-05-20</th>
-      <td id="T_952a0_row4_col0" class="data row4 col0" >96</td>
+      <th id="T_7e509_level0_row4" class="row_heading level0 row4" >2024-05-20</th>
+      <td id="T_7e509_row4_col0" class="data row4 col0" >96</td>
     </tr>
     <tr>
-      <th id="T_952a0_level0_row5" class="row_heading level0 row5" >2024-05-23</th>
-      <td id="T_952a0_row5_col0" class="data row5 col0" >126</td>
+      <th id="T_7e509_level0_row5" class="row_heading level0 row5" >2024-05-23</th>
+      <td id="T_7e509_row5_col0" class="data row5 col0" >126</td>
     </tr>
     <tr>
-      <th id="T_952a0_level0_row6" class="row_heading level0 row6" >2024-05-29</th>
-      <td id="T_952a0_row6_col0" class="data row6 col0" >63</td>
+      <th id="T_7e509_level0_row6" class="row_heading level0 row6" >2024-05-29</th>
+      <td id="T_7e509_row6_col0" class="data row6 col0" >63</td>
     </tr>
     <tr>
-      <th id="T_952a0_level0_row7" class="row_heading level0 row7" >2024-05-30</th>
-      <td id="T_952a0_row7_col0" class="data row7 col0" >68</td>
+      <th id="T_7e509_level0_row7" class="row_heading level0 row7" >2024-05-30</th>
+      <td id="T_7e509_row7_col0" class="data row7 col0" >68</td>
     </tr>
     <tr>
-      <th id="T_952a0_level0_row8" class="row_heading level0 row8" >2024-06-19</th>
-      <td id="T_952a0_row8_col0" class="data row8 col0" >24</td>
+      <th id="T_7e509_level0_row8" class="row_heading level0 row8" >2024-06-19</th>
+      <td id="T_7e509_row8_col0" class="data row8 col0" >24</td>
     </tr>
     <tr>
-      <th id="T_952a0_level0_row9" class="row_heading level0 row9" >2024-06-26</th>
-      <td id="T_952a0_row9_col0" class="data row9 col0" >49</td>
+      <th id="T_7e509_level0_row9" class="row_heading level0 row9" >2024-06-26</th>
+      <td id="T_7e509_row9_col0" class="data row9 col0" >49</td>
     </tr>
   </tbody>
 </table>
@@ -2161,7 +2158,7 @@ date
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>PyABF</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Exploring records with <code class="docutils literal notranslate"><span class="pre">pyabf</span></code></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
