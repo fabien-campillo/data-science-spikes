@@ -17,6 +17,7 @@ parts:
       - file: A_installing_python
       - file: B_jupyter
       - file: C_diagnostic
-      - file: genindex.html
+      - title: "Index"
+        url: https://fabien-campillo.github.io/data-science-spikes/genindex.html
       - title: "Download PDF"
         url: https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf
