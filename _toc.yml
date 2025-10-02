@@ -16,7 +16,8 @@ parts:
     chapters:
       - file: A_installing_python
       - file: B_jupyter
-      - file: C_diagnostic
+      - file: C_csv
+      - file: Z_diagnostic
       - title: "Index"
         url: https://fabien-campillo.github.io/data-science-spikes/genindex.html
       - title: "Download PDF"
