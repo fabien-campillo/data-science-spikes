@@ -191,7 +191,8 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="A_installing_python.html">1. Installing Python and some tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="B_jupyter.html">2. Interactive computing with Jupyter bazaar</a></li>
-<li class="toctree-l1"><a class="reference internal" href="C_diagnostic.html">3. Diagnostic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C_csv.html">3. <code class="docutils literal notranslate"><span class="pre">csv</span></code> in the context of <code class="docutils literal notranslate"><span class="pre">panda</span></code> and <code class="docutils literal notranslate"><span class="pre">csvkit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Z_diagnostic.html">4. Diagnostic</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf">Download PDF</a></li>
 </ul>
@@ -357,7 +358,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-practrices-about-records-directory">3.1. Good practrices about records directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-csvfile">3.1. Building a <code class="docutils literal notranslate"><span class="pre">csv</span></code>file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-practrices-about-records-directory">3.2. Good practrices about records directory</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-structure-flatten-or-not">Directory structure: flatten or not?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-handling">Metadata handling</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#readme-md"><code class="docutils literal notranslate"><span class="pre">README.md</span></code></a></li>
@@ -365,9 +367,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-raw-data-read-only">Keep raw data read-only</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study">3.2. Back to the case study</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe">3.3. Pandas DataFrame</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study-the-boring-job">3.4. Back to the case study: the boring job !</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study">3.3. Back to the case study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe">3.4. Pandas DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study-the-boring-job">3.5. Back to the case study: the boring job !</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-a-csv-file">Step 1: create a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-add-date-header">Step 2: add <code class="docutils literal notranslate"><span class="pre">date</span></code> header</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-add-exp-nb-header">Step 3: add <code class="docutils literal notranslate"><span class="pre">exp_nb</span></code> header</a></li>
@@ -381,28 +383,15 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-metadata">3.5. Exploring the metadata</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">3.6. Filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-metadata">3.6. Exploring the metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-we-read-the-csv-and-create-a-dataframe-object">3.7. First we read the csv and create a dataframe object:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">3.8. Filtering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-dead-cells-experiments">All dead cells experiments</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-experiment-of-the-day-2024-05-29">All experiment of the day ‘2024-05-29’</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-ic-ramp">All <code class="docutils literal notranslate"><span class="pre">IC</span> <span class="pre">ramp</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csvkit-the-command-line-swiss-army-knife">3.7. <code class="docutils literal notranslate"><span class="pre">csvkit</span></code> the command-line Swiss Army knife</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-under-you-favorite-conda-environment">Installation under you favorite conda environment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-command-line-tools">Basics command-line tools</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#in2csv-excel-slayer"><code class="docutils literal notranslate"><span class="pre">in2csv</span></code>: Excel Slayer</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csvlook-data-periscope"><code class="docutils literal notranslate"><span class="pre">csvlook</span></code>: Data Periscope</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csvcut-data-scalpel"><code class="docutils literal notranslate"><span class="pre">csvcut</span></code>: Data Scalpel</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csvgrep-data-filter"><code class="docutils literal notranslate"><span class="pre">csvgrep</span></code>: Data Filter</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csvsort-data-organizer"><code class="docutils literal notranslate"><span class="pre">csvsort</span></code>: Data Organizer</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csvstat-quick-stats"><code class="docutils literal notranslate"><span class="pre">csvstat</span></code>: Quick Stats</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-commands">Combining commands</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csvkit-the-command-line-swiss-army-knife">3.9. <code class="docutils literal notranslate"><span class="pre">csvkit</span></code> the command-line Swiss Army knife</a></li>
 </ul>
             </nav>
         </div>
@@ -420,6 +409,9 @@ document.write(`
 <p class="admonition-title">Important</p>
 <p>Usually, directories of experimental records are produced by colleagues in the lab. It is essential that there is ongoing discussion between the experimentalists and the people who will later analyze the data, such as data scientists. If data scientists modify the structure of the records directory, it becomes much harder to maintain this communication and can significantly slow down the process of data exploitation and analysis. Therefore, following good practices for organizing and managing the data is crucial.</p>
 </div>
+<p>See Section “<a class="reference internal" href="C_csv.html#chap-csv"><span class="std std-ref">csv in the context of panda and csvkit</span></a>” for an introduction to <code class="docutils literal notranslate"><span class="pre">csv</span></code> in the context with <code class="docutils literal notranslate"><span class="pre">panda</span></code> and <code class="docutils literal notranslate"><span class="pre">csvkit</span></code>.</p>
+<section id="building-a-csvfile">
+<h2><span class="section-number">3.1. </span>Building a <code class="docutils literal notranslate"><span class="pre">csv</span></code>file<a class="headerlink" href="#building-a-csvfile" title="Link to this heading">#</a></h2>
 <p>We consider a dataset in <code class="docutils literal notranslate"><span class="pre">data/records_fake</span></code>.</p>
 <p>This dataset consists of a set of (empty) records compiled in 2024, from March 15 to June 26, by <a class="reference external" href="https://www.linkedin.com/in/joanna-danielewicz-522139b6/?originalSubdomain=es">Joanna Danielewicz</a> at the <a class="reference external" href="https://www.bcamath.org/en/research/areas/m3a/mcen">Mathematical, Computational and Experimental</a> lab, headed by <a class="reference external" href="https://www.ikerbasque.net/es/serafim-rodrigues">Serafim Rodrigues</a> at <a class="reference external" href="https://www.bcamath.org/en">BCAM</a>.</p>
 <p>The directory structure is the same as in the real dataset, but the files are empty, since the original recordings are too large. Later, we will work with selected real recordings.</p>
@@ -477,8 +469,9 @@ document.write(`
 </div>
 </div>
 <p>First we  present somes good practices about records directory.</p>
+</section>
 <section id="good-practrices-about-records-directory">
-<h2><span class="section-number">3.1. </span>Good practrices about records directory<a class="headerlink" href="#good-practrices-about-records-directory" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.2. </span>Good practrices about records directory<a class="headerlink" href="#good-practrices-about-records-directory" title="Link to this heading">#</a></h2>
 <section id="directory-structure-flatten-or-not">
 <h3>Directory structure: flatten or not?<a class="headerlink" href="#directory-structure-flatten-or-not" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -555,7 +548,7 @@ document.write(`
 </section>
 </section>
 <section id="back-to-the-case-study">
-<h2><span class="section-number">3.2. </span>Back to the case study<a class="headerlink" href="#back-to-the-case-study" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.3. </span>Back to the case study<a class="headerlink" href="#back-to-the-case-study" title="Link to this heading">#</a></h2>
 <p>To make everything in ‘data/records_fake/’ read-only:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -597,7 +590,7 @@ document.write(`
 </div>
 </section>
 <section id="pandas-dataframe">
-<h2><span class="section-number">3.3. </span>Pandas DataFrame<a class="headerlink" href="#pandas-dataframe" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.4. </span>Pandas DataFrame<a class="headerlink" href="#pandas-dataframe" title="Link to this heading">#</a></h2>
 <p><strong>pandas DataFrame</strong> (df) is far better than built-in Python tools like lists, dictionaries, or arrays for the following reasons:</p>
 <ul class="simple">
 <li><p>Tabular structure built-in</p>
@@ -620,7 +613,7 @@ document.write(`
 <p>See infra.</p>
 </section>
 <section id="back-to-the-case-study-the-boring-job">
-<span id="index-0"></span><h2><span class="section-number">3.4. </span>Back to the case study: the boring job !<a class="headerlink" href="#back-to-the-case-study-the-boring-job" title="Link to this heading">#</a></h2>
+<span id="index-0"></span><h2><span class="section-number">3.5. </span>Back to the case study: the boring job !<a class="headerlink" href="#back-to-the-case-study-the-boring-job" title="Link to this heading">#</a></h2>
 <p><strong>This part is as necessary as it is boring !</strong>
 From <code class="docutils literal notranslate"><span class="pre">data/records_fake</span></code> (which we will not modify), we generate a metadata file <code class="docutils literal notranslate"><span class="pre">data/records_fake.csv</span></code> in CSV format. The procedure is somewhat tricky and was developed <strong>step by step</strong> with the help of ChatGPT.</p>
 <p>We go step by step from <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_1.csv</span></code> to <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_9.csv</span></code> and then do some extra work.</p>
@@ -637,7 +630,7 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 </ul>
 </li>
 </ul>
-<div class="cell docutils container" id="index-1">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
@@ -1401,9 +1394,12 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 </section>
 </section>
 <section id="exploring-the-metadata">
-<h2><span class="section-number">3.5. </span>Exploring the metadata<a class="headerlink" href="#exploring-the-metadata" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
+<h2><span class="section-number">3.6. </span>Exploring the metadata<a class="headerlink" href="#exploring-the-metadata" title="Link to this heading">#</a></h2>
+</section>
+<section id="first-we-read-the-csv-and-create-a-dataframe-object">
+<h2><span class="section-number">3.7. </span>First we read the csv and create a dataframe object:<a class="headerlink" href="#first-we-read-the-csv-and-create-a-dataframe-object" title="Link to this heading">#</a></h2>
+<div class="cell docutils container" id="index-2">
+<span id="index-1"></span><div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="c1"># Load the metadata</span>
@@ -1509,7 +1505,7 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell docutils container" id="index-3">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get number of files, columns, data types</span>
 <span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
@@ -1594,12 +1590,12 @@ date
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_5bc7d">
+<table id="T_56155">
   <caption>Files per Day</caption>
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_5bc7d_level0_col0" class="col_heading level0 col0" >count</th>
+      <th id="T_56155_level0_col0" class="col_heading level0 col0" >count</th>
     </tr>
     <tr>
       <th class="index_name level0" >date</th>
@@ -1608,44 +1604,44 @@ date
   </thead>
   <tbody>
     <tr>
-      <th id="T_5bc7d_level0_row0" class="row_heading level0 row0" >2024-03-15</th>
-      <td id="T_5bc7d_row0_col0" class="data row0 col0" >67</td>
+      <th id="T_56155_level0_row0" class="row_heading level0 row0" >2024-03-15</th>
+      <td id="T_56155_row0_col0" class="data row0 col0" >67</td>
     </tr>
     <tr>
-      <th id="T_5bc7d_level0_row1" class="row_heading level0 row1" >2024-03-20</th>
-      <td id="T_5bc7d_row1_col0" class="data row1 col0" >20</td>
+      <th id="T_56155_level0_row1" class="row_heading level0 row1" >2024-03-20</th>
+      <td id="T_56155_row1_col0" class="data row1 col0" >20</td>
     </tr>
     <tr>
-      <th id="T_5bc7d_level0_row2" class="row_heading level0 row2" >2024-04-10</th>
-      <td id="T_5bc7d_row2_col0" class="data row2 col0" >61</td>
+      <th id="T_56155_level0_row2" class="row_heading level0 row2" >2024-04-10</th>
+      <td id="T_56155_row2_col0" class="data row2 col0" >61</td>
     </tr>
     <tr>
-      <th id="T_5bc7d_level0_row3" class="row_heading level0 row3" >2024-05-07</th>
-      <td id="T_5bc7d_row3_col0" class="data row3 col0" >70</td>
+      <th id="T_56155_level0_row3" class="row_heading level0 row3" >2024-05-07</th>
+      <td id="T_56155_row3_col0" class="data row3 col0" >70</td>
     </tr>
     <tr>
-      <th id="T_5bc7d_level0_row4" class="row_heading level0 row4" >2024-05-20</th>
-      <td id="T_5bc7d_row4_col0" class="data row4 col0" >96</td>
+      <th id="T_56155_level0_row4" class="row_heading level0 row4" >2024-05-20</th>
+      <td id="T_56155_row4_col0" class="data row4 col0" >96</td>
     </tr>
     <tr>
-      <th id="T_5bc7d_level0_row5" class="row_heading level0 row5" >2024-05-23</th>
-      <td id="T_5bc7d_row5_col0" class="data row5 col0" >126</td>
+      <th id="T_56155_level0_row5" class="row_heading level0 row5" >2024-05-23</th>
+      <td id="T_56155_row5_col0" class="data row5 col0" >126</td>
     </tr>
     <tr>
-      <th id="T_5bc7d_level0_row6" class="row_heading level0 row6" >2024-05-29</th>
-      <td id="T_5bc7d_row6_col0" class="data row6 col0" >63</td>
+      <th id="T_56155_level0_row6" class="row_heading level0 row6" >2024-05-29</th>
+      <td id="T_56155_row6_col0" class="data row6 col0" >63</td>
     </tr>
     <tr>
-      <th id="T_5bc7d_level0_row7" class="row_heading level0 row7" >2024-05-30</th>
-      <td id="T_5bc7d_row7_col0" class="data row7 col0" >68</td>
+      <th id="T_56155_level0_row7" class="row_heading level0 row7" >2024-05-30</th>
+      <td id="T_56155_row7_col0" class="data row7 col0" >68</td>
     </tr>
     <tr>
-      <th id="T_5bc7d_level0_row8" class="row_heading level0 row8" >2024-06-19</th>
-      <td id="T_5bc7d_row8_col0" class="data row8 col0" >24</td>
+      <th id="T_56155_level0_row8" class="row_heading level0 row8" >2024-06-19</th>
+      <td id="T_56155_row8_col0" class="data row8 col0" >24</td>
     </tr>
     <tr>
-      <th id="T_5bc7d_level0_row9" class="row_heading level0 row9" >2024-06-26</th>
-      <td id="T_5bc7d_row9_col0" class="data row9 col0" >49</td>
+      <th id="T_56155_level0_row9" class="row_heading level0 row9" >2024-06-26</th>
+      <td id="T_56155_row9_col0" class="data row9 col0" >49</td>
     </tr>
   </tbody>
 </table>
@@ -1692,7 +1688,7 @@ date
 </div>
 </section>
 <section id="filtering">
-<h2><span class="section-number">3.6. </span>Filtering<a class="headerlink" href="#filtering" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.8. </span>Filtering<a class="headerlink" href="#filtering" title="Link to this heading">#</a></h2>
 <section id="all-dead-cells-experiments">
 <h3>All dead cells experiments<a class="headerlink" href="#all-dead-cells-experiments" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -2129,108 +2125,8 @@ date
 </section>
 </section>
 <section id="csvkit-the-command-line-swiss-army-knife">
-<h2><span class="section-number">3.7. </span><code class="docutils literal notranslate"><span class="pre">csvkit</span></code> the command-line Swiss Army knife<a class="headerlink" href="#csvkit-the-command-line-swiss-army-knife" title="Link to this heading">#</a></h2>
-<p id="index-2">OK, notebooks are great, but when navigating through data directories, you may come across a CSV file—or, if you’re less lucky, an Excel file. Don’t panic: there’s a handy tool for that: <a class="reference external" href="https://csvkit.readthedocs.io/en/latest/">csvkit</a>, it is a (nice) suite of command-line tools for converting to and working with CSV, the king of tabular file formats. See the <a class="reference external" href="https://csvkit.readthedocs.io/en/latest/tutorial.html">tutorial</a>.</p>
-<section id="installation-under-you-favorite-conda-environment">
-<h3>Installation under you favorite conda environment<a class="headerlink" href="#installation-under-you-favorite-conda-environment" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">python</span><span class="o">-</span><span class="n">dsspikes</span><span class="o">-</span><span class="n">env</span>
-<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">csvkit</span> <span class="c1"># That updates the live environment.</span>
-</pre></div>
-</div>
-<p>Export the environment back to <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>: Now that your environment has <code class="docutils literal notranslate"><span class="pre">csvkit</span></code>, you need to reflect it in your YAML file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">export</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">history</span> <span class="o">&gt;</span> <span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">--from-history</span></code> ensures only the packages you explicitly installed are recorded (cleaner file, avoids tons of build hashes).
-Now your <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> will include csvkit in dependencies.</p>
-</section>
-<section id="basics-command-line-tools">
-<h3>Basics command-line tools<a class="headerlink" href="#basics-command-line-tools" title="Link to this heading">#</a></h3>
-<section id="in2csv-excel-slayer">
-<h4><code class="docutils literal notranslate"><span class="pre">in2csv</span></code>: Excel Slayer<a class="headerlink" href="#in2csv-excel-slayer" title="Link to this heading">#</a></h4>
-<p id="index-3">converts various tabular data formats—like Excel (.xls, .xlsx), DBF, fixed-width, or even Google Sheets—into clean, standard CSV.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert Excel to CSV and print to stdout</span>
-<span class="n">in2csv</span> <span class="n">data</span><span class="o">.</span><span class="n">xlsx</span>
-
-<span class="c1"># Convert Excel to CSV and save to a file</span>
-<span class="n">in2csv</span> <span class="n">data</span><span class="o">.</span><span class="n">xlsx</span> <span class="o">&gt;</span> <span class="n">data</span><span class="o">.</span><span class="n">csv</span>
-
-<span class="c1"># List sheet names in an Excel file</span>
-<span class="n">in2csv</span> <span class="o">-</span><span class="n">n</span> <span class="n">data</span><span class="o">.</span><span class="n">xlsx</span>
-
-<span class="c1"># Convert a specific sheet</span>
-<span class="n">in2csv</span> <span class="o">-</span><span class="n">s</span> <span class="s2">&quot;Sheet1&quot;</span> <span class="n">data</span><span class="o">.</span><span class="n">xlsx</span> <span class="o">&gt;</span> <span class="n">data</span><span class="o">.</span><span class="n">csv</span>
-</pre></div>
-</div>
-<p>Convert formats, here CSV to JSON:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">in2csv</span> <span class="n">data</span><span class="o">/</span><span class="n">records_fake_metadata</span><span class="o">.</span><span class="n">csv</span> <span class="o">|</span> <span class="n">csvjson</span> <span class="o">&gt;</span> <span class="n">metadata</span><span class="o">.</span><span class="n">json</span>
-</pre></div>
-</div>
-</section>
-<section id="csvlook-data-periscope">
-<h4><code class="docutils literal notranslate"><span class="pre">csvlook</span></code>: Data Periscope<a class="headerlink" href="#csvlook-data-periscope" title="Link to this heading">#</a></h4>
-<p id="index-4">Quickly inspect your CSV in the terminal. Allows you to display CSV files in a nicely formatted, readable table in the terminal — almost like a “pretty-printed” view of your data.
-Pipe to <code class="docutils literal notranslate"><span class="pre">less</span> <span class="pre">-S</span></code> to scroll horizontally:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">csvlook</span> <span class="n">data</span><span class="o">/</span><span class="n">records_fake_metadata</span><span class="o">.</span><span class="n">csv</span> <span class="o">|</span> <span class="n">less</span> <span class="o">-</span><span class="n">S</span>
-</pre></div>
-</div>
-<p>Preview the first few rows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">csvlook</span> <span class="n">data</span><span class="o">/</span><span class="n">records_fake_metadata</span><span class="o">.</span><span class="n">csv</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">12</span>
-</pre></div>
-</div>
-</section>
-<section id="csvcut-data-scalpel">
-<h4><code class="docutils literal notranslate"><span class="pre">csvcut</span></code>: Data Scalpel<a class="headerlink" href="#csvcut-data-scalpel" title="Link to this heading">#</a></h4>
-<p id="index-5">Select columns by name or index:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># By name</span>
-<span class="n">csvcut</span> <span class="o">-</span><span class="n">c</span> <span class="n">cell_id</span><span class="p">,</span><span class="n">protocol</span><span class="p">,</span><span class="n">prot</span><span class="o">-</span><span class="n">opt</span> <span class="n">data</span><span class="o">/</span><span class="n">records_fake_metadata</span><span class="o">.</span><span class="n">csv</span>
-
-<span class="c1"># By index (first column is 1)</span>
-<span class="n">csvcut</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span> <span class="n">data</span><span class="o">/</span><span class="n">records_fake_metadata</span><span class="o">.</span><span class="n">csv</span>
-</pre></div>
-</div>
-</section>
-<section id="csvgrep-data-filter">
-<h4><code class="docutils literal notranslate"><span class="pre">csvgrep</span></code>: Data Filter<a class="headerlink" href="#csvgrep-data-filter" title="Link to this heading">#</a></h4>
-<p id="index-6">Filter rows based on column values:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Keep only rows where protocol is IC</span>
-<span class="n">csvgrep</span> <span class="o">-</span><span class="n">c</span> <span class="n">protocol</span> <span class="o">-</span><span class="n">m</span> <span class="n">IC</span> <span class="n">data</span><span class="o">/</span><span class="n">records_fake_metadata</span><span class="o">.</span><span class="n">csv</span>
-
-<span class="c1"># Keep only rows where prot-opt contains &quot;ramp&quot;</span>
-<span class="n">csvgrep</span> <span class="o">-</span><span class="n">c</span> <span class="n">prot</span><span class="o">-</span><span class="n">opt</span> <span class="o">-</span><span class="n">m</span> <span class="n">ramp</span> <span class="n">data</span><span class="o">/</span><span class="n">records_fake_metadata</span><span class="o">.</span><span class="n">csv</span>
-</pre></div>
-</div>
-</section>
-<section id="csvsort-data-organizer">
-<h4><code class="docutils literal notranslate"><span class="pre">csvsort</span></code>: Data Organizer<a class="headerlink" href="#csvsort-data-organizer" title="Link to this heading">#</a></h4>
-<p id="index-7">Sort your CSV by one or more columns:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort by date</span>
-<span class="n">csvsort</span> <span class="o">-</span><span class="n">c</span> <span class="n">date</span> <span class="n">data</span><span class="o">/</span><span class="n">records_fake_metadata</span><span class="o">.</span><span class="n">csv</span>
-
-<span class="c1"># Sort by protocol, then by date</span>
-<span class="n">csvsort</span> <span class="o">-</span><span class="n">c</span> <span class="n">protocol</span><span class="p">,</span><span class="n">date</span> <span class="n">data</span><span class="o">/</span><span class="n">records_fake_metadata</span><span class="o">.</span><span class="n">csv</span>
-</pre></div>
-</div>
-</section>
-<section id="csvstat-quick-stats">
-<h4><code class="docutils literal notranslate"><span class="pre">csvstat</span></code>: Quick Stats<a class="headerlink" href="#csvstat-quick-stats" title="Link to this heading">#</a></h4>
-<p id="index-8">Get basic stats and info about the CSV:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">csvstat</span> <span class="n">data</span><span class="o">/</span><span class="n">records_fake_metadata</span><span class="o">.</span><span class="n">csv</span>
-</pre></div>
-</div>
-</section>
-<section id="combining-commands">
-<h4>Combining commands<a class="headerlink" href="#combining-commands" title="Link to this heading">#</a></h4>
-<p>You can pipe all the line commands. For example, get cell_id and file_name for all IC steps:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">csvgrep</span> <span class="o">-</span><span class="n">c</span> <span class="n">protocol</span> <span class="o">-</span><span class="n">m</span> <span class="n">IC</span> <span class="n">data</span><span class="o">/</span><span class="n">records_fake_metadata</span><span class="o">.</span><span class="n">csv</span> \
-  <span class="o">|</span> <span class="n">csvgrep</span> <span class="o">-</span><span class="n">c</span> <span class="n">prot</span><span class="o">-</span><span class="n">opt</span> <span class="o">-</span><span class="n">m</span> <span class="n">steps</span> \
-  <span class="o">|</span> <span class="n">csvcut</span> <span class="o">-</span><span class="n">c</span> <span class="n">cell_id</span><span class="p">,</span><span class="n">file_name</span> \
-  <span class="o">|</span> <span class="n">csvlook</span>
-</pre></div>
-</div>
-</section>
-<section id="examples">
-<h4>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h4>
+<h2><span class="section-number">3.9. </span><code class="docutils literal notranslate"><span class="pre">csvkit</span></code> the command-line Swiss Army knife<a class="headerlink" href="#csvkit-the-command-line-swiss-army-knife" title="Link to this heading">#</a></h2>
+<p id="index-4">OK, notebooks are great, but when navigating through data directories, you may come across a CSV file—or, if you’re less lucky, an Excel file. Don’t panic: there’s a handy tool for that: <a class="reference external" href="https://csvkit.readthedocs.io/en/latest/">csvkit</a>, it is a (nice) suite of command-line tools for converting to and working with CSV, the king of tabular file formats. See Section “<a class="reference internal" href="C_csv.html#section-csvkit"><span class="std std-ref">csvkit the command-line Swiss Army knife</span></a>” and/or the <a class="reference external" href="https://csvkit.readthedocs.io/en/latest/tutorial.html">tutorial</a>.</p>
 <p>Look at column names:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2380,8 +2276,6 @@ Row count: 644
 <p>(<code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">-c</span></code> is a way to tell Bash to execute a command string as if you typed it directly in a terminal)</p>
 </section>
 </section>
-</section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2447,7 +2341,8 @@ Row count: 644
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-practrices-about-records-directory">3.1. Good practrices about records directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-csvfile">3.1. Building a <code class="docutils literal notranslate"><span class="pre">csv</span></code>file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#good-practrices-about-records-directory">3.2. Good practrices about records directory</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-structure-flatten-or-not">Directory structure: flatten or not?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-handling">Metadata handling</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#readme-md"><code class="docutils literal notranslate"><span class="pre">README.md</span></code></a></li>
@@ -2455,9 +2350,9 @@ Row count: 644
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-raw-data-read-only">Keep raw data read-only</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study">3.2. Back to the case study</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe">3.3. Pandas DataFrame</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study-the-boring-job">3.4. Back to the case study: the boring job !</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study">3.3. Back to the case study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe">3.4. Pandas DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study-the-boring-job">3.5. Back to the case study: the boring job !</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-a-csv-file">Step 1: create a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-add-date-header">Step 2: add <code class="docutils literal notranslate"><span class="pre">date</span></code> header</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-add-exp-nb-header">Step 3: add <code class="docutils literal notranslate"><span class="pre">exp_nb</span></code> header</a></li>
@@ -2471,28 +2366,15 @@ Row count: 644
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-metadata">3.5. Exploring the metadata</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">3.6. Filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-metadata">3.6. Exploring the metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-we-read-the-csv-and-create-a-dataframe-object">3.7. First we read the csv and create a dataframe object:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">3.8. Filtering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-dead-cells-experiments">All dead cells experiments</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-experiment-of-the-day-2024-05-29">All experiment of the day ‘2024-05-29’</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-ic-ramp">All <code class="docutils literal notranslate"><span class="pre">IC</span> <span class="pre">ramp</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csvkit-the-command-line-swiss-army-knife">3.7. <code class="docutils literal notranslate"><span class="pre">csvkit</span></code> the command-line Swiss Army knife</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-under-you-favorite-conda-environment">Installation under you favorite conda environment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics-command-line-tools">Basics command-line tools</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#in2csv-excel-slayer"><code class="docutils literal notranslate"><span class="pre">in2csv</span></code>: Excel Slayer</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csvlook-data-periscope"><code class="docutils literal notranslate"><span class="pre">csvlook</span></code>: Data Periscope</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csvcut-data-scalpel"><code class="docutils literal notranslate"><span class="pre">csvcut</span></code>: Data Scalpel</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csvgrep-data-filter"><code class="docutils literal notranslate"><span class="pre">csvgrep</span></code>: Data Filter</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csvsort-data-organizer"><code class="docutils literal notranslate"><span class="pre">csvsort</span></code>: Data Organizer</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csvstat-quick-stats"><code class="docutils literal notranslate"><span class="pre">csvstat</span></code>: Quick Stats</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-commands">Combining commands</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csvkit-the-command-line-swiss-army-knife">3.9. <code class="docutils literal notranslate"><span class="pre">csvkit</span></code> the command-line Swiss Army knife</a></li>
 </ul>
   </nav></div>
 

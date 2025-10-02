@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Diagnostic &#8212; Data Sciences and Spikes</title>
+    <title>4. Diagnostic &#8212; Data Sciences and Spikes</title>
   
   
   
@@ -59,11 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'C_diagnostic';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Z_diagnostic';</script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="2. Interactive computing with Jupyter bazaar" href="B_jupyter.html" />
+    <link rel="prev" title="3. csv in the context of panda and csvkit" href="C_csv.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -192,7 +192,8 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="A_installing_python.html">1. Installing Python and some tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="B_jupyter.html">2. Interactive computing with Jupyter bazaar</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Diagnostic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C_csv.html">3. <code class="docutils literal notranslate"><span class="pre">csv</span></code> in the context of <code class="docutils literal notranslate"><span class="pre">panda</span></code> and <code class="docutils literal notranslate"><span class="pre">csvkit</span></code></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Diagnostic</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://fabien-campillo.github.io/data-science-spikes/Spikes-Data-Sciences.pdf">Download PDF</a></li>
 </ul>
@@ -264,7 +265,7 @@
       
       
       
-      <li><a href="_sources/C_diagnostic.ipynb" target="_blank"
+      <li><a href="_sources/Z_diagnostic.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -358,12 +359,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myst">3.1. Myst</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myst">4.1. Myst</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-list">✅ Task list</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admonitions">📦 Admonitions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emoji-test-page">3.2. Emoji Test Page</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emoji-test-page">4.2. Emoji Test Page</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-emoji">Inline Emoji</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emoji-with-text">Emoji with text</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emoji-in-a-list">Emoji in a list</a></li>
@@ -386,9 +387,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="diagnostic">
-<h1><span class="section-number">3. </span>Diagnostic<a class="headerlink" href="#diagnostic" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>Diagnostic<a class="headerlink" href="#diagnostic" title="Link to this heading">#</a></h1>
 <section id="myst">
-<h2><span class="section-number">3.1. </span>Myst<a class="headerlink" href="#myst" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>Myst<a class="headerlink" href="#myst" title="Link to this heading">#</a></h2>
 <p>This page tests <strong>MyST Markdown extensions</strong>.</p>
 <hr class="docutils" />
 <section id="task-list">
@@ -412,7 +413,7 @@ document.write(`
 </section>
 </section>
 <section id="emoji-test-page">
-<h2><span class="section-number">3.2. </span>Emoji Test Page<a class="headerlink" href="#emoji-test-page" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>Emoji Test Page<a class="headerlink" href="#emoji-test-page" title="Link to this heading">#</a></h2>
 <p>This page demonstrates using emojis in a Jupyter Book PDF.</p>
 <section id="inline-emoji">
 <h3>Inline Emoji<a class="headerlink" href="#inline-emoji" title="Link to this heading">#</a></h3>
@@ -478,12 +479,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="B_jupyter.html"
+       href="C_csv.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Interactive computing with Jupyter bazaar</p>
+        <p class="prev-next-title"><span class="section-number">3. </span><code class="docutils literal notranslate"><span class="pre">csv</span></code> in the context of <code class="docutils literal notranslate"><span class="pre">panda</span></code> and <code class="docutils literal notranslate"><span class="pre">csvkit</span></code></p>
       </div>
     </a>
 </div>
@@ -502,12 +503,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myst">3.1. Myst</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myst">4.1. Myst</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-list">✅ Task list</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admonitions">📦 Admonitions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emoji-test-page">3.2. Emoji Test Page</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emoji-test-page">4.2. Emoji Test Page</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-emoji">Inline Emoji</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emoji-with-text">Emoji with text</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emoji-in-a-list">Emoji in a list</a></li>
