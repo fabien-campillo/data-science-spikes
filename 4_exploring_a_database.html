@@ -16,30 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -67,6 +70,7 @@
     <link rel="prev" title="2. Electrophysiology data" href="3_databases.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -82,19 +86,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -102,7 +95,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -110,8 +102,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -127,7 +119,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -157,21 +150,17 @@
     
     
     <img src="_static/logo_title.png" class="logo__image only-light" alt="Data Sciences and Spikes - Home"/>
-    <script>document.write(`<img src="_static/logo_title.png" class="logo__image only-dark" alt="Data Sciences and Spikes - Home"/>`);</script>
+    <img src="_static/logo_title.png" class="logo__image only-dark pst-js-only" alt="Data Sciences and Spikes - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -205,9 +194,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -319,24 +313,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -420,11 +406,11 @@ document.write(`
 │   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
 ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">04.10</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
-│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2 immature</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2\ immature</span>
 │   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C3</span>
 ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.07</span>
-│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1 DG</span>
-│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2 DG</span>
+│   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1\ DG</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2\ DG</span>
 ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.20</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
@@ -439,7 +425,7 @@ document.write(`
 ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.29</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
-│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C3 immature</span>
+│   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C3\ immature</span>
 ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">05.30</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
 │   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
@@ -547,11 +533,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0000 IC steps 23.abf
--r--r--r--  1 campillo  staff  0 29 sep 14:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0001 IC ramp 23.abf
--r--r--r--  1 campillo  staff  0 29 sep 14:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0002 IC sin 23.abf
--r--r--r--  1 campillo  staff  0 29 sep 14:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0003 VC ramp 23.abf
--r--r--r--  1 campillo  staff  0 29 sep 14:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0004 IC ramp 25.abf
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-r--r--r--  1 campillo  staff  0  3 oct 20:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0000 IC steps 23.abf
+-r--r--r--  1 campillo  staff  0  3 oct 20:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0001 IC ramp 23.abf
+-r--r--r--  1 campillo  staff  0  3 oct 20:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0002 IC sin 23.abf
+-r--r--r--  1 campillo  staff  0  3 oct 20:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0003 VC ramp 23.abf
+-r--r--r--  1 campillo  staff  0  3 oct 20:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0004 IC ramp 25.abf
+ls: stdout: Undefined error: 0
 </pre></div>
 </div>
 </div>
@@ -615,15 +602,15 @@ From directory <code class="docutils literal notranslate"><span class="pre">data
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step 1: columns cell_id, file_path, file_name
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step 2: column date
+Step 2: column date
 Step 3: column exp_nb
 Step 4: column comments
 Step 5: column protocol
 Step 6: column prot-opt
 Step 7: column tp
-Step 8: refine comments
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step 8: refine comments
 Step 9: separate bad records
 Final CSV saved to :
    records_metadata.csv        that contains references to all records
@@ -1016,12 +1003,12 @@ date
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_104fd">
+<table id="T_46308">
   <caption>Files per Protocol</caption>
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_104fd_level0_col0" class="col_heading level0 col0" >count</th>
+      <th id="T_46308_level0_col0" class="col_heading level0 col0" >count</th>
     </tr>
     <tr>
       <th class="index_name level0" >protocol</th>
@@ -1030,16 +1017,16 @@ date
   </thead>
   <tbody>
     <tr>
-      <th id="T_104fd_level0_row0" class="row_heading level0 row0" >DC</th>
-      <td id="T_104fd_row0_col0" class="data row0 col0" >29</td>
+      <th id="T_46308_level0_row0" class="row_heading level0 row0" >DC</th>
+      <td id="T_46308_row0_col0" class="data row0 col0" >29</td>
     </tr>
     <tr>
-      <th id="T_104fd_level0_row1" class="row_heading level0 row1" >IC</th>
-      <td id="T_104fd_row1_col0" class="data row1 col0" >213</td>
+      <th id="T_46308_level0_row1" class="row_heading level0 row1" >IC</th>
+      <td id="T_46308_row1_col0" class="data row1 col0" >213</td>
     </tr>
     <tr>
-      <th id="T_104fd_level0_row2" class="row_heading level0 row2" >VC</th>
-      <td id="T_104fd_row2_col0" class="data row2 col0" >130</td>
+      <th id="T_46308_level0_row2" class="row_heading level0 row2" >VC</th>
+      <td id="T_46308_row2_col0" class="data row2 col0" >130</td>
     </tr>
   </tbody>
 </table>
@@ -1055,12 +1042,12 @@ date
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_16b0d">
+<table id="T_c2e61">
   <caption>Files per Day</caption>
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_16b0d_level0_col0" class="col_heading level0 col0" >count</th>
+      <th id="T_c2e61_level0_col0" class="col_heading level0 col0" >count</th>
     </tr>
     <tr>
       <th class="index_name level0" >date</th>
@@ -1069,44 +1056,44 @@ date
   </thead>
   <tbody>
     <tr>
-      <th id="T_16b0d_level0_row0" class="row_heading level0 row0" >2024-03-15</th>
-      <td id="T_16b0d_row0_col0" class="data row0 col0" >67</td>
+      <th id="T_c2e61_level0_row0" class="row_heading level0 row0" >2024-03-15</th>
+      <td id="T_c2e61_row0_col0" class="data row0 col0" >67</td>
     </tr>
     <tr>
-      <th id="T_16b0d_level0_row1" class="row_heading level0 row1" >2024-03-20</th>
-      <td id="T_16b0d_row1_col0" class="data row1 col0" >20</td>
+      <th id="T_c2e61_level0_row1" class="row_heading level0 row1" >2024-03-20</th>
+      <td id="T_c2e61_row1_col0" class="data row1 col0" >20</td>
     </tr>
     <tr>
-      <th id="T_16b0d_level0_row2" class="row_heading level0 row2" >2024-04-10</th>
-      <td id="T_16b0d_row2_col0" class="data row2 col0" >61</td>
+      <th id="T_c2e61_level0_row2" class="row_heading level0 row2" >2024-04-10</th>
+      <td id="T_c2e61_row2_col0" class="data row2 col0" >61</td>
     </tr>
     <tr>
-      <th id="T_16b0d_level0_row3" class="row_heading level0 row3" >2024-05-07</th>
-      <td id="T_16b0d_row3_col0" class="data row3 col0" >70</td>
+      <th id="T_c2e61_level0_row3" class="row_heading level0 row3" >2024-05-07</th>
+      <td id="T_c2e61_row3_col0" class="data row3 col0" >70</td>
     </tr>
     <tr>
-      <th id="T_16b0d_level0_row4" class="row_heading level0 row4" >2024-05-20</th>
-      <td id="T_16b0d_row4_col0" class="data row4 col0" >96</td>
+      <th id="T_c2e61_level0_row4" class="row_heading level0 row4" >2024-05-20</th>
+      <td id="T_c2e61_row4_col0" class="data row4 col0" >96</td>
     </tr>
     <tr>
-      <th id="T_16b0d_level0_row5" class="row_heading level0 row5" >2024-05-23</th>
-      <td id="T_16b0d_row5_col0" class="data row5 col0" >126</td>
+      <th id="T_c2e61_level0_row5" class="row_heading level0 row5" >2024-05-23</th>
+      <td id="T_c2e61_row5_col0" class="data row5 col0" >126</td>
     </tr>
     <tr>
-      <th id="T_16b0d_level0_row6" class="row_heading level0 row6" >2024-05-29</th>
-      <td id="T_16b0d_row6_col0" class="data row6 col0" >63</td>
+      <th id="T_c2e61_level0_row6" class="row_heading level0 row6" >2024-05-29</th>
+      <td id="T_c2e61_row6_col0" class="data row6 col0" >63</td>
     </tr>
     <tr>
-      <th id="T_16b0d_level0_row7" class="row_heading level0 row7" >2024-05-30</th>
-      <td id="T_16b0d_row7_col0" class="data row7 col0" >68</td>
+      <th id="T_c2e61_level0_row7" class="row_heading level0 row7" >2024-05-30</th>
+      <td id="T_c2e61_row7_col0" class="data row7 col0" >68</td>
     </tr>
     <tr>
-      <th id="T_16b0d_level0_row8" class="row_heading level0 row8" >2024-06-19</th>
-      <td id="T_16b0d_row8_col0" class="data row8 col0" >24</td>
+      <th id="T_c2e61_level0_row8" class="row_heading level0 row8" >2024-06-19</th>
+      <td id="T_c2e61_row8_col0" class="data row8 col0" >24</td>
     </tr>
     <tr>
-      <th id="T_16b0d_level0_row9" class="row_heading level0 row9" >2024-06-26</th>
-      <td id="T_16b0d_row9_col0" class="data row9 col0" >49</td>
+      <th id="T_c2e61_level0_row9" class="row_heading level0 row9" >2024-06-26</th>
+      <td id="T_c2e61_row9_col0" class="data row9 col0" >49</td>
     </tr>
   </tbody>
 </table>
@@ -1668,7 +1655,7 @@ Do you want me to show you how to make the x-axis labels more readable (e.g. rot
 	Unique values:         73
 	Smallest value:        0,
 	Largest value:         69,
-	Sum:                   18044,5
+	Sum:                   18 044,5
 	Mean:                  28,417
 	Median:                28,
 	StDev:                 12,181
@@ -1800,7 +1787,8 @@ Row count: 644
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1878,8 +1866,8 @@ By Fabien Campillo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
