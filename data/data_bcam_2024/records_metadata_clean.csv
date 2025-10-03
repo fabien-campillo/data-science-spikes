@@ -73,7 +73,7 @@ exp_nb,cell_id,date,protocol,prot-opt,tp,comments,file_path,file_name
 72,C3,2024-03-20,VC,ramp,33.0,,03.20/C1/2024_03_20_0004 VC ramp 33.abf,2024_03_20_0004 VC ramp 33.abf
 73,C3,2024-03-20,IC,ramp,38.0,,03.20/C1/2024_03_20_0005 IC ramp 38.abf,2024_03_20_0005 IC ramp 38.abf
 74,C3,2024-03-20,VC,ramp,38.0,,03.20/C1/2024_03_20_0006 VC ramp 38.abf,2024_03_20_0006 VC ramp 38.abf
-75,C3,2024-03-20,IC,steps,38.0,", square steps",03.20/C1/2024_03_20_0007 IC square steps 38.abf,2024_03_20_0007 IC square steps 38.abf
+75,C3,2024-03-20,IC,steps,38.0,square steps,03.20/C1/2024_03_20_0007 IC square steps 38.abf,2024_03_20_0007 IC square steps 38.abf
 76,C3,2024-03-20,DC,sin,38.0,IC,03.20/C1/2024_03_20_0008 IC sin 38 DC.abf,2024_03_20_0008 IC sin 38 DC.abf
 77,C3,2024-03-20,DC,,38.0,,03.20/C1/2024_03_20_0009 38 DC.abf,2024_03_20_0009 38 DC.abf
 78,C3,2024-03-20,DC,,38.0,,03.20/C1/2024_03_20_0010 38 DC.abf,2024_03_20_0010 38 DC.abf
