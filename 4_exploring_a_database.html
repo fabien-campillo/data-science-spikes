@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '4_exploring_a_database';</script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -369,20 +371,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study">3.3. Back to the case study</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe">3.4. Pandas DataFrame</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study-the-boring-job">3.5. Back to the case study: the boring job !</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-a-csv-file">Step 1: create a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-add-date-header">Step 2: add <code class="docutils literal notranslate"><span class="pre">date</span></code> header</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-add-exp-nb-header">Step 3: add <code class="docutils literal notranslate"><span class="pre">exp_nb</span></code> header</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-add-comments-header">Step 4: add  <code class="docutils literal notranslate"><span class="pre">comments</span></code> header</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-add-protocol-header">Step 5:  add <code class="docutils literal notranslate"><span class="pre">protocol</span></code> header</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-add-prot-opt-header">Step 6:  add <code class="docutils literal notranslate"><span class="pre">prot-opt</span></code> header</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-add-tp-header">Step 7:  add <code class="docutils literal notranslate"><span class="pre">tp</span></code> header</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-some-details-to-put-in-comments">Step 8:  some details to put in <code class="docutils literal notranslate"><span class="pre">comments</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#final-step">Final step</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study-the-boring-job">3.5. Back to the case study: the boring job !</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-metadata">3.6. Exploring the metadata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-we-read-the-csv-and-create-a-dataframe-object">3.7. First we read the csv and create a dataframe object:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">3.8. Filtering</a><ul class="nav section-nav flex-column">
@@ -418,12 +407,12 @@ document.write(`
 <p>In the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory I have a subdirectory <code class="docutils literal notranslate"><span class="pre">records_fake</span></code> that contains empty <code class="docutils literal notranslate"><span class="pre">abf</span></code> and <code class="docutils literal notranslate"><span class="pre">atf</span></code> files, the structure is:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>tree<span class="w"> </span>-L<span class="w"> </span><span class="m">2</span><span class="w"> </span>data/records_fake
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>tree<span class="w"> </span>-L<span class="w"> </span><span class="m">2</span><span class="w"> </span>data/data_bcam_2024/records
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">data/records_fake</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">data/data_bcam_2024/records</span>
 ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">03.15</span>
 │   ├── <span class=" -Color -Color-Bold -Color-Bold-Blue">C1</span>
 │   └── <span class=" -Color -Color-Bold -Color-Bold-Blue">C2</span>
@@ -552,17 +541,17 @@ document.write(`
 <p>To make everything in ‘data/records_fake/’ read-only:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>chmod<span class="w"> </span>-R<span class="w"> </span>a-w<span class="w"> </span>data/records_fake
-<span class="o">!</span>ls<span class="w"> </span>-l<span class="w"> </span>data/records_fake/*/*/*<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>chmod<span class="w"> </span>-R<span class="w"> </span>a-w<span class="w"> </span>data/data_bcam_2024/records
+<span class="o">!</span>ls<span class="w"> </span>-l<span class="w"> </span>data/data_bcam_2024/records/*/*/*<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0000 IC steps 23.abf
--r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0001 IC ramp 23.abf
--r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0002 IC sin 23.abf
--r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0003 VC ramp 23.abf
--r--r--r--  1 campillo  staff  0 29 sep 14:59 data/records_fake/03.15/C1/2024_03_15_0004 IC ramp 25.abf
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0000 IC steps 23.abf
+-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0001 IC ramp 23.abf
+-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0002 IC sin 23.abf
+-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0003 VC ramp 23.abf
+-r--r--r--  1 campillo  staff  0 29 sep 14:59 data/data_bcam_2024/records/03.15/C1/2024_03_15_0004 IC ramp 25.abf
 </pre></div>
 </div>
 </div>
@@ -570,7 +559,7 @@ document.write(`
 <p>Now everybody (owner, group, all) car read the files but cannot write (or execute), files can still be read and copied. Still under MacOS with <code class="docutils literal notranslate"><span class="pre">Finder</span></code> you can make some damages, you can make them immutable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>chflags<span class="w"> </span>-R<span class="w"> </span>uchg<span class="w"> </span>data/records_fake
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>chflags<span class="w"> </span>-R<span class="w"> </span>uchg<span class="w"> </span>data/data_bcam_2024/records
 </pre></div>
 </div>
 </div>
@@ -615,390 +604,41 @@ document.write(`
 <section id="back-to-the-case-study-the-boring-job">
 <span id="index-0"></span><h2><span class="section-number">3.5. </span>Back to the case study: the boring job !<a class="headerlink" href="#back-to-the-case-study-the-boring-job" title="Link to this heading">#</a></h2>
 <p><strong>This part is as necessary as it is boring !</strong>
-From <code class="docutils literal notranslate"><span class="pre">data/records_fake</span></code> (which we will not modify), we generate a metadata file <code class="docutils literal notranslate"><span class="pre">data/records_fake.csv</span></code> in CSV format. The procedure is somewhat tricky and was developed <strong>step by step</strong> with the help of ChatGPT.</p>
-<p>We go step by step from <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_1.csv</span></code> to <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_9.csv</span></code> and then do some extra work.</p>
-<section id="step-1-create-a-csv-file">
-<h3>Step 1: create a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file<a class="headerlink" href="#step-1-create-a-csv-file" title="Link to this heading">#</a></h3>
-<p>Create <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_1.csv</span></code> such that:</p>
-<ul class="simple">
-<li><p>One line for each file in the <code class="docutils literal notranslate"><span class="pre">data/records_fake</span></code> directory</p></li>
-<li><p>headers are:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">cell_id</span></code> cell counter <code class="docutils literal notranslate"><span class="pre">C1</span></code> <code class="docutils literal notranslate"><span class="pre">C2</span></code> <code class="docutils literal notranslate"><span class="pre">C3</span></code>… with different numbers a day another</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">file_path</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">file_name</span></code></p></li>
-</ul>
-</li>
-</ul>
+From directory <code class="docutils literal notranslate"><span class="pre">data/data_bcam_2024/records</span></code> (which we will not modify), we generate a metadata file <code class="docutils literal notranslate"><span class="pre">ddata/data_bcam_2024/records_metadata.csv</span></code> in CSV format. The procedure is somewhat tricky and was developed <strong>step by step</strong> with the help of ChatGPT.</p>
+<p>The final python script (not very informative) is <code class="docutils literal notranslate"><span class="pre">data/data_bcam_2024/create_metadata.py</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="c1"># Paths</span>
-<span class="n">records_root</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake&quot;</span><span class="p">)</span>
-<span class="n">metadata_file</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_1.csv&quot;</span><span class="p">)</span>
-
-<span class="c1"># Collect metadata</span>
-<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># Absolute cell counter</span>
-<span class="n">absolute_cell_counter</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="c1"># Sort day folders chronologically by folder name (MM.DD)</span>
-<span class="n">day_folders</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">records_root</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()])</span>
-
-<span class="k">for</span> <span class="n">day_folder</span> <span class="ow">in</span> <span class="n">day_folders</span><span class="p">:</span>
-    <span class="c1"># Sort cell folders within the day</span>
-    <span class="n">cell_folders</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">day_folder</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()])</span>
-    
-    <span class="k">for</span> <span class="n">cell_folder</span> <span class="ow">in</span> <span class="n">cell_folders</span><span class="p">:</span>
-        <span class="c1"># Absolute cell ID</span>
-        <span class="n">cell_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;C</span><span class="si">{</span><span class="n">absolute_cell_counter</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="n">absolute_cell_counter</span> <span class="o">+=</span> <span class="mi">1</span>
-        
-        <span class="c1"># Process all files in the cell folder</span>
-        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">cell_folder</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
-            <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
-                <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                    <span class="s2">&quot;cell_id&quot;</span><span class="p">:</span> <span class="n">cell_id</span><span class="p">,</span>
-                    <span class="s2">&quot;file_path&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">records_root</span><span class="p">)),</span>
-                    <span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span>
-                <span class="p">})</span>
-
-<span class="c1"># Define fieldnames</span>
-<span class="n">fieldnames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cell_id&quot;</span><span class="p">,</span> <span class="s2">&quot;file_path&quot;</span><span class="p">,</span> <span class="s2">&quot;file_name&quot;</span><span class="p">]</span>
-
-<span class="c1"># Write CSV</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">)</span>
-    <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
-    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Metadata CSV written to </span><span class="si">{</span><span class="n">metadata_file</span><span class="si">}</span><span class="s2">, total files: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>data/data_bcam_2024<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>create_metadata.py
+<span class="n">metadata_file</span> <span class="o">=</span> <span class="s2">&quot;data/data_bcam_2024/records_metadata_clean.csv&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metadata CSV written to data/records_fake_metadata_1.csv, total files: 659
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step 1: columns cell_id, file_path, file_name
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step 2: column date
+Step 3: column exp_nb
+Step 4: column comments
+Step 5: column protocol
+Step 6: column prot-opt
+Step 7: column tp
+Step 8: refine comments
+Step 9: separate bad records
+Final CSV saved to :
+   records_metadata.csv        that contains references to all records
+   records_metadata_clean.csv  that contains references to all clean records
+   records_metadata_bad.csv    that contains references to all bad records
+   records_metadata.csv =  records_metadata_clean.csv + records_metadata_bad.csv
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="c1"># Load the metadata</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_1.csv&quot;</span><span class="p">)</span>
-
-<span class="c1"># Display the first few rows</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># all lines (still there are only 659)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>cell_id</th>
-      <th>file_path</th>
-      <th>file_name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>C1</td>
-      <td>03.15/C1/2024_03_15_0000 IC steps 23.abf</td>
-      <td>2024_03_15_0000 IC steps 23.abf</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>C1</td>
-      <td>03.15/C1/2024_03_15_0001 IC ramp 23.abf</td>
-      <td>2024_03_15_0001 IC ramp 23.abf</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>C1</td>
-      <td>03.15/C1/2024_03_15_0002 IC sin 23.abf</td>
-      <td>2024_03_15_0002 IC sin 23.abf</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>C1</td>
-      <td>03.15/C1/2024_03_15_0003 VC ramp 23.abf</td>
-      <td>2024_03_15_0003 VC ramp 23.abf</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>C1</td>
-      <td>03.15/C1/2024_03_15_0004 IC ramp 25.abf</td>
-      <td>2024_03_15_0004 IC ramp 25.abf</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>654</th>
-      <td>C27</td>
-      <td>06.26/C3/2024_06_26_0044 IC ramp 34.abf</td>
-      <td>2024_06_26_0044 IC ramp 34.abf</td>
-    </tr>
-    <tr>
-      <th>655</th>
-      <td>C27</td>
-      <td>06.26/C3/2024_06_26_0045 IC sin 34.abf</td>
-      <td>2024_06_26_0045 IC sin 34.abf</td>
-    </tr>
-    <tr>
-      <th>656</th>
-      <td>C27</td>
-      <td>06.26/C3/2024_06_26_0046 VC ramp 34.abf</td>
-      <td>2024_06_26_0046 VC ramp 34.abf</td>
-    </tr>
-    <tr>
-      <th>657</th>
-      <td>C27</td>
-      <td>06.26/C3/2024_06_26_0047 IC ramp 37.abf</td>
-      <td>2024_06_26_0047 IC ramp 37.abf</td>
-    </tr>
-    <tr>
-      <th>658</th>
-      <td>C27</td>
-      <td>06.26/C3/2024_06_26_0048 VC ramp 37.abf</td>
-      <td>2024_06_26_0048 VC ramp 37.abf</td>
-    </tr>
-  </tbody>
-</table>
-<p>659 rows × 3 columns</p>
-</div></div></div>
-</div>
-</section>
-<section id="step-2-add-date-header">
-<h3>Step 2: add <code class="docutils literal notranslate"><span class="pre">date</span></code> header<a class="headerlink" href="#step-2-add-date-header" title="Link to this heading">#</a></h3>
-<p>Create a <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_2.csv</span></code> from <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_1.csv</span></code>:</p>
-<ul class="simple">
-<li><p>add <code class="docutils literal notranslate"><span class="pre">date</span></code> header  after <code class="docutils literal notranslate"><span class="pre">cell_id</span></code></p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Paths</span>
-<span class="n">metadata_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_1.csv&quot;</span><span class="p">)</span>
-<span class="n">metadata_file_2</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_2.csv&quot;</span><span class="p">)</span>
-<span class="n">records_root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake&quot;</span><span class="p">)</span>
-
-<span class="c1"># Load existing CSV</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">metadata_file</span><span class="p">)</span>
-
-<span class="c1"># Function to extract date from file_path</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">extract_date</span><span class="p">(</span><span class="n">file_path_str</span><span class="p">):</span>
-    <span class="n">file_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file_path_str</span><span class="p">)</span>
-    <span class="c1"># Parent of the cell folder is the day folder: 03.15, 03.20, ...</span>
-    <span class="n">day_folder</span> <span class="o">=</span> <span class="n">file_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">day_folder</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;2024-</span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># YYYY-MM-DD</span>
-    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;2024-01-01&quot;</span>  <span class="c1"># fallback if malformed</span>
-
-<span class="c1"># Apply function</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;file_path&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">extract_date</span><span class="p">)</span>
-
-<span class="c1"># Reorder columns: cell_id, date, file_path, file_name</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;cell_id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;file_path&#39;</span><span class="p">,</span> <span class="s1">&#39;file_name&#39;</span><span class="p">]]</span>
-
-<span class="c1"># Save new CSV</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">metadata_file_2</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Metadata updated with &#39;date&#39;, saved to </span><span class="si">{</span><span class="n">metadata_file_2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metadata updated with &#39;date&#39;, saved to data/records_fake_metadata_2.csv
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the metadata</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_2.csv&quot;</span><span class="p">)</span>
-
-<span class="c1"># Display the first few rows</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>cell_id</th>
-      <th>date</th>
-      <th>file_path</th>
-      <th>file_name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>C1</td>
-      <td>2024-03-15</td>
-      <td>03.15/C1/2024_03_15_0000 IC steps 23.abf</td>
-      <td>2024_03_15_0000 IC steps 23.abf</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>C1</td>
-      <td>2024-03-15</td>
-      <td>03.15/C1/2024_03_15_0001 IC ramp 23.abf</td>
-      <td>2024_03_15_0001 IC ramp 23.abf</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>C1</td>
-      <td>2024-03-15</td>
-      <td>03.15/C1/2024_03_15_0002 IC sin 23.abf</td>
-      <td>2024_03_15_0002 IC sin 23.abf</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>C1</td>
-      <td>2024-03-15</td>
-      <td>03.15/C1/2024_03_15_0003 VC ramp 23.abf</td>
-      <td>2024_03_15_0003 VC ramp 23.abf</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>C1</td>
-      <td>2024-03-15</td>
-      <td>03.15/C1/2024_03_15_0004 IC ramp 25.abf</td>
-      <td>2024_03_15_0004 IC ramp 25.abf</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>654</th>
-      <td>C27</td>
-      <td>2024-06-26</td>
-      <td>06.26/C3/2024_06_26_0044 IC ramp 34.abf</td>
-      <td>2024_06_26_0044 IC ramp 34.abf</td>
-    </tr>
-    <tr>
-      <th>655</th>
-      <td>C27</td>
-      <td>2024-06-26</td>
-      <td>06.26/C3/2024_06_26_0045 IC sin 34.abf</td>
-      <td>2024_06_26_0045 IC sin 34.abf</td>
-    </tr>
-    <tr>
-      <th>656</th>
-      <td>C27</td>
-      <td>2024-06-26</td>
-      <td>06.26/C3/2024_06_26_0046 VC ramp 34.abf</td>
-      <td>2024_06_26_0046 VC ramp 34.abf</td>
-    </tr>
-    <tr>
-      <th>657</th>
-      <td>C27</td>
-      <td>2024-06-26</td>
-      <td>06.26/C3/2024_06_26_0047 IC ramp 37.abf</td>
-      <td>2024_06_26_0047 IC ramp 37.abf</td>
-    </tr>
-    <tr>
-      <th>658</th>
-      <td>C27</td>
-      <td>2024-06-26</td>
-      <td>06.26/C3/2024_06_26_0048 VC ramp 37.abf</td>
-      <td>2024_06_26_0048 VC ramp 37.abf</td>
-    </tr>
-  </tbody>
-</table>
-<p>659 rows × 4 columns</p>
-</div></div></div>
-</div>
-</section>
-<section id="step-3-add-exp-nb-header">
-<h3>Step 3: add <code class="docutils literal notranslate"><span class="pre">exp_nb</span></code> header<a class="headerlink" href="#step-3-add-exp-nb-header" title="Link to this heading">#</a></h3>
-<p>Create a <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_3.csv</span></code> from <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_2.csv</span></code>:</p>
-<ul class="simple">
-<li><p>add <code class="docutils literal notranslate"><span class="pre">exp_nb</span></code> header, the experiment number (ok, it’s not very instructive), in 1st column</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Paths</span>
-<span class="n">metadata_file_2</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_2.csv&quot;</span><span class="p">)</span>
-<span class="n">metadata_file_3</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_3.csv&quot;</span><span class="p">)</span>
-
-<span class="c1"># Load existing CSV</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">metadata_file_2</span><span class="p">)</span>
-
-<span class="c1"># Add &#39;eco_nb&#39; column as the first column, incrementing from 1</span>
-<span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;exp_nb&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-
-<span class="c1"># Save the updated CSV</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">metadata_file_3</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;exp_nb&#39; added, saved to </span><span class="si">{</span><span class="n">metadata_file_3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;exp_nb&#39; added, saved to data/records_fake_metadata_3.csv
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the metadata</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_3.csv&quot;</span><span class="p">)</span>
-
-<span class="c1"># Display the first few rows</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>              
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">metadata_file</span><span class="p">)</span> <span class="c1"># load the metadata</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>                   <span class="c1"># display the first few rows</span>
 </pre></div>
 </div>
 </div>
@@ -1024,6 +664,10 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
       <th>exp_nb</th>
       <th>cell_id</th>
       <th>date</th>
+      <th>protocol</th>
+      <th>prot-opt</th>
+      <th>tp</th>
+      <th>comments</th>
       <th>file_path</th>
       <th>file_name</th>
     </tr>
@@ -1034,6 +678,10 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
       <td>1</td>
       <td>C1</td>
       <td>2024-03-15</td>
+      <td>IC</td>
+      <td>steps</td>
+      <td>23.0</td>
+      <td>NaN</td>
       <td>03.15/C1/2024_03_15_0000 IC steps 23.abf</td>
       <td>2024_03_15_0000 IC steps 23.abf</td>
     </tr>
@@ -1042,6 +690,10 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
       <td>2</td>
       <td>C1</td>
       <td>2024-03-15</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>23.0</td>
+      <td>NaN</td>
       <td>03.15/C1/2024_03_15_0001 IC ramp 23.abf</td>
       <td>2024_03_15_0001 IC ramp 23.abf</td>
     </tr>
@@ -1050,6 +702,10 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
       <td>3</td>
       <td>C1</td>
       <td>2024-03-15</td>
+      <td>IC</td>
+      <td>sin</td>
+      <td>23.0</td>
+      <td>NaN</td>
       <td>03.15/C1/2024_03_15_0002 IC sin 23.abf</td>
       <td>2024_03_15_0002 IC sin 23.abf</td>
     </tr>
@@ -1058,6 +714,10 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
       <td>4</td>
       <td>C1</td>
       <td>2024-03-15</td>
+      <td>VC</td>
+      <td>ramp</td>
+      <td>23.0</td>
+      <td>NaN</td>
       <td>03.15/C1/2024_03_15_0003 VC ramp 23.abf</td>
       <td>2024_03_15_0003 VC ramp 23.abf</td>
     </tr>
@@ -1066,347 +726,147 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
       <td>5</td>
       <td>C1</td>
       <td>2024-03-15</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>25.0</td>
+      <td>NaN</td>
       <td>03.15/C1/2024_03_15_0004 IC ramp 25.abf</td>
       <td>2024_03_15_0004 IC ramp 25.abf</td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>639</th>
+      <td>655</td>
+      <td>C27</td>
+      <td>2024-06-26</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>34.0</td>
+      <td>NaN</td>
+      <td>06.26/C3/2024_06_26_0044 IC ramp 34.abf</td>
+      <td>2024_06_26_0044 IC ramp 34.abf</td>
+    </tr>
+    <tr>
+      <th>640</th>
+      <td>656</td>
+      <td>C27</td>
+      <td>2024-06-26</td>
+      <td>IC</td>
+      <td>sin</td>
+      <td>34.0</td>
+      <td>NaN</td>
+      <td>06.26/C3/2024_06_26_0045 IC sin 34.abf</td>
+      <td>2024_06_26_0045 IC sin 34.abf</td>
+    </tr>
+    <tr>
+      <th>641</th>
+      <td>657</td>
+      <td>C27</td>
+      <td>2024-06-26</td>
+      <td>VC</td>
+      <td>ramp</td>
+      <td>34.0</td>
+      <td>NaN</td>
+      <td>06.26/C3/2024_06_26_0046 VC ramp 34.abf</td>
+      <td>2024_06_26_0046 VC ramp 34.abf</td>
+    </tr>
+    <tr>
+      <th>642</th>
+      <td>658</td>
+      <td>C27</td>
+      <td>2024-06-26</td>
+      <td>IC</td>
+      <td>ramp</td>
+      <td>37.0</td>
+      <td>NaN</td>
+      <td>06.26/C3/2024_06_26_0047 IC ramp 37.abf</td>
+      <td>2024_06_26_0047 IC ramp 37.abf</td>
+    </tr>
+    <tr>
+      <th>643</th>
+      <td>659</td>
+      <td>C27</td>
+      <td>2024-06-26</td>
+      <td>VC</td>
+      <td>ramp</td>
+      <td>37.0</td>
+      <td>NaN</td>
+      <td>06.26/C3/2024_06_26_0048 VC ramp 37.abf</td>
+      <td>2024_06_26_0048 VC ramp 37.abf</td>
+    </tr>
   </tbody>
 </table>
+<p>644 rows × 9 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="step-4-add-comments-header">
-<h3>Step 4: add  <code class="docutils literal notranslate"><span class="pre">comments</span></code> header<a class="headerlink" href="#step-4-add-comments-header" title="Link to this heading">#</a></h3>
-<p>Create a <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_4.csv</span></code> from <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_3.csv</span></code>:</p>
+<p>We end up with:</p>
 <ul class="simple">
-<li><p>add <code class="docutils literal notranslate"><span class="pre">comments</span></code> header, and append “immature” or  “dead” if these strings appear in the <code class="docutils literal notranslate"><span class="pre">file_path</span></code></p></li>
+<li><p>a complete consolidated CSV (<code class="docutils literal notranslate"><span class="pre">records_metadata.csv</span></code>) with all metadata columns for downstream analysis</p></li>
+<li><p>the subset of “clean” records references (<code class="docutils literal notranslate"><span class="pre">records_metadata_clean.csv</span></code>)</p></li>
+<li><p>the subset of “bad” records references (<code class="docutils literal notranslate"><span class="pre">records_metadata_bad.csv</span></code>)</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the CSV</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_3.csv&quot;</span><span class="p">)</span>
-
-<span class="c1"># Build the comments column</span>
-<span class="n">comments</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;file_path&quot;</span><span class="p">]:</span>
-    <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">if</span> <span class="s2">&quot;immature&quot;</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-        <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;immature&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="s2">&quot;dead&quot;</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-        <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dead&quot;</span><span class="p">)</span>
-    <span class="n">comments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tags</span><span class="p">))</span>
-
-<span class="c1"># Insert the comments column right after &quot;date&quot;</span>
-<span class="n">date_index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">date_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;comments&quot;</span><span class="p">,</span> <span class="n">comments</span><span class="p">)</span>
-
-<span class="c1"># Save to new CSV</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_4.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ New file saved as data/records_fake_metadata_4.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ New file saved as data/records_fake_metadata_4.csv
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="step-5-add-protocol-header">
-<h3>Step 5:  add <code class="docutils literal notranslate"><span class="pre">protocol</span></code> header<a class="headerlink" href="#step-5-add-protocol-header" title="Link to this heading">#</a></h3>
-<p>Create a <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_5.csv</span></code> from <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_4.csv</span></code>:</p>
-<ul class="simple">
-<li><p>add <code class="docutils literal notranslate"><span class="pre">protocol</span></code> header, it contains “IC” “VC” or “DC” depending if these strings appear in <code class="docutils literal notranslate"><span class="pre">file_path</span></code></p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load previous CSV</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_4.csv&quot;</span><span class="p">)</span>
-
-<span class="n">protocols</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">new_comments</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">comment</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;file_path&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;comments&quot;</span><span class="p">]):</span>
-    <span class="n">path_lower</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="n">updated_comment</span> <span class="o">=</span> <span class="n">comment</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
-
-    <span class="c1"># Determine protocol</span>
-    <span class="k">if</span> <span class="s2">&quot;dynamic clamp&quot;</span> <span class="ow">in</span> <span class="n">path_lower</span> <span class="ow">or</span> <span class="s2">&quot; dc&quot;</span> <span class="ow">in</span> <span class="n">path_lower</span> <span class="ow">or</span> <span class="n">path_lower</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;dc.abf&quot;</span><span class="p">):</span>
-        <span class="n">protocol</span> <span class="o">=</span> <span class="s2">&quot;DC&quot;</span>
-        <span class="c1"># Add IC to comments only if IC actually exists in path</span>
-        <span class="k">if</span> <span class="s2">&quot; ic&quot;</span> <span class="ow">in</span> <span class="n">path_lower</span> <span class="ow">or</span> <span class="n">path_lower</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;ic&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot; ic.&quot;</span> <span class="ow">in</span> <span class="n">path_lower</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">updated_comment</span><span class="p">:</span>
-                <span class="k">if</span> <span class="s2">&quot;IC&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">updated_comment</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">):</span>
-                    <span class="n">updated_comment</span> <span class="o">+=</span> <span class="s2">&quot;;IC&quot;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">updated_comment</span> <span class="o">=</span> <span class="s2">&quot;IC&quot;</span>
-    <span class="k">elif</span> <span class="s2">&quot;vc&quot;</span> <span class="ow">in</span> <span class="n">path_lower</span><span class="p">:</span>
-        <span class="n">protocol</span> <span class="o">=</span> <span class="s2">&quot;VC&quot;</span>
-    <span class="k">elif</span> <span class="s2">&quot;ic&quot;</span> <span class="ow">in</span> <span class="n">path_lower</span><span class="p">:</span>
-        <span class="n">protocol</span> <span class="o">=</span> <span class="s2">&quot;IC&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">protocol</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-
-    <span class="n">protocols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span>
-    <span class="n">new_comments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">updated_comment</span><span class="p">)</span>
-
-<span class="c1"># Insert protocol column after &#39;date&#39;</span>
-<span class="n">date_index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">date_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;protocol&quot;</span><span class="p">,</span> <span class="n">protocols</span><span class="p">)</span>
-
-<span class="c1"># Update comments</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;comments&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_comments</span>
-
-<span class="c1"># Save new CSV</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_5.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Updated file saved as data/records_fake_metadata_5.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Updated file saved as data/records_fake_metadata_5.csv
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="step-6-add-prot-opt-header">
-<h3>Step 6:  add <code class="docutils literal notranslate"><span class="pre">prot-opt</span></code> header<a class="headerlink" href="#step-6-add-prot-opt-header" title="Link to this heading">#</a></h3>
-<p>Create a <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_6.csv</span></code> from <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_5.csv</span></code>:</p>
-<ul class="simple">
-<li><p>add <code class="docutils literal notranslate"><span class="pre">prot-opt</span></code> header, it contains options of protocols could be “steps” “step” “ramp” or “sin” when they appear in the <code class="docutils literal notranslate"><span class="pre">file_path</span></code></p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="c1"># Load CSV</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_5.csv&quot;</span><span class="p">)</span>
-
-<span class="n">prot_opt_list</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;file_path&quot;</span><span class="p">]:</span>
-    <span class="n">path_lower</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="n">prot_opt</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    
-    <span class="k">if</span> <span class="s2">&quot; steps &quot;</span> <span class="ow">in</span> <span class="n">path_lower</span><span class="p">:</span>
-        <span class="n">prot_opt</span> <span class="o">=</span> <span class="s2">&quot;steps&quot;</span>
-    <span class="k">elif</span> <span class="s2">&quot; step &quot;</span> <span class="ow">in</span> <span class="n">path_lower</span><span class="p">:</span>
-        <span class="n">prot_opt</span> <span class="o">=</span> <span class="s2">&quot;step&quot;</span>
-    <span class="k">elif</span> <span class="s2">&quot; ramp &quot;</span> <span class="ow">in</span> <span class="n">path_lower</span><span class="p">:</span>
-        <span class="n">prot_opt</span> <span class="o">=</span> <span class="s2">&quot;ramp&quot;</span>
-    <span class="k">elif</span> <span class="s2">&quot; sin &quot;</span> <span class="ow">in</span> <span class="n">path_lower</span><span class="p">:</span>
-        <span class="n">prot_opt</span> <span class="o">=</span> <span class="s2">&quot;sin&quot;</span>
-    
-    <span class="n">prot_opt_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prot_opt</span><span class="p">)</span>
-
-<span class="c1"># Insert new column after &quot;protocol&quot;</span>
-<span class="n">protocol_index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s2">&quot;protocol&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">protocol_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;prot-opt&quot;</span><span class="p">,</span> <span class="n">prot_opt_list</span><span class="p">)</span>
-
-<span class="c1"># Save updated CSV</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_6.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ New file saved as data/records_fake_metadata_6.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ New file saved as data/records_fake_metadata_6.csv
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="step-7-add-tp-header">
-<h3>Step 7:  add <code class="docutils literal notranslate"><span class="pre">tp</span></code> header<a class="headerlink" href="#step-7-add-tp-header" title="Link to this heading">#</a></h3>
-<p>Create a <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_7.csv</span></code> from <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_6.csv</span></code>:</p>
-<ul class="simple">
-<li><p>add <code class="docutils literal notranslate"><span class="pre">tp</span></code> header, it contains the temperature: it’s tricky temperature is an isolated 2 digits like “34” or something like that “34,5”</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
-
-<span class="c1"># Load CSV</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_6.csv&quot;</span><span class="p">)</span>
-
-<span class="n">tp_list</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;file_path&quot;</span><span class="p">]:</span>
-    <span class="c1"># Match last 2-digit number, optionally with comma and digit, before file extension</span>
-    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d</span><span class="si">{2}</span><span class="s2">(?:,\d)?)\s*(?=[^\d]*\.(?:abf|atf)$)&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-        <span class="n">tp</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>  <span class="c1"># convert comma to dot</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">tp</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    <span class="n">tp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span>
-
-<span class="c1"># Insert &quot;tp&quot; column after &quot;prot-opt&quot;</span>
-<span class="n">prot_opt_index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s2">&quot;prot-opt&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">prot_opt_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;tp&quot;</span><span class="p">,</span> <span class="n">tp_list</span><span class="p">)</span>
-
-<span class="c1"># Ensure tp is string (dot as decimal separator)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;tp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;tp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-
-<span class="c1"># Save updated CSV</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_7.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ New file saved as data/records_fake_metadata_7.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ New file saved as data/records_fake_metadata_7.csv
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="step-8-some-details-to-put-in-comments">
-<h3>Step 8:  some details to put in <code class="docutils literal notranslate"><span class="pre">comments</span></code><a class="headerlink" href="#step-8-some-details-to-put-in-comments" title="Link to this heading">#</a></h3>
-<p>Create a <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_8.csv</span></code> from <code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_7.csv</span></code>:</p>
-<ul class="simple">
-<li><p>if “square steps” is in the <code class="docutils literal notranslate"><span class="pre">file_name</span></code> apppend it to <code class="docutils literal notranslate"><span class="pre">comments</span></code></p></li>
-<li><p>if “(2)” is in the <code class="docutils literal notranslate"><span class="pre">file_name</span></code> apppend it to <code class="docutils literal notranslate"><span class="pre">comments</span></code></p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the previous metadata</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_7.csv&quot;</span><span class="p">)</span>
-
-<span class="c1"># Rule 1: Add &quot;square steps&quot; if present in filename</span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;square steps&quot;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
-       <span class="s1">&#39;comments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> \
-                     <span class="p">(</span><span class="s2">&quot;, &quot;</span> <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;square steps&quot;</span>
-
-<span class="c1"># Rule 2: Capture parentheses like (2), (3), etc. from filename and add to comments</span>
-<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\(\d+\)&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="n">match</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-        <span class="n">extra</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">current</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">])</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">])</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">extra</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">current</span><span class="p">:</span>
-            <span class="n">new_comment</span> <span class="o">=</span> <span class="p">(</span><span class="n">current</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="n">extra</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="s1">&#39;comments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_comment</span>
-
-<span class="c1"># Save to new file</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_8.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;records_fake_metadata_8.csv created with updated comments.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>records_fake_metadata_8.csv created with updated comments.
-</pre></div>
-</div>
-</div>
-</div>
-<section id="final-step">
-<h4>Final step<a class="headerlink" href="#final-step" title="Link to this heading">#</a></h4>
-<blockquote>
-<div><p>The experimentaliste told me: “there are a few files that are not abf or atf, forget about them” and also “some file with short file names are useless !”.</p>
-</div></blockquote>
-<p>So I look for that lines:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_8.csv&quot;</span><span class="p">)</span>
-
-<span class="c1"># Conditions</span>
-<span class="n">cond_short</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">12</span>
-<span class="n">cond_invalid_ext</span> <span class="o">=</span> <span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">endswith</span><span class="p">((</span><span class="s1">&#39;.abf&#39;</span><span class="p">,</span> <span class="s1">&#39;.atf&#39;</span><span class="p">))</span>
-
-<span class="c1"># Filter</span>
-<span class="n">bad_files</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cond_short</span> <span class="o">|</span> <span class="n">cond_invalid_ext</span><span class="p">]</span>
-
-<span class="c1"># Reset index to get line numbers</span>
-<span class="n">bad_files</span> <span class="o">=</span> <span class="n">bad_files</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;linenb&quot;</span><span class="p">})</span>
-<span class="n">bad_files</span><span class="p">[</span><span class="s2">&quot;linenb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bad_files</span><span class="p">[</span><span class="s2">&quot;linenb&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>   <span class="c1"># adjust for header + 0-based index</span>
-
-<span class="c1"># Choose columns dynamically</span>
-<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;linenb&quot;</span><span class="p">,</span> <span class="s2">&quot;cell_id&quot;</span><span class="p">,</span> <span class="s2">&quot;protocol&quot;</span><span class="p">,</span> <span class="s2">&quot;file_path&quot;</span><span class="p">]</span>
-<span class="k">if</span> <span class="s2">&quot;eco_nb&quot;</span> <span class="ow">in</span> <span class="n">bad_files</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="n">cols</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;eco_nb&quot;</span><span class="p">)</span>  <span class="c1"># insert after linenb</span>
-
-<span class="n">subset</span> <span class="o">=</span> <span class="n">bad_files</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    linenb cell_id protocol                               file_path
-0       89      C3      NaN                         03.20/C1/CC.atf
-1       90      C3      NaN                        03.20/C1/CC2.atf
-2       91      C3      NaN                    03.20/C1/INTRES1.atf
-3       92      C3      NaN                    03.20/C1/INTRES2.atf
-4       93      C3       VC                         03.20/C1/VC.atf
-5       94      C3       VC                        03.20/C1/VC2.atf
-6       95      C3       VC                        03.20/C1/VC3.atf
-7      375     C15      NaN            05.23/C2/2024_05_23_0020.rsv
-8      514     C21      NaN  05.30/C1/2024_05_30_0001_metadata.json
-9      515     C21      NaN   05.30/C1/2024_05_30_0001_metadata.txt
-10     525     C21      NaN  05.30/C1/2024_05_30_0010_metadata.json
-11     526     C21      NaN   05.30/C1/2024_05_30_0010_metadata.txt
-12     534     C21      NaN  05.30/C1/2024_05_30_0017_metadata.json
-13     535     C21      NaN   05.30/C1/2024_05_30_0017_metadata.txt
-14     572     C22      NaN  05.30/C2/2024_05_30_0023_metadata.json
-</pre></div>
-</div>
-</div>
-</div>
-<p>I sugest to keep all files in <code class="docutils literal notranslate"><span class="pre">data/records_fake/</span></code> as they are, and just remove the bad rows from the metadata CSV when creating your curated version <code class="docutils literal notranslate"><span class="pre">records_fake_metadata.csv</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_8.csv&quot;</span><span class="p">)</span>
-
-<span class="c1"># Conditions for bad rows</span>
-<span class="n">cond_short</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">12</span>
-<span class="n">cond_invalid_ext</span> <span class="o">=</span> <span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">endswith</span><span class="p">((</span><span class="s1">&#39;.abf&#39;</span><span class="p">,</span> <span class="s1">&#39;.atf&#39;</span><span class="p">))</span>
-
-<span class="c1"># Keep only the good rows (negation of bad ones)</span>
-<span class="n">df_clean</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">cond_short</span> <span class="o">|</span> <span class="n">cond_invalid_ext</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-<span class="c1"># Save cleaned metadata</span>
-<span class="n">df_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1"># (Optional) also save the bad rows for inspection</span>
-<span class="n">bad_files</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cond_short</span> <span class="o">|</span> <span class="n">cond_invalid_ext</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">bad_files</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata_bad.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now we have two final <code class="docutils literal notranslate"><span class="pre">csv</span></code> files:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata.csv</span></code> containing the records of interest</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">data/records_fake_metadata_bad.csv</span></code> containing the useless records</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>As you can see, building the final CSV file has been quite laborious. I preferred to use small incremental steps, each followed by a check of the resulting CSV. This strongly suggests that the CSV file should be <strong>constructed progressively, in parallel with the experiments</strong>.</p>
-</div>
-</section>
-</section>
+<p>and <code class="docutils literal notranslate"><span class="pre">records_metadata.csv</span></code> <span class="math notranslate nohighlight">\(=\)</span>  <code class="docutils literal notranslate"><span class="pre">records_metadata_clean.csv</span></code> <span class="math notranslate nohighlight">\(\cup\)</span> <code class="docutils literal notranslate"><span class="pre">records_metadata_bad.csv</span></code></p>
 </section>
 <section id="exploring-the-metadata">
 <h2><span class="section-number">3.6. </span>Exploring the metadata<a class="headerlink" href="#exploring-the-metadata" title="Link to this heading">#</a></h2>
 </section>
 <section id="first-we-read-the-csv-and-create-a-dataframe-object">
 <h2><span class="section-number">3.7. </span>First we read the csv and create a dataframe object:<a class="headerlink" href="#first-we-read-the-csv-and-create-a-dataframe-object" title="Link to this heading">#</a></h2>
-<div class="cell docutils container" id="index-2">
-<span id="index-1"></span><div class="cell_input docutils container">
+<p id="index-2"><span id="index-1"></span>The <code class="docutils literal notranslate"><span class="pre">.info()</span></code> method prints a concise summary of the DataFrame.
+Here’s what it shows:</p>
+<ul class="simple">
+<li><p>Index range → e.g. RangeIndex: 100 entries, 0 to 99</p></li>
+<li><p>Number of columns and their names</p></li>
+<li><p>Column data types (e.g. int64, float64, object for strings, datetime64, etc.)</p></li>
+<li><p>Number of non-null values per column (useful for spotting missing data)</p></li>
+<li><p>Memory usage of the DataFrame</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 644 entries, 0 to 643
+Data columns (total 9 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   exp_nb     644 non-null    int64  
+ 1   cell_id    644 non-null    object 
+ 2   date       644 non-null    object 
+ 3   protocol   372 non-null    object 
+ 4   prot-opt   344 non-null    object 
+ 5   tp         635 non-null    float64
+ 6   comments   19 non-null     object 
+ 7   file_path  644 non-null    object 
+ 8   file_name  644 non-null    object 
+dtypes: float64(1), int64(1), object(7)
+memory usage: 45.4+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container" id="index-3">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="c1"># Load the metadata</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/records_fake_metadata.csv&quot;</span><span class="p">)</span>
-
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">metadata_file</span><span class="p">)</span> 
 <span class="c1"># Display the first few rows</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>                       
 </pre></div>
 </div>
 </div>
@@ -1505,46 +965,16 @@ From <code class="docutils literal notranslate"><span class="pre">data/records_f
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container" id="index-3">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get number of files, columns, data types</span>
-<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 644 entries, 0 to 643
-Data columns (total 9 columns):
- #   Column     Non-Null Count  Dtype  
----  ------     --------------  -----  
- 0   exp_nb     644 non-null    int64  
- 1   cell_id    644 non-null    object 
- 2   date       644 non-null    object 
- 3   protocol   372 non-null    object 
- 4   prot-opt   344 non-null    object 
- 5   tp         635 non-null    float64
- 6   comments   19 non-null     object 
- 7   file_path  644 non-null    object 
- 8   file_name  644 non-null    object 
-dtypes: float64(1), int64(1), object(7)
-memory usage: 45.4+ KB
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show unique protocols nicely</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unique protocols:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;protocol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unique protocols:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;protocol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> 
 <span class="c1"># Count files per protocol</span>
-<span class="n">protocol_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;protocol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">protocol_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;protocol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Files per protocol:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">protocol_counts</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
-
 <span class="c1"># Count files per day</span>
-<span class="n">day_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">day_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Files per day:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">day_counts</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
 </pre></div>
@@ -1575,14 +1005,49 @@ date
 </div>
 </div>
 </div>
+<p>We can also use pandas styling (works in Jupyter Notebook):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use pandas styling (works in Jupyter Notebook)</span>
-
-<span class="c1"># Count files per protocol</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count files per protocol</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;protocol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="s2">&quot;Files per Protocol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0f}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Count files per day</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_104fd">
+  <caption>Files per Protocol</caption>
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_104fd_level0_col0" class="col_heading level0 col0" >count</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >protocol</th>
+      <th class="blank col0" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_104fd_level0_row0" class="row_heading level0 row0" >DC</th>
+      <td id="T_104fd_row0_col0" class="data row0 col0" >29</td>
+    </tr>
+    <tr>
+      <th id="T_104fd_level0_row1" class="row_heading level0 row1" >IC</th>
+      <td id="T_104fd_row1_col0" class="data row1 col0" >213</td>
+    </tr>
+    <tr>
+      <th id="T_104fd_level0_row2" class="row_heading level0 row2" >VC</th>
+      <td id="T_104fd_row2_col0" class="data row2 col0" >130</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count files per day</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="s2">&quot;Files per Day&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0f}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1590,12 +1055,12 @@ date
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_56155">
+<table id="T_16b0d">
   <caption>Files per Day</caption>
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_56155_level0_col0" class="col_heading level0 col0" >count</th>
+      <th id="T_16b0d_level0_col0" class="col_heading level0 col0" >count</th>
     </tr>
     <tr>
       <th class="index_name level0" >date</th>
@@ -1604,49 +1069,52 @@ date
   </thead>
   <tbody>
     <tr>
-      <th id="T_56155_level0_row0" class="row_heading level0 row0" >2024-03-15</th>
-      <td id="T_56155_row0_col0" class="data row0 col0" >67</td>
+      <th id="T_16b0d_level0_row0" class="row_heading level0 row0" >2024-03-15</th>
+      <td id="T_16b0d_row0_col0" class="data row0 col0" >67</td>
     </tr>
     <tr>
-      <th id="T_56155_level0_row1" class="row_heading level0 row1" >2024-03-20</th>
-      <td id="T_56155_row1_col0" class="data row1 col0" >20</td>
+      <th id="T_16b0d_level0_row1" class="row_heading level0 row1" >2024-03-20</th>
+      <td id="T_16b0d_row1_col0" class="data row1 col0" >20</td>
     </tr>
     <tr>
-      <th id="T_56155_level0_row2" class="row_heading level0 row2" >2024-04-10</th>
-      <td id="T_56155_row2_col0" class="data row2 col0" >61</td>
+      <th id="T_16b0d_level0_row2" class="row_heading level0 row2" >2024-04-10</th>
+      <td id="T_16b0d_row2_col0" class="data row2 col0" >61</td>
     </tr>
     <tr>
-      <th id="T_56155_level0_row3" class="row_heading level0 row3" >2024-05-07</th>
-      <td id="T_56155_row3_col0" class="data row3 col0" >70</td>
+      <th id="T_16b0d_level0_row3" class="row_heading level0 row3" >2024-05-07</th>
+      <td id="T_16b0d_row3_col0" class="data row3 col0" >70</td>
     </tr>
     <tr>
-      <th id="T_56155_level0_row4" class="row_heading level0 row4" >2024-05-20</th>
-      <td id="T_56155_row4_col0" class="data row4 col0" >96</td>
+      <th id="T_16b0d_level0_row4" class="row_heading level0 row4" >2024-05-20</th>
+      <td id="T_16b0d_row4_col0" class="data row4 col0" >96</td>
     </tr>
     <tr>
-      <th id="T_56155_level0_row5" class="row_heading level0 row5" >2024-05-23</th>
-      <td id="T_56155_row5_col0" class="data row5 col0" >126</td>
+      <th id="T_16b0d_level0_row5" class="row_heading level0 row5" >2024-05-23</th>
+      <td id="T_16b0d_row5_col0" class="data row5 col0" >126</td>
     </tr>
     <tr>
-      <th id="T_56155_level0_row6" class="row_heading level0 row6" >2024-05-29</th>
-      <td id="T_56155_row6_col0" class="data row6 col0" >63</td>
+      <th id="T_16b0d_level0_row6" class="row_heading level0 row6" >2024-05-29</th>
+      <td id="T_16b0d_row6_col0" class="data row6 col0" >63</td>
     </tr>
     <tr>
-      <th id="T_56155_level0_row7" class="row_heading level0 row7" >2024-05-30</th>
-      <td id="T_56155_row7_col0" class="data row7 col0" >68</td>
+      <th id="T_16b0d_level0_row7" class="row_heading level0 row7" >2024-05-30</th>
+      <td id="T_16b0d_row7_col0" class="data row7 col0" >68</td>
     </tr>
     <tr>
-      <th id="T_56155_level0_row8" class="row_heading level0 row8" >2024-06-19</th>
-      <td id="T_56155_row8_col0" class="data row8 col0" >24</td>
+      <th id="T_16b0d_level0_row8" class="row_heading level0 row8" >2024-06-19</th>
+      <td id="T_16b0d_row8_col0" class="data row8 col0" >24</td>
     </tr>
     <tr>
-      <th id="T_56155_level0_row9" class="row_heading level0 row9" >2024-06-26</th>
-      <td id="T_56155_row9_col0" class="data row9 col0" >49</td>
+      <th id="T_16b0d_level0_row9" class="row_heading level0 row9" >2024-06-26</th>
+      <td id="T_16b0d_row9_col0" class="data row9 col0" >49</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
+<p>Now we propose a snippet that generates two side-by-side bar charts from the <code class="docutils literal notranslate"><span class="pre">df</span></code> dataframe:
+The result is a quick visual summary of how your dataset is distributed by protocol type and by date.
+Do you want me to show you how to make the x-axis labels more readable (e.g. rotating dates so they don’t overlap)?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -2130,7 +1598,7 @@ date
 <p>Look at column names:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>csvcut<span class="w"> </span>-n<span class="w">  </span>data/records_fake_metadata.csv<span class="w"> </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>csvcut<span class="w"> </span>-n<span class="w">  </span>data/data_bcam_2024/records_metadata_clean.csv<span class="w"> </span>
 </pre></div>
 </div>
 </div>
@@ -2151,7 +1619,7 @@ date
 <p>Pretty print of the (head of) columns 2,3,8:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>csvcut<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span>,3,8<span class="w"> </span>data/records_fake_metadata.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>csvlook<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>csvcut<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span>,3,8<span class="w"> </span>data/data_bcam_2024/records_metadata_clean.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>csvlook<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
 </pre></div>
 </div>
 </div>
@@ -2173,7 +1641,7 @@ date
 <p>Stats on “date” and “tp:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>csvcut<span class="w"> </span>-c<span class="w"> </span>date,tp<span class="w"> </span>data/records_fake_metadata.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>csvstat
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>csvcut<span class="w"> </span>-c<span class="w"> </span>date,tp<span class="w"> </span>data/data_bcam_2024/records_metadata_clean.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>csvstat
 </pre></div>
 </div>
 </div>
@@ -2219,7 +1687,7 @@ Row count: 644
 <p>Show a nice table of all files where “prot-opt” is steps, including only the “cell_id”, “protocol”, “prot-opt”, and “file_name” columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>csvcut<span class="w"> </span>-c<span class="w"> </span>cell_id,protocol,prot-opt,file_name<span class="w"> </span>data/records_fake_metadata.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>csvgrep<span class="w"> </span>-c<span class="w"> </span>prot-opt<span class="w"> </span>-m<span class="w"> </span>steps<span class="w"> </span><span class="p">|</span><span class="w"> </span>csvlook
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>csvcut<span class="w"> </span>-c<span class="w"> </span>cell_id,protocol,prot-opt,file_name<span class="w"> </span>data/data_bcam_2024/records_metadata_clean.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>csvgrep<span class="w"> </span>-c<span class="w"> </span>prot-opt<span class="w"> </span>-m<span class="w"> </span>steps<span class="w"> </span><span class="p">|</span><span class="w"> </span>csvlook
 </pre></div>
 </div>
 </div>
@@ -2246,7 +1714,7 @@ Row count: 644
 <p>You can pipe all the line commands. For example, get cell_id and file_name for all IC steps:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;csvgrep -c protocol -m IC data/records_fake_metadata.csv </span><span class="err">\</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;csvgrep -c protocol -m IC data/data_bcam_2024/records_metadata_clean.csv </span><span class="err">\</span>
 <span class="o">|</span> <span class="n">csvgrep</span> <span class="o">-</span><span class="n">c</span> <span class="n">prot</span><span class="o">-</span><span class="n">opt</span> <span class="o">-</span><span class="n">m</span> <span class="n">steps</span> \
 <span class="o">|</span> <span class="n">csvcut</span> <span class="o">-</span><span class="n">c</span> <span class="n">cell_id</span><span class="p">,</span><span class="n">file_name</span> \
 <span class="o">|</span> <span class="n">csvlook</span><span class="s2">&quot;</span>
@@ -2352,20 +1820,7 @@ Row count: 644
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study">3.3. Back to the case study</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframe">3.4. Pandas DataFrame</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study-the-boring-job">3.5. Back to the case study: the boring job !</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-a-csv-file">Step 1: create a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-add-date-header">Step 2: add <code class="docutils literal notranslate"><span class="pre">date</span></code> header</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-add-exp-nb-header">Step 3: add <code class="docutils literal notranslate"><span class="pre">exp_nb</span></code> header</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-add-comments-header">Step 4: add  <code class="docutils literal notranslate"><span class="pre">comments</span></code> header</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-add-protocol-header">Step 5:  add <code class="docutils literal notranslate"><span class="pre">protocol</span></code> header</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-add-prot-opt-header">Step 6:  add <code class="docutils literal notranslate"><span class="pre">prot-opt</span></code> header</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-add-tp-header">Step 7:  add <code class="docutils literal notranslate"><span class="pre">tp</span></code> header</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-some-details-to-put-in-comments">Step 8:  some details to put in <code class="docutils literal notranslate"><span class="pre">comments</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#final-step">Final step</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-the-case-study-the-boring-job">3.5. Back to the case study: the boring job !</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-metadata">3.6. Exploring the metadata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-we-read-the-csv-and-create-a-dataframe-object">3.7. First we read the csv and create a dataframe object:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">3.8. Filtering</a><ul class="nav section-nav flex-column">
